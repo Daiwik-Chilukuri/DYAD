@@ -14,7 +14,7 @@ from .spatial import (
 )
 
 
-def run_water_bodies_agent(
+def run_ecological_specialist(
     corridor_coordinates: list[list[float]],
     water_path: Path,
     *,
@@ -51,7 +51,7 @@ def run_water_bodies_agent(
         )
     watchpoints.sort(key=lambda item: item["distance_m"])
     return {
-        "agent": "water_bodies_agent",
+        "agent": "ecological_specialist",
         "algorithm": "projected line-to-water distance and intersection",
         "watch_distance_m": watch_distance_m,
         "features_scanned": scanned,

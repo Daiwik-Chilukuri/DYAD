@@ -115,13 +115,13 @@ The UI contract is defined by
 
 It runs:
 
-- `poi_agent`: 2 km catchment filtering and 500 m DBSCAN economic-node
+- `economic_specialist`: 2 km catchment filtering and 500 m DBSCAN economic-node
   clustering.
-- `traffic_census_agent`: area-weighted Census 2011 population followed by
+- `demographics_specialist`: area-weighted Census 2011 population followed by
   K-means catchment archetypes.
-- `water_bodies_agent`: projected alignment intersection and configurable
+- `ecological_specialist`: projected alignment intersection and configurable
   water-proximity watchpoints.
-- `mobility_traffic_agent`: a non-negative Ridge model trained on GTFS schedule
+- `mobility_specialist`: a non-negative Ridge model trained on GTFS schedule
   patterns, BPR road-delay scenario, and road-width friction summary.
 
 Run the unit tests:

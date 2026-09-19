@@ -16,7 +16,7 @@ from .spatial import (
 )
 
 
-def run_traffic_census_agent(
+def run_demographics_specialist(
     corridor_coordinates: list[list[float]],
     wards_path: Path,
     *,
@@ -103,7 +103,7 @@ def run_traffic_census_agent(
         else 0.0
     )
     return {
-        "agent": "traffic_census_agent",
+        "agent": "demographics_specialist",
         "algorithm": {
             "population": "area-weighted polygon intersection",
             "segmentation_model": "KMeans(k<=3) on density, SC/ST share, overlap",

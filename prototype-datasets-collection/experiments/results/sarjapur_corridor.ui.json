@@ -3,7 +3,7 @@
   "schema_version": "1.0.0",
   "analysis_id": "silk_board_sarjapur_exploratory",
   "status": "success",
-  "generated_at": "2026-09-19T09:31:58.320907+00:00",
+  "generated_at": "2026-09-19T10:17:07.354764+00:00",
   "coordinate_reference_system": {
     "name": "EPSG:4326",
     "geojson_coordinate_order": [
@@ -62,7 +62,7 @@
     "projected_minutes_saved_one_way": 47.54942605723425
   },
   "agents": {
-    "poi_agent": {
+    "economic_specialist": {
       "status": "success",
       "title": "Economic and social activity",
       "method": {
@@ -105,7 +105,7 @@
         "Ways and relations are represented by center points"
       ]
     },
-    "traffic_census_agent": {
+    "demographics_specialist": {
       "status": "success",
       "title": "Population and equity catchment",
       "method": {
@@ -184,7 +184,7 @@
         "SC/ST share is an equity signal, not a complete income proxy"
       ]
     },
-    "water_bodies_agent": {
+    "ecological_specialist": {
       "status": "success",
       "title": "Water-body proximity screening",
       "method": "projected line-to-water distance and intersection",
@@ -214,7 +214,7 @@
         "Source geometry may not represent seasonal water extent"
       ]
     },
-    "mobility_traffic_agent": {
+    "mobility_specialist": {
       "status": "success",
       "title": "Mobility and road comparison",
       "method": {
@@ -358,7 +358,7 @@
       },
       {
         "id": "poi-clusters",
-        "source_agent": "poi_agent",
+        "source_agent": "economic_specialist",
         "render_as": "circle",
         "style_token": "poi-cluster",
         "geojson": {
@@ -394,7 +394,7 @@
                   "Digi m2m Solutions"
                 ],
                 "style_token": "poi-cluster",
-                "source_agent": "poi_agent"
+                "source_agent": "economic_specialist"
               }
             },
             {
@@ -426,7 +426,7 @@
                   "Passport Seva Kendra"
                 ],
                 "style_token": "poi-cluster",
-                "source_agent": "poi_agent"
+                "source_agent": "economic_specialist"
               }
             },
             {
@@ -457,7 +457,7 @@
                   "Uber"
                 ],
                 "style_token": "poi-cluster",
-                "source_agent": "poi_agent"
+                "source_agent": "economic_specialist"
               }
             },
             {
@@ -487,7 +487,7 @@
                   "Town Hospital"
                 ],
                 "style_token": "poi-cluster",
-                "source_agent": "poi_agent"
+                "source_agent": "economic_specialist"
               }
             },
             {
@@ -517,7 +517,7 @@
                   "Camillian Pastoral Health Centre"
                 ],
                 "style_token": "poi-cluster",
-                "source_agent": "poi_agent"
+                "source_agent": "economic_specialist"
               }
             },
             {
@@ -546,7 +546,7 @@
                   "Kidzee Play School"
                 ],
                 "style_token": "poi-cluster",
-                "source_agent": "poi_agent"
+                "source_agent": "economic_specialist"
               }
             },
             {
@@ -574,7 +574,7 @@
                   "Sri Lakshmi Multi Speciality Hospital"
                 ],
                 "style_token": "poi-cluster",
-                "source_agent": "poi_agent"
+                "source_agent": "economic_specialist"
               }
             },
             {
@@ -603,7 +603,7 @@
                   "Azim Premji University"
                 ],
                 "style_token": "poi-cluster",
-                "source_agent": "poi_agent"
+                "source_agent": "economic_specialist"
               }
             },
             {
@@ -631,7 +631,7 @@
                   "Sri Chaitanya Techno School"
                 ],
                 "style_token": "poi-cluster",
-                "source_agent": "poi_agent"
+                "source_agent": "economic_specialist"
               }
             },
             {
@@ -659,7 +659,7 @@
                   "Amrita Vishwa Vidyapeetham"
                 ],
                 "style_token": "poi-cluster",
-                "source_agent": "poi_agent"
+                "source_agent": "economic_specialist"
               }
             }
           ]
@@ -667,7 +667,7 @@
       },
       {
         "id": "ward-impacts",
-        "source_agent": "traffic_census_agent",
+        "source_agent": "demographics_specialist",
         "render_as": "circle",
         "style_token": "ward-impact",
         "geojson": {
@@ -691,7 +691,7 @@
                 "overlap_ratio": 0.9326184183631748,
                 "sc_st_share": 0.10480224644233972,
                 "style_token": "ward-impact",
-                "source_agent": "traffic_census_agent"
+                "source_agent": "demographics_specialist"
               }
             },
             {
@@ -712,7 +712,7 @@
                 "overlap_ratio": 0.6040184449061096,
                 "sc_st_share": 0.1359940134696932,
                 "style_token": "ward-impact",
-                "source_agent": "traffic_census_agent"
+                "source_agent": "demographics_specialist"
               }
             },
             {
@@ -733,7 +733,7 @@
                 "overlap_ratio": 0.9999999999999998,
                 "sc_st_share": 0.09248310810810811,
                 "style_token": "ward-impact",
-                "source_agent": "traffic_census_agent"
+                "source_agent": "demographics_specialist"
               }
             },
             {
@@ -754,7 +754,7 @@
                 "overlap_ratio": 0.6476382879524073,
                 "sc_st_share": 0.08690909090909091,
                 "style_token": "ward-impact",
-                "source_agent": "traffic_census_agent"
+                "source_agent": "demographics_specialist"
               }
             },
             {
@@ -775,7 +775,7 @@
                 "overlap_ratio": 0.9999999999999997,
                 "sc_st_share": 0.1367202649085648,
                 "style_token": "ward-impact",
-                "source_agent": "traffic_census_agent"
+                "source_agent": "demographics_specialist"
               }
             },
             {
@@ -796,7 +796,7 @@
                 "overlap_ratio": 0.7742137304287425,
                 "sc_st_share": 0.15155548595886836,
                 "style_token": "ward-impact",
-                "source_agent": "traffic_census_agent"
+                "source_agent": "demographics_specialist"
               }
             },
             {
@@ -817,7 +817,7 @@
                 "overlap_ratio": 0.5709378071036695,
                 "sc_st_share": 0.11008374440747963,
                 "style_token": "ward-impact",
-                "source_agent": "traffic_census_agent"
+                "source_agent": "demographics_specialist"
               }
             },
             {
@@ -838,7 +838,7 @@
                 "overlap_ratio": 0.39084132378429826,
                 "sc_st_share": 0.05058071890755445,
                 "style_token": "ward-impact",
-                "source_agent": "traffic_census_agent"
+                "source_agent": "demographics_specialist"
               }
             },
             {
@@ -859,7 +859,7 @@
                 "overlap_ratio": 0.45278664188145723,
                 "sc_st_share": 0.3179921985047134,
                 "style_token": "ward-impact",
-                "source_agent": "traffic_census_agent"
+                "source_agent": "demographics_specialist"
               }
             },
             {
@@ -880,7 +880,7 @@
                 "overlap_ratio": 0.23949054523975002,
                 "sc_st_share": 0.07175365405373865,
                 "style_token": "ward-impact",
-                "source_agent": "traffic_census_agent"
+                "source_agent": "demographics_specialist"
               }
             },
             {
@@ -901,7 +901,7 @@
                 "overlap_ratio": 0.378487684880304,
                 "sc_st_share": 0.09663224741855639,
                 "style_token": "ward-impact",
-                "source_agent": "traffic_census_agent"
+                "source_agent": "demographics_specialist"
               }
             },
             {
@@ -922,7 +922,7 @@
                 "overlap_ratio": 0.23223863022216207,
                 "sc_st_share": 0.09670435410151551,
                 "style_token": "ward-impact",
-                "source_agent": "traffic_census_agent"
+                "source_agent": "demographics_specialist"
               }
             },
             {
@@ -943,7 +943,7 @@
                 "overlap_ratio": 0.21368869015059244,
                 "sc_st_share": 0.17411284146030126,
                 "style_token": "ward-impact",
-                "source_agent": "traffic_census_agent"
+                "source_agent": "demographics_specialist"
               }
             },
             {
@@ -964,7 +964,7 @@
                 "overlap_ratio": 0.10440952378832485,
                 "sc_st_share": 0.10610107755349825,
                 "style_token": "ward-impact",
-                "source_agent": "traffic_census_agent"
+                "source_agent": "demographics_specialist"
               }
             },
             {
@@ -985,7 +985,7 @@
                 "overlap_ratio": 0.06803749874002855,
                 "sc_st_share": 0.17420594965675057,
                 "style_token": "ward-impact",
-                "source_agent": "traffic_census_agent"
+                "source_agent": "demographics_specialist"
               }
             }
           ]
@@ -993,7 +993,7 @@
       },
       {
         "id": "water-watchpoints",
-        "source_agent": "water_bodies_agent",
+        "source_agent": "ecological_specialist",
         "render_as": "circle",
         "style_token": "environment-risk",
         "geojson": {
@@ -1023,7 +1023,7 @@
                 "title": "Agara kere",
                 "severity": "critical",
                 "style_token": "environment-critical",
-                "source_agent": "water_bodies_agent"
+                "source_agent": "ecological_specialist"
               }
             },
             {
@@ -1050,7 +1050,7 @@
                 "title": "Kaikondanahalli kere",
                 "severity": "critical",
                 "style_token": "environment-critical",
-                "source_agent": "water_bodies_agent"
+                "source_agent": "ecological_specialist"
               }
             },
             {
@@ -1077,7 +1077,7 @@
                 "title": "Unnamed stream",
                 "severity": "critical",
                 "style_token": "environment-critical",
-                "source_agent": "water_bodies_agent"
+                "source_agent": "ecological_specialist"
               }
             },
             {
@@ -1104,7 +1104,7 @@
                 "title": "Unnamed stream",
                 "severity": "critical",
                 "style_token": "environment-critical",
-                "source_agent": "water_bodies_agent"
+                "source_agent": "ecological_specialist"
               }
             },
             {
@@ -1131,7 +1131,7 @@
                 "title": "Unnamed stream",
                 "severity": "critical",
                 "style_token": "environment-critical",
-                "source_agent": "water_bodies_agent"
+                "source_agent": "ecological_specialist"
               }
             },
             {
@@ -1158,7 +1158,7 @@
                 "title": "Unnamed stream",
                 "severity": "critical",
                 "style_token": "environment-critical",
-                "source_agent": "water_bodies_agent"
+                "source_agent": "ecological_specialist"
               }
             },
             {
@@ -1185,7 +1185,7 @@
                 "title": "Unnamed stream",
                 "severity": "critical",
                 "style_token": "environment-critical",
-                "source_agent": "water_bodies_agent"
+                "source_agent": "ecological_specialist"
               }
             },
             {
@@ -1212,7 +1212,7 @@
                 "title": "Unnamed stream",
                 "severity": "warning",
                 "style_token": "environment-warning",
-                "source_agent": "water_bodies_agent"
+                "source_agent": "ecological_specialist"
               }
             },
             {
@@ -1239,7 +1239,7 @@
                 "title": "Unnamed stream",
                 "severity": "warning",
                 "style_token": "environment-warning",
-                "source_agent": "water_bodies_agent"
+                "source_agent": "ecological_specialist"
               }
             },
             {
@@ -1266,7 +1266,7 @@
                 "title": "Unnamed stream",
                 "severity": "warning",
                 "style_token": "environment-warning",
-                "source_agent": "water_bodies_agent"
+                "source_agent": "ecological_specialist"
               }
             },
             {
@@ -1293,7 +1293,7 @@
                 "title": "Ambalipura Kelagina kere",
                 "severity": "warning",
                 "style_token": "environment-warning",
-                "source_agent": "water_bodies_agent"
+                "source_agent": "ecological_specialist"
               }
             }
           ]

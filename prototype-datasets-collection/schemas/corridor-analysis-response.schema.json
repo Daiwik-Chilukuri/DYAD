@@ -48,10 +48,10 @@
     "agents": {
       "type": "object",
       "required": [
-        "poi_agent",
-        "traffic_census_agent",
-        "water_bodies_agent",
-        "mobility_traffic_agent"
+        "economic_specialist",
+        "demographics_specialist",
+        "ecological_specialist",
+        "mobility_specialist"
       ],
       "additionalProperties": { "$ref": "#/$defs/agentResult" }
     },

@@ -68,7 +68,7 @@ def _road_width_summary(corridor, road_widths_path: Path) -> dict[str, Any]:
     }
 
 
-def run_mobility_traffic_agent(
+def run_mobility_specialist(
     corridor_coordinates: list[list[float]],
     gtfs_path: Path,
     road_widths_path: Path,
@@ -112,7 +112,7 @@ def run_mobility_traffic_agent(
         "source_period": "2010-2011",
     }
     return {
-        "agent": "mobility_traffic_agent",
+        "agent": "mobility_specialist",
         "corridor_length_km": corridor_km,
         "gtfs_schedule_model": {
             "model": "Ridge regression",

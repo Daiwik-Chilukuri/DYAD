@@ -67,10 +67,10 @@ def build_ui_payload(analysis: dict[str, Any]) -> dict[str, Any]:
     """Convert raw agent results into one stable, MapLibre-friendly response."""
     corridor = analysis["experiment"]
     agents = analysis["agents"]
-    poi = agents["poi_agent"]
-    census = agents["traffic_census_agent"]
-    water = agents["water_bodies_agent"]
-    mobility = agents["mobility_traffic_agent"]
+    poi = agents["economic_specialist"]
+    census = agents["demographics_specialist"]
+    water = agents["ecological_specialist"]
+    mobility = agents["mobility_specialist"]
 
     corridor_feature = {
         "type": "Feature",
@@ -105,7 +105,7 @@ def build_ui_payload(analysis: dict[str, Any]) -> dict[str, Any]:
                     "category_counts": cluster["category_counts"],
                     "examples": cluster["examples"],
                     "style_token": "poi-cluster",
-                    "source_agent": "poi_agent",
+                    "source_agent": "economic_specialist",
                 },
             )
         )
@@ -138,7 +138,7 @@ def build_ui_payload(analysis: dict[str, Any]) -> dict[str, Any]:
                     "overlap_ratio": ward["overlap_ratio"],
                     "sc_st_share": ward["sc_st_share"],
                     "style_token": "ward-impact",
-                    "source_agent": "traffic_census_agent",
+                    "source_agent": "demographics_specialist",
                 },
             )
         )
@@ -174,7 +174,7 @@ def build_ui_payload(analysis: dict[str, Any]) -> dict[str, Any]:
                     "title": title,
                     "severity": severity,
                     "style_token": f"environment-{severity}",
-                    "source_agent": "water_bodies_agent",
+                    "source_agent": "ecological_specialist",
                 },
             )
         )
@@ -199,7 +199,7 @@ def build_ui_payload(analysis: dict[str, Any]) -> dict[str, Any]:
     metro_model = mobility["gtfs_schedule_model"]
     road = mobility["road_comparison"]
     agent_results = {
-        "poi_agent": {
+        "economic_specialist": {
             "status": "success",
             "title": "Economic and social activity",
             "method": poi["algorithm"],
@@ -211,7 +211,7 @@ def build_ui_payload(analysis: dict[str, Any]) -> dict[str, Any]:
             "breakdown": {"categories": poi["category_counts"]},
             "warnings": poi["limitations"],
         },
-        "traffic_census_agent": {
+        "demographics_specialist": {
             "status": "success",
             "title": "Population and equity catchment",
             "method": census["algorithm"],
@@ -223,7 +223,7 @@ def build_ui_payload(analysis: dict[str, Any]) -> dict[str, Any]:
             "breakdown": {"catchment_archetypes": census["catchment_archetypes"]},
             "warnings": census["limitations"],
         },
-        "water_bodies_agent": {
+        "ecological_specialist": {
             "status": "success",
             "title": "Water-body proximity screening",
             "method": water["algorithm"],
@@ -234,7 +234,7 @@ def build_ui_payload(analysis: dict[str, Any]) -> dict[str, Any]:
             ],
             "warnings": water["limitations"],
         },
-        "mobility_traffic_agent": {
+        "mobility_specialist": {
             "status": "success",
             "title": "Mobility and road comparison",
             "method": {"model": metro_model["model"], "road_scenario": "BPR"},
@@ -289,21 +289,21 @@ def build_ui_payload(analysis: dict[str, Any]) -> dict[str, Any]:
                 },
                 {
                     "id": "poi-clusters",
-                    "source_agent": "poi_agent",
+                    "source_agent": "economic_specialist",
                     "render_as": "circle",
                     "style_token": "poi-cluster",
                     "geojson": _feature_collection(poi_features),
                 },
                 {
                     "id": "ward-impacts",
-                    "source_agent": "traffic_census_agent",
+                    "source_agent": "demographics_specialist",
                     "render_as": "circle",
                     "style_token": "ward-impact",
                     "geojson": _feature_collection(ward_features),
                 },
                 {
                     "id": "water-watchpoints",
-                    "source_agent": "water_bodies_agent",
+                    "source_agent": "ecological_specialist",
                     "render_as": "circle",
                     "style_token": "environment-risk",
                     "geojson": _feature_collection(water_features),

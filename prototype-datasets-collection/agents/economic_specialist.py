@@ -15,7 +15,7 @@ from .spatial import (
 )
 
 
-def run_poi_agent(
+def run_economic_specialist(
     corridor_coordinates: list[list[float]],
     poi_path: Path,
     *,
@@ -75,7 +75,7 @@ def run_poi_agent(
         clusters.sort(key=lambda cluster: cluster["poi_count"], reverse=True)
 
     return {
-        "agent": "poi_agent",
+        "agent": "economic_specialist",
         "algorithm": {
             "name": "DBSCAN",
             "eps_m": cluster_radius_m,
@@ -92,4 +92,3 @@ def run_poi_agent(
             "Ways and relations are represented by center points",
         ],
     }
-

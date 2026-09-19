@@ -6,10 +6,10 @@ from pathlib import Path
 from typing import Any
 
 from agents import (
-    run_mobility_traffic_agent,
-    run_poi_agent,
-    run_traffic_census_agent,
-    run_water_bodies_agent,
+    run_demographics_specialist,
+    run_ecological_specialist,
+    run_economic_specialist,
+    run_mobility_specialist,
 )
 from presentation import build_ui_payload
 from scripts.catalog import ROOT
@@ -36,18 +36,18 @@ def run_experiment(
         "experiment": corridor,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "agents": {
-            "poi_agent": run_poi_agent(
+            "economic_specialist": run_economic_specialist(
                 coordinates, ROOT / "normalized/poi/pois.geojson"
             ),
-            "traffic_census_agent": run_traffic_census_agent(
+            "demographics_specialist": run_demographics_specialist(
                 coordinates,
                 ROOT / "normalized/demographics/wards_with_census.geojson",
             ),
-            "water_bodies_agent": run_water_bodies_agent(
+            "ecological_specialist": run_ecological_specialist(
                 coordinates,
                 ROOT / "normalized/environment/lakes_streams.geojson",
             ),
-            "mobility_traffic_agent": run_mobility_traffic_agent(
+            "mobility_specialist": run_mobility_specialist(
                 coordinates,
                 ROOT / "raw/metro/bmrcl.zip",
                 ROOT / "normalized/roads/road_widths.geojson",

@@ -9,8 +9,6 @@ sys.path.insert(0, str(ROOT))
 
 from experiments.run_corridor_experiment import run_experiment  # noqa: E402
 from presentation import build_ui_payload  # noqa: E402
-from agents.mobility_traffic_aggent import run_mobility_traffic_aggent  # noqa: E402
-from agents.traffic_sensus_agent import run_traffic_sensus_agent  # noqa: E402
 
 REQUIRED_INPUT = ROOT / "normalized/poi/pois.geojson"
 
@@ -25,35 +23,29 @@ class AgentIntegrationTests(unittest.TestCase):
         self.assertEqual(
             set(self.results),
             {
-                "poi_agent",
-                "traffic_census_agent",
-                "water_bodies_agent",
-                "mobility_traffic_agent",
+                "economic_specialist",
+                "demographics_specialist",
+                "ecological_specialist",
+                "mobility_specialist",
             },
         )
 
-    def test_brief_name_compatibility_aliases(self) -> None:
-        from agents import run_mobility_traffic_agent, run_traffic_census_agent
-
-        self.assertIs(run_traffic_sensus_agent, run_traffic_census_agent)
-        self.assertIs(run_mobility_traffic_aggent, run_mobility_traffic_agent)
-
-    def test_poi_agent_produces_clusters(self) -> None:
-        result = self.results["poi_agent"]
+    def test_economic_specialist_produces_clusters(self) -> None:
+        result = self.results["economic_specialist"]
         self.assertGreater(result["poi_count"], 0)
         self.assertGreater(result["cluster_count"], 0)
 
-    def test_census_agent_has_complete_join(self) -> None:
-        result = self.results["traffic_census_agent"]
+    def test_demographics_specialist_has_complete_join(self) -> None:
+        result = self.results["demographics_specialist"]
         self.assertGreater(result["intersected_ward_count"], 0)
         self.assertGreater(result["area_weighted_population_reached_2011"], 0)
 
-    def test_water_agent_scans_features(self) -> None:
-        result = self.results["water_bodies_agent"]
+    def test_ecological_specialist_scans_features(self) -> None:
+        result = self.results["ecological_specialist"]
         self.assertGreater(result["features_scanned"], 0)
 
     def test_mobility_model_is_sane(self) -> None:
-        result = self.results["mobility_traffic_agent"]
+        result = self.results["mobility_specialist"]
         model = result["gtfs_schedule_model"]
         self.assertGreater(model["training_examples"], 5)
         self.assertGreaterEqual(model["coefficients"]["distance_km"], 0)

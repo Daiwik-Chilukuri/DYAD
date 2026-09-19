@@ -29,10 +29,10 @@
       ]
     ]
   },
-  "generated_at": "2026-09-19T09:31:58.320907+00:00",
+  "generated_at": "2026-09-19T10:17:07.354764+00:00",
   "agents": {
-    "poi_agent": {
-      "agent": "poi_agent",
+    "economic_specialist": {
+      "agent": "economic_specialist",
       "algorithm": {
         "name": "DBSCAN",
         "eps_m": 500,
@@ -255,8 +255,8 @@
         "Ways and relations are represented by center points"
       ]
     },
-    "traffic_census_agent": {
-      "agent": "traffic_census_agent",
+    "demographics_specialist": {
+      "agent": "demographics_specialist",
       "algorithm": {
         "population": "area-weighted polygon intersection",
         "segmentation_model": "KMeans(k<=3) on density, SC/ST share, overlap"
@@ -512,8 +512,8 @@
         "SC/ST share is an equity signal, not a complete income proxy"
       ]
     },
-    "water_bodies_agent": {
-      "agent": "water_bodies_agent",
+    "ecological_specialist": {
+      "agent": "ecological_specialist",
       "algorithm": "projected line-to-water distance and intersection",
       "watch_distance_m": 75,
       "features_scanned": 4108,
@@ -648,8 +648,8 @@
         "Source geometry may not represent seasonal water extent"
       ]
     },
-    "mobility_traffic_agent": {
-      "agent": "mobility_traffic_agent",
+    "mobility_specialist": {
+      "agent": "mobility_specialist",
       "corridor_length_km": 19.301022073816622,
       "gtfs_schedule_model": {
         "model": "Ridge regression",

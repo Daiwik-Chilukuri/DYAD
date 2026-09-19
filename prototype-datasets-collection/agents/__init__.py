@@ -1,19 +1,13 @@
-"""Deterministic and small-ML agents for DYAD corridor experiments."""
+"""Canonical domain specialists for DYAD corridor experiments."""
 
-from .mobility_traffic_agent import run_mobility_traffic_agent
-from .poi_agent import run_poi_agent
-from .traffic_census_agent import run_traffic_census_agent
-from .water_bodies_agent import run_water_bodies_agent
-
-# Backward-compatible aliases for the names used in the initial pipeline brief.
-run_traffic_sensus_agent = run_traffic_census_agent
-run_mobility_traffic_aggent = run_mobility_traffic_agent
+from .demographics_specialist import run_demographics_specialist
+from .ecological_specialist import run_ecological_specialist
+from .economic_specialist import run_economic_specialist
+from .mobility_specialist import run_mobility_specialist
 
 __all__ = [
-    "run_poi_agent",
-    "run_traffic_census_agent",
-    "run_water_bodies_agent",
-    "run_mobility_traffic_agent",
-    "run_traffic_sensus_agent",
-    "run_mobility_traffic_aggent",
+    "run_demographics_specialist",
+    "run_economic_specialist",
+    "run_mobility_specialist",
+    "run_ecological_specialist",
 ]
