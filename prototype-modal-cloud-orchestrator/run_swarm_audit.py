@@ -119,26 +119,26 @@ def main():
     print("=" * 76)
 
     if final_dossier:
-        print(f"\n📊 PILLAR 1 - DEMOGRAPHICS & EQUITY:")
+        print(f"\n📊 PILLAR 1 - DEMOGRAPHICS & EQUITY (Areal-Weighted Dasymetric):")
         d = final_dossier["demographics_pillar"]
         print(f"   • Walking Population (500m):  {d['catchment_population_500m']:,}")
         print(f"   • Feeder Population (1500m):   {d['catchment_population_1500m']:,}")
         print(f"   • Equity Score:               {d['equity_score']}/100")
         print(f"   • Intersected Wards:          {d['dense_ward_names']}")
 
-        print(f"\n💼 PILLAR 2 - ECONOMIC & LAND-VALUE:")
+        print(f"\n💼 PILLAR 2 - ECONOMIC & LAND-VALUE (Calibrated Gravity & TOD LVC):")
         e = final_dossier["economic_pillar"]
         print(f"   • Tech Parks within 1km:      {e['tech_parks_within_1km']}")
         print(f"   • Projected Annual Farebox:   INR {e['projected_annual_farebox_inr_cr']} Cr")
         print(f"   • Economic Multiplier:        {e['economic_multiplier_index']}x")
 
-        print(f"\n🚗 PILLAR 3 - MOBILITY & TRAFFIC:")
+        print(f"\n🚗 PILLAR 3 - MOBILITY & TRAFFIC (Multinomial Logit Choice):")
         m = final_dossier["mobility_pillar"]
         print(f"   • Commute Time Saved:         {m['peak_hour_travel_time_saved_mins']} mins/trip")
         print(f"   • Arterial Congestion Drop:   {m['arterial_congestion_reduction_pct']}%")
         print(f"   • Feeder Bus Coverage Score:  {m['feeder_route_coverage_score']}/100")
 
-        print(f"\n🌿 PILLAR 4 - ECOLOGICAL RISK & BUFFER COMPLIANCE:")
+        print(f"\n🌿 PILLAR 4 - ECOLOGICAL RISK & BUFFER COMPLIANCE (30m Legal Setback Geometry):")
         ec = final_dossier["ecological_pillar"]
         print(f"   • KTFD 30m Buffer Breaches:   {ec['lake_buffer_infringements']}")
         print(f"   • Compliance Rating:          {ec['ktfd_compliance_status']}")
