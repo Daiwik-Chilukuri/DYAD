@@ -1,0 +1,21 @@
+{
+  "name": "prototype-gridline-dashboard-inspiration",
+  "version": "0.1.0",
+  "description": "UI inspiration prototype extracted from Watermelon UI Gridline Dashboard (icons, placements, dashboard style)",
+  "type": "module",
+  "main": "index.ts",
+  "scripts": {
+    "build:check": "node -e \"console.log('Prototype gridline dashboard inspiration ready')\""
+  },
+  "keywords": [
+    "dyad",
+    "watermelon-ui",
+    "shadcn",
+    "gridline-dashboard",
+    "inspiration",
+    "icons",
+    "dashboard-style"
+  ],
+  "author": "DYAD Team",
+  "license": "MIT"
+}
