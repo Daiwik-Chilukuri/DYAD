@@ -1,0 +1,15 @@
+{
+  "name": "prototype-dataset-classifier",
+  "version": "0.1.0",
+  "description": "DYAD Urban Dataset Classifier Agent powered by TypeSafe Jev (System One)",
+  "type": "module",
+  "main": "src/dataset-classifier.ts",
+  "scripts": {
+    "test": "node src/test-classifier.ts",
+    "ping": "node src/test-classifier.ts",
+    "test:py": "python test_classifier.py"
+  },
+  "keywords": ["dyad", "typesafe", "jev", "classifier", "urban-planning"],
+  "author": "DYAD Team",
+  "license": "MIT"
+}

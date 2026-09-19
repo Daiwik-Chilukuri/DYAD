@@ -1,0 +1,17 @@
+# TypeSafe AI — System One Documentation Index
+# Source: https://docs.typesafe.ai/llms.txt
+
+> How to use TypeSafe's System One API
+
+- [Introduction](https://docs.typesafe.ai/introduction.md): Jev is TypeSafe's flagship model and the first System One model. Send state and typed questions; get structured answers your code can use directly.
+- [Quick start](https://docs.typesafe.ai/introduction/quickstart.md): Everything you need to get started immediately.
+- [System One](https://docs.typesafe.ai/concepts/system-one.md): System One models make fast, structured decisions for software. Jev is TypeSafe's flagship model and the first System One model.
+- [State](https://docs.typesafe.ai/concepts/state.md): What state is, how to structure it, and how to give a System One model the context it needs.
+- [Primitives (Questions)](https://docs.typesafe.ai/primitives.md): The three TypeSafe question types (Choice, Score, Noul), the typed answers they return, how to choose between them, and how to ask several at once.
+- [Choice](https://docs.typesafe.ai/primitives/choice.md): A Choice is a System One question type for selecting one option from a defined set. The answer includes the selected option, a probability for each option, and confidence.
+- [Score](https://docs.typesafe.ai/primitives/score.md): A Score is a System One question type for rating content against ordered, descriptive levels. The answer includes a score, a probability for each level, and confidence.
+- [Noul](https://docs.typesafe.ai/primitives/noul.md): A Noul question asks the model to evaluate a yes/no question and return the probability that the answer is yes.
+- [Advanced: structure](https://docs.typesafe.ai/primitives/advanced.md): Instructions, Choice options, Score levels, and Noul criteria all accept JSON structure.
+- [Confidence](https://docs.typesafe.ai/confidence.md): How TypeSafe reports certainty, how it differs from probability, and how to use it to control system behavior.
+- [API reference](https://docs.typesafe.ai/api.md): Full HTTP API reference for the TypeSafe evaluation endpoint.
+- [Client SDKs](https://docs.typesafe.ai/sdk.md): Install a TypeSafe client SDK (JavaScript / Python).
