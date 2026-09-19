@@ -694,24 +694,6 @@ export default function Dashboard() {
               )}
             </motion.button>
 
-            {/* Direct Quick-Link to /agents Swarm Audit */}
-            <Link
-              href="/agents"
-              className="py-2 px-3 rounded-xl bg-gradient-to-r from-emerald-500/15 via-[#161B22] to-cyan-500/10 border border-emerald-500/25 hover:border-emerald-400/50 flex items-center justify-between text-xs font-semibold text-slate-200 hover:text-white transition-all group cursor-pointer shadow-sm"
-              title="Inspect 5-Agent Architecture, Mathematical Models & Audit Traces"
-            >
-              <div className="flex items-center gap-2">
-                <BotLogo className="size-3.5" isActive={true} />
-                <span className="text-[11.5px] font-sans">Swarm Audit Suite</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                  5 AGENTS
-                </span>
-                <ArrowUpRight className="size-3 text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </div>
-            </Link>
-
             {/* POI Category Filter Pills */}
             <div className="pt-1 px-1.5 shrink-0">
               <span className="text-[10.5px] font-medium text-[#6e7687] lowercase tracking-wider">
