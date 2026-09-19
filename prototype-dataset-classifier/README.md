@@ -1,96 +1,117 @@
-# Prototype: Dataset Classifier Agent (TypeSafe Jev)
+# Prototype: Dataset Classifier & Auto-Stager Agent (TypeSafe Jev)
 
 > **Subfolder:** `prototype-dataset-classifier/`  
-> **Mission:** Fast, deterministic dataset classification and geospatial coordinate mapping for DYAD using TypeSafe AI's **Jev** (System One decision model).
+> **Mission:** Format-agnostic schema sniffing, intelligent category routing, standardized renaming (`<class>-<whats_inside_dataset>.<ext>`), and auto-uploading to Modal Cloud Volumes using TypeSafe AI's **Jev** System One decision model.
 
 ---
 
-## 1. What is Jev & Why is it Used?
+## 1. The 5-Agent Swarm Topology
 
-Unlike generative LLMs (System Two) that produce conversational text with high latency (1–4s) and hallucination risks, **Jev** is a **System One decision model** from TypeSafe AI:
-* **Response Latency:** **70ms – 250ms** (near instantaneous).
-* **Cost:** **$0.042 / million input tokens** (output tokens are 100% free).
-* **Primitive Decisions:**
-  * `Choice`: Selects 1 domain category from a fixed rubric with calibrated probability distributions.
-  * `Noul`: Calibrated yes/no probability (0.0 to 1.0) checking whether coordinate geometry is present.
-  * `Score`: Rates data readiness for spatial indexing.
+When datasets are ingested by DYAD, Jev classifies them to feed a 5-agent system:
 
-When users drag-and-drop arbitrary CSV or GeoJSON files into DYAD, this agent samples the first 3 rows and column names, classifies the domain (`mobility`, `census`, `poi`, `environmental`), and detects latitude/longitude columns in under **150ms** with zero prompt parsing errors.
+1. **Agent 1: Structured Output Spatial Visualizer Agent:** Ingests all spatial datasets (Polygons, Points, LineStrings) to generate renderable GeoJSON for the Map Canvas UI (highlighting corridors, lakes, and demographic heatmaps).
+2. **Agent 2: Demographics & Equity Specialist Subagent:** Consumes `demographics-*` datasets (ward census, transit dependency, vulnerable populations).
+3. **Agent 3: Economic & Land-Value Specialist Subagent:** Consumes `economic_poi-*` datasets (tech corridors, employment campuses, hospitals, land-value capture).
+4. **Agent 4: Mobility & Congestion Specialist Subagent:** Consumes `mobility-*` datasets (TomTom speeds, arterial congestion, feeder bus stops).
+5. **Agent 5: Ecological & Wetland Risk Specialist Subagent:** Consumes `ecological-*` datasets (lakes, tanks, rajakaluves, KTFD/NGT buffer compliance).
+6. **Unsure / Non-Transit Data:** Classified as `other-*` and held in staging without contaminating the domain models.
 
 ---
 
-## 2. Quick Setup
+## 2. Ingestion Pipeline & Architecture
 
-### Step 1: Add Your API Key
-Open [`.env`](./.env) in this directory and paste your TypeSafe API key:
-```bash
-TYPESAFE_API_KEY="ts_live_..."
+```
+[ Raw User Upload: .csv, .geojson, .json, .parquet ]
+                         │
+                         ▼
+          [ 🔍 Format-Agnostic Schema Sniffer ]
+          (Extracts format, geometry type, keys, & sample records)
+                         │
+                         ▼
+        [ 📋 Standardized Schema Fingerprint ]
+                         │
+                         ▼
+          [ 🧠 TypeSafe Jev System One Agent ]
+          - Classifies: category, subtopic, coordinate columns
+          - Flags: visualizer_agent_enabled
+                         │
+                         ▼
+       [ 🏷️ Standardized Renamer & Local Staging ]
+       Renames to: <class>-<whats_inside_dataset>.<ext>
+       Staged to: prototype-dataset-classifier/staged_datasets/
+                         │
+                         ▼
+       [ ☁️ Modal Cloud Volume Auto-Uploader ]
+       Transfers to: modal.Volume('dyad-datasets-volume')
+       Mounted at: /data/datasets/ in all cloud containers
 ```
 
-### Step 2: Run the Test Suite & Ping Check
-You can run either the Node/TypeScript runner or the Python runner:
+---
 
-**Node / TypeScript (Node 24 native):**
+## 3. Supported File Formats
+
+* **CSV / TSV (`.csv`, `.tsv`):** Delimiter sniffing, header extraction, latitude/longitude column detection.
+* **GeoJSON (`.geojson`):** Geometry type detection (`Polygon`, `LineString`, `Point`), feature property extraction.
+* **JSON (`.json`):** Object lists or key-value dictionaries with spatial key detection.
+* **Parquet / GeoParquet (`.parquet`):** Binary schema inspection via PyArrow/Pandas.
+
+---
+
+## 4. Quickstart: Ingesting Any Dataset
+
+### Run via CLI:
 ```bash
 cd prototype-dataset-classifier
-npm test
-# Or directly:
-node src/test-classifier.ts
+
+# Ingest, classify, rename, and auto-upload to Modal Cloud Volume
+python classify_dataset.py <path_to_raw_dataset>
+
+# Example 1: Ingesting a raw CSV
+python classify_dataset.py sample_raw_datasets/bengaluru_demographic_wards.csv
+
+# Example 2: Ingesting a raw GeoJSON
+python classify_dataset.py sample_raw_datasets/karnataka_wetlands_and_lakes.geojson
+
+# Example 3: Offline mode (skip Modal upload)
+python classify_dataset.py <path> --no-modal
 ```
 
-**Python (Zero dependencies):**
-```bash
-cd prototype-dataset-classifier
-python test_classifier.py
-```
+### Sample Output:
+```text
+[1] Sniffing schema from: karnataka_wetlands_and_lakes.geojson
+    Format:        GeoJSON
+    Geometry Type: GeoJSON (Polygon)
+    Columns:       ['lake_id', 'lake_name', 'water_spread_area_sqkm', 'ktfd_buffer_meters']
+    Has Coords:    True
 
----
+[2] Awakening TypeSafe Jev Classifier Agent...
+    Category:      ECOLOGICAL (Confidence: 100.0%)
+    Subtopic:      lakes_and_wetlands
+    Standardized:  ecological-lakes_and_wetlands_karnataka_wetlands_and_lakes.geojson
+    Primary Agent: Agent 5: Ecological & Wetland Risk Specialist Subagent
+    Visualizer:    ENABLED (Agent 1 will render features)
+    Jev Latency:   895ms
 
-## 3. What the Test Suite Evaluates
+[3] Staging dataset locally with standardized name...
+    Staged to:     staged_datasets/ecological-lakes_and_wetlands_karnataka_wetlands_and_lakes.geojson
 
-The test runner automatically pings the API (`https://api.typesafe.ai/v1/systemone`) and evaluates 4 realistic Bengaluru transit datasets:
-
-1. **`tomtom_bengaluru_peak_congestion.csv`**
-   * Expected Domain: `MOBILITY_TRAFFIC`
-   * Coordinates: `NO`
-2. **`bbmp_wards_demographics_census.csv`**
-   * Expected Domain: `CENSUS_DEMOGRAPHICS`
-   * Coordinates: `NO`
-3. **`bengaluru_tech_parks_and_hospitals.csv`**
-   * Expected Domain: `POI_AMENITIES`
-   * Coordinates: `YES` (`lat`, `lon`)
-4. **`bengaluru_water_bodies_ngt_buffers.geojson`**
-   * Expected Domain: `ENVIRONMENTAL_WATER`
-   * Coordinates: `YES` (`latitude`, `longitude`)
-
----
-
-## 4. Exported Interface for Integration
-
-When integrating into the multi-agent orchestrator, import the clean agent class:
-
-```typescript
-import { DatasetClassifierAgent } from './src/dataset-classifier.ts';
-
-const agent = new DatasetClassifierAgent();
-const classification = await agent.classify(fileName, headers, sampleRows);
-
-// Output schema:
-// {
-//   datasetName: "bengaluru_pois.csv",
-//   domain: "poi_amenities",
-//   confidence: 0.98,
-//   hasCoordinates: true,
-//   latitudeColumn: "lat",
-//   longitudeColumn: "lon",
-//   qualityLevel: "2/2",
-//   latencyMs: 110
-// }
+[4] Auto-uploading to Modal Cloud Volume ('dyad-datasets-volume')...
+    [OK] Uploaded to: /data/datasets/ecological-lakes_and_wetlands_karnataka_wetlands_and_lakes.geojson (1,147 bytes)
 ```
 
 ---
 
-## 5. Local Documentation Reference
-* [`docs/llms.txt`](./docs/llms.txt) — TypeSafe documentation index
-* [`docs/api-reference.md`](./docs/api-reference.md) — HTTP API request/response format
-* [`.agents/skills/typesafe-ai/`](../.agents/skills/typesafe-ai) — Pre-installed agent skill for TypeSafe AI
+## 5. Directory Structure
+
+```
+prototype-dataset-classifier/
+├── classify_dataset.py       # Master CLI for end-to-end ingestion & upload
+├── README.md                 # System overview & instructions
+├── .env                      # Local TypeSafe API Key (gitignored)
+├── src/
+│   ├── sniffer.py            # Format-agnostic schema extractor (CSV/JSON/GeoJSON/Parquet)
+│   ├── classifier.py         # TypeSafe Jev classifier & 5-agent categorizer
+│   └── modal_uploader.py     # Local stager & Modal Volume cloud uploader
+├── sample_raw_datasets/      # Sample test files in diverse formats
+└── staged_datasets/          # Classified & renamed datasets with .meta.json manifests
+```

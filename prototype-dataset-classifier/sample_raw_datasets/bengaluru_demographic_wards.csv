@@ -1,0 +1,5 @@
+ward_id,ward_name,total_population,sc_st_population,working_class_pct,transit_dependency_score
+150,Bellandur,80180,12400,0.58,74.2
+85,Doddanekkundi,64200,9800,0.52,68.5
+174,HSR Layout,72100,6400,0.44,61.0
+112,Domlur,48900,8100,0.61,82.0
