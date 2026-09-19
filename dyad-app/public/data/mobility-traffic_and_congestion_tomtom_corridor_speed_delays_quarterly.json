@@ -1,0 +1,18 @@
+[
+  {
+    "corridor_code": "ORR_EAST_01",
+    "corridor_name": "Silk Board to Marathahalli",
+    "arterial_peak_speed_kmh": 11.2,
+    "free_flow_speed_kmh": 34.0,
+    "delay_index": 3.03,
+    "avg_delay_minutes": 28.5
+  },
+  {
+    "corridor_code": "SARJAPUR_RAD_02",
+    "corridor_name": "Karmelaram to Sarjapur Town",
+    "arterial_peak_speed_kmh": 14.5,
+    "free_flow_speed_kmh": 38.0,
+    "delay_index": 2.62,
+    "avg_delay_minutes": 19.8
+  }
+]

@@ -17,6 +17,7 @@ import asyncio
 import json
 import math
 import os
+import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -304,10 +305,25 @@ class DyadMasterOrchestrator:
                     fname = Path(e.path).name
                     if fname and fname not in filenames:
                         filenames.append(fname)
-            return sorted(filenames)
+            if filenames:
+                return sorted(filenames)
         except Exception as e:
-            print(f"[Master Orchestrator] Warning: Failed to query Modal volume: {e}")
-            return []
+            print(f"[Master Orchestrator] Warning: Failed to query Modal volume: {e}", file=sys.stderr)
+
+        # Scan local storage directories (dyad-app/public/data, staged_datasets, etc.)
+        filenames = []
+        local_data_dirs = [
+            Path(__file__).parent.parent / "dyad-app" / "public" / "data",
+            Path(__file__).parent.parent / "prototype-dataset-classifier" / "staged_datasets",
+            Path(__file__).parent / "data",
+        ]
+        for d in local_data_dirs:
+            if d.exists():
+                for f in d.iterdir():
+                    if f.is_file() and not f.name.endswith(".meta.json") and not f.name.startswith("."):
+                        if f.name not in filenames:
+                            filenames.append(f.name)
+        return sorted(filenames)
 
     def _synthesize_final_dossier(
         self,
@@ -397,7 +413,7 @@ CRITICAL DIRECTIVES:
             if parsed:
                 return parsed
         except Exception as exc:
-            print(f"[Master Orchestrator] Warning: LLM parse error ({exc}). Generating deterministic fallback dossier.")
+            print(f"[Master Orchestrator] Warning: LLM parse error ({exc}). Generating deterministic fallback dossier.", file=sys.stderr)
 
         # Fallback compilation if OpenAI parse encounters issue
         return self._create_deterministic_fallback(corridor_meta, demog, econ, mob, ecol)
@@ -415,6 +431,11 @@ CRITICAL DIRECTIVES:
         pop = demog.get("catchment_population_500m", int(length_km * 9500))
         wf = econ.get("total_tech_workforce_catchment", 110000)
         daily_riders = int(pop * 0.20 + wf * 0.35)
+        tod_yield = float(
+            econ.get("estimated_tod_yield_inr_cr")
+            or econ.get("tod_land_value_capture_inr_cr")
+            or (econ.get("projected_annual_farebox_inr_cr", 185.0) * 0.26)
+        )
 
         viability = round(
             min(96.0, max(45.0, 72.0 + (econ.get("economic_multiplier_index", 2.5) * 4.0) - (ecol.get("lake_buffer_infringements", 1) * 6.0))),
@@ -463,7 +484,7 @@ CRITICAL DIRECTIVES:
         return AuthorityDossier(
             corridor_id=corridor_meta["corridor_id"],
             corridor_name=corridor_meta["corridor_name"],
-            total_length_km=length_km,
+            total_length_km=max(0.0, length_km),
             estimated_ridership_daily=daily_riders,
             overall_viability_score=viability,
             demographics_pillar=DemographicsPillarMetrics(
@@ -479,6 +500,7 @@ CRITICAL DIRECTIVES:
                 hospitals_within_1km=econ.get("hospitals_within_1km", 1),
                 commercial_centers_within_1km=econ.get("commercial_centers_within_1km", 3),
                 projected_annual_farebox_inr_cr=econ.get("projected_annual_farebox_inr_cr", 185.0),
+                estimated_tod_yield_inr_cr=round(tod_yield, 2),
                 economic_multiplier_index=econ.get("economic_multiplier_index", 2.5),
                 analysis_summary=f"Projected annual farebox revenue reaches INR {econ.get('projected_annual_farebox_inr_cr', 185.0)} Crores with {econ.get('tech_parks_within_1km', 2)} major tech parks in walking distance.",
             ),

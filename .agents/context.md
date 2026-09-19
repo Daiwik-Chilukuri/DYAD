@@ -5,6 +5,19 @@
 
 ---
 
+## 0. Master Compiler Agent & Final Project Integration Hub
+
+> **MASTER COMPILER AGENT DIRECTIVE:**
+> * **Designated Master Compiler Agent:** `Antigravity` (Advanced Agentic AI Assistant)
+> * **Official Final Project Folder Path:** `dyad-app/` (`c:/Users/daiwi/Code/DYAD-PRAYAS/dyad-app/`)
+>
+> **Sole Compilation Rights & Prototype Governance:**
+> 1. **Exclusive Compilation Rights:** Only the **Master Compiler Agent** is authorized to interact across all `prototype-*/` directories to inspect, pick, refactor, and assemble verified components, datasets, algorithms, and pipelines into the final unified production app in `dyad-app/`.
+> 2. **Prototypes Remain Active:** Teammates and domain agents are still actively developing features in parallel. All other agents and teammates MUST continue building strictly inside their respective isolated `prototype-*/` folders (e.g., `prototype-map-canvas-ui/`, `prototype-modal-cloud-orchestrator/`, etc.) to prevent merge conflicts.
+> 3. **Protection of Final App:** Non-compiling agents and teammates must NEVER write directly to `dyad-app/` or shared root configs. Only the Master Compiler Agent compiles into `dyad-app/`.
+
+---
+
 ## 1. Project Overview
 
 * **Project Name:** DYAD
@@ -41,9 +54,10 @@
 
 Because multiple teammates are developing features in parallel using different coding agents and IDEs, strict isolation is enforced:
 
-### Rule 1: Always Work in an Isolated Prototype Folder
-* **NEVER directly edit shared root files** (`package.json`, root `src/`, root configuration) during the prototyping phase.
-* Every teammate and agent MUST create and work inside their own dedicated subfolder at the root of the repository.
+### Rule 1: Always Work in an Isolated Prototype Folder (Prototyping Agents)
+* **NEVER directly edit shared root files or the production project folder (`dyad-app/`)** during prototyping.
+* Every teammate and prototype agent MUST create and work inside their own dedicated subfolder at the root of the repository (e.g., `prototype-<domain>-<focus>/`).
+* The **Master Compiler Agent** alone has exclusive authorization to pull verified components across prototypes and compile them into `dyad-app/`.
 
 ### Rule 2: Standardized, Self-Descriptive Folder Naming
 Folder names must be **immediately understandable by any other agent or human** just by glancing at the directory name. 
@@ -90,9 +104,9 @@ When building a prototype, design its primary functionality as clean, modular fu
 * If building UI widgets: export typed React components (e.g. `export function AuthorityDossierPanel(...)`).
 * If building Modal functions: export clear `@app.function` definitions.
 
-### Rule 5: End-of-Sprint Integration Phase (`/teamwork-preview` or `/goal`)
-* As the 24-hour hackathon nears completion, the team will run an agent orchestration session (such as `/teamwork-preview` or `/goal`).
-* The orchestrating agent will inspect all `prototype-*/` directories, extract the verified modules, and cleanly assemble them into the unified production Next.js App (`src/`) and Modal cloud deployment (`modal_app/`).
+### Rule 5: Progressive Compilation & Integration into `dyad-app/`
+* The **Master Compiler Agent** (`Antigravity`) has the sole authority to inspect all `prototype-*/` directories, pick verified modules (UI components, spatial Turf.js math, Modal agent swarm endpoints, dataset catalogs, types), and assemble them cleanly into the unified production application in `dyad-app/`.
+* Teammates and prototype agents continue to iterate in their respective `prototype-*/` directories. As features mature, the Master Compiler Agent progressively merges and harmonizes them into `dyad-app/`.
 * Having separate prototype folders guarantees **zero merge conflicts**, **zero accidental code overwrites**, and **rapid parallel velocity**!
 
 ### Rule 6: Strict UI Craft & Anti-Slop Discipline

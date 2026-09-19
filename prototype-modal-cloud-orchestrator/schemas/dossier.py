@@ -48,6 +48,7 @@ class EconomicPillarMetrics(BaseModel):
     hospitals_within_1km: int = Field(..., ge=0, description="Major healthcare facilities within 1km")
     commercial_centers_within_1km: int = Field(..., ge=0, description="Key commercial/retail centers within 1km")
     projected_annual_farebox_inr_cr: float = Field(..., ge=0.0, description="Projected annual farebox revenue in Crores INR")
+    estimated_tod_yield_inr_cr: float = Field(default=0.0, ge=0.0, description="Estimated Transit-Oriented Development yield in INR Crore")
     economic_multiplier_index: float = Field(..., description="Economic multiplier factor on city GDP per rupee invested")
     analysis_summary: str = Field(..., description="Executive economic review written by the Economic specialist")
 
@@ -91,7 +92,7 @@ class AuthorityDossier(BaseModel):
     """
     corridor_id: str = Field(..., description="Unique identifier for the corridor")
     corridor_name: str = Field(..., description="Human-readable corridor designation, e.g. 'Outer Ring Road East Metro'")
-    total_length_km: float = Field(..., gt=0.0, description="Calculated total length of the alignment in kilometers")
+    total_length_km: float = Field(default=0.0, ge=0.0, description="Calculated total length of the alignment in kilometers")
     estimated_ridership_daily: int = Field(..., ge=0, description="Total estimated daily boardings across the corridor")
     overall_viability_score: float = Field(..., ge=0.0, le=100.0, description="Composite index from 0 to 100 rating total feasibility")
 

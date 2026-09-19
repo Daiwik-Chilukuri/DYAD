@@ -9,3 +9,4 @@ This directory contains the central instructions, technical context, and multi-a
   * **Leonxlnx Taste Suite (`skills/design-taste-frontend`, `skills/high-end-visual-design`, `skills/stitch-design-taste`, etc.):** 13 anti-slop visual design and branding skills.
   * **Emil Kowalski Motion Suite (`skills/animate`, `skills/emil-design-eng`, `skills/review-animations`, etc.):** 13 animation, gesture, and micro-interaction engineering skills.
 * **Key Rule:** All prototyping must occur in isolated, descriptive subfolders (e.g., `prototype-agent-orchestration/`, `prototype-datasets-collection/`, `prototype-modal-cloud-experiments/`, `prototype-map-canvas-ui/`) to ensure zero git merge conflicts across teammates.
+* **Master Compiler Agent:** `Antigravity` has exclusive rights to read across prototype folders and progressively compile verified components into the official final project folder: [`dyad-app/`](../dyad-app/).

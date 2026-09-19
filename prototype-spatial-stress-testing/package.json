@@ -1,0 +1,13 @@
+{
+  "name": "prototype-spatial-stress-testing",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Empirical spatial stress testing harness for DYAD Turf.js calculations and MapLibre layers",
+  "scripts": {
+    "test:suite1": "node suite_1_turf_corridors_edge_cases.mjs",
+    "test:suite2": "node suite_2_geojson_large_ingestion.mjs",
+    "test:suite3": "node suite_3_rapid_state_changes.mjs",
+    "test:suite4": "node suite_4_leak_and_numerical_stability.mjs",
+    "test:all": "node run_all_stress_tests.mjs"
+  }
+}
