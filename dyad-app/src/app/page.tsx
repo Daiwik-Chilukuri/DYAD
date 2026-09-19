@@ -600,15 +600,15 @@ export default function Dashboard() {
         </nav>
       </aside>
 
-      {/* 3. FLOATING LEFT HUD CONTROL SIDEBAR */}
+      {/* 3. DOCKED LEFT CORRIDOR ENGINE CONTROL SIDEBAR */}
       <AnimatePresence>
         {!sidebarCollapsed && (
           <motion.aside
-            initial={{ opacity: 0, x: -16, scale: 0.96 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: -16, scale: 0.96 }}
+            initial={{ opacity: 0, x: -350 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -350 }}
             transition={motionSprings.smooth}
-            className="absolute top-[72px] left-[84px] bottom-4 z-20 w-[280px] max-h-[calc(100vh-5.5rem)] flex flex-col bg-[#0c0e12]/96 backdrop-blur-2xl border border-white/[0.05] rounded-[24px] shadow-[0_20px_60px_rgba(0,0,0,0.85)] p-3.5 gap-2 pointer-events-auto overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden select-none"
+            className="absolute top-14 left-[68px] bottom-0 z-20 w-[350px] flex flex-col bg-[#0c0e12]/96 backdrop-blur-2xl border-r border-white/[0.08] shadow-[20px_0_40px_rgba(0,0,0,0.6)] p-4 gap-2.5 pointer-events-auto overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden select-none"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-1.5 pt-0.5 shrink-0">
@@ -793,16 +793,16 @@ export default function Dashboard() {
         )}
       </AnimatePresence>
 
-      {/* Floating Expand Button (When Sidebar is Collapsed) */}
+      {/* Docked Expand Button (When Sidebar is Collapsed) */}
       {sidebarCollapsed && (
         <motion.button
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
           transition={motionSprings.snappy}
           onClick={() => setSidebarCollapsed(false)}
-          className="absolute top-[72px] left-[84px] z-30 bg-[#0E1117]/85 backdrop-blur-xl border border-white/[0.08] px-3.5 py-2.5 rounded-2xl shadow-2xl shadow-black/50 ring-1 ring-white/5 hover:bg-[#161B22] text-[#00f5d4] transition-all flex items-center gap-2 text-xs font-mono font-semibold pointer-events-auto cursor-pointer"
+          className="absolute top-16 left-[68px] z-30 bg-[#0E1117]/90 backdrop-blur-xl border border-l-0 border-white/[0.08] px-3.5 py-2 rounded-r-xl shadow-xl shadow-black/50 hover:bg-[#161B22] text-[#00f5d4] transition-all flex items-center gap-2 text-xs font-mono font-semibold pointer-events-auto cursor-pointer"
         >
           <ChevronRight className="size-4" />
           <span>Corridor Controls</span>
