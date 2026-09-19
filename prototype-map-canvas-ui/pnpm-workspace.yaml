@@ -1,0 +1,8 @@
+# pnpm >=11 gates dependency build scripts behind `allowBuilds` and errors
+# (ERR_PNPM_IGNORED_BUILDS) on any unapproved one. These native deps ship build
+# scripts we do not need (Next.js falls back without sharp; eslint's resolver
+# works without the native unrs-resolver binary), so we explicitly reject them
+# (false) — recording the decision keeps installs clean and fast.
+allowBuilds:
+  sharp: false
+  unrs-resolver: false
