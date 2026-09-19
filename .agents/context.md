@@ -76,6 +76,14 @@ prototype-<name>/
 └── types.ts (optional)    # Exported types or data contracts
 ```
 
+### Active Prototype Registry (Current Sprint):
+| Prototype Folder | Owner / Agent | Responsibility & Exported Interface |
+|---|---|---|
+| `prototype-dataset-classifier/` | Agent / Python & TS | TypeSafe Jev classifier detecting spatial domain & lat/lng coordinate availability. |
+| `prototype-map-canvas-ui/` | Teammate (Farhan) | MapLibre GL JS interactive dark command center, station markers & corridor drawing. |
+| `prototype-modal-cloud-orchestrator/` | Cloud Swarm Agent | Modal AI serverless multi-agent orchestrator (`sol-medium`/`terra` + fallback), deterministic GIS tools, Pydantic `AuthorityDossier`, and real-time SSE streaming endpoint (`/stream_corridor_analysis`). |
+
+
 ### Rule 4: Export Clean, Modular Interfaces
 When building a prototype, design its primary functionality as clean, modular functions or components so that other agents can easily import or adapt them:
 * If building spatial utilities: export pure functions (e.g. `export function computeCorridorMetrics(...)`).
