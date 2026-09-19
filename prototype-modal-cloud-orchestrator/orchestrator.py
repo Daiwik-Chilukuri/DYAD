@@ -54,6 +54,27 @@ except ImportError:
     )
 
 
+from pathlib import Path
+
+
+def load_local_env():
+    """Loads variables from local .env if present and not already in environment."""
+    env_file = Path(__file__).parent / ".env"
+    if env_file.exists():
+        with open(env_file, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                k, v = line.split("=", 1)
+                v = v.strip().strip('"').strip("'")
+                if k not in os.environ and v:
+                    os.environ[k] = v
+
+
+load_local_env()
+
+
 def get_openai_client(api_key: Optional[str] = None) -> OpenAI:
     """Instantiates OpenAI client with provided key or environment variable."""
     key = api_key or os.environ.get("OPENAI_API_KEY")
@@ -64,22 +85,34 @@ def get_openai_client(api_key: Optional[str] = None) -> OpenAI:
     return OpenAI(api_key=key)
 
 
+MODEL_ALIASES = {
+    "sol-medium": "gpt-5.6-sol",
+    "sol-med": "gpt-5.6-sol",
+    "sol": "gpt-5.6-sol",
+    "terra": "gpt-5.6-terra",
+    "luna": "gpt-5.6-luna",
+}
+
+
 def resolve_models(client: OpenAI) -> Tuple[str, str]:
     """
-    Detects whether the frontier 'sol-medium' and 'terra' models are accessible on the account.
+    Detects whether the frontier 'gpt-5.6-sol' (Sol-Medium) and 'gpt-5.6-terra' (Terra)
+    models are accessible on the OpenAI account.
     Gracefully falls back to 'gpt-4o' and 'gpt-4o-mini' if unavailable.
     """
-    orchestrator_model = "sol-medium"
-    subagent_model = "terra"
+    raw_orch = os.environ.get("ORCHESTRATOR_MODEL", "gpt-5.6-sol")
+    raw_sub = os.environ.get("WORKER_MODEL", "gpt-5.6-terra")
+
+    orchestrator_model = MODEL_ALIASES.get(raw_orch.lower(), raw_orch)
+    subagent_model = MODEL_ALIASES.get(raw_sub.lower(), raw_sub)
 
     try:
         models = [m.id for m in client.models.list()]
-        if orchestrator_model not in models and "sol" not in models:
+        if orchestrator_model not in models:
             orchestrator_model = "gpt-4o"
-        if subagent_model not in models and "terra" not in models:
+        if subagent_model not in models:
             subagent_model = "gpt-4o-mini"
     except Exception:
-        # Fall back safely if model listing fails or is restricted
         orchestrator_model = "gpt-4o"
         subagent_model = "gpt-4o-mini"
 
@@ -277,7 +310,6 @@ Produce an authoritative, quantitative AuthorityDossier. Ensure all numeric metr
                     {"role": "user", "content": synthesis_prompt},
                 ],
                 response_format=AuthorityDossier,
-                temperature=0.2,
             )
             parsed_dossier = completion.choices[0].message.parsed
             if parsed_dossier:

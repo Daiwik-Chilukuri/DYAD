@@ -13,6 +13,12 @@ import shutil
 import subprocess
 from pathlib import Path
 
+try:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+except Exception:
+    pass
+
 # Load local .env
 def load_env():
     env_file = Path(__file__).parent / ".env"
@@ -31,8 +37,21 @@ def load_env():
 load_env()
 
 API_KEY = os.environ.get("OPENAI_API_KEY", "").strip()
-ORCHESTRATOR_MODEL = os.environ.get("ORCHESTRATOR_MODEL", "sol-medium")
-WORKER_MODEL = os.environ.get("WORKER_MODEL", "terra")
+
+# Canonical OpenAI API Model ID Mapping
+MODEL_ALIASES = {
+    "sol-medium": "gpt-5.6-sol",
+    "sol-med": "gpt-5.6-sol",
+    "sol": "gpt-5.6-sol",
+    "terra": "gpt-5.6-terra",
+    "luna": "gpt-5.6-luna",
+}
+
+raw_orch = os.environ.get("ORCHESTRATOR_MODEL", "gpt-5.6-sol")
+raw_worker = os.environ.get("WORKER_MODEL", "gpt-5.6-terra")
+
+ORCHESTRATOR_MODEL = MODEL_ALIASES.get(raw_orch.lower(), raw_orch)
+WORKER_MODEL = MODEL_ALIASES.get(raw_worker.lower(), raw_worker)
 FALLBACK_ORCH_MODEL = os.environ.get("FALLBACK_ORCHESTRATOR_MODEL", "gpt-4o")
 FALLBACK_WORKER_MODEL = os.environ.get("FALLBACK_WORKER_MODEL", "gpt-4o-mini")
 
@@ -76,7 +95,7 @@ def check_openai_connection():
         resp = client.chat.completions.create(
             model=active_orch,
             messages=[{"role": "user", "content": "Respond with 'OK'."}],
-            max_tokens=5,
+            max_completion_tokens=25,
         )
         latency = int((time.time() - t0) * 1000)
         print(f"  [✓] Connected to '{active_orch}' in {latency}ms (Response: {resp.choices[0].message.content.strip()})")
@@ -89,7 +108,7 @@ def check_openai_connection():
             resp = client.chat.completions.create(
                 model=active_orch,
                 messages=[{"role": "user", "content": "Respond with 'OK'."}],
-                max_tokens=5,
+                max_completion_tokens=25,
             )
             latency = int((time.time() - t0) * 1000)
             print(f"  [✓] Connected to fallback '{active_orch}' in {latency}ms")
@@ -105,7 +124,7 @@ def check_openai_connection():
         resp = client.chat.completions.create(
             model=active_worker,
             messages=[{"role": "user", "content": "Respond with 'OK'."}],
-            max_tokens=5,
+            max_completion_tokens=25,
         )
         latency = int((time.time() - t0) * 1000)
         print(f"  [✓] Connected to '{active_worker}' in {latency}ms")
@@ -118,7 +137,7 @@ def check_openai_connection():
             resp = client.chat.completions.create(
                 model=active_worker,
                 messages=[{"role": "user", "content": "Respond with 'OK'."}],
-                max_tokens=5,
+                max_completion_tokens=25,
             )
             latency = int((time.time() - t0) * 1000)
             print(f"  [✓] Connected to fallback worker '{active_worker}' in {latency}ms")

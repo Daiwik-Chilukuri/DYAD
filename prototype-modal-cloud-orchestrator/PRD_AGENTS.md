@@ -3,7 +3,7 @@
 **Version:** 1.0.0  
 **Status:** Approved for Implementation (Post `/grill-me` Alignment)  
 **Target Environment:** Modal AI Serverless Cloud Containers (`modal.App`)  
-**AI Inference Engine:** OpenAI API (`OPENAI_API_KEY` with `sol-medium` / `terra` + automatic fallback to `gpt-4o` / `gpt-4o-mini`)  
+**AI Inference Engine:** OpenAI API (`OPENAI_API_KEY` with `gpt-5.6-sol` [Sol-Medium] / `gpt-5.6-terra` [Terra] + automatic fallback to `gpt-4o` / `gpt-4o-mini`)  
 **Integration Scope:** Isolated Prototype Subfolder (`prototype-modal-cloud-orchestrator/`)  
 
 ---
@@ -158,12 +158,23 @@ class AuthorityDossier(BaseModel):
 
 ---
 
-## 7. Model Fallback Matrix
+## 7. Model Strategy & Verified API Conventions
 
-To guarantee 100% resilience across all OpenAI tier access levels:
-- If `sol-medium` returns `model_not_found` (404) or `unsupported_model` (400), seamlessly fall back to `gpt-4o`.
-- If `terra` returns `model_not_found` (404) or `unsupported_model` (400), seamlessly fall back to `gpt-4o-mini`.
-- A verified model auto-detection utility runs at module initialization.
+The exact model identifiers and conventions on the OpenAI API platform are:
+- **Master Orchestrator:** `gpt-5.6-sol` (commonly referred to as **Sol-Medium** when run with default/medium reasoning effort).
+- **Domain Subagents:** `gpt-5.6-terra` (the cost-balanced **Terra** worker model).
+- **Fast Chat / Telemetry:** `gpt-5.6-luna`.
+
+### Crucial OpenAI API Constraints for GPT-5.6 Models:
+1. **Token Parameter:** Must use `max_completion_tokens` instead of the legacy `max_tokens` (passing `max_tokens` triggers a 400 `unsupported_parameter` error).
+2. **Temperature:** GPT-5.6 reasoning models enforce default `temperature=1` (passing `temperature=0.2` triggers a 400 `unsupported_value` error).
+3. **Structured Outputs:** Both `gpt-5.6-sol` and `gpt-5.6-terra` natively support Pydantic structured output parsing via `client.beta.chat.completions.parse`.
+
+### Automatic Fallback Matrix:
+To guarantee resilience across all OpenAI account tiers:
+- `gpt-5.6-sol` / `sol-medium` ➔ `gpt-4o`
+- `gpt-5.6-terra` / `terra` ➔ `gpt-4o-mini`
+- If offline / no API key: Deterministic GIS mathematical synthesis engine compiles compliant `AuthorityDossier`.
 
 ---
 
