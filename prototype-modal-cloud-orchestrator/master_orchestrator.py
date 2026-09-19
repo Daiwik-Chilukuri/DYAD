@@ -180,11 +180,11 @@ class DyadMasterOrchestrator:
         # Step 3: Conditional Spawning Rule
         # "there is no need for the master agent to spawn an agent if the <*keyword> doesnt exist"
         active_subagents = []
-        has_visualizer = any(f.startswith("visualizer-") for f in available_datasets)
-        has_demographics = any(f.startswith("demographics-") for f in available_datasets)
-        has_economic = any(f.startswith("economic_poi-") for f in available_datasets)
-        has_mobility = any(f.startswith("mobility-") for f in available_datasets)
-        has_ecological = any(f.startswith("ecological-") for f in available_datasets)
+        has_visualizer = any("visualizer-" in f for f in available_datasets)
+        has_demographics = any("demographics" in f for f in available_datasets)
+        has_economic = any("economic_poi" in f for f in available_datasets)
+        has_mobility = any("mobility" in f for f in available_datasets)
+        has_ecological = any("ecological" in f for f in available_datasets)
 
         if has_visualizer:
             active_subagents.append("Agent 1: Structured Output Spatial Visualizer")
@@ -203,11 +203,11 @@ class DyadMasterOrchestrator:
             "active_subagents": active_subagents,
             "skipped_keywords": [
                 kw for kw, active in [
-                    ("visualizer-", has_visualizer),
-                    ("demographics-", has_demographics),
-                    ("economic_poi-", has_economic),
-                    ("mobility-", has_mobility),
-                    ("ecological-", has_ecological),
+                    ("visualizer", has_visualizer),
+                    ("demographics", has_demographics),
+                    ("economic_poi", has_economic),
+                    ("mobility", has_mobility),
+                    ("ecological", has_ecological),
                 ] if not active
             ],
             "message": f"Conditionally spawned {len(active_subagents)} subagents based on existing dataset keywords.",
@@ -217,34 +217,19 @@ class DyadMasterOrchestrator:
         swarm_results: Dict[str, Any] = {}
 
         def run_task(agent_key: str):
-            try:
-                from .subagents_swarm import (
-                    agent_demographics,
-                    agent_ecological,
-                    agent_economic_poi,
-                    agent_mobility,
-                    agent_visualizer,
-                )
-            except ImportError:
-                from subagents_swarm import (
-                    agent_demographics,
-                    agent_ecological,
-                    agent_economic_poi,
-                    agent_mobility,
-                    agent_visualizer,
-                )
-
+            import modal
+            fn_map = {
+                "visualizer": "agent_visualizer",
+                "demographics": "agent_demographics",
+                "economic": "agent_economic_poi",
+                "mobility": "agent_mobility",
+                "ecological": "agent_ecological",
+            }
+            fn = modal.Function.from_name("dyad-subagents-swarm", fn_map[agent_key])
             if agent_key == "visualizer":
-                return agent_key, agent_visualizer.remote(buffer_geojson)
-            elif agent_key == "demographics":
-                return agent_key, agent_demographics.remote(buffer_geojson, corridor_meta)
-            elif agent_key == "economic":
-                return agent_key, agent_economic_poi.remote(buffer_geojson, corridor_meta)
-            elif agent_key == "mobility":
-                return agent_key, agent_mobility.remote(buffer_geojson, corridor_meta)
-            elif agent_key == "ecological":
-                return agent_key, agent_ecological.remote(buffer_geojson, corridor_meta)
-            return agent_key, {}
+                return agent_key, fn.remote(buffer_geojson)
+            else:
+                return agent_key, fn.remote(buffer_geojson, corridor_meta)
 
         tasks_to_run = []
         if has_visualizer: tasks_to_run.append("visualizer")
@@ -308,19 +293,12 @@ class DyadMasterOrchestrator:
     def _get_available_datasets(self) -> List[str]:
         """Discovers files in the Modal Volume."""
         try:
-            try:
-                from .subagents_swarm import list_available_datasets_modal
-            except ImportError:
-                from subagents_swarm import list_available_datasets_modal
-            return list_available_datasets_modal.remote()
+            import modal
+            fn = modal.Function.from_name("dyad-subagents-swarm", "list_available_datasets_modal")
+            return fn.remote()
         except Exception as e:
             print(f"[Master Orchestrator] Warning: Failed to query Modal volume: {e}")
-            # Fallback list based on verified volume state
-            return [
-                "demographics-ward_census_bengaluru_demographic_wards.csv",
-                "visualizer-ecological-lakes_and_wetlands_karnataka_wetlands_and_lakes.geojson",
-                "visualizer-mobility-traffic_and_congestion_tomtom_arterial_peak_speeds.json",
-            ]
+            return []
 
     def _synthesize_final_dossier(
         self,

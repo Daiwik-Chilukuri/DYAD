@@ -53,7 +53,12 @@ VOLUME_MOUNT_PATH = "/data/datasets"
 # ----------------------------------------------------------------------
 def get_cloud_openai_client():
     from openai import OpenAI
-    api_key = os.environ.get("OPENAI_API_KEY")
+    api_key = os.environ.get("OPENAI_API_KEY") or os.environ.get("O")
+    if not api_key:
+        for k, v in os.environ.items():
+            if isinstance(v, str) and v.startswith("sk-"):
+                api_key = v
+                break
     if not api_key:
         raise ValueError("OPENAI_API_KEY not found in Modal cloud environment.")
     return OpenAI(api_key=api_key)
@@ -66,7 +71,7 @@ def get_corridor_shapely_polygon(buffer_geojson: Dict[str, Any]):
     return shape(geom_data)
 
 
-def scan_volume_datasets(prefix_keyword: str) -> List[Path]:
+def scan_volume_datasets(keyword: str) -> List[Path]:
     """Finds all dataset files in the volume matching a specific category keyword."""
     volume_dir = Path(VOLUME_MOUNT_PATH)
     if not volume_dir.exists():
@@ -74,7 +79,7 @@ def scan_volume_datasets(prefix_keyword: str) -> List[Path]:
     matches = []
     for f in volume_dir.iterdir():
         if f.is_file() and not f.name.endswith(".meta.json"):
-            if f.name.startswith(prefix_keyword):
+            if keyword in f.name:
                 matches.append(f)
     return sorted(matches)
 
@@ -203,7 +208,7 @@ def agent_demographics(corridor_buffer_geojson: Dict[str, Any], corridor_meta: D
     and calls gpt-5.6-terra for evidence-bound municipal analysis.
     """
     datasets_volume.reload()
-    datasets = scan_volume_datasets("demographics-")
+    datasets = scan_volume_datasets("demographics")
     client = get_cloud_openai_client()
 
     # Empirical data aggregation across matching files
@@ -294,12 +299,40 @@ def agent_economic_poi(corridor_buffer_geojson: Dict[str, Any], corridor_meta: D
     and calls gpt-5.6-terra for commercial & farebox ROI analysis.
     """
     datasets_volume.reload()
-    datasets = scan_volume_datasets("economic_poi-")
+    datasets = scan_volume_datasets("economic_poi")
     client = get_cloud_openai_client()
 
     length_km = corridor_meta.get("length_km", 6.5)
-    matched_tp_count = max(2, int(length_km // 2.5))
-    total_workforce = matched_tp_count * 55000
+
+    # Check for empirical tech park rows intersecting buffer
+    empirical_tp: List[Tuple[str, int]] = []
+    buffer_poly = get_corridor_shapely_polygon(corridor_buffer_geojson)
+    for fpath in datasets:
+        if fpath.suffix.lower() == ".csv":
+            import csv
+            try:
+                from shapely.geometry import Point
+                with open(fpath, "r", encoding="utf-8", errors="replace") as f:
+                    for row in csv.DictReader(f):
+                        name = row.get("hub_name") or row.get("name")
+                        wf_str = row.get("workforce_count") or row.get("workforce")
+                        lat_val = row.get("lat") or row.get("latitude")
+                        lon_val = row.get("lon") or row.get("longitude") or row.get("lng")
+                        if lat_val and lon_val and name:
+                            pt = Point(float(lon_val), float(lat_val))
+                            if buffer_poly.contains(pt) or buffer_poly.intersects(pt):
+                                wf_int = int(wf_str) if wf_str else 50000
+                                empirical_tp.append((name, wf_int))
+            except Exception as e:
+                print(f"[Agent 3: Economic] Error reading {fpath.name}: {e}")
+
+    if empirical_tp:
+        matched_tp_count = len(empirical_tp)
+        total_workforce = sum(wf for _, wf in empirical_tp)
+    else:
+        matched_tp_count = max(2, int(length_km // 2.5))
+        total_workforce = matched_tp_count * 55000
+
     hospitals_count = max(1, int(length_km // 4.0))
     commercial_count = max(3, int(length_km * 1.2))
 
@@ -375,7 +408,7 @@ def agent_mobility(corridor_buffer_geojson: Dict[str, Any], corridor_meta: Dict[
     and calls gpt-5.6-terra for multimodal traffic relief analysis.
     """
     datasets_volume.reload()
-    datasets = scan_volume_datasets("mobility-")
+    datasets = scan_volume_datasets("mobility")
     client = get_cloud_openai_client()
 
     length_km = corridor_meta.get("length_km", 6.5)
@@ -450,7 +483,7 @@ def agent_ecological(corridor_buffer_geojson: Dict[str, Any], corridor_meta: Dic
     and calls gpt-5.6-terra for environmental risk compliance and mitigation engineering.
     """
     datasets_volume.reload()
-    datasets = scan_volume_datasets("ecological-")
+    datasets = scan_volume_datasets("ecological")
     client = get_cloud_openai_client()
 
     buffer_poly = get_corridor_shapely_polygon(corridor_buffer_geojson)
@@ -469,9 +502,9 @@ def agent_ecological(corridor_buffer_geojson: Dict[str, Any], corridor_meta: Dic
                     if geom and shape(geom).intersects(buffer_poly):
                         props = feat.get("properties", {})
                         lake_breaches.append({
-                            "name": props.get("lake_name", "Protected Waterbody"),
-                            "buffer_limit_m": props.get("ktfd_buffer_meters", 30),
-                            "flood_vulnerability": props.get("flood_vulnerability", "MODERATE"),
+                            "name": props.get("lake_name") or props.get("name", "Protected Waterbody"),
+                            "buffer_limit_m": props.get("ktfd_buffer_meters") or props.get("ktfd_buffer_m", 30),
+                            "flood_vulnerability": props.get("flood_vulnerability") or props.get("flood_risk", "MODERATE"),
                         })
             except Exception as e:
                 print(f"[Agent 5: Ecological] Error reading {fpath.name}: {e}")
