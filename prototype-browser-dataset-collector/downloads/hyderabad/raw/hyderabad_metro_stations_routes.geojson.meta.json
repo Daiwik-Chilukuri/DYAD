@@ -1,0 +1,7 @@
+{
+  "city": "Hyderabad",
+  "pillar": "mobility",
+  "source_url": "https://overpass-turbo.eu/?Q=%5Bout%3Ajson%5D%5Btimeout%3A60%5D%3B%28node%5B%22railway%22%3D%22station%22%5D%5B%22station%22%3D%22subway%22%5D%2817.34%2C78.30%2C17.52%2C78.55%29%3Bnode%5B%22railway%22%3D%22station%22%5D%5B%22subway%22%3D%22yes%22%5D%2817.34%2C78.30%2C17.52%2C78.55%29%3Bnode%5B%22railway%22%3D%22station%22%5D%5B%22name%22~%22Metro%22%2Ci%5D%2817.34%2C78.30%2C17.52%2C78.55%29%3Bway%5B%22railway%22%3D%22subway%22%5D%2817.34%2C78.30%2C17.52%2C78.55%29%3B%29%3Bout%20geom%3B",
+  "geometry_type": "Point and LineString",
+  "timestamp": "2026-09-19T15:57:08Z"
+}

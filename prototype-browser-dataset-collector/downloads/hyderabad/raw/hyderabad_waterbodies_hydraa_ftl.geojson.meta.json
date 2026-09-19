@@ -1,0 +1,8 @@
+{
+  "city": "Hyderabad",
+  "pillar": "ecological",
+  "source_url": "https://data.opencity.in/dataset/hyderabad-and-telangana-water-bodies/resource/6143bd88-8830-49ca-87fd-67ea30abc2da",
+  "geometry_type": "Polygon",
+  "timestamp": "2026-09-19T15:57:08Z",
+  "regulatory_context": "HYDRAA/HMDA FTL lake-buffer context: use a 30 m statutory buffer where applicable. The downloaded polygons are Government of Telangana water-body boundaries and are not themselves geodetically buffered polygons."
+}

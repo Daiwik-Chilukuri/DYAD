@@ -1,0 +1,4 @@
+# Local environment credentials
+.env
+__pycache__/
+*.pyc

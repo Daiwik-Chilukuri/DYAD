@@ -1,0 +1,39 @@
+Title: Browser Use Documentation (llms.txt)
+Source: https://docs.browser-use.com/llms.txt
+Cached At: 2026-09-19
+
+# Browser Use
+
+> Documentation for Browser Use Cloud Agent and Browser APIs, and the separate open-source Python library.
+
+## Quick Summary
+- Cloud API V4 is the current standard for long-horizon agents.
+- Open-source Python library: `browser-use` (pip install browser-use playwright).
+- Supported models: DeepSeek (`ChatDeepSeek(model="deepseek-chat")` or OpenAI-compatible endpoint), OpenAI, Gemini, Claude, Groq, Ollama.
+- Key concepts: Agent(task=..., llm=...), Controller / Tools, BrowserSession, Page, Element actions.
+
+## Model Configuration (DeepSeek)
+```python
+from browser_use import Agent, ChatDeepSeek
+
+# DeepSeek Chat / Flash
+llm = ChatDeepSeek(
+    model="deepseek-chat",  # or deepseek-v4.1-flash if served via custom endpoint
+    api_key="your_deepseek_api_key",
+)
+
+agent = Agent(
+    task="Your task here",
+    llm=llm,
+)
+```
+Or via ChatOpenAI compatible interface:
+```python
+from browser_use import Agent, ChatOpenAI
+
+llm = ChatOpenAI(
+    model="deepseek-chat", # or deepseek-v4.1-flash
+    base_url="https://api.deepseek.com/v1",
+    api_key="your_deepseek_api_key",
+)
+```
