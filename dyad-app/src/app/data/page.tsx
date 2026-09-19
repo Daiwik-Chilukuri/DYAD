@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, useCallback, ChangeEvent, DragEvent } from
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Database, TrendingUp, Zap, GitBranch, MapPin, 
+  Database, TrendingUp, MapPin, 
   UploadCloud, FileText, Table, FileSpreadsheet,
   Trash2, CheckCircle2, Search, FileCode, Check,
   ArrowLeft, Eye, X, Download, HardDrive,
@@ -304,35 +304,17 @@ export default function DataSynthesisPage() {
             </motion.button>
           </Link>
 
-          <motion.button 
-            whileHover={{ scale: 1.05 }} 
-            whileTap={{ scale: 0.94 }} 
-            transition={motionSprings.snappy} 
-            className="p-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
-          >
-            <Zap className="size-5" />
-          </motion.button>
-
           {/* BOT ICON */}
-          <Link href="/agents" title="Autonomous Multi-Agent Swarm Intelligence">
+          <Link href="/agents" title="Autonomous Multi-Agent Swarm Intelligence (5 Specialized Agents)">
             <motion.button 
-              whileHover={{ scale: 1.05 }} 
+              whileHover={{ scale: 1.08 }} 
               whileTap={{ scale: 0.94 }} 
               transition={motionSprings.snappy} 
-              className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors flex items-center justify-center group cursor-pointer"
+              className="p-2.5 rounded-xl text-emerald-400 hover:text-emerald-300 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/25 transition-all flex items-center justify-center group cursor-pointer shadow-sm"
             >
-              <BotLogo className="size-5.5" isActive={false} />
+              <BotLogo className="size-5" isActive={true} />
             </motion.button>
           </Link>
-
-          <motion.button 
-            whileHover={{ scale: 1.05 }} 
-            whileTap={{ scale: 0.94 }} 
-            transition={motionSprings.snappy} 
-            className="p-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
-          >
-            <GitBranch className="size-5" />
-          </motion.button>
         </nav>
       </aside>
 

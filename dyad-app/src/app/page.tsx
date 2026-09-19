@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import * as turf from '@turf/turf';
@@ -9,7 +9,6 @@ import { MapCanvas, OriginStation, BufferStats } from '../../components/MapCanva
 import { BotLogo } from '../../components/BotLogo';
 import {
   Database,
-  Zap,
   TrendingUp,
   GitBranch,
   MapPin,
@@ -27,6 +26,7 @@ import {
   Play,
   Layers,
   Radio,
+  ArrowUpRight,
 } from 'lucide-react';
 import { motionSprings } from '../../lib/motion';
 import { AuthorityDossierPanel } from '../../components/dossier';
@@ -101,6 +101,71 @@ export default function Dashboard() {
   // 5. UI Controls
   const [sidebarCollapsed, setSidebarCollapsed] = useState<boolean>(false);
   const abortControllerRef = useRef<AbortController | null>(null);
+
+  // 6. Hydrate full session & dossier from localStorage on client mount (prevents state loss on navigation)
+  useEffect(() => {
+    try {
+      if (typeof window === 'undefined') return;
+      const rawSession = localStorage.getItem('dyad_active_session_state');
+      if (rawSession) {
+        const parsed = JSON.parse(rawSession);
+        if (parsed.originStation) setOriginStation(parsed.originStation);
+        if (parsed.destinationCoords) setDestinationCoords(parsed.destinationCoords);
+        if (typeof parsed.bufferRadiusKm === 'number') setBufferRadiusKm(parsed.bufferRadiusKm);
+        if (parsed.dossier) setDossier(parsed.dossier);
+        if (parsed.visualizerGeoJSON) setVisualizerGeoJSON(parsed.visualizerGeoJSON);
+        if (Array.isArray(parsed.telemetryLogs) && parsed.telemetryLogs.length > 0) setTelemetryLogs(parsed.telemetryLogs);
+        if (parsed.swarmAgents) setSwarmAgents(parsed.swarmAgents);
+        if (parsed.currentStage) setCurrentStage(parsed.currentStage);
+      } else {
+        const rawDossier = localStorage.getItem('dyad_latest_dossier');
+        if (rawDossier) {
+          const parsed = JSON.parse(rawDossier);
+          if (parsed?.dossier) {
+            setDossier(parsed.dossier);
+            if (parsed.corridorMeta?.originCoords) {
+              setOriginStation({
+                name: parsed.corridorMeta.originName || 'Origin Station',
+                coordinates: parsed.corridorMeta.originCoords,
+              });
+            }
+            if (parsed.corridorMeta?.destCoords) {
+              setDestinationCoords(parsed.corridorMeta.destCoords);
+            }
+          }
+        }
+      }
+    } catch (e) {
+      console.warn('[Session] Could not hydrate session state:', e);
+    }
+  }, []);
+
+  // 7. Auto-persist active session state to localStorage on changes
+  useEffect(() => {
+    try {
+      if (typeof window === 'undefined') return;
+      const sessionState = {
+        originStation,
+        destinationCoords,
+        bufferRadiusKm,
+        dossier,
+        visualizerGeoJSON,
+        telemetryLogs,
+        swarmAgents,
+        currentStage: isEvaluating ? currentStage : (dossier ? 'Completed' : 'Standby'),
+        lastUpdated: Date.now(),
+      };
+      try {
+        localStorage.setItem('dyad_active_session_state', JSON.stringify(sessionState));
+      } catch {
+        // Fallback if geojson is too large for storage quota
+        const trimmed = { ...sessionState, visualizerGeoJSON: null };
+        localStorage.setItem('dyad_active_session_state', JSON.stringify(trimmed));
+      }
+    } catch (e) {
+      console.warn('[Session] Failed to persist session state:', e);
+    }
+  }, [originStation, destinationCoords, bufferRadiusKm, dossier, visualizerGeoJSON, telemetryLogs, swarmAgents, currentStage, isEvaluating]);
 
   // Dynamic Corridor Metrics via Turf.js
   const corridorDistanceKm = useMemo(() => {
@@ -257,6 +322,29 @@ export default function Dashboard() {
           const extractedDossier: AuthorityDossier = event.dossier || event.payload || event;
           if (extractedDossier) {
             setDossier(extractedDossier);
+            // Persist to localStorage for detailed inspection in /agents
+            try {
+              if (typeof window !== 'undefined') {
+                localStorage.setItem(
+                  'dyad_latest_dossier',
+                  JSON.stringify({
+                    dossier: extractedDossier,
+                    corridorMeta: {
+                      originName: originStation?.name,
+                      destName: destinationCoords ? 'Terminus' : undefined,
+                      originCoords: originStation?.coordinates,
+                      destCoords: destinationCoords,
+                      lengthKm: corridorDistanceKm,
+                      radiusMeters: bufferRadiusKm * 1000,
+                    },
+                    timestamp: Date.now(),
+                  })
+                );
+              }
+            } catch (err) {
+              console.warn('[Storage] Could not persist dossier:', err);
+            }
+
             // Mark all remaining subagents completed
             setSwarmAgents((prev) => {
               const next = { ...prev };
@@ -493,38 +581,22 @@ export default function Dashboard() {
             whileTap={{ scale: 0.94 }}
             transition={motionSprings.snappy}
             className="p-2.5 rounded-lg text-primary bg-primary/10 transition-colors border border-primary/20"
+            title="Corridor Feasibility Canvas (Dashboard)"
           >
             <TrendingUp className="size-5" />
           </motion.button>
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.94 }}
-            transition={motionSprings.snappy}
-            className="p-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
-          >
-            <Zap className="size-5" />
-          </motion.button>
-
-          <Link href="/agents" title="Autonomous Multi-Agent Swarm Intelligence">
+          <Link href="/agents" title="Autonomous Multi-Agent Swarm Intelligence (5 Specialized Agents)">
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.94 }}
               transition={motionSprings.snappy}
-              className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors flex items-center justify-center group"
+              className="relative p-2.5 rounded-xl text-emerald-400 hover:text-emerald-300 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/25 transition-all flex items-center justify-center group cursor-pointer shadow-sm"
             >
-              <BotLogo className="size-5.5" isActive={false} />
+              <BotLogo className="size-5" isActive={true} />
+              <span className="absolute -top-1 -right-1 size-2 rounded-full bg-emerald-400" />
             </motion.button>
           </Link>
-
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.94 }}
-            transition={motionSprings.snappy}
-            className="p-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
-          >
-            <GitBranch className="size-5" />
-          </motion.button>
         </nav>
       </aside>
 
@@ -621,6 +693,24 @@ export default function Dashboard() {
                 </>
               )}
             </motion.button>
+
+            {/* Direct Quick-Link to /agents Swarm Audit */}
+            <Link
+              href="/agents"
+              className="py-2 px-3 rounded-xl bg-gradient-to-r from-emerald-500/15 via-[#161B22] to-cyan-500/10 border border-emerald-500/25 hover:border-emerald-400/50 flex items-center justify-between text-xs font-semibold text-slate-200 hover:text-white transition-all group cursor-pointer shadow-sm"
+              title="Inspect 5-Agent Architecture, Mathematical Models & Audit Traces"
+            >
+              <div className="flex items-center gap-2">
+                <BotLogo className="size-3.5" isActive={true} />
+                <span className="text-[11.5px] font-sans">Swarm Audit Suite</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                  5 AGENTS
+                </span>
+                <ArrowUpRight className="size-3 text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </div>
+            </Link>
 
             {/* POI Category Filter Pills */}
             <div className="pt-1 px-1.5 shrink-0">

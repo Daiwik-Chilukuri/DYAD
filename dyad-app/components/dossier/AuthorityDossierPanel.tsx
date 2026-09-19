@@ -14,7 +14,10 @@ import {
   Layers,
   MapPin,
   TrendingUp,
+  ArrowUpRight,
 } from 'lucide-react';
+import Link from 'next/link';
+import { BotLogo } from '../BotLogo';
 import { motionSprings } from '../../lib/motion';
 import { SwarmTelemetryStream } from './SwarmTelemetryStream';
 import { FeasibilityScoreGauge } from './FeasibilityScoreGauge';
@@ -86,35 +89,49 @@ export function AuthorityDossierPanel({
     <>
       {/* Collapsed Mini Trigger Pill (When Panel is Closed) */}
       {!isOpen && (
-        <motion.button
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 20 }}
-          transition={motionSprings.snappy}
-          onClick={onToggleOpen}
-          className="absolute top-4 right-4 z-30 flex items-center gap-2 px-3.5 py-2.5 rounded-2xl bg-[#0E1117]/85 backdrop-blur-xl border border-white/[0.08] shadow-2xl shadow-black/50 ring-1 ring-white/5 text-slate-200 hover:text-white hover:border-white/20 transition-all pointer-events-auto cursor-pointer group"
-          title="Open AI Authority Dossier Panel"
-        >
-          <div className="relative flex items-center justify-center size-4">
-            {isEvaluating ? (
-              <>
-                <span className="absolute size-3.5 rounded-full bg-emerald-400/30 animate-ping" />
-                <span className="size-2 rounded-full bg-emerald-400" />
-              </>
-            ) : (
-              <FileCheck2 className="size-4 text-emerald-400 group-hover:scale-110 transition-transform" />
-            )}
-          </div>
-          <span className="text-xs font-mono font-semibold tracking-tight">
-            {isEvaluating ? 'Swarm Running...' : 'Authority Dossier'}
-          </span>
-          {dossier && (
-            <span className="px-1.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10.5px] font-mono tabular-nums font-bold">
-              {viabilityScore.toFixed(1)}
+        <div className="absolute top-4 right-4 z-30 flex items-center gap-2 pointer-events-auto">
+          <Link
+            href="/agents"
+            className="flex items-center gap-2 px-3 py-2.5 rounded-2xl bg-[#0E1117]/85 backdrop-blur-xl border border-white/[0.08] shadow-2xl shadow-black/50 ring-1 ring-white/5 text-emerald-400 hover:text-emerald-300 hover:border-emerald-500/30 transition-all cursor-pointer group"
+            title="Open Autonomous Multi-Agent Swarm Intelligence"
+          >
+            <BotLogo className="size-4" isActive={true} />
+            <span className="text-xs font-mono font-semibold tracking-tight">
+              Agents Suite
             </span>
-          )}
-          <ChevronLeft className="size-4 text-slate-400 group-hover:translate-x-[-2px] transition-transform" />
-        </motion.button>
+            <ArrowUpRight className="size-3.5 text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </Link>
+
+          <motion.button
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            transition={motionSprings.snappy}
+            onClick={onToggleOpen}
+            className="flex items-center gap-2 px-3.5 py-2.5 rounded-2xl bg-[#0E1117]/85 backdrop-blur-xl border border-white/[0.08] shadow-2xl shadow-black/50 ring-1 ring-white/5 text-slate-200 hover:text-white hover:border-white/20 transition-all cursor-pointer group"
+            title="Open AI Authority Dossier Panel"
+          >
+            <div className="relative flex items-center justify-center size-4">
+              {isEvaluating ? (
+                <>
+                  <span className="absolute size-3.5 rounded-full bg-emerald-400/30 animate-ping" />
+                  <span className="size-2 rounded-full bg-emerald-400" />
+                </>
+              ) : (
+                <FileCheck2 className="size-4 text-emerald-400 group-hover:scale-110 transition-transform" />
+              )}
+            </div>
+            <span className="text-xs font-mono font-semibold tracking-tight">
+              {isEvaluating ? 'Swarm Running...' : 'Authority Dossier'}
+            </span>
+            {dossier && (
+              <span className="px-1.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10.5px] font-mono tabular-nums font-bold">
+                {viabilityScore.toFixed(1)}
+              </span>
+            )}
+            <ChevronLeft className="size-4 text-slate-400 group-hover:translate-x-[-2px] transition-transform" />
+          </motion.button>
+        </div>
       )}
 
       {/* Main Collapsible Right-Side Command Center Panel */}
@@ -149,7 +166,17 @@ export function AuthorityDossierPanel({
                 </div>
               </div>
 
-              <div className="flex items-center gap-1 shrink-0">
+              <div className="flex items-center gap-1.5 shrink-0">
+                <Link
+                  href="/agents"
+                  className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-[11px] font-mono font-medium transition-all group shadow-sm cursor-pointer"
+                  title="Open Deep Multi-Agent Swarm Audit"
+                >
+                  <BotLogo className="size-3.5" isActive={true} />
+                  <span>Agents Suite</span>
+                  <ArrowUpRight className="size-3 text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </Link>
+
                 <button
                   onClick={onToggleOpen}
                   className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
@@ -213,6 +240,32 @@ export function AuthorityDossierPanel({
                   {/* Feasibility Gauge */}
                   <FeasibilityScoreGauge score={viabilityScore} />
 
+                  {/* Deep Dive Button into /agents */}
+                  <Link
+                    href="/agents"
+                    className="w-full flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-emerald-500/10 via-[#161B22] to-cyan-500/10 border border-emerald-500/30 hover:border-emerald-400/60 transition-all cursor-pointer group shadow-lg shadow-black/40"
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className="p-1.5 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 group-hover:scale-105 transition-transform">
+                        <BotLogo className="size-4" isActive={true} />
+                      </div>
+                      <div className="flex flex-col text-left">
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-xs font-semibold text-white tracking-tight">
+                            Full Swarm Audit Traces
+                          </span>
+                          <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                            5 AGENTS
+                          </span>
+                        </div>
+                        <span className="text-[10px] text-slate-400 font-sans">
+                          Inspect deep empirical models, formulas & traces →
+                        </span>
+                      </div>
+                    </div>
+                    <ArrowUpRight className="size-4 text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
+                  </Link>
+
                   {/* Executive Summary Statement */}
                   {dossier.executive_summary && (
                     <div className="p-3 rounded-xl bg-[#161B22]/50 border border-white/[0.04] text-[11.5px] leading-relaxed text-slate-300 font-sans">
@@ -264,12 +317,34 @@ export function AuthorityDossierPanel({
                       whileTap={{ scale: 0.98 }}
                       onClick={onEvaluateTrigger}
                       disabled={isEvaluating}
-                      className="mt-2 px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs flex items-center gap-2 shadow-lg shadow-emerald-500/20 cursor-pointer disabled:opacity-50"
+                      className="mt-2 w-full max-w-[280px] px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 cursor-pointer disabled:opacity-50"
                     >
                       <Sparkles className="size-3.5" />
                       <span>Run Feasibility Swarm</span>
                     </motion.button>
                   )}
+
+                  {/* Prominent Link to /agents even during standby */}
+                  <Link
+                    href="/agents"
+                    className="w-full max-w-[280px] mt-2.5 flex items-center justify-between p-3 rounded-xl bg-[#161B22]/80 hover:bg-[#161B22] border border-white/[0.08] hover:border-emerald-500/30 transition-all cursor-pointer group"
+                    title="Inspect 5 Specialized Swarm Agents"
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className="p-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 group-hover:scale-105 transition-transform">
+                        <BotLogo className="size-4" isActive={false} />
+                      </div>
+                      <div className="flex flex-col text-left">
+                        <span className="text-xs font-semibold text-white tracking-tight">
+                          Inspect 5 Swarm Agents
+                        </span>
+                        <span className="text-[10px] text-slate-400">
+                          Mathematical models & statutory specs →
+                        </span>
+                      </div>
+                    </div>
+                    <ArrowUpRight className="size-3.5 text-slate-400 group-hover:text-emerald-400 transition-colors shrink-0" />
+                  </Link>
                 </div>
               )}
             </div>

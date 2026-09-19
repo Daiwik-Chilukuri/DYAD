@@ -115,47 +115,80 @@ def compute_composite_viability_score(
 ) -> Dict[str, Any]:
     """
     Computes a deterministic, MoHUA & BMRCL-aligned composite feasibility score (0–100)
-    across 4 equally weighted pillars (25% each), incorporating:
+    across actively evaluated pillars, incorporating:
       - Transit physics spacing penalty for inter-station distances < 800m
       - Multi-modal network interchange bonus (+5.0 pts)
       - Explicit statutory KTFD lake setback and rajakaluve friction penalties
+      - ZERO-OUT & ADAPTIVE RE-WEIGHTING: Skipped subagents evaluate to 0.0 and are
+        excluded from the denominator so the final score accurately reflects available evidence.
     """
     length_km = max(0.05, float(corridor_meta.get("length_km", 1.0)))
 
-    # Pillar 1: Demographics (25%)
-    pop_500m = int(demog.get("catchment_population_500m", int(length_km * 8500)))
-    equity_score = float(demog.get("equity_score", 75.0))
-    pop_density_per_km = pop_500m / max(0.5, length_km)
-    pop_score = min(100.0, (pop_density_per_km / 12000.0) * 100.0)
-    demog_score = round(max(20.0, min(100.0, 0.60 * pop_score + 0.40 * equity_score)), 1)
+    # Detect which pillars actually ran with empirical data
+    has_demog = bool(demog and any(k in demog for k in ("catchment_population_500m", "equity_score", "dense_ward_names")))
+    has_econ = bool(econ and any(k in econ for k in ("tech_parks_within_1km", "hospitals_within_1km", "commercial_centers_within_1km", "gravity_model_daily_trips", "projected_annual_farebox_inr_cr")))
+    has_mob = bool(mob and any(k in mob for k in ("peak_hour_travel_time_saved_mins", "arterial_congestion_reduction_pct", "feeder_route_coverage_score")))
+    has_ecol = bool(ecol and any(k in ecol for k in ("lake_buffer_infringements", "rajakaluve_buffer_infringements", "ktfd_compliance_status", "flood_vulnerability_grade")))
 
-    # Pillar 2: Economic & TOD (25%)
-    tech_parks = int(econ.get("tech_parks_within_1km", 2))
-    workforce = int(econ.get("total_tech_workforce_catchment", 110000))
-    hospitals = int(econ.get("hospitals_within_1km", 1))
-    commercial = int(econ.get("commercial_centers_within_1km", 3))
-    multiplier = float(econ.get("economic_multiplier_index", 2.5))
-    activity_score = min(100.0, tech_parks * 22.0 + (workforce / 2500.0) + hospitals * 8.0 + commercial * 8.0)
-    multiplier_score = min(100.0, (multiplier / 3.0) * 100.0)
-    econ_score = round(max(20.0, min(100.0, 0.65 * activity_score + 0.35 * multiplier_score)), 1)
+    # Pillar 1: Demographics
+    if has_demog:
+        pop_500m = int(demog.get("catchment_population_500m", int(length_km * 8500)))
+        equity_score = float(demog.get("equity_score", 75.0))
+        pop_density_per_km = pop_500m / max(0.5, length_km)
+        pop_score = min(100.0, (pop_density_per_km / 12000.0) * 100.0)
+        demog_score = round(max(20.0, min(100.0, 0.60 * pop_score + 0.40 * equity_score)), 1)
+    else:
+        demog_score = 0.0
 
-    # Pillar 3: Mobility & Traffic (25%)
-    time_saved = float(mob.get("peak_hour_travel_time_saved_mins", 22.0))
-    congestion_red = float(mob.get("arterial_congestion_reduction_pct", 25.0))
-    feeder_score = float(mob.get("feeder_route_coverage_score", 78.0))
-    time_score = min(100.0, (time_saved / 30.0) * 100.0)
-    cong_score = min(100.0, (congestion_red / 35.0) * 100.0)
-    mob_score = round(max(20.0, min(100.0, 0.45 * time_score + 0.30 * cong_score + 0.25 * feeder_score)), 1)
+    # Pillar 2: Economic & TOD
+    if has_econ:
+        tech_parks = int(econ.get("tech_parks_within_1km", 0))
+        workforce = int(econ.get("total_tech_workforce_catchment", 0))
+        hospitals = int(econ.get("hospitals_within_1km", 0))
+        commercial = int(econ.get("commercial_centers_within_1km", 0))
+        multiplier = float(econ.get("economic_multiplier_index", 1.0))
+        activity_score = min(100.0, tech_parks * 22.0 + (workforce / 2500.0) + hospitals * 8.0 + commercial * 8.0)
+        multiplier_score = min(100.0, (multiplier / 3.0) * 100.0)
+        econ_score = round(max(20.0, min(100.0, 0.65 * activity_score + 0.35 * multiplier_score)), 1)
+    else:
+        econ_score = 0.0
 
-    # Pillar 4: Ecological Risk Friction (25%)
-    lake_infringements = int(ecol.get("lake_buffer_infringements", 0))
-    kaluve_infringements = int(ecol.get("rajakaluve_buffer_infringements", 0))
-    flood_grade = str(ecol.get("flood_vulnerability_grade", "LOW")).upper()
-    flood_deduction = 15.0 if flood_grade in ("HIGH", "CRITICAL") else (5.0 if flood_grade == "MODERATE" else 0.0)
-    ecol_score = round(max(10.0, min(100.0, 100.0 - (lake_infringements * 25.0) - (kaluve_infringements * 15.0) - flood_deduction)), 1)
+    # Pillar 3: Mobility & Traffic
+    if has_mob:
+        time_saved = float(mob.get("peak_hour_travel_time_saved_mins", 0.0))
+        congestion_red = float(mob.get("arterial_congestion_reduction_pct", 0.0))
+        feeder_score = float(mob.get("feeder_route_coverage_score", 0.0))
+        time_score = min(100.0, (time_saved / 30.0) * 100.0)
+        cong_score = min(100.0, (congestion_red / 35.0) * 100.0)
+        mob_score = round(max(20.0, min(100.0, 0.45 * time_score + 0.30 * cong_score + 0.25 * feeder_score)), 1)
+    else:
+        mob_score = 0.0
 
-    # Raw 4-pillar average
-    raw_score = round(0.25 * demog_score + 0.25 * econ_score + 0.25 * mob_score + 0.25 * ecol_score, 1)
+    # Pillar 4: Ecological Risk Friction
+    if has_ecol:
+        lake_infringements = int(ecol.get("lake_buffer_infringements", 0))
+        kaluve_infringements = int(ecol.get("rajakaluve_buffer_infringements", 0))
+        flood_grade = str(ecol.get("flood_vulnerability_grade", "LOW")).upper()
+        flood_deduction = 15.0 if flood_grade in ("HIGH", "CRITICAL") else (5.0 if flood_grade == "MODERATE" else 0.0)
+        ecol_score = round(max(10.0, min(100.0, 100.0 - (lake_infringements * 25.0) - (kaluve_infringements * 15.0) - flood_deduction)), 1)
+    else:
+        ecol_score = 0.0
+
+    # Adaptive Re-weighted Active Pillars Average
+    active_pillar_scores = []
+    if has_demog:
+        active_pillar_scores.append(demog_score)
+    if has_econ:
+        active_pillar_scores.append(econ_score)
+    if has_mob:
+        active_pillar_scores.append(mob_score)
+    if has_ecol:
+        active_pillar_scores.append(ecol_score)
+
+    if active_pillar_scores:
+        raw_score = round(sum(active_pillar_scores) / len(active_pillar_scores), 1)
+    else:
+        raw_score = 0.0
 
     # Spacing Penalty: Transit physics for heavy rail (< 800m)
     spacing_penalty = 0.0
@@ -181,8 +214,11 @@ def compute_composite_viability_score(
     is_interchange = any(k in origin_name or k in dest_name for k in ("station", "terminal", "junction"))
     interchange_bonus = 5.0 if is_interchange else 0.0
 
-    # Final composite score clamped to [15.0, 98.0]
-    final_score = round(max(15.0, min(98.0, raw_score - spacing_penalty + interchange_bonus)), 1)
+    # Final composite score clamped to [15.0, 98.0] if active pillars exist
+    if active_pillar_scores:
+        final_score = round(max(15.0, min(98.0, raw_score - spacing_penalty + interchange_bonus)), 1)
+    else:
+        final_score = 0.0
 
     return {
         "final_score": final_score,
@@ -191,6 +227,11 @@ def compute_composite_viability_score(
         "econ_score": econ_score,
         "mob_score": mob_score,
         "ecol_score": ecol_score,
+        "active_pillars_count": len(active_pillar_scores),
+        "has_demog": has_demog,
+        "has_econ": has_econ,
+        "has_mob": has_mob,
+        "has_ecol": has_ecol,
         "spacing_penalty": spacing_penalty,
         "interchange_bonus": interchange_bonus,
         "spacing_risk": spacing_risk,
@@ -394,26 +435,25 @@ class DyadMasterOrchestrator:
             for e in entries:
                 if not e.path.endswith(".meta.json"):
                     fname = Path(e.path).name
-                    if fname and fname not in filenames:
+                    if fname and "." in fname and fname not in filenames:
                         filenames.append(fname)
             if filenames:
                 return sorted(filenames)
         except Exception as e:
             print(f"[Master Orchestrator] Warning: Failed to query Modal volume: {e}", file=sys.stderr)
 
-        # Scan local storage directories (dyad-app/public/data, staged_datasets, etc.)
+        # Scan local storage directory exclusively from dyad-app/public/data
         filenames = []
-        local_data_dirs = [
-            Path(__file__).parent.parent / "dyad-app" / "public" / "data",
-            Path(__file__).parent.parent / "prototype-dataset-classifier" / "staged_datasets",
-            Path(__file__).parent / "data",
-        ]
-        for d in local_data_dirs:
-            if d.exists():
-                for f in d.iterdir():
-                    if f.is_file() and not f.name.endswith(".meta.json") and not f.name.startswith("."):
-                        if f.name not in filenames:
-                            filenames.append(f.name)
+        dyad_data_dir = (Path(__file__).parent.parent / "dyad-app" / "public" / "data").resolve()
+        if dyad_data_dir.exists():
+            for f in dyad_data_dir.iterdir():
+                if f.is_file() and not f.name.endswith(".meta.json") and not f.name.startswith("."):
+                    try:
+                        from run_stream_bridge import map_to_canonical_dataset_name
+                        cname, _, _ = map_to_canonical_dataset_name(f)
+                        filenames.append(cname)
+                    except Exception:
+                        filenames.append(f.name)
         return sorted(filenames)
 
     def _synthesize_final_dossier(
@@ -428,9 +468,73 @@ class DyadMasterOrchestrator:
         mob = swarm_results.get("mobility", {}).get("metrics", {})
         ecol = swarm_results.get("ecological", {}).get("metrics", {})
 
-        # Compute deterministic MoHUA/BMRCL composite score
+        # Compute deterministic MoHUA/BMRCL composite score with adaptive re-weighting
         score_info = compute_composite_viability_score(corridor_meta, demog, econ, mob, ecol)
         final_score = score_info["final_score"]
+
+        # Build prompt sections: Active vs Skipped
+        if score_info["has_demog"]:
+            demog_section = f"""1. DEMOGRAPHICS PILLAR (Areal-Weighted Dasymetric Interpolation):
+- 500m Walking Catchment Pop: {demog.get('catchment_population_500m', 0):,} citizens
+- 1500m Feeder Catchment Pop: {demog.get('catchment_population_1500m', 0):,} citizens
+- Identified Vulnerable Informal Settlement Population: {demog.get('vulnerable_slum_population', 0):,} residents
+- Spatial Equity Score: {demog.get('equity_score', 0.0)}/100
+- Underserved Demographic Ratio: {demog.get('underserved_demographic_ratio', 0.0)}
+- Intersected BBMP Wards: {demog.get('dense_ward_names', [])}
+- Specialist Brief: {swarm_results.get('demographics', {}).get('analysis', 'Demographic density assessed.')}"""
+        else:
+            demog_section = """1. DEMOGRAPHICS PILLAR (SUBAGENT SKIPPED - NO DATASET PROVIDED):
+- STATUS: UNASSESSED (No demographics dataset was uploaded to cloud volume)
+- All demographic metrics MUST be 0 (catchment_population_500m: 0, catchment_population_1500m: 0, equity_score: 0.0, underserved_demographic_ratio: 0.0, dense_ward_names: []).
+- Specialist Brief: "No demographics dataset provided. Demographics & Spatial Equity pillar was unassessed." """
+
+        if score_info["has_econ"]:
+            econ_section = f"""2. ECONOMIC & LAND-VALUE PILLAR (Calibrated Exponential Gravity & TOD LVC):
+- Tech Parks / Office Hubs within 1km: {econ.get('tech_parks_within_1km', 0)}
+- Total Tech Workforce Catchment: {econ.get('total_tech_workforce_catchment', 0):,} employees
+- Hospitals within 1km: {econ.get('hospitals_within_1km', 0)}
+- Commercial Centers in 1km: {econ.get('commercial_centers_within_1km', 0)}
+- Calibrated Gravity Model Projected Daily Trips: {econ.get('gravity_model_daily_trips', 0):,} trips/day
+- Projected Annual Farebox Revenue: INR {econ.get('projected_annual_farebox_inr_cr', 0.0)} Crores
+- Transit-Oriented Development (TOD) Land-Value Capture Yield: INR {econ.get('tod_land_value_capture_inr_cr', 0.0)} Crores
+- Economic Multiplier Index: {econ.get('economic_multiplier_index', 1.0)}x
+- Specialist Brief: {swarm_results.get('economic', {}).get('analysis', 'Commercial land-value yield assessed.')}"""
+        else:
+            econ_section = """2. ECONOMIC & LAND-VALUE PILLAR (SUBAGENT SKIPPED - NO DATASET PROVIDED):
+- STATUS: UNASSESSED (No economic/commercial dataset was uploaded to cloud volume)
+- All economic metrics MUST be 0 (tech_parks_within_1km: 0, hospitals_within_1km: 0, commercial_centers_within_1km: 0, projected_annual_farebox_inr_cr: 0.0, estimated_tod_yield_inr_cr: 0.0, economic_multiplier_index: 0.0).
+- Specialist Brief: "No economic or commercial dataset provided. Economic & TOD pillar was unassessed." """
+
+        if score_info["has_mob"]:
+            mob_section = f"""3. MOBILITY & TRAFFIC PILLAR (Multinomial Logit Discrete Choice):
+- Peak-Hour Commute Time Saved per Trip: {mob.get('peak_hour_travel_time_saved_mins', 0.0)} minutes
+- Discrete Choice Mode Shares: {mob.get('mnl_mode_shares', {})}
+- Arterial Road Congestion Reduction: {mob.get('arterial_congestion_reduction_pct', 0.0)}%
+- Feeder Bus Coverage Score: {mob.get('feeder_route_coverage_score', 0.0)}/100
+- First/Last Mile Gap Flagged: {mob.get('first_last_mile_gap_detected', False)}
+- Specialist Brief: {swarm_results.get('mobility', {}).get('analysis', 'Peak hour road relief assessed.')}"""
+        else:
+            mob_section = """3. MOBILITY & TRAFFIC PILLAR (SUBAGENT SKIPPED - NO DATASET PROVIDED):
+- STATUS: UNASSESSED (No mobility/traffic dataset was uploaded to cloud volume)
+- All mobility metrics MUST be 0 (peak_hour_travel_time_saved_mins: 0.0, arterial_congestion_reduction_pct: 0.0, feeder_route_coverage_score: 0.0, first_last_mile_gap_detected: false).
+- Specialist Brief: "No mobility or traffic dataset provided. Mobility & Congestion pillar was unassessed." """
+
+        if score_info["has_ecol"]:
+            ecol_section = f"""4. ECOLOGICAL RISK PILLAR (Explicit 30m Legal Buffer Geometry):
+- KTFD Act 30m Lake Buffer Encroachments: {ecol.get('lake_buffer_infringements', 0)}
+- Flagged Lakes: {ecol.get('flagged_lakes', [])}
+- Total Legal Setback Encroachment Area: {ecol.get('total_encroachment_sqm', 0.0):,.1f} sq.meters
+- Total Direct Waterbody Footprint: {ecol.get('total_direct_water_sqm', 0.0):,.1f} sq.meters
+- Stormwater Rajakaluve Crossings: {ecol.get('rajakaluve_buffer_infringements', 0)}
+- KTFD Compliance Status: {ecol.get('ktfd_compliance_status', 'COMPLIANT')}
+- Flood Vulnerability Grade: {ecol.get('flood_vulnerability_grade', 'LOW')}
+- Mandatory Engineering Mitigations: {ecol.get('mitigation_strategies', [])}
+- Specialist Brief: {swarm_results.get('ecological', {}).get('analysis', 'Ecological setbacks assessed.')}"""
+        else:
+            ecol_section = """4. ECOLOGICAL RISK PILLAR (SUBAGENT SKIPPED - NO DATASET PROVIDED):
+- STATUS: UNASSESSED (No ecological/waterbody dataset was uploaded to cloud volume)
+- All ecological metrics MUST be compliant/zero (lake_buffer_infringements: 0, rajakaluve_buffer_infringements: 0, ktfd_compliance_status: "COMPLIANT", flood_vulnerability_grade: "LOW", mitigation_strategies: []).
+- Specialist Brief: "No ecological or wetland dataset provided. Ecological Risk pillar was unassessed." """
 
         synthesis_prompt = f"""
 You are the Chief Urban Transit Architect for DYAD (Bengaluru Urban Mobility Synthesis Platform).
@@ -441,61 +545,31 @@ DESTINATION: {corridor_meta['destination']['name']} ({corridor_meta['destination
 BUFFER RADIUS: {corridor_meta['radius_meters']} meters
 
 DETERMINISTIC COMPOSITE VIABILITY SCORING (MOHUA / BMRCL TRANSIT STANDARDS):
-- Demographics Pillar Score (25% weight): {score_info['demog_score']}/100
-- Economic & TOD Pillar Score (25% weight): {score_info['econ_score']}/100
-- Mobility & Congestion Pillar Score (25% weight): {score_info['mob_score']}/100
-- Ecological & KTFD Pillar Score (25% weight): {score_info['ecol_score']}/100
-- Raw 4-Pillar Multi-Criteria Average: {score_info['raw_score']}/100
+- Active Evaluated Pillars: {score_info['active_pillars_count']}/4
+- Demographics Pillar Score ({'ACTIVE' if score_info['has_demog'] else 'SKIPPED (0.0)'}): {score_info['demog_score']}/100
+- Economic & TOD Pillar Score ({'ACTIVE' if score_info['has_econ'] else 'SKIPPED (0.0)'}): {score_info['econ_score']}/100
+- Mobility & Congestion Pillar Score ({'ACTIVE' if score_info['has_mob'] else 'SKIPPED (0.0)'}): {score_info['mob_score']}/100
+- Ecological & KTFD Pillar Score ({'ACTIVE' if score_info['has_ecol'] else 'SKIPPED (0.0)'}): {score_info['ecol_score']}/100
+- Adaptive Multi-Criteria Average (Active Pillars Only): {score_info['raw_score']}/100
 - Heavy Rail Station Spacing Penalty (<800m physics): -{score_info['spacing_penalty']} pts
 - Network Interchange Integration Bonus: +{score_info['interchange_bonus']} pts
 - MANDATORY DETERMINISTIC OVERALL VIABILITY SCORE: {final_score}/100
 
 EMPIRICAL FINDINGS FROM PRODUCTION SUBAGENT SWARM:
-1. DEMOGRAPHICS PILLAR (Areal-Weighted Dasymetric Interpolation):
-- 500m Walking Catchment Pop: {demog.get('catchment_population_500m', int(length_km * 8500)):,} citizens
-- 1500m Feeder Catchment Pop: {demog.get('catchment_population_1500m', int(length_km * 22000)):,} citizens
-- Identified Vulnerable Informal Settlement Population: {demog.get('vulnerable_slum_population', 0):,} residents
-- Spatial Equity Score: {demog.get('equity_score', 75.0)}/100
-- Underserved Demographic Ratio: {demog.get('underserved_demographic_ratio', 0.28)}
-- Intersected BBMP Wards: {demog.get('dense_ward_names', ['Bellandur', 'HSR Layout'])}
-- Specialist Brief: {swarm_results.get('demographics', {}).get('analysis', 'Strong demographic density.')}
+{demog_section}
 
-2. ECONOMIC & LAND-VALUE PILLAR (Calibrated Exponential Gravity & TOD LVC):
-- Tech Parks / Office Hubs within 1km: {econ.get('tech_parks_within_1km', 2)}
-- Total Tech Workforce Catchment: {econ.get('total_tech_workforce_catchment', 110000):,} employees
-- Hospitals within 1km: {econ.get('hospitals_within_1km', 1)}
-- Commercial Centers in 1km: {econ.get('commercial_centers_within_1km', 3)}
-- Calibrated Gravity Model Projected Daily Trips: {econ.get('gravity_model_daily_trips', 63000):,} trips/day
-- Projected Annual Farebox Revenue: INR {econ.get('projected_annual_farebox_inr_cr', 185.0)} Crores
-- Transit-Oriented Development (TOD) Land-Value Capture Yield: INR {econ.get('tod_land_value_capture_inr_cr', 48.5)} Crores
-- Economic Multiplier Index: {econ.get('economic_multiplier_index', 2.5)}x
-- Specialist Brief: {swarm_results.get('economic', {}).get('analysis', 'High commercial land-value yield.')}
+{econ_section}
 
-3. MOBILITY & TRAFFIC PILLAR (Multinomial Logit Discrete Choice):
-- Peak-Hour Commute Time Saved per Trip: {mob.get('peak_hour_travel_time_saved_mins', 22.0)} minutes
-- Discrete Choice Mode Shares: {mob.get('mnl_mode_shares', {'metro_pct': 38.0, 'car_pct': 22.0, 'tw_pct': 25.0, 'bus_pct': 15.0})}
-- Arterial Road Congestion Reduction: {mob.get('arterial_congestion_reduction_pct', 25.0)}%
-- Feeder Bus Coverage Score: {mob.get('feeder_route_coverage_score', 78.0)}/100
-- First/Last Mile Gap Flagged: {mob.get('first_last_mile_gap_detected', False)}
-- Specialist Brief: {swarm_results.get('mobility', {}).get('analysis', 'Significant peak hour road relief.')}
+{mob_section}
 
-4. ECOLOGICAL RISK PILLAR (Explicit 30m Legal Buffer Geometry):
-- KTFD Act 30m Lake Buffer Encroachments: {ecol.get('lake_buffer_infringements', 1)}
-- Flagged Lakes: {ecol.get('flagged_lakes', [{'name': 'Agara Lake', 'buffer_limit_m': 30}])}
-- Total Legal Setback Encroachment Area: {ecol.get('total_encroachment_sqm', 12850.0):,.1f} sq.meters
-- Total Direct Waterbody Footprint: {ecol.get('total_direct_water_sqm', 0.0):,.1f} sq.meters
-- Stormwater Rajakaluve Crossings: {ecol.get('rajakaluve_buffer_infringements', 1)}
-- KTFD Compliance Status: {ecol.get('ktfd_compliance_status', 'FLAGGED')}
-- Flood Vulnerability Grade: {ecol.get('flood_vulnerability_grade', 'MODERATE')}
-- Mandatory Engineering Mitigations: {ecol.get('mitigation_strategies', ['Maintain 30m non-construction green belt setback'])}
-- Specialist Brief: {swarm_results.get('ecological', {}).get('analysis', 'Mandatory 30m KTFD setback required.')}
+{ecol_section}
 
 CRITICAL DIRECTIVES:
-1. You are strictly evidence-bound. Maintain exact numerical alignment with the computed metrics above.
-2. Incorporate the TOD Land-Value Capture yield (INR Cr) and MNL mode shares into your financial & operational synthesis.
+1. STRICT ZERO-OUT RULE: For any pillar marked as SKIPPED / UNASSESSED, all corresponding numerical metrics in AuthorityDossier MUST be set to 0 or 0.0, and strings should note that no dataset was provided. Never hallucinate placeholder numbers for unassessed subagents.
+2. Incorporate empirical findings only from active evaluated pillars into your operational synthesis.
 3. MANDATORY OVERALL VIABILITY SCORE ENFORCEMENT: Your synthesized dossier MUST set 'overall_viability_score' to EXACTLY {final_score}.
 4. Produce 3-5 strategic, realistic station proposals with precise coordinates along the alignment.
-5. Formulate prioritized Risk Warnings (with severity, detailed context citing exact m² buffer encroachment, and mandatory engineering mitigations).
+5. Formulate prioritized Risk Warnings only for empirical risks detected by active subagents.
 6. Provide authoritative, executive-level policy directives for municipal sanctioning.
 """
 
@@ -519,6 +593,40 @@ CRITICAL DIRECTIVES:
             if parsed:
                 # Guarantee deterministic score consistency
                 parsed.overall_viability_score = final_score
+
+                # Enforce strict zero-out on skipped pillars programmatically
+                if not score_info["has_demog"]:
+                    parsed.demographics_pillar.catchment_population_500m = 0
+                    parsed.demographics_pillar.catchment_population_1500m = 0
+                    parsed.demographics_pillar.equity_score = 0.0
+                    parsed.demographics_pillar.underserved_demographic_ratio = 0.0
+                    parsed.demographics_pillar.dense_ward_names = []
+                    parsed.demographics_pillar.analysis_summary = "No demographics dataset provided. Demographics & Spatial Equity pillar unassessed."
+
+                if not score_info["has_econ"]:
+                    parsed.economic_pillar.tech_parks_within_1km = 0
+                    parsed.economic_pillar.hospitals_within_1km = 0
+                    parsed.economic_pillar.commercial_centers_within_1km = 0
+                    parsed.economic_pillar.projected_annual_farebox_inr_cr = 0.0
+                    parsed.economic_pillar.estimated_tod_yield_inr_cr = 0.0
+                    parsed.economic_pillar.economic_multiplier_index = 0.0
+                    parsed.economic_pillar.analysis_summary = "No economic or commercial dataset provided. Economic & TOD pillar unassessed."
+
+                if not score_info["has_mob"]:
+                    parsed.mobility_pillar.peak_hour_travel_time_saved_mins = 0.0
+                    parsed.mobility_pillar.arterial_congestion_reduction_pct = 0.0
+                    parsed.mobility_pillar.feeder_route_coverage_score = 0.0
+                    parsed.mobility_pillar.first_last_mile_gap_detected = False
+                    parsed.mobility_pillar.analysis_summary = "No mobility or traffic dataset provided. Mobility & Congestion pillar unassessed."
+
+                if not score_info["has_ecol"]:
+                    parsed.ecological_pillar.lake_buffer_infringements = 0
+                    parsed.ecological_pillar.rajakaluve_buffer_infringements = 0
+                    parsed.ecological_pillar.ktfd_compliance_status = "COMPLIANT"
+                    parsed.ecological_pillar.flood_vulnerability_grade = "LOW"
+                    parsed.ecological_pillar.mitigation_strategies = []
+                    parsed.ecological_pillar.analysis_summary = "No ecological or wetland dataset provided. Ecological Risk pillar unassessed."
+
                 # Inject spacing risk warning if inter-station distance is sub-optimal (<800m)
                 if score_info.get("spacing_risk"):
                     if not any("spacing" in r.title.lower() for r in parsed.risk_warnings):
@@ -528,7 +636,7 @@ CRITICAL DIRECTIVES:
             print(f"[Master Orchestrator] Warning: LLM parse error ({exc}). Generating deterministic fallback dossier.", file=sys.stderr)
 
         # Fallback compilation if OpenAI parse encounters issue
-        return self._create_deterministic_fallback(corridor_meta, demog, econ, mob, ecol)
+        return self._create_deterministic_fallback(corridor_meta, demog, econ, mob, ecol, score_info)
 
     def _create_deterministic_fallback(
         self,
@@ -537,20 +645,101 @@ CRITICAL DIRECTIVES:
         econ: Dict[str, Any],
         mob: Dict[str, Any],
         ecol: Dict[str, Any],
+        score_info: Optional[Dict[str, Any]] = None,
     ) -> AuthorityDossier:
         """Deterministic mathematical fallback dossier aligned with MoHUA standards."""
         length_km = corridor_meta["length_km"]
-        pop = demog.get("catchment_population_500m", int(length_km * 9500))
-        wf = econ.get("total_tech_workforce_catchment", 110000)
-        daily_riders = int(pop * 0.20 + wf * 0.35)
-        tod_yield = float(
-            econ.get("estimated_tod_yield_inr_cr")
-            or econ.get("tod_land_value_capture_inr_cr")
-            or (econ.get("projected_annual_farebox_inr_cr", 185.0) * 0.26)
-        )
-
-        score_info = compute_composite_viability_score(corridor_meta, demog, econ, mob, ecol)
+        if score_info is None:
+            score_info = compute_composite_viability_score(corridor_meta, demog, econ, mob, ecol)
         viability = score_info["final_score"]
+
+        # Demographics pillar
+        if score_info["has_demog"]:
+            pop = int(demog.get("catchment_population_500m", int(length_km * 9500)))
+            demog_pillar = DemographicsPillarMetrics(
+                catchment_population_500m=pop,
+                catchment_population_1500m=demog.get("catchment_population_1500m", pop * 2),
+                equity_score=float(demog.get("equity_score", 76.0)),
+                underserved_demographic_ratio=float(demog.get("underserved_demographic_ratio", 0.26)),
+                dense_ward_names=demog.get("dense_ward_names", ["Bellandur", "HSR Layout"]),
+                analysis_summary=f"Serves an immediate walking catchment of {pop:,} citizens with an equity rating of {demog.get('equity_score', 76.0)}/100.",
+            )
+        else:
+            pop = 0
+            demog_pillar = DemographicsPillarMetrics(
+                catchment_population_500m=0,
+                catchment_population_1500m=0,
+                equity_score=0.0,
+                underserved_demographic_ratio=0.0,
+                dense_ward_names=[],
+                analysis_summary="No demographics dataset provided. Demographics & Spatial Equity pillar unassessed.",
+            )
+
+        # Economic pillar
+        if score_info["has_econ"]:
+            wf = int(econ.get("total_tech_workforce_catchment", 0))
+            fb = float(econ.get("projected_annual_farebox_inr_cr", 0.0))
+            tod_yield = float(econ.get("estimated_tod_yield_inr_cr") or econ.get("tod_land_value_capture_inr_cr") or (fb * 0.26))
+            econ_pillar = EconomicPillarMetrics(
+                tech_parks_within_1km=int(econ.get("tech_parks_within_1km", 0)),
+                hospitals_within_1km=int(econ.get("hospitals_within_1km", 0)),
+                commercial_centers_within_1km=int(econ.get("commercial_centers_within_1km", 0)),
+                projected_annual_farebox_inr_cr=fb,
+                estimated_tod_yield_inr_cr=round(tod_yield, 2),
+                economic_multiplier_index=float(econ.get("economic_multiplier_index", 1.0)),
+                analysis_summary=f"Projected annual farebox reaches INR {fb} Cr with {econ.get('tech_parks_within_1km', 0)} major tech parks.",
+            )
+        else:
+            wf = 0
+            econ_pillar = EconomicPillarMetrics(
+                tech_parks_within_1km=0,
+                hospitals_within_1km=0,
+                commercial_centers_within_1km=0,
+                projected_annual_farebox_inr_cr=0.0,
+                estimated_tod_yield_inr_cr=0.0,
+                economic_multiplier_index=0.0,
+                analysis_summary="No economic or commercial dataset provided. Economic & TOD pillar unassessed.",
+            )
+
+        # Mobility pillar
+        if score_info["has_mob"]:
+            mob_pillar = MobilityPillarMetrics(
+                peak_hour_travel_time_saved_mins=float(mob.get("peak_hour_travel_time_saved_mins", 0.0)),
+                arterial_congestion_reduction_pct=float(mob.get("arterial_congestion_reduction_pct", 0.0)),
+                feeder_route_coverage_score=float(mob.get("feeder_route_coverage_score", 0.0)),
+                first_last_mile_gap_detected=bool(mob.get("first_last_mile_gap_detected", False)),
+                analysis_summary=f"Commuters save an estimated {mob.get('peak_hour_travel_time_saved_mins', 0.0)} minutes per trip, reducing peak arterial congestion by {mob.get('arterial_congestion_reduction_pct', 0.0)}%.",
+            )
+        else:
+            mob_pillar = MobilityPillarMetrics(
+                peak_hour_travel_time_saved_mins=0.0,
+                arterial_congestion_reduction_pct=0.0,
+                feeder_route_coverage_score=0.0,
+                first_last_mile_gap_detected=False,
+                analysis_summary="No mobility or traffic dataset provided. Mobility & Congestion pillar unassessed.",
+            )
+
+        # Ecological pillar
+        if score_info["has_ecol"]:
+            ecol_pillar = EcologicalPillarMetrics(
+                lake_buffer_infringements=int(ecol.get("lake_buffer_infringements", 0)),
+                rajakaluve_buffer_infringements=int(ecol.get("rajakaluve_buffer_infringements", 0)),
+                ktfd_compliance_status=str(ecol.get("ktfd_compliance_status", "COMPLIANT")),
+                flood_vulnerability_grade=str(ecol.get("flood_vulnerability_grade", "LOW")),
+                mitigation_strategies=ecol.get("mitigation_strategies", []),
+                analysis_summary=f"Compliance status is '{ecol.get('ktfd_compliance_status', 'COMPLIANT')}' with flood vulnerability classified as '{ecol.get('flood_vulnerability_grade', 'LOW')}'.",
+            )
+        else:
+            ecol_pillar = EcologicalPillarMetrics(
+                lake_buffer_infringements=0,
+                rajakaluve_buffer_infringements=0,
+                ktfd_compliance_status="COMPLIANT",
+                flood_vulnerability_grade="LOW",
+                mitigation_strategies=[],
+                analysis_summary="No ecological or wetland dataset provided. Ecological Risk pillar unassessed.",
+            )
+
+        daily_riders = int(pop * 0.20 + wf * 0.35) if (pop or wf) else int(length_km * 4200)
 
         stations = [
             StationProposal(
@@ -565,7 +754,7 @@ CRITICAL DIRECTIVES:
                 name=f"{corridor_meta['corridor_name']} Midpoint Junction",
                 latitude=round((corridor_meta["origin"]["coordinates"][1] + corridor_meta["destination"]["coordinates"][1]) / 2, 4),
                 longitude=round((corridor_meta["origin"]["coordinates"][0] + corridor_meta["destination"]["coordinates"][0]) / 2, 4),
-                rationale="Intermediate station serving local commercial and tech park catchment",
+                rationale="Intermediate station serving local commercial and transit catchment",
                 expected_daily_footfall=int(daily_riders * 0.35),
                 interchange_potential=False,
             ),
@@ -573,7 +762,7 @@ CRITICAL DIRECTIVES:
                 name=corridor_meta["destination"]["name"],
                 latitude=corridor_meta["destination"]["coordinates"][1],
                 longitude=corridor_meta["destination"]["coordinates"][0],
-                rationale="Terminus station serving residential and major employment hub",
+                rationale="Terminus station serving residential and employment hub",
                 expected_daily_footfall=int(daily_riders * 0.25),
                 interchange_potential=False,
             ),
@@ -600,42 +789,14 @@ CRITICAL DIRECTIVES:
             total_length_km=max(0.0, length_km),
             estimated_ridership_daily=daily_riders,
             overall_viability_score=viability,
-            demographics_pillar=DemographicsPillarMetrics(
-                catchment_population_500m=pop,
-                catchment_population_1500m=demog.get("catchment_population_1500m", pop * 2),
-                equity_score=demog.get("equity_score", 76.0),
-                underserved_demographic_ratio=demog.get("underserved_demographic_ratio", 0.26),
-                dense_ward_names=demog.get("dense_ward_names", ["Bellandur", "HSR Layout"]),
-                analysis_summary=f"Serves an immediate walking catchment of {pop:,} citizens with an equity rating of {demog.get('equity_score', 76.0)}/100.",
-            ),
-            economic_pillar=EconomicPillarMetrics(
-                tech_parks_within_1km=econ.get("tech_parks_within_1km", 2),
-                hospitals_within_1km=econ.get("hospitals_within_1km", 1),
-                commercial_centers_within_1km=econ.get("commercial_centers_within_1km", 3),
-                projected_annual_farebox_inr_cr=econ.get("projected_annual_farebox_inr_cr", 185.0),
-                estimated_tod_yield_inr_cr=round(tod_yield, 2),
-                economic_multiplier_index=econ.get("economic_multiplier_index", 2.5),
-                analysis_summary=f"Projected annual farebox revenue reaches INR {econ.get('projected_annual_farebox_inr_cr', 185.0)} Crores with {econ.get('tech_parks_within_1km', 2)} major tech parks in walking distance.",
-            ),
-            mobility_pillar=MobilityPillarMetrics(
-                peak_hour_travel_time_saved_mins=mob.get("peak_hour_travel_time_saved_mins", 22.0),
-                arterial_congestion_reduction_pct=mob.get("arterial_congestion_reduction_pct", 25.0),
-                feeder_route_coverage_score=mob.get("feeder_route_coverage_score", 78.0),
-                first_last_mile_gap_detected=mob.get("first_last_mile_gap_detected", False),
-                analysis_summary=f"Commuters save an estimated {mob.get('peak_hour_travel_time_saved_mins', 22.0)} minutes per trip, reducing peak arterial congestion by {mob.get('arterial_congestion_reduction_pct', 25.0)}%.",
-            ),
-            ecological_pillar=EcologicalPillarMetrics(
-                lake_buffer_infringements=ecol.get("lake_buffer_infringements", 1),
-                rajakaluve_buffer_infringements=ecol.get("rajakaluve_buffer_infringements", 1),
-                ktfd_compliance_status=ecol.get("ktfd_compliance_status", "FLAGGED"),
-                flood_vulnerability_grade=ecol.get("flood_vulnerability_grade", "MODERATE"),
-                mitigation_strategies=ecol.get("mitigation_strategies", ["Mandatory 30m KTFD setback clearance"]),
-                analysis_summary=f"Compliance status is '{ecol.get('ktfd_compliance_status', 'FLAGGED')}' with flood vulnerability classified as '{ecol.get('flood_vulnerability_grade', 'MODERATE')}'.",
-            ),
+            demographics_pillar=demog_pillar,
+            economic_pillar=econ_pillar,
+            mobility_pillar=mob_pillar,
+            ecological_pillar=ecol_pillar,
             risk_warnings=risks,
             policy_recommendations=[
                 "Expedite statutory KTFD compliance clearance for water body buffers.",
-                "Execute TOD land-pooling agreements with major tech park developer consortiums.",
+                "Execute TOD land-pooling agreements with major commercial corridor consortiums.",
                 "Synchronize BMTC feeder bus services at commercial commissioning.",
             ],
             suggested_station_locations=stations,
