@@ -1,6 +1,0 @@
-{
-  "meeting_title": "DYAD Hackathon Architecture Sync",
-  "date": "2026-09-19",
-  "attendees": ["Daiwik", "Farhan"],
-  "notes": "Agreed on tri-layer design craft, isolated prototype subfolders, and 5-agent swarm topology."
-}

@@ -300,6 +300,36 @@ def main() -> None:
 
     emitted_types = set()
 
+    # 1. First event: Plan Initiated
+    emit_sse("plan_initiated", {
+        "type": "plan_initiated",
+        "timestamp": time.time(),
+        "corridor_id": corridor_id,
+        "run_id": run_id,
+        "corridor_name": corridor_meta["corridor_name"],
+        "length_km": length_km,
+        "catchment_radius_meters": radius_m,
+        "message": f"Planned corridor '{corridor_meta['corridor_name']}' ({length_km} km, radius: {radius_m}m).",
+    })
+    emitted_types.add("plan_initiated")
+
+    # 1.5. Live Dataset Synchronization Step
+    active_datasets = robust_get_available_datasets(None, run_id=run_id)
+    emit_sse("telemetry", {
+        "type": "telemetry",
+        "agent": "dataset_sync",
+        "status": "syncing",
+        "message": f"Syncing active storage repository ({len(active_datasets)} dataset(s) detected)...",
+    })
+    emit_sse("dataset_sync", {
+        "type": "dataset_sync",
+        "timestamp": time.time(),
+        "synced_datasets": active_datasets,
+        "count": len(active_datasets),
+        "message": f"Synchronized {len(active_datasets)} active dataset(s) into swarm runtime.",
+    })
+    emitted_types.add("dataset_sync")
+
     # 2. Attempt multi-agent cloud orchestrator stream execution
     try:
         api_key = os.environ.get("OPENAI_API_KEY")
@@ -313,6 +343,8 @@ def main() -> None:
             run_id=run_id,
         ):
             etype = event.get("type", "message")
+            if etype == "plan_initiated" and "plan_initiated" in emitted_types:
+                continue
             emitted_types.add(etype)
             emit_sse(etype, event)
 

@@ -195,6 +195,14 @@ export default function Dashboard() {
           if (event.message) addTelemetryLog(event.message, event.stage, event.agent);
           break;
 
+        case 'dataset_sync':
+          setCurrentStage('Datasets Synced');
+          addTelemetryLog(
+            event.message || `Synchronized ${event.count || 0} active dataset(s) into swarm runtime.`,
+            'Storage Sync'
+          );
+          break;
+
         case 'subagents_spawned':
           setCurrentStage('Swarm Executing');
           setSwarmAgents((prev) => {
@@ -223,7 +231,7 @@ export default function Dashboard() {
           break;
 
         case 'subagent_completed': {
-          const subagentName = (event.subagent || '').toLowerCase();
+          const subagentName = (event.subagent || event.agent || '').toLowerCase();
           let matchedDomain: string | null = null;
 
           if (subagentName.includes('demograph')) matchedDomain = 'demographics';
@@ -233,18 +241,18 @@ export default function Dashboard() {
           else if (subagentName.includes('vis')) matchedDomain = 'visualizer';
 
           if (matchedDomain) {
-            updateAgentState(matchedDomain, 'completed', event.execution_time_seconds, event.summary);
+            updateAgentState(matchedDomain, 'completed', event.execution_time_seconds, event.summary || event.message);
           }
           addTelemetryLog(
-            event.summary || `${event.subagent} analysis completed successfully.`,
+            event.summary || event.message || `${event.subagent || event.agent} analysis completed successfully.`,
             'Subagent Result',
-            event.subagent
+            matchedDomain || event.subagent || event.agent
           );
           break;
         }
 
         case 'dossier': {
-          const extractedDossier: AuthorityDossier = event.dossier || event.payload;
+          const extractedDossier: AuthorityDossier = event.dossier || event.payload || event;
           if (extractedDossier) {
             setDossier(extractedDossier);
             // Mark all remaining subagents completed
@@ -348,31 +356,26 @@ export default function Dashboard() {
       const decoder = new TextDecoder('utf-8');
       let buffer = '';
 
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
+      const parseSSEPacket = (packet: string) => {
+        if (!packet.trim()) return;
 
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split('\n\n');
-        buffer = lines.pop() || ''; // Preserve incomplete trailing packet boundary
+        let eventType = 'message';
+        let dataContent = '';
 
-        for (const packet of lines) {
-          if (!packet.trim()) continue;
-
-          let eventType = 'message';
-          let dataContent = '';
-
-          for (const line of packet.split('\n')) {
-            const trimmed = line.trim();
-            if (trimmed.startsWith('event:')) {
-              eventType = trimmed.slice(6).trim();
-            } else if (trimmed.startsWith('data:')) {
-              const dataPiece = trimmed.slice(5).trim();
-              dataContent = dataContent ? `${dataContent}\n${dataPiece}` : dataPiece;
-            }
+        for (const line of packet.split('\n')) {
+          const trimmed = line.trim();
+          if (trimmed.startsWith('event:')) {
+            eventType = trimmed.slice(6).trim();
+          } else if (trimmed.startsWith('data:')) {
+            const dataPiece = trimmed.slice(5).trim();
+            dataContent = dataContent ? `${dataContent}\n${dataPiece}` : dataPiece;
           }
+        }
 
-          if (dataContent) {
+        if (dataContent) {
+          if (eventType === 'done' || dataContent === '[DONE]') {
+            handleSSEEvent({ type: 'done', message: 'Completed' });
+          } else {
             try {
               const parsed = JSON.parse(dataContent);
               handleSSEEvent({ ...parsed, type: parsed.type || eventType });
@@ -381,6 +384,24 @@ export default function Dashboard() {
             }
           }
         }
+      };
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n\n');
+        buffer = lines.pop() || '';
+
+        for (const packet of lines) {
+          parseSSEPacket(packet);
+        }
+      }
+
+      // Flush trailing buffer packet when stream closes
+      if (buffer.trim()) {
+        parseSSEPacket(buffer);
       }
     } catch (err: any) {
       if (err.name === 'AbortError') {
@@ -389,7 +410,9 @@ export default function Dashboard() {
         console.error('[Dashboard/SSE] Evaluation error:', err);
         addTelemetryLog(`Evaluation connection failed: ${err.message}`, 'Error');
       }
+    } finally {
       setIsEvaluating(false);
+      setCurrentStage((prev) => (prev === 'Initiating Swarm' || prev === 'Swarm Executing' || prev === 'Datasets Synced' ? 'Completed' : prev));
     }
   }, [originStation, destinationCoords, bufferRadiusKm, isEvaluating, addTelemetryLog, handleSSEEvent]);
 

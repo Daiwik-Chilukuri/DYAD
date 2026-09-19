@@ -8,7 +8,8 @@ import {
   UploadCloud, FileText, Table, FileSpreadsheet,
   Trash2, CheckCircle2, Search, FileCode, Check,
   ArrowLeft, Eye, X, Download, HardDrive,
-  Layers, Radio, Loader2, RefreshCw
+  Layers, Radio, Loader2, RefreshCw, PlusCircle,
+  FlaskConical, CheckCircle, AlertTriangle
 } from 'lucide-react';
 import { motionSprings } from '../../../lib/motion';
 import { BotLogo } from '../../../components/BotLogo';
@@ -40,6 +41,17 @@ interface IngestedFile {
   };
 }
 
+interface RawFile {
+  id: string;
+  name: string;
+  relativePath: string;
+  subfolder: string;
+  category: string;
+  size: string;
+  sizeBytes: number;
+  type: string;
+}
+
 interface RepositoryStats {
   totalFiles: number;
   totalVolumeMb: number;
@@ -49,9 +61,12 @@ interface RepositoryStats {
 
 export default function DataSynthesisPage() {
   const [files, setFiles] = useState<IngestedFile[]>([]);
+  const [rawFiles, setRawFiles] = useState<RawFile[]>([]);
   const [stats, setStats] = useState<RepositoryStats | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoadingRaw, setIsLoadingRaw] = useState<boolean>(true);
   const [isUploading, setIsUploading] = useState<boolean>(false);
+  const [stagingIds, setStagingIds] = useState<Record<string, boolean>>({});
   const [inspectingFileId, setInspectingFileId] = useState<string | null>(null);
   const [filterType, setFilterType] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -61,7 +76,7 @@ export default function DataSynthesisPage() {
 
   const inspectedFile = files.find(f => f.id === inspectingFileId || f.name === inspectingFileId) || null;
 
-  // Load real datasets from backend API route (/api/data)
+  // Load active datasets from backend API route (/api/data)
   const loadDatasets = useCallback(async () => {
     try {
       setIsLoading(true);
@@ -74,15 +89,34 @@ export default function DataSynthesisPage() {
         }
       }
     } catch (err) {
-      console.error('[DataStudio] Failed to fetch datasets:', err);
+      console.error('[DataStudio] Failed to fetch active datasets:', err);
     } finally {
       setIsLoading(false);
     }
   }, []);
 
+  // Load raw test datasets from prototype-datasets-collection/raw (/api/data/raw)
+  const loadRawDatasets = useCallback(async () => {
+    try {
+      setIsLoadingRaw(true);
+      const res = await fetch('/api/data/raw', { cache: 'no-store' });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success && Array.isArray(data.files)) {
+          setRawFiles(data.files);
+        }
+      }
+    } catch (err) {
+      console.error('[DataStudio] Failed to fetch raw datasets:', err);
+    } finally {
+      setIsLoadingRaw(false);
+    }
+  }, []);
+
   useEffect(() => {
     loadDatasets();
-  }, [loadDatasets]);
+    loadRawDatasets();
+  }, [loadDatasets, loadRawDatasets]);
 
   const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -93,7 +127,7 @@ export default function DataSynthesisPage() {
     setIsDragging(false);
   };
 
-  // Upload files to backend /api/data endpoint and append to disk
+  // Upload custom files to backend /api/data endpoint and append to disk
   const uploadFiles = async (fileList: FileList | null) => {
     if (!fileList || fileList.length === 0) return;
 
@@ -138,6 +172,48 @@ export default function DataSynthesisPage() {
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
+  // Stage a raw dataset into active storage with 1 click
+  const handleStageRawFile = async (raw: RawFile) => {
+    try {
+      setStagingIds(prev => ({ ...prev, [raw.id]: true }));
+      const res = await fetch('/api/data/raw', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ relativePath: raw.relativePath, targetName: raw.name }),
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setUploadStatus(`Staged '${raw.name}' into active storage repository.`);
+        await loadDatasets();
+      } else {
+        setUploadStatus(`Staging failed: ${data.error || 'Server error'}`);
+      }
+    } catch (err: any) {
+      setUploadStatus(`Error: ${err.message}`);
+    } finally {
+      setStagingIds(prev => ({ ...prev, [raw.id]: false }));
+      setTimeout(() => setUploadStatus(null), 3500);
+    }
+  };
+
+  // Reset active storage
+  const handleClearActiveStorage = async () => {
+    if (!confirm('Are you sure you want to clear active storage test datasets? (Base metro network will be kept)')) {
+      return;
+    }
+    try {
+      const res = await fetch('/api/data/raw', { method: 'DELETE' });
+      if (res.ok) {
+        setUploadStatus('Cleared active storage. Only base metro rail remains.');
+        await loadDatasets();
+        setInspectingFileId(null);
+      }
+    } catch (err: any) {
+      console.error('Failed to clear storage:', err);
+    }
+  };
+
   const handleDeleteFile = async (file: IngestedFile, e: React.MouseEvent) => {
     e.stopPropagation();
     try {
@@ -164,16 +240,16 @@ export default function DataSynthesisPage() {
     return matchesType && matchesSearch;
   });
 
-  const getFormatBadge = (type: IngestedFile['type']) => {
+  const getFormatBadge = (type: string) => {
     return (
-      <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-medium uppercase bg-secondary border border-border text-muted-foreground">
+      <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-medium uppercase bg-secondary border border-border text-muted-foreground">
         {type}
       </span>
     );
   };
 
-  const getFormatIcon = (type: IngestedFile['type']) => {
-    switch (type) {
+  const getFormatIcon = (type: string) => {
+    switch (type.toLowerCase()) {
       case 'geojson':
         return <MapPin className="size-4 text-[#00f5d4] shrink-0" />;
       case 'json':
@@ -183,9 +259,12 @@ export default function DataSynthesisPage() {
       case 'parquet':
         return <FileCode className="size-4 text-emerald-400 shrink-0" />;
       case 'xlsx':
+      case 'xls':
         return <FileSpreadsheet className="size-4 text-amber-400 shrink-0" />;
       case 'pdf':
         return <FileText className="size-4 text-rose-400 shrink-0" />;
+      default:
+        return <Database className="size-4 text-slate-400 shrink-0" />;
     }
   };
 
@@ -195,7 +274,7 @@ export default function DataSynthesisPage() {
   const spatialCount = stats?.spatialFilesCount ?? files.filter(f => f.hasSpatialCoords).length;
 
   return (
-    <div className="relative w-screen h-screen flex overflow-hidden bg-background text-foreground font-sans selection:bg-primary/30">
+    <div className="relative w-screen h-screen flex overflow-hidden bg-background text-foreground font-sans selection:bg-primary/30 select-none">
       
       {/* 68px LEFT VERTICAL RAIL (STANDARDIZED ACROSS ALL ROUTES) */}
       <aside className="relative z-20 w-17 flex flex-col items-center border-r border-sidebar-border bg-sidebar/95 backdrop-blur-xl py-4 h-full shrink-0">
@@ -208,7 +287,7 @@ export default function DataSynthesisPage() {
               whileHover={{ scale: 1.05 }} 
               whileTap={{ scale: 0.94 }} 
               transition={motionSprings.snappy} 
-              className="p-2.5 rounded-lg text-primary bg-primary/10 transition-colors border border-primary/20 shadow-sm"
+              className="p-2.5 rounded-lg text-primary bg-primary/10 transition-colors border border-primary/20 shadow-sm cursor-pointer"
             >
               <Database className="size-5" />
             </motion.button>
@@ -219,7 +298,7 @@ export default function DataSynthesisPage() {
               whileHover={{ scale: 1.05 }} 
               whileTap={{ scale: 0.94 }} 
               transition={motionSprings.snappy} 
-              className="p-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+              className="p-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors cursor-pointer"
             >
               <TrendingUp className="size-5" />
             </motion.button>
@@ -240,7 +319,7 @@ export default function DataSynthesisPage() {
               whileHover={{ scale: 1.05 }} 
               whileTap={{ scale: 0.94 }} 
               transition={motionSprings.snappy} 
-              className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors flex items-center justify-center group"
+              className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors flex items-center justify-center group cursor-pointer"
             >
               <BotLogo className="size-5.5" isActive={false} />
             </motion.button>
@@ -275,14 +354,17 @@ export default function DataSynthesisPage() {
 
           <div className="flex items-center gap-4">
             <button
-              onClick={() => loadDatasets()}
-              className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+              onClick={() => {
+                loadDatasets();
+                loadRawDatasets();
+              }}
+              className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors cursor-pointer"
               title="Refresh repository"
             >
-              <RefreshCw className={`size-3.5 ${isLoading ? 'animate-spin text-primary' : ''}`} />
+              <RefreshCw className={`size-3.5 ${isLoading || isLoadingRaw ? 'animate-spin text-primary' : ''}`} />
             </button>
             <span className="text-xs font-mono text-muted-foreground tabular-nums hidden sm:inline-block">
-              {files.length} Datasets Synced
+              {files.length} Datasets Active
             </span>
             <div className="h-3.5 w-px bg-border/60 hidden sm:block" />
 
@@ -300,14 +382,14 @@ export default function DataSynthesisPage() {
         </header>
 
         {/* WORKSPACE AREA: FULL-WIDTH SPACIOUS INVENTORY */}
-        <div className="flex-1 overflow-y-auto px-8 py-7">
+        <div className="flex-1 overflow-y-auto px-8 py-7 [scrollbar-width:thin]">
           <div className="max-w-6xl mx-auto flex flex-col gap-6">
             
             {/* 4 HIGH-LEVEL TELEMETRY FLASHCARDS */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
               <div className="rounded-xl p-4 bg-card/40 border border-border/50 flex flex-col justify-between gap-2 shadow-2xs">
                 <div className="flex items-center justify-between text-muted-foreground">
-                  <span className="text-xs font-sans">Total Ingested Volume</span>
+                  <span className="text-xs font-sans">Active Storage Volume</span>
                   <HardDrive className="size-4 text-primary" />
                 </div>
                 <div className="flex items-baseline gap-1.5">
@@ -339,34 +421,139 @@ export default function DataSynthesisPage() {
 
               <div className="rounded-xl p-4 bg-card/40 border border-border/50 flex flex-col justify-between gap-2 shadow-2xs">
                 <div className="flex items-center justify-between text-muted-foreground">
-                  <span className="text-xs font-sans">Spatial Projection</span>
-                  <Radio className="size-4 text-purple-400" />
+                  <span className="text-xs font-sans">Raw Test Datasets</span>
+                  <FlaskConical className="size-4 text-amber-400" />
                 </div>
                 <div className="flex items-baseline gap-1.5">
-                  <span className="text-xl font-bold font-mono text-foreground">EPSG:4326</span>
+                  <span className="text-2xl font-bold font-mono text-amber-400 tabular-nums">
+                    {rawFiles.length}
+                  </span>
+                  <span className="text-xs font-mono text-muted-foreground">Available to Pick</span>
                 </div>
                 <span className="text-[11px] font-mono text-muted-foreground/80">
-                  Bengaluru Metropolitan Bounding
+                  prototype-datasets-collection/raw
                 </span>
               </div>
 
               <div className="rounded-xl p-4 bg-card/40 border border-border/50 flex flex-col justify-between gap-2 shadow-2xs">
                 <div className="flex items-center justify-between text-muted-foreground">
-                  <span className="text-xs font-sans">Swarm Simulation Sync</span>
+                  <span className="text-xs font-sans">Swarm Auto-Sync</span>
                   <CheckCircle2 className="size-4 text-emerald-400" />
                 </div>
                 <div className="flex items-baseline gap-1.5">
-                  <span className="text-2xl font-bold font-mono text-emerald-400">100%</span>
-                  <span className="text-xs font-mono text-muted-foreground">Synchronized</span>
+                  <span className="text-2xl font-bold font-mono text-emerald-400">Live</span>
+                  <span className="text-xs font-mono text-muted-foreground">Auto-Detection</span>
                 </div>
                 <span className="text-[11px] font-mono text-emerald-400/90">
-                  Modal Swarm & Bridge Connected
+                  Streams to panel on every run
                 </span>
               </div>
             </div>
 
-            {/* CATALOG TOOLBAR: SEARCH, FILTERS & UPLOAD ACTION */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
+            {/* SECTION 1: RAW DATASETS TEST BENCH */}
+            <div className="rounded-2xl border border-amber-500/20 bg-[#161B22]/50 backdrop-blur-xl p-5 flex flex-col gap-3 shadow-lg">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.06] pb-3">
+                <div className="flex items-center gap-2.5">
+                  <div className="p-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400">
+                    <FlaskConical className="size-4" />
+                  </div>
+                  <div>
+                    <h2 className="text-xs font-semibold text-white tracking-tight flex items-center gap-2">
+                      <span>Raw Datasets Test Bench</span>
+                      <span className="px-1.5 py-0.5 rounded text-[10px] font-mono bg-amber-500/10 text-amber-300 border border-amber-500/20">
+                        {rawFiles.length} Test Files Ready
+                      </span>
+                    </h2>
+                    <p className="text-[11px] text-slate-400 font-sans mt-0.5">
+                      Pick datasets from <code className="text-amber-300/80 font-mono">prototype-datasets-collection/raw</code> to stage them into active storage for swarm testing.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={loadRawDatasets}
+                    className="px-2.5 py-1 rounded-lg text-xs font-mono text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition-colors flex items-center gap-1.5 cursor-pointer"
+                  >
+                    <RefreshCw className={`size-3 ${isLoadingRaw ? 'animate-spin' : ''}`} />
+                    <span>Scan Raw</span>
+                  </button>
+                </div>
+              </div>
+
+              {isLoadingRaw ? (
+                <div className="py-6 flex items-center justify-center gap-2 text-xs font-mono text-slate-400">
+                  <Loader2 className="size-4 animate-spin text-amber-400" />
+                  <span>Scanning raw datasets directory...</span>
+                </div>
+              ) : rawFiles.length === 0 ? (
+                <div className="py-4 text-center text-xs font-mono text-slate-400">
+                  No raw datasets found in prototype-datasets-collection/raw.
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 pt-1">
+                  {rawFiles.map((raw) => {
+                    const isAlreadyStaged = files.some((f) => f.name === raw.name);
+                    const isStaging = !!stagingIds[raw.id];
+
+                    return (
+                      <div
+                        key={raw.id}
+                        className={`p-3 rounded-xl border transition-all flex flex-col justify-between gap-2.5 ${
+                          isAlreadyStaged
+                            ? 'bg-[#0E1117]/60 border-emerald-500/30'
+                            : 'bg-[#0E1117]/40 border-white/[0.06] hover:border-white/15'
+                        }`}
+                      >
+                        <div className="flex items-start gap-2.5 min-w-0">
+                          <div className="mt-0.5">{getFormatIcon(raw.type)}</div>
+                          <div className="flex flex-col min-w-0 flex-1">
+                            <span className="text-xs font-medium text-slate-200 truncate" title={raw.name}>
+                              {raw.name}
+                            </span>
+                            <div className="flex items-center gap-2 text-[10.5px] font-mono text-slate-400 mt-0.5">
+                              <span>{raw.category}</span>
+                              <span>•</span>
+                              <span className="text-slate-300 tabular-nums">{raw.size}</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-between pt-1 border-t border-white/[0.04]">
+                          {getFormatBadge(raw.type)}
+
+                          {isAlreadyStaged ? (
+                            <span className="text-[11px] font-mono text-emerald-400 flex items-center gap-1">
+                              <CheckCircle className="size-3" />
+                              <span>Staged</span>
+                            </span>
+                          ) : (
+                            <motion.button
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
+                              transition={motionSprings.snappy}
+                              disabled={isStaging}
+                              onClick={() => handleStageRawFile(raw)}
+                              className="px-2.5 py-1 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-mono font-medium flex items-center gap-1.5 transition-all cursor-pointer disabled:opacity-50"
+                            >
+                              {isStaging ? (
+                                <Loader2 className="size-3 animate-spin" />
+                              ) : (
+                                <PlusCircle className="size-3" />
+                              )}
+                              <span>Stage Dataset</span>
+                            </motion.button>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
+            {/* SECTION 2: CATALOG TOOLBAR, DROPZONE & ACTIVE DATASETS */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
               <div className="flex items-center gap-2.5 flex-1 max-w-xl">
                 <div className="relative flex-1">
                   <Search className="size-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground/60" />
@@ -374,7 +561,7 @@ export default function DataSynthesisPage() {
                     type="text" 
                     value={searchQuery}
                     onChange={e => setSearchQuery(e.target.value)}
-                    placeholder="Search datasets, schema attributes, POIs, lakes..." 
+                    placeholder="Search active datasets, schema attributes, POIs, lakes..." 
                     className="w-full bg-secondary/40 border border-border/60 rounded-xl pl-9 pr-3 py-2 text-xs font-sans text-foreground placeholder:text-muted-foreground/60 outline-none focus:border-primary/50 transition-colors"
                   />
                 </div>
@@ -397,7 +584,7 @@ export default function DataSynthesisPage() {
                 </div>
               </div>
 
-              {/* UPLOAD BUTTON */}
+              {/* UPLOAD & CLEAR ACTIONS */}
               <div className="flex items-center gap-2">
                 <input 
                   type="file" 
@@ -407,6 +594,16 @@ export default function DataSynthesisPage() {
                   accept=".geojson,.json,.csv,.parquet,.xlsx,.xls,.pdf" 
                   className="hidden" 
                 />
+                
+                <button
+                  onClick={handleClearActiveStorage}
+                  className="px-3 py-2 rounded-xl text-xs font-mono text-rose-400/80 hover:text-rose-400 bg-rose-500/10 hover:bg-rose-500/15 border border-rose-500/20 transition-colors flex items-center gap-1.5 cursor-pointer"
+                  title="Clear all non-base test datasets from active storage"
+                >
+                  <Trash2 className="size-3.5" />
+                  <span>Clear Active</span>
+                </button>
+
                 <button 
                   onClick={() => fileInputRef.current?.click()}
                   disabled={isUploading}
@@ -417,7 +614,7 @@ export default function DataSynthesisPage() {
                   ) : (
                     <UploadCloud className="size-3.5" />
                   )}
-                  <span>{isUploading ? 'Ingesting...' : 'Add Dataset'}</span>
+                  <span>{isUploading ? 'Ingesting...' : 'Upload Custom File'}</span>
                 </button>
               </div>
             </div>
@@ -456,10 +653,10 @@ export default function DataSynthesisPage() {
               )}
             </AnimatePresence>
 
-            {/* DATASET REPOSITORY CARDS */}
+            {/* ACTIVE DATASET REPOSITORY CARDS */}
             <div className="flex flex-col gap-3">
               <div className="flex items-center justify-between px-1 text-[11px] font-mono text-muted-foreground uppercase tracking-wider">
-                <span>Ingested Datasets ({filteredFiles.length})</span>
+                <span>Active Datasets in Swarm Storage ({filteredFiles.length})</span>
                 <span>Actions</span>
               </div>
 
@@ -470,8 +667,8 @@ export default function DataSynthesisPage() {
                 </div>
               ) : filteredFiles.length === 0 ? (
                 <div className="py-12 flex flex-col items-center justify-center gap-2 text-muted-foreground text-xs font-sans border border-dashed border-border/50 rounded-xl">
-                  <span>No matching datasets found in storage.</span>
-                  <span className="text-[11px] text-muted-foreground/60">Drop a file above to append it.</span>
+                  <span>No active datasets in storage.</span>
+                  <span className="text-[11px] text-muted-foreground/60">Pick from the Test Bench above or drop custom files.</span>
                 </div>
               ) : (
                 filteredFiles.map(file => {
@@ -615,7 +812,7 @@ export default function DataSynthesisPage() {
               </div>
 
               {/* DRAWER BODY: SCHEMA & TABULAR PREVIEW */}
-              <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-6">
+              <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-6 [scrollbar-width:thin]">
                 
                 {/* TELEMETRY STRIP */}
                 <div className="p-3.5 rounded-xl bg-secondary/30 border border-border/60 flex flex-wrap items-center gap-5 text-xs font-mono text-muted-foreground">

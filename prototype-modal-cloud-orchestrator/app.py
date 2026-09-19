@@ -92,7 +92,7 @@ def stream_corridor_analysis(request_dict: Dict[str, Any]):
                 payload = json.dumps(event)
                 yield f"event: {event_type}\ndata: {payload}\n\n"
 
-            yield "event: done\ndata: [DONE]\n\n"
+            yield f"event: done\ndata: {json.dumps({'type': 'done', 'message': '[DONE]'})}\n\n"
 
         except Exception as exc:
             err_payload = json.dumps({"type": "error", "message": str(exc)})
