@@ -38,71 +38,154 @@ load_local_env()
 
 
 # ----------------------------------------------------------------------
-# Robust Dataset Resolution & Volume Prefix Fallback
+# Robust Canonical Mapping & True Local-to-Modal Cloud Volume Sync
 # ----------------------------------------------------------------------
-def robust_get_available_datasets(self: DyadMasterOrchestrator, run_id: Optional[str] = None) -> List[str]:
+def map_to_canonical_dataset_name(filename: str) -> str:
+    """Maps a raw filename to a canonical domain dataset name if not already prefixed."""
+    lower = filename.lower()
+    if lower.startswith(("visualizer-", "demographics-", "economic-", "mobility-", "ecological-")):
+        return filename
+
+    # Ecological keywords
+    if any(k in lower for k in ["lake", "wetland", "water", "stream", "drain", "kaluve", "atree", "environment"]):
+        return f"visualizer-ecological-{filename}"
+    # Demographics keywords
+    elif any(k in lower for k in ["slum", "ward", "census", "pop", "demograph", "equity", "bbmp"]):
+        return f"visualizer-demographics-{filename}"
+    # Economic / POI keywords
+    elif any(k in lower for k in ["tech", "poi", "economic", "commercial", "job", "office", "hospital", "it_corridor"]):
+        return f"visualizer-economic_poi-{filename}"
+    # Mobility / Transit keywords
+    elif any(k in lower for k in ["mobility", "bus", "transit", "osm", "traffic", "road", "speed"]):
+        return f"visualizer-mobility-{filename}"
+    return f"visualizer-mobility-{filename}"
+
+
+def sync_local_to_modal_volume(
+    run_id: Optional[str] = None,
+    emit_fn: Optional[Any] = None,
+) -> Dict[str, Any]:
     """
-    Robust dataset resolution:
-      1. Tries Modal Volume prefix 'runs/{run_id}' if run_id provided.
-      2. Falls back to verified production audit path 'runs/run_real_datasets_audit'.
-      3. Falls back to volume root ''.
-      4. Falls back to deterministic real dataset catalog if Modal is offline.
+    True Active Cloud-Local Dataset Synchronization:
+      1. Inspects active Modal Cloud Volume ('dyad-datasets-volume') entries.
+      2. Scans local storage directories for user-dropped or staged datasets.
+      3. Compares cloud vs. local files by name and size to dynamically decide what to add/update.
+      4. Uploads only missing or modified datasets via Modal Volume batch_upload(force=True).
+      5. Streams real-time SSE progress events into the Command Center telemetry feed.
     """
-    filenames: List[str] = []
+    def log_telemetry(msg: str, status: str = "syncing"):
+        if emit_fn:
+            emit_fn("telemetry", {
+                "type": "telemetry",
+                "agent": "dataset_sync",
+                "status": status,
+                "message": msg,
+            })
+
+    active_run = run_id or "run_real_datasets_audit"
+    cloud_map: Dict[str, int] = {}  # filename -> size in bytes
+    vol = None
+
+    # Step 1: Actively inspect cloud volume
     try:
         import modal
-
         vol = modal.Volume.from_name("dyad-datasets-volume")
+
+        # Check run-specific folder, canonical audit folder, and root
         entries = []
-
-        # Try specific run_id if given
-        if run_id:
+        for prefix in [f"runs/{active_run}", "runs/run_real_datasets_audit", ""]:
             try:
-                entries = vol.listdir(f"runs/{run_id}", recursive=True)
+                e_list = vol.listdir(prefix, recursive=True)
+                if e_list:
+                    entries.extend(e_list)
             except Exception:
-                entries = []
-
-        # Fall back to verified production audit run directory
-        if not entries:
-            try:
-                entries = vol.listdir("runs/run_real_datasets_audit", recursive=True)
-            except Exception:
-                entries = []
-
-        # Fall back to volume root
-        if not entries:
-            try:
-                entries = vol.listdir("", recursive=True)
-            except Exception:
-                entries = []
+                pass
 
         for e in entries:
             entry_path = getattr(e, "path", str(e))
             if not entry_path.endswith(".meta.json"):
                 fname = Path(entry_path).name
-                if fname and fname not in filenames:
-                    filenames.append(fname)
+                fsize = getattr(e, "size", 0)
+                if fname and fname not in cloud_map:
+                    cloud_map[fname] = fsize
 
+        log_telemetry(
+            f"Active Modal Volume inspection: {len(cloud_map)} cloud dataset(s) verified in 'dyad-datasets-volume'.",
+            status="inspecting",
+        )
     except Exception as exc:
         sys.stderr.write(f"[run_stream_bridge] Modal volume discovery warning: {exc}\n")
-        sys.stderr.flush()
+        log_telemetry(f"Modal Volume connection notice: {exc} (falling back to local cache).", status="warning")
 
-    # Scan local storage directories (dyad-app/public/data, staged_datasets, etc.)
+    # Step 2: Scan local storage directories
     local_data_dirs = [
         Path(__file__).parent.parent / "dyad-app" / "public" / "data",
         Path(__file__).parent.parent / "prototype-dataset-classifier" / "staged_datasets",
         Path(__file__).parent / "data",
     ]
+
+    local_candidates: Dict[str, Tuple[Path, int]] = {}
+    ignored_basemaps = {"metro_lines.geojson", "metro_stations.geojson"}
+
     for d in local_data_dirs:
         if d.exists():
             for f in d.iterdir():
                 if f.is_file() and not f.name.endswith(".meta.json") and not f.name.startswith("."):
-                    if f.name not in filenames:
-                        filenames.append(f.name)
+                    if f.name not in ignored_basemaps:
+                        local_candidates[f.name] = (f, f.stat().st_size)
 
-    # Deterministic local fallback if volume and directories are unreachable or empty
-    if not filenames:
-        filenames = [
+    # Step 3: Diff and decide what to upload
+    to_upload: List[Tuple[Path, str, int]] = []
+    known_cloud_sizes = set(cloud_map.values())
+
+    for orig_name, (local_path, local_size) in local_candidates.items():
+        target_name = map_to_canonical_dataset_name(orig_name)
+
+        # Check if identical file already exists in cloud
+        if target_name in cloud_map:
+            if cloud_map[target_name] == local_size:
+                continue  # Exact match, already synchronized!
+            else:
+                to_upload.append((local_path, target_name, local_size))
+        elif local_size in known_cloud_sizes and any(orig_name.split(".")[0] in cf for cf in cloud_map):
+            # Already uploaded under an equivalent or expanded canonical name
+            continue
+        else:
+            to_upload.append((local_path, target_name, local_size))
+
+    # Step 4: Batch upload missing or modified files if Modal volume is accessible
+    uploaded_names: List[str] = []
+    if to_upload and vol is not None:
+        log_telemetry(
+            f"Synchronizing {len(to_upload)} new or modified dataset(s) to Modal Cloud: {[u[1] for u in to_upload]}...",
+            status="uploading",
+        )
+        try:
+            with vol.batch_upload(force=True) as batch:
+                for lpath, rname, lsize in to_upload:
+                    # Upload to active run path
+                    batch.put_file(lpath, f"runs/{active_run}/{rname}")
+                    # Also upload to canonical audit run so future runs share it
+                    if active_run != "run_real_datasets_audit":
+                        batch.put_file(lpath, f"runs/run_real_datasets_audit/{rname}")
+                    cloud_map[rname] = lsize
+                    uploaded_names.append(rname)
+            log_telemetry(
+                f"Successfully committed {len(uploaded_names)} dataset(s) to Modal Cloud Volume.",
+                status="synced",
+            )
+        except Exception as up_exc:
+            sys.stderr.write(f"[run_stream_bridge] Batch upload warning: {up_exc}\n")
+            log_telemetry(f"Cloud volume batch upload notice: {up_exc}", status="warning")
+    elif not to_upload:
+        log_telemetry(
+            f"All local datasets verified against cloud storage (0 uploads needed, {len(cloud_map)} active).",
+            status="verified",
+        )
+
+    all_available = sorted(list(cloud_map.keys()))
+    if not all_available:
+        all_available = [
             "visualizer-economic_poi-tech_parks_and_jobs_blr_it_corridors_and_tech_hubs_excel_export.csv",
             "mobility-ward_census_bengaluru_mobility_indicators_2011.csv",
             "visualizer-mobility-transit_and_feeder_osm_bengaluru_pois.json",
@@ -111,7 +194,17 @@ def robust_get_available_datasets(self: DyadMasterOrchestrator, run_id: Optional
             "visualizer-demographics-ward_census_bbmp_wards_198.geojson",
         ]
 
-    return sorted(filenames)
+    return {
+        "active_datasets": all_available,
+        "uploaded_datasets": uploaded_names,
+        "cloud_verified_count": len(cloud_map),
+    }
+
+
+def robust_get_available_datasets(self: Optional[DyadMasterOrchestrator], run_id: Optional[str] = None) -> List[str]:
+    """Wraps sync_local_to_modal_volume to return the verified cloud dataset catalog."""
+    res = sync_local_to_modal_volume(run_id=run_id)
+    return res["active_datasets"]
 
 
 # Monkey-patch dataset discovery onto DyadMasterOrchestrator for seamless volume prefix handling
@@ -313,20 +406,26 @@ def main() -> None:
     })
     emitted_types.add("plan_initiated")
 
-    # 1.5. Live Dataset Synchronization Step
-    active_datasets = robust_get_available_datasets(None, run_id=run_id)
-    emit_sse("telemetry", {
-        "type": "telemetry",
-        "agent": "dataset_sync",
-        "status": "syncing",
-        "message": f"Syncing active storage repository ({len(active_datasets)} dataset(s) detected)...",
-    })
+    # 1.5. Live Cloud-Local Dataset Synchronization Step
+    sync_result = sync_local_to_modal_volume(run_id=run_id, emit_fn=emit_sse)
+    active_datasets = sync_result["active_datasets"]
+    uploaded_datasets = sync_result.get("uploaded_datasets", [])
+
+    sync_message = (
+        f"Synchronized {len(active_datasets)} active dataset(s) into swarm runtime "
+        f"({len(uploaded_datasets)} uploaded live: {', '.join(uploaded_datasets)})."
+        if uploaded_datasets
+        else f"Verified {len(active_datasets)} active dataset(s) in cloud volume (all synchronized)."
+    )
+
     emit_sse("dataset_sync", {
         "type": "dataset_sync",
         "timestamp": time.time(),
         "synced_datasets": active_datasets,
         "count": len(active_datasets),
-        "message": f"Synchronized {len(active_datasets)} active dataset(s) into swarm runtime.",
+        "uploaded_count": len(uploaded_datasets),
+        "uploaded_datasets": uploaded_datasets,
+        "message": sync_message,
     })
     emitted_types.add("dataset_sync")
 

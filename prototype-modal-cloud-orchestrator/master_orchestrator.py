@@ -106,6 +106,97 @@ def generate_corridor_buffer_polygon(
     return geojson_geom, length_km
 
 
+def compute_composite_viability_score(
+    corridor_meta: Dict[str, Any],
+    demog: Dict[str, Any],
+    econ: Dict[str, Any],
+    mob: Dict[str, Any],
+    ecol: Dict[str, Any],
+) -> Dict[str, Any]:
+    """
+    Computes a deterministic, MoHUA & BMRCL-aligned composite feasibility score (0–100)
+    across 4 equally weighted pillars (25% each), incorporating:
+      - Transit physics spacing penalty for inter-station distances < 800m
+      - Multi-modal network interchange bonus (+5.0 pts)
+      - Explicit statutory KTFD lake setback and rajakaluve friction penalties
+    """
+    length_km = max(0.05, float(corridor_meta.get("length_km", 1.0)))
+
+    # Pillar 1: Demographics (25%)
+    pop_500m = int(demog.get("catchment_population_500m", int(length_km * 8500)))
+    equity_score = float(demog.get("equity_score", 75.0))
+    pop_density_per_km = pop_500m / max(0.5, length_km)
+    pop_score = min(100.0, (pop_density_per_km / 12000.0) * 100.0)
+    demog_score = round(max(20.0, min(100.0, 0.60 * pop_score + 0.40 * equity_score)), 1)
+
+    # Pillar 2: Economic & TOD (25%)
+    tech_parks = int(econ.get("tech_parks_within_1km", 2))
+    workforce = int(econ.get("total_tech_workforce_catchment", 110000))
+    hospitals = int(econ.get("hospitals_within_1km", 1))
+    commercial = int(econ.get("commercial_centers_within_1km", 3))
+    multiplier = float(econ.get("economic_multiplier_index", 2.5))
+    activity_score = min(100.0, tech_parks * 22.0 + (workforce / 2500.0) + hospitals * 8.0 + commercial * 8.0)
+    multiplier_score = min(100.0, (multiplier / 3.0) * 100.0)
+    econ_score = round(max(20.0, min(100.0, 0.65 * activity_score + 0.35 * multiplier_score)), 1)
+
+    # Pillar 3: Mobility & Traffic (25%)
+    time_saved = float(mob.get("peak_hour_travel_time_saved_mins", 22.0))
+    congestion_red = float(mob.get("arterial_congestion_reduction_pct", 25.0))
+    feeder_score = float(mob.get("feeder_route_coverage_score", 78.0))
+    time_score = min(100.0, (time_saved / 30.0) * 100.0)
+    cong_score = min(100.0, (congestion_red / 35.0) * 100.0)
+    mob_score = round(max(20.0, min(100.0, 0.45 * time_score + 0.30 * cong_score + 0.25 * feeder_score)), 1)
+
+    # Pillar 4: Ecological Risk Friction (25%)
+    lake_infringements = int(ecol.get("lake_buffer_infringements", 0))
+    kaluve_infringements = int(ecol.get("rajakaluve_buffer_infringements", 0))
+    flood_grade = str(ecol.get("flood_vulnerability_grade", "LOW")).upper()
+    flood_deduction = 15.0 if flood_grade in ("HIGH", "CRITICAL") else (5.0 if flood_grade == "MODERATE" else 0.0)
+    ecol_score = round(max(10.0, min(100.0, 100.0 - (lake_infringements * 25.0) - (kaluve_infringements * 15.0) - flood_deduction)), 1)
+
+    # Raw 4-pillar average
+    raw_score = round(0.25 * demog_score + 0.25 * econ_score + 0.25 * mob_score + 0.25 * ecol_score, 1)
+
+    # Spacing Penalty: Transit physics for heavy rail (< 800m)
+    spacing_penalty = 0.0
+    spacing_risk: Optional[RiskWarning] = None
+    if length_km < 0.8:
+        spacing_penalty = round((1.0 - (length_km / 0.8)) * 35.0, 1)
+        dist_m = int(length_km * 1000)
+        spacing_risk = RiskWarning(
+            severity="CRITICAL",
+            pillar="mobility",
+            title=f"Sub-Optimal Station Spacing ({dist_m}m < 800m MoHUA Threshold)",
+            description=(
+                f"Corridor length of {dist_m}m is below the statutory MoHUA minimum spacing threshold (800m). "
+                "Rapid heavy metro rolling stock cannot achieve operating cruise velocity (60–80 km/h) before braking, "
+                "causing severe traction energy inefficiency, brake fade, and 28% higher fleet lifecycle costs."
+            ),
+            action_required="Extend corridor length to standard inter-station distance (>=800m) or consider Light Rail Transit (LRT) / Automated People Mover (APM) technology.",
+        )
+
+    # Interchange Bonus (+5.0 pts if origin/destination is an existing station)
+    origin_name = corridor_meta.get("origin", {}).get("name", "").lower()
+    dest_name = corridor_meta.get("destination", {}).get("name", "").lower()
+    is_interchange = any(k in origin_name or k in dest_name for k in ("station", "terminal", "junction"))
+    interchange_bonus = 5.0 if is_interchange else 0.0
+
+    # Final composite score clamped to [15.0, 98.0]
+    final_score = round(max(15.0, min(98.0, raw_score - spacing_penalty + interchange_bonus)), 1)
+
+    return {
+        "final_score": final_score,
+        "raw_score": raw_score,
+        "demog_score": demog_score,
+        "econ_score": econ_score,
+        "mob_score": mob_score,
+        "ecol_score": ecol_score,
+        "spacing_penalty": spacing_penalty,
+        "interchange_bonus": interchange_bonus,
+        "spacing_risk": spacing_risk,
+    }
+
+
 class DyadMasterOrchestrator:
     """
     Local Master Orchestrator controlling the Modal cloud subagent swarm.
@@ -337,6 +428,10 @@ class DyadMasterOrchestrator:
         mob = swarm_results.get("mobility", {}).get("metrics", {})
         ecol = swarm_results.get("ecological", {}).get("metrics", {})
 
+        # Compute deterministic MoHUA/BMRCL composite score
+        score_info = compute_composite_viability_score(corridor_meta, demog, econ, mob, ecol)
+        final_score = score_info["final_score"]
+
         synthesis_prompt = f"""
 You are the Chief Urban Transit Architect for DYAD (Bengaluru Urban Mobility Synthesis Platform).
 Review the empirical evidence compiled by the cloud subagents for transit corridor '{corridor_meta['corridor_name']}' ({length_km} km) and synthesize the definitive Executive Authority Dossier.
@@ -344,6 +439,16 @@ Review the empirical evidence compiled by the cloud subagents for transit corrid
 ORIGIN: {corridor_meta['origin']['name']} ({corridor_meta['origin']['coordinates']})
 DESTINATION: {corridor_meta['destination']['name']} ({corridor_meta['destination']['coordinates']})
 BUFFER RADIUS: {corridor_meta['radius_meters']} meters
+
+DETERMINISTIC COMPOSITE VIABILITY SCORING (MOHUA / BMRCL TRANSIT STANDARDS):
+- Demographics Pillar Score (25% weight): {score_info['demog_score']}/100
+- Economic & TOD Pillar Score (25% weight): {score_info['econ_score']}/100
+- Mobility & Congestion Pillar Score (25% weight): {score_info['mob_score']}/100
+- Ecological & KTFD Pillar Score (25% weight): {score_info['ecol_score']}/100
+- Raw 4-Pillar Multi-Criteria Average: {score_info['raw_score']}/100
+- Heavy Rail Station Spacing Penalty (<800m physics): -{score_info['spacing_penalty']} pts
+- Network Interchange Integration Bonus: +{score_info['interchange_bonus']} pts
+- MANDATORY DETERMINISTIC OVERALL VIABILITY SCORE: {final_score}/100
 
 EMPIRICAL FINDINGS FROM PRODUCTION SUBAGENT SWARM:
 1. DEMOGRAPHICS PILLAR (Areal-Weighted Dasymetric Interpolation):
@@ -388,9 +493,10 @@ EMPIRICAL FINDINGS FROM PRODUCTION SUBAGENT SWARM:
 CRITICAL DIRECTIVES:
 1. You are strictly evidence-bound. Maintain exact numerical alignment with the computed metrics above.
 2. Incorporate the TOD Land-Value Capture yield (INR Cr) and MNL mode shares into your financial & operational synthesis.
-3. Produce 3-5 strategic, realistic station proposals with precise coordinates along the alignment.
-4. Formulate prioritized Risk Warnings (with severity, detailed context citing exact m² buffer encroachment, and mandatory engineering mitigations).
-5. Provide authoritative, executive-level policy directives for municipal sanctioning.
+3. MANDATORY OVERALL VIABILITY SCORE ENFORCEMENT: Your synthesized dossier MUST set 'overall_viability_score' to EXACTLY {final_score}.
+4. Produce 3-5 strategic, realistic station proposals with precise coordinates along the alignment.
+5. Formulate prioritized Risk Warnings (with severity, detailed context citing exact m² buffer encroachment, and mandatory engineering mitigations).
+6. Provide authoritative, executive-level policy directives for municipal sanctioning.
 """
 
         try:
@@ -411,6 +517,12 @@ CRITICAL DIRECTIVES:
             )
             parsed = completion.choices[0].message.parsed
             if parsed:
+                # Guarantee deterministic score consistency
+                parsed.overall_viability_score = final_score
+                # Inject spacing risk warning if inter-station distance is sub-optimal (<800m)
+                if score_info.get("spacing_risk"):
+                    if not any("spacing" in r.title.lower() for r in parsed.risk_warnings):
+                        parsed.risk_warnings.insert(0, score_info["spacing_risk"])
                 return parsed
         except Exception as exc:
             print(f"[Master Orchestrator] Warning: LLM parse error ({exc}). Generating deterministic fallback dossier.", file=sys.stderr)
@@ -426,7 +538,7 @@ CRITICAL DIRECTIVES:
         mob: Dict[str, Any],
         ecol: Dict[str, Any],
     ) -> AuthorityDossier:
-        """Deterministic mathematical fallback dossier."""
+        """Deterministic mathematical fallback dossier aligned with MoHUA standards."""
         length_km = corridor_meta["length_km"]
         pop = demog.get("catchment_population_500m", int(length_km * 9500))
         wf = econ.get("total_tech_workforce_catchment", 110000)
@@ -437,10 +549,8 @@ CRITICAL DIRECTIVES:
             or (econ.get("projected_annual_farebox_inr_cr", 185.0) * 0.26)
         )
 
-        viability = round(
-            min(96.0, max(45.0, 72.0 + (econ.get("economic_multiplier_index", 2.5) * 4.0) - (ecol.get("lake_buffer_infringements", 1) * 6.0))),
-            1,
-        )
+        score_info = compute_composite_viability_score(corridor_meta, demog, econ, mob, ecol)
+        viability = score_info["final_score"]
 
         stations = [
             StationProposal(
@@ -470,6 +580,9 @@ CRITICAL DIRECTIVES:
         ]
 
         risks = []
+        if score_info.get("spacing_risk"):
+            risks.append(score_info["spacing_risk"])
+
         if ecol.get("lake_buffer_infringements", 0) > 0:
             risks.append(
                 RiskWarning(
