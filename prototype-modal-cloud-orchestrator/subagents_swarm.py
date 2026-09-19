@@ -71,13 +71,18 @@ def get_corridor_shapely_polygon(buffer_geojson: Dict[str, Any]):
     return shape(geom_data)
 
 
-def scan_volume_datasets(keyword: str) -> List[Path]:
+def scan_volume_datasets(keyword: str, run_id: Optional[str] = None) -> List[Path]:
     """Finds all dataset files in the volume matching a specific category keyword."""
     volume_dir = Path(VOLUME_MOUNT_PATH)
     if not volume_dir.exists():
         return []
+
+    target_dir = (volume_dir / "runs" / run_id) if run_id else volume_dir
+    if not target_dir.exists():
+        target_dir = volume_dir
+
     matches = []
-    for f in volume_dir.iterdir():
+    for f in target_dir.rglob("*"):
         if f.is_file() and not f.name.endswith(".meta.json"):
             if keyword in f.name:
                 matches.append(f)
@@ -93,7 +98,7 @@ def scan_volume_datasets(keyword: str) -> List[Path]:
     volumes={VOLUME_MOUNT_PATH: datasets_volume},
     timeout=300,
 )
-def agent_visualizer(corridor_buffer_geojson: Dict[str, Any]) -> Dict[str, Any]:
+def agent_visualizer(corridor_buffer_geojson: Dict[str, Any], corridor_meta: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
     """
     Agent 1: Structured Output Spatial Visualizer.
     Ingests all 'visualizer-*' datasets from the volume.
@@ -105,7 +110,8 @@ def agent_visualizer(corridor_buffer_geojson: Dict[str, Any]) -> Dict[str, Any]:
 
     datasets_volume.reload()
     buffer_poly = get_corridor_shapely_polygon(corridor_buffer_geojson)
-    visualizer_files = scan_volume_datasets("visualizer-")
+    run_id = (corridor_meta or {}).get("run_id")
+    visualizer_files = scan_volume_datasets("visualizer-", run_id=run_id)
 
     matched_features: List[Dict[str, Any]] = []
     inspected_datasets: List[str] = []
@@ -136,12 +142,22 @@ def agent_visualizer(corridor_buffer_geojson: Dict[str, Any]) -> Dict[str, Any]:
                         })
 
             elif ext in (".json", ".csv"):
-                # Handle tabular points with lat/lng
+                # Handle tabular points or OSM Overpass JSON
                 rows: List[Dict[str, Any]] = []
                 if ext == ".json":
                     with open(file_path, "r", encoding="utf-8", errors="replace") as f:
                         raw = json.load(f)
-                    rows = raw if isinstance(raw, list) else [raw]
+                    if isinstance(raw, dict) and "elements" in raw and isinstance(raw["elements"], list):
+                        for elem in raw["elements"]:
+                            r = dict(elem.get("tags", {}))
+                            r["lat"] = elem.get("lat")
+                            r["lon"] = elem.get("lon")
+                            r["id"] = elem.get("id")
+                            rows.append(r)
+                    elif isinstance(raw, list):
+                        rows = raw
+                    else:
+                        rows = [raw]
                 elif ext == ".csv":
                     import csv
                     with open(file_path, "r", encoding="utf-8", errors="replace") as f:
@@ -208,8 +224,11 @@ def agent_demographics(corridor_buffer_geojson: Dict[str, Any], corridor_meta: D
     and calls gpt-5.6-terra for evidence-bound municipal analysis.
     """
     datasets_volume.reload()
-    datasets = scan_volume_datasets("demographics")
+    run_id = corridor_meta.get("run_id")
+    datasets = scan_volume_datasets("demographics", run_id=run_id)
     client = get_cloud_openai_client()
+
+    buffer_poly = get_corridor_shapely_polygon(corridor_buffer_geojson)
 
     # Empirical data aggregation across matching files
     empirical_records = []
@@ -218,13 +237,33 @@ def agent_demographics(corridor_buffer_geojson: Dict[str, Any], corridor_meta: D
 
     for fpath in datasets:
         ext = fpath.suffix.lower()
-        if ext == ".csv":
+        if ext == ".geojson":
+            try:
+                from shapely.geometry import shape
+                with open(fpath, "r", encoding="utf-8", errors="replace") as f:
+                    data = json.load(f)
+                for feat in data.get("features", []):
+                    geom = feat.get("geometry")
+                    if geom and shape(geom).intersects(buffer_poly):
+                        props = feat.get("properties", {})
+                        ward = props.get("WARD_NAME") or props.get("Slum_Name") or props.get("ward_name")
+                        if ward and str(ward) not in intersected_wards:
+                            intersected_wards.append(str(ward))
+                        pop = props.get("POP_TOTAL") or props.get("total_population") or props.get("population")
+                        if pop:
+                            try:
+                                total_raw_population += int(float(pop))
+                            except (ValueError, TypeError):
+                                pass
+            except Exception as e:
+                print(f"[Agent 2: Demographics] Error reading {fpath.name}: {e}")
+        elif ext == ".csv":
             import csv
             with open(fpath, "r", encoding="utf-8", errors="replace") as f:
                 for row in csv.DictReader(f):
                     empirical_records.append(row)
                     ward = row.get("ward_name") or row.get("ward_no")
-                    if ward:
+                    if ward and str(ward) not in intersected_wards:
                         intersected_wards.append(str(ward))
                     pop = row.get("total_population") or row.get("population")
                     try:
@@ -299,7 +338,8 @@ def agent_economic_poi(corridor_buffer_geojson: Dict[str, Any], corridor_meta: D
     and calls gpt-5.6-terra for commercial & farebox ROI analysis.
     """
     datasets_volume.reload()
-    datasets = scan_volume_datasets("economic_poi")
+    run_id = corridor_meta.get("run_id")
+    datasets = scan_volume_datasets("economic_poi", run_id=run_id)
     client = get_cloud_openai_client()
 
     length_km = corridor_meta.get("length_km", 6.5)
@@ -408,7 +448,8 @@ def agent_mobility(corridor_buffer_geojson: Dict[str, Any], corridor_meta: Dict[
     and calls gpt-5.6-terra for multimodal traffic relief analysis.
     """
     datasets_volume.reload()
-    datasets = scan_volume_datasets("mobility")
+    run_id = corridor_meta.get("run_id")
+    datasets = scan_volume_datasets("mobility", run_id=run_id)
     client = get_cloud_openai_client()
 
     length_km = corridor_meta.get("length_km", 6.5)
@@ -483,7 +524,8 @@ def agent_ecological(corridor_buffer_geojson: Dict[str, Any], corridor_meta: Dic
     and calls gpt-5.6-terra for environmental risk compliance and mitigation engineering.
     """
     datasets_volume.reload()
-    datasets = scan_volume_datasets("ecological")
+    run_id = corridor_meta.get("run_id")
+    datasets = scan_volume_datasets("ecological", run_id=run_id)
     client = get_cloud_openai_client()
 
     buffer_poly = get_corridor_shapely_polygon(corridor_buffer_geojson)

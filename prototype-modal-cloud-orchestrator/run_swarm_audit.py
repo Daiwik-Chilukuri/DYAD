@@ -62,11 +62,14 @@ def main():
     final_dossier = None
     visualizer_features = None
 
+    target_run_id = "run_real_datasets_audit"
+
     for event in orchestrator.execute_stream(
         origin_station=origin_station,
         destination_pin=destination_pin,
         catchment_radius_meters=catchment_radius_m,
-        corridor_id="audit-silkboard-ecoworld-2026",
+        corridor_id=target_run_id,
+        run_id=target_run_id,
     ):
         etype = event.get("type")
         events.append(event)
@@ -84,13 +87,16 @@ def main():
 
         elif etype == "visualizer_features":
             visualizer_features = event.get("geojson", {})
+            feat_list = visualizer_features.get("features", [])
             print(f"\n[4] Agent 1 (Visualizer) Spatial Intersection Check:")
-            print(f"    Features in Buffer: {event.get('features_count', 0)}")
-            for feat in visualizer_features.get("features", []):
+            print(f"    Features in Buffer: {len(feat_list)}")
+            for feat in feat_list[:12]:  # Show first 12 for conciseness
                 p = feat.get("properties", {})
                 gtype = feat.get("geometry", {}).get("type")
-                name = p.get("hub_name") or p.get("lake_name") or "Spatial Feature"
+                name = p.get("hub_name") or p.get("lake_name") or p.get("WARD_NAME") or p.get("Slum_Name") or p.get("name") or "Spatial Feature"
                 print(f"      [✓] Included: '{name}' ({gtype}) from {p.get('source_dataset', 'dataset')}")
+            if len(feat_list) > 12:
+                print(f"      ... and {len(feat_list) - 12} more intersecting spatial features.")
 
         elif etype == "subagent_completed":
             print(f"    [✓] Subagent Completed: {event['agent'].capitalize()}")
@@ -100,6 +106,14 @@ def main():
             print(f"\n[5] Final Authority Dossier Received! (Viability Score: {final_dossier['overall_viability_score']}/100)")
 
     total_time = round(time.time() - t_start, 2)
+
+    # Save complete execution trace locally
+    runs_dir = Path(__file__).parent / "runs"
+    runs_dir.mkdir(parents=True, exist_ok=True)
+    trace_path = runs_dir / f"{target_run_id}_trace.json"
+    with open(trace_path, "w", encoding="utf-8") as tf:
+        json.dump({"events": events, "dossier": final_dossier}, tf, indent=2, default=str)
+    print(f"\n[Trace Saved] Complete sandbox execution trace written to: {trace_path.name}")
     print(f"\n" + "=" * 76)
     print(f"   AUDIT SUMMARY & RESULTS (Total Round-Trip: {total_time}s)")
     print("=" * 76)

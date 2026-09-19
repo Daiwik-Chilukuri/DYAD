@@ -125,6 +125,7 @@ class DyadMasterOrchestrator:
         destination_pin: Dict[str, Any],
         catchment_radius_meters: float = 1500.0,
         corridor_id: Optional[str] = None,
+        run_id: Optional[str] = None,
     ) -> Iterator[Dict[str, Any]]:
         """
         Main multi-agent execution pipeline. Yields real-time SSE events:
@@ -137,6 +138,7 @@ class DyadMasterOrchestrator:
         """
         start_time = time.time()
         c_id = corridor_id or f"corridor-{int(start_time)}"
+        active_run_id = run_id or c_id
         origin_name = origin_station.get("name", "Origin Station")
         dest_name = destination_pin.get("name", "Destination Pin")
         corridor_name = f"{origin_name} to {dest_name}"
@@ -150,6 +152,7 @@ class DyadMasterOrchestrator:
 
         corridor_meta = {
             "corridor_id": c_id,
+            "run_id": active_run_id,
             "corridor_name": corridor_name,
             "length_km": length_km,
             "radius_meters": catchment_radius_meters,
@@ -161,6 +164,7 @@ class DyadMasterOrchestrator:
             "type": "plan_initiated",
             "timestamp": time.time(),
             "corridor_id": c_id,
+            "run_id": active_run_id,
             "corridor_name": corridor_name,
             "length_km": length_km,
             "catchment_radius_meters": catchment_radius_meters,
@@ -172,10 +176,10 @@ class DyadMasterOrchestrator:
             "type": "telemetry",
             "agent": "master_orchestrator",
             "status": "inspecting_storage",
-            "message": "Inspecting classified datasets in Modal Cloud Volume ('dyad-datasets-volume')...",
+            "message": f"Inspecting classified datasets in Modal Cloud Volume for run '{active_run_id}'...",
         }
 
-        available_datasets = self._get_available_datasets()
+        available_datasets = self._get_available_datasets(run_id=active_run_id)
 
         # Step 3: Conditional Spawning Rule
         # "there is no need for the master agent to spawn an agent if the <*keyword> doesnt exist"
@@ -226,10 +230,7 @@ class DyadMasterOrchestrator:
                 "ecological": "agent_ecological",
             }
             fn = modal.Function.from_name("dyad-subagents-swarm", fn_map[agent_key])
-            if agent_key == "visualizer":
-                return agent_key, fn.remote(buffer_geojson)
-            else:
-                return agent_key, fn.remote(buffer_geojson, corridor_meta)
+            return agent_key, fn.remote(buffer_geojson, corridor_meta)
 
         tasks_to_run = []
         if has_visualizer: tasks_to_run.append("visualizer")
@@ -290,13 +291,20 @@ class DyadMasterOrchestrator:
             "message": "[DONE]",
         }
 
-    def _get_available_datasets(self) -> List[str]:
+    def _get_available_datasets(self, run_id: Optional[str] = None) -> List[str]:
         """Discovers files directly from Modal Volume API (0 container cold starts)."""
         try:
             import modal
             vol = modal.Volume.from_name("dyad-datasets-volume")
-            entries = vol.listdir("")
-            return sorted([e.path for e in entries if not e.path.endswith(".meta.json")])
+            prefix = f"runs/{run_id}" if run_id else ""
+            entries = vol.listdir(prefix, recursive=True)
+            filenames = []
+            for e in entries:
+                if not e.path.endswith(".meta.json"):
+                    fname = Path(e.path).name
+                    if fname and fname not in filenames:
+                        filenames.append(fname)
+            return sorted(filenames)
         except Exception as e:
             print(f"[Master Orchestrator] Warning: Failed to query Modal volume: {e}")
             return []

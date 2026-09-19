@@ -113,14 +113,77 @@ def sniff_geojson(filepath: Path) -> Dict[str, Any]:
     }
 
 
+def sniff_geojsonl(filepath: Path) -> Dict[str, Any]:
+    """Sniffs GeoJSON Lines (.geojsonl) where each line is a GeoJSON Feature."""
+    sample_records: List[Dict[str, Any]] = []
+    properties_keys: List[str] = []
+    geom_type = "GeoJSONL"
+
+    with open(filepath, "r", encoding="utf-8", errors="replace") as f:
+        for _ in range(3):
+            line = f.readline()
+            if not line.strip():
+                continue
+            try:
+                feat = json.loads(line)
+                geom = feat.get("geometry", {})
+                if geom and geom_type == "GeoJSONL":
+                    geom_type = f"GeoJSONL ({geom.get('type', 'Feature')})"
+                props = feat.get("properties", {})
+                if isinstance(props, dict):
+                    sample_records.append(props)
+                    for k in props.keys():
+                        if k not in properties_keys:
+                            properties_keys.append(k)
+            except Exception:
+                pass
+
+    lat_col, lng_col = detect_coordinate_columns(properties_keys)
+
+    return {
+        "file_format": "GeoJSONL",
+        "geometry_type": geom_type,
+        "columns": properties_keys,
+        "sample_records": sample_records,
+        "lat_col": lat_col or "geometry.coordinates",
+        "lng_col": lng_col or "geometry.coordinates",
+        "has_coordinates": True,
+    }
+
+
 def sniff_json(filepath: Path) -> Dict[str, Any]:
-    """Sniffs arbitrary JSON (array of objects or key-value dictionary)."""
+    """Sniffs arbitrary JSON (array of objects, Overpass API export, or key-value dictionary)."""
     with open(filepath, "r", encoding="utf-8", errors="replace") as f:
         data = json.load(f)
 
     # Check if it's actually GeoJSON with a .json extension
     if isinstance(data, dict) and data.get("type") in ("FeatureCollection", "Feature"):
         return sniff_geojson(filepath)
+
+    # Check if it's an OpenStreetMap Overpass JSON export
+    if isinstance(data, dict) and "elements" in data and isinstance(data["elements"], list):
+        elements = data["elements"]
+        sample_records = []
+        keys = ["id", "type", "lat", "lon"]
+        for elem in elements[:3]:
+            rec = {"id": elem.get("id"), "type": elem.get("type"), "lat": elem.get("lat"), "lon": elem.get("lon")}
+            tags = elem.get("tags", {})
+            if isinstance(tags, dict):
+                for tk, tv in tags.items():
+                    if tk not in keys:
+                        keys.append(tk)
+                    rec[tk] = tv
+            sample_records.append(rec)
+
+        return {
+            "file_format": "OSM_JSON",
+            "geometry_type": "Point (OSM Nodes)",
+            "columns": keys,
+            "sample_records": sample_records,
+            "lat_col": "lat",
+            "lng_col": "lon",
+            "has_coordinates": True,
+        }
 
     keys: List[str] = []
     sample_records: List[Dict[str, Any]] = []
@@ -143,6 +206,61 @@ def sniff_json(filepath: Path) -> Dict[str, Any]:
         "lat_col": lat_col,
         "lng_col": lng_col,
         "has_coordinates": bool(lat_col and lng_col),
+    }
+
+
+def sniff_kml(filepath: Path) -> Dict[str, Any]:
+    """Sniffs KML files for Placemarks, geometry types, and SimpleField schema."""
+    import xml.etree.ElementTree as ET
+    columns = []
+    sample_records = []
+    geom_type = "KML"
+
+    try:
+        tree = ET.parse(filepath)
+        root = tree.getroot()
+        ns = {'kml': 'http://www.opengis.net/kml/2.2'}
+        
+        # Discover SimpleField definitions
+        for sf in root.findall('.//kml:SimpleField', ns):
+            name = sf.attrib.get('name')
+            if name and name not in columns:
+                columns.append(name)
+
+        # Check Placemarks
+        placemarks = root.findall('.//kml:Placemark', ns)
+        if placemarks:
+            p0 = placemarks[0]
+            if p0.find('.//kml:Polygon', ns) is not None:
+                geom_type = "KML (Polygon)"
+            elif p0.find('.//kml:LineString', ns) is not None:
+                geom_type = "KML (LineString)"
+            elif p0.find('.//kml:Point', ns) is not None:
+                geom_type = "KML (Point)"
+
+            for p in placemarks[:2]:
+                rec = {}
+                name_el = p.find('kml:name', ns)
+                if name_el is not None and name_el.text:
+                    rec["name"] = name_el.text
+                    if "name" not in columns:
+                        columns.insert(0, "name")
+                for sd in p.findall('.//kml:SimpleData', ns):
+                    attr_name = sd.attrib.get('name')
+                    if attr_name:
+                        rec[attr_name] = sd.text
+                sample_records.append(rec)
+    except Exception as e:
+        geom_type = f"KML (Parse Error: {e})"
+
+    return {
+        "file_format": "KML",
+        "geometry_type": geom_type,
+        "columns": columns or ["name", "geometry"],
+        "sample_records": sample_records,
+        "lat_col": "coordinates",
+        "lng_col": "coordinates",
+        "has_coordinates": True,
     }
 
 
@@ -203,8 +321,12 @@ def sniff_dataset(file_path: str | Path) -> Dict[str, Any]:
         res = sniff_csv(path)
     elif ext == ".geojson":
         res = sniff_geojson(path)
+    elif ext == ".geojsonl":
+        res = sniff_geojsonl(path)
     elif ext == ".json":
         res = sniff_json(path)
+    elif ext == ".kml":
+        res = sniff_kml(path)
     elif ext in (".parquet", ".pq"):
         res = sniff_parquet(path)
     else:
