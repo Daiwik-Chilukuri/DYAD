@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bengaluru Metro & Spatial Intelligence Map</title>
+  <!-- MapLibre GL JS -->
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body, html { width: 100%; height: 100%; overflow: hidden; background: #020617; }
+    #map { width: 100%; height: 100%; }
+
+    /* Floating Control Panel */
+    .control-panel {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 10;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(51, 65, 85, 0.8);
+      border-radius: 12px;
+      padding: 16px;
+      width: 320px;
+      color: #f8fafc;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+    }
+    .panel-title { font-size: 14px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #38bdf8; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+    .panel-subtitle { font-size: 11px; color: #94a3b8; margin-bottom: 14px; }
+    
+    .input-row { display: flex; gap: 8px; margin-bottom: 10px; }
+    .input-field {
+      flex: 1;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      padding: 8px 10px;
+      color: #f8fafc;
+      font-size: 12px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .input-field:focus { border-color: #38bdf8; }
+
+    .btn {
+      width: 100%;
+      background: #0284c7;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 9px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .btn:hover { background: #0369a1; transform: translateY(-1px); }
+    .btn-secondary {
+      background: #1e293b;
+      color: #cbd5e1;
+      border: 1px solid #334155;
+    }
+    .btn-secondary:hover { background: #334155; color: #fff; }
+
+    .legend {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid #334155;
+      font-size: 11px;
+    }
+    .legend-item { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; color: #cbd5e1; }
+    .legend-color { width: 14px; height: 4px; border-radius: 2px; }
+    .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+    /* Custom Pin Animation */
+    .custom-marker {
+      width: 16px;
+      height: 16px;
+      background-color: #f43f5e;
+      border: 3px solid #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 0 15px #f43f5e, 0 0 30px #f43f5e;
+      cursor: pointer;
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(244, 63, 94, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Control Panel -->
+  <div class="control-panel">
+    <div class="panel-title">
+      <span>⚡ Prayas Bengaluru Map</span>
+    </div>
+    <div class="panel-subtitle">Namma Metro + POI + Dynamic Corridor Zoom</div>
+
+    <label style="font-size: 11px; color: #cbd5e1; display: block; margin-bottom: 4px;">Proposed Terminus Coords:</label>
+    <div class="input-row">
+      <input type="text" id="inputLat" class="input-field" placeholder="Latitude" value="12.9180" />
+      <input type="text" id="inputLng" class="input-field" placeholder="Longitude" value="77.6830" />
+    </div>
+
+    <button id="btnPlotAndZoom" class="btn">
+      <span>🎯 Plot Point & Smooth Zoom</span>
+    </button>
+
+    <button id="btnResetView" class="btn btn-secondary">
+      <span>↺ Reset City Overview</span>
+    </button>
+
+    <div class="legend">
+      <div style="font-weight: 600; margin-bottom: 6px; color: #94a3b8;">MAP LAYERS</div>
+      <div class="legend-item"><div class="legend-color" style="background:#22c55e;"></div> Green Line (Nagasandra - Silk Inst.)</div>
+      <div class="legend-item"><div class="legend-color" style="background:#a855f7;"></div> Purple Line (Whitefield - Challaghatta)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#22d3ee; box-shadow: 0 0 6px #22d3ee;"></div> Tech Parks (Ecospace, Manyata)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#ef4444; box-shadow: 0 0 6px #ef4444;"></div> Hospitals & Institutions</div>
+    </div>
+  </div>
+
+  <!-- Map Canvas -->
+  <div id="map"></div>
+
+  <script>
+    // 1. Initialize MapLibre with Carto Dark Matter Vector Basemap
+    const map = new maplibregl.Map({
+      container: 'map',
+      style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+      center: [77.5946, 12.9716], // Bengaluru City Center
+      zoom: 11.2,
+      pitch: 35,
+      bearing: 0,
+      attributionControl: false
+    });
+
+    map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'top-right');
+
+    let terminusMarker = null;
+
+    // Silk Board Interchange Station Coordinates (Origin Point)
+    const SILK_BOARD_COORDS = [77.6245, 12.9176];
+
+    // 2. Load Metro Lines & POIs once map style is ready
+    map.on('load', () => {
+      // Add Silk Board Origin Marker
+      const originEl = document.createElement('div');
+      originEl.style.width = '14px';
+      originEl.style.height = '14px';
+      originEl.style.background = '#eab308';
+      originEl.style.borderRadius = '50%';
+      originEl.style.border = '2px solid #ffffff';
+      originEl.style.boxShadow = '0 0 12px #eab308';
+      new maplibregl.Marker({ element: originEl })
+        .setLngLat(SILK_BOARD_COORDS)
+        .setPopup(new maplibregl.Popup({ offset: 12 }).setHTML('<strong>Central Silk Board Station</strong><br/><span style="color:#64748b;font-size:11px;">Interchange Origin</span>'))
+        .addTo(map);
+
+      // Load Namma Metro Lines GeoJSON (served via raw GitHub or local public folder)
+      map.addSource('metro-lines', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/Vonter/bmrcl-station-app/master/static/bmrcl.geojson'
+      });
+
+      // Metro Track Neon Casing (Glow)
+      map.addLayer({
+        id: 'metro-casing',
+        type: 'line',
+        source: 'metro-lines',
+        layout: { 'line-join': 'round', 'line-cap': 'round' },
+        paint: {
+          'line-color': [
+            'case',
+            ['==', ['get', 'colour'], 'green'], '#16a34a',
+            ['==', ['get', 'colour'], 'purple'], '#9333ea',
+            '#0284c7'
+          ],
+          'line-width': ['interpolate', ['linear'], ['zoom'], 10, 4, 15, 8],
+          'line-opacity': 0.4,
+          'line-blur': 2
+        }
+      });
+
+      // Metro Track Solid Core Line
+      map.addLayer({
+        id: 'metro-core',
+        type: 'line',
+        source: 'metro-lines',
+        layout: { 'line-join': 'round', 'line-cap': 'round' },
+        paint: {
+          'line-color': [
+            'case',
+            ['==', ['get', 'colour'], 'green'], '#22c55e',
+            ['==', ['get', 'colour'], 'purple'], '#c084fc',
+            '#38bdf8'
+          ],
+          'line-width': ['interpolate', ['linear'], ['zoom'], 10, 2.5, 15, 5]
+        }
+      });
+
+      // Sample Curated High-Priority POIs
+      map.addSource('pois', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: [
+            { type: 'Feature', geometry: { type: 'Point', coordinates: [77.6974, 12.9279] }, properties: { name: 'Ecospace Business Park (Bellandur)', category: 'corporate' } },
+            { type: 'Feature', geometry: { type: 'Point', coordinates: [77.6833, 12.9863] }, properties: { name: 'Bagmane Tech Park (CV Raman Nagar)', category: 'corporate' } },
+            { type: 'Feature', geometry: { type: 'Point', coordinates: [77.6205, 12.9345] }, properties: { name: 'St. John’s Medical College', category: 'hospital' } },
+            { type: 'Feature', geometry: { type: 'Point', coordinates: [77.5671, 13.0219] }, properties: { name: 'Indian Institute of Science (IISc)', category: 'education' } },
+            { type: 'Feature', geometry: { type: 'Point', coordinates: [77.6046, 12.9784] }, properties: { name: 'Vidhana Soudha / High Court', category: 'civic' } },
+            { type: 'Feature', geometry: { type: 'Point', coordinates: [77.7289, 12.9868] }, properties: { name: 'ITPB / International Tech Park Whitefield', category: 'corporate' } }
+          ]
+        }
+      });
+
+      // POI Circles with Category Colors
+      map.addLayer({
+        id: 'poi-layer',
+        type: 'circle',
+        source: 'pois',
+        paint: {
+          'circle-radius': ['interpolate', ['linear'], ['zoom'], 10, 5, 15, 9],
+          'circle-color': [
+            'match', ['get', 'category'],
+            'corporate', '#22d3ee',
+            'hospital', '#ef4444',
+            'education', '#f59e0b',
+            '#38bdf8'
+          ],
+          'circle-stroke-width': 2,
+          'circle-stroke-color': '#020617'
+        }
+      });
+
+      // Hover Popup for POIs
+      const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 10 });
+      map.on('mouseenter', 'poi-layer', (e) => {
+        map.getCanvas().style.cursor = 'pointer';
+        const coords = e.features[0].geometry.coordinates.slice();
+        const { name, category } = e.features[0].properties;
+        popup.setLngLat(coords).setHTML(`
+          <div style="background:#0f172a; color:#fff; padding:6px 10px; border-radius:6px; font-size:12px;">
+            <strong>${name}</strong><br/><span style="color:#94a3b8; font-size:10px; text-transform:uppercase;">${category}</span>
+          </div>
+        `).addTo(map);
+      });
+      map.on('mouseleave', 'poi-layer', () => {
+        map.getCanvas().style.cursor = '';
+        popup.remove();
+      });
+
+      // Allow user to click anywhere on map to update input coordinates
+      map.on('click', (e) => {
+        document.getElementById('inputLat').value = e.lngLat.lat.toFixed(4);
+        document.getElementById('inputLng').value = e.lngLat.lng.toFixed(4);
+      });
+    });
+
+    // 3. Function to Plot Point & Smooth Zoom between Silk Board and Target Point
+    document.getElementById('btnPlotAndZoom').addEventListener('click', () => {
+      const lat = parseFloat(document.getElementById('inputLat').value);
+      const lng = parseFloat(document.getElementById('inputLng').value);
+      if (isNaN(lat) || isNaN(lng)) {
+        alert('Please enter valid latitude and longitude numbers.');
+        return;
+      }
+
+      // Create or Move Pulsing Marker
+      if (!terminusMarker) {
+        const el = document.createElement('div');
+        el.className = 'custom-marker';
+        terminusMarker = new maplibregl.Marker({ element: el, draggable: true })
+          .setLngLat([lng, lat])
+          .setPopup(new maplibregl.Popup({ offset: 14 }).setHTML('<strong>Proposed Corridor Terminus</strong>'))
+          .addTo(map);
+
+        terminusMarker.on('dragend', () => {
+          const pos = terminusMarker.getLngLat();
+          document.getElementById('inputLat').value = pos.lat.toFixed(4);
+          document.getElementById('inputLng').value = pos.lng.toFixed(4);
+        });
+      } else {
+        terminusMarker.setLngLat([lng, lat]);
+      }
+
+      // Compute Bounding Box between Silk Board and Target Terminus
+      const bounds = new maplibregl.LngLatBounds();
+      bounds.extend(SILK_BOARD_COORDS);
+      bounds.extend([lng, lat]);
+
+      // Execute Smooth 3D Zoom In
+      map.fitBounds(bounds, {
+        padding: { top: 100, bottom: 100, left: 360, right: 80 },
+        pitch: 46,
+        bearing: -12,
+        duration: 2200,
+        maxZoom: 14.5
+      });
+    });
+
+    // Reset view to Bengaluru city overview
+    document.getElementById('btnResetView').addEventListener('click', () => {
+      map.flyTo({
+        center: [77.5946, 12.9716],
+        zoom: 11.2,
+        pitch: 35,
+        bearing: 0,
+        duration: 1800
+      });
+    });
+  </script>
+</body>
+</html>

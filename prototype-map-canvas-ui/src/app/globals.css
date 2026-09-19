@@ -1,0 +1,75 @@
+@import "tailwindcss";
+@import "maplibre-gl/dist/maplibre-gl.css";
+
+@theme {
+  --color-background: oklch(0.145 0 0);
+  --color-foreground: oklch(0.985 0 0);
+  
+  --color-card: oklch(0.205 0 0);
+  --color-card-foreground: oklch(0.985 0 0);
+  
+  --color-popover: oklch(0.205 0 0);
+  --color-popover-foreground: oklch(0.985 0 0);
+  
+  --color-primary: #0ab1ba;
+  --color-primary-foreground: oklch(1 0 0);
+  
+  --color-secondary: oklch(0.269 0 0);
+  --color-secondary-foreground: oklch(0.985 0 0);
+  
+  --color-muted: oklch(0.269 0 0);
+  --color-muted-foreground: oklch(0.708 0 0);
+  
+  --color-accent: oklch(0.269 0 0);
+  --color-accent-foreground: oklch(0.985 0 0);
+  
+  --color-destructive: oklch(0.704 0.191 22.216);
+  
+  --color-border: oklch(1 0 0 / 10%);
+  --color-input: oklch(1 0 0 / 15%);
+  --color-ring: #0ab1ba;
+  
+  --color-sidebar: oklch(0.205 0 0);
+  --color-sidebar-foreground: oklch(0.985 0 0);
+  --color-sidebar-border: oklch(1 0 0 / 10%);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  /* Invisible sleek scrollbars from Gridline Dashboard inspiration (dashboard.css) */
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  *::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Sleek High-Tech MapLibre Custom Popups & HUD Badges */
+.maplibregl-popup.dark-popup .maplibregl-popup-content {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 14px;
+}
+.maplibregl-popup.dark-popup .maplibregl-popup-tip {
+  border-top-color: rgba(8, 14, 28, 0.96) !important;
+  border-bottom-color: rgba(8, 14, 28, 0.96) !important;
+}
+.maplibregl-popup.dark-popup .maplibregl-popup-close-button {
+  color: #94a3b8 !important;
+  padding: 6px 10px !important;
+  font-size: 16px !important;
+  border-radius: 9999px;
+  right: 6px;
+  top: 6px;
+}
+.maplibregl-popup.dark-popup .maplibregl-popup-close-button:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
