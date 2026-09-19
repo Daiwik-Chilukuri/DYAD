@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --color-canvas-base: #08090c;
+  --color-canvas-surface: #0e1117;
+  --color-canvas-elevated: #161b22;
+  --color-canvas-overlay: #1f242c;
+
+  --color-transit-purple: #9d4edd;
+  --color-transit-green: #00f5d4;
+  --color-transit-yellow: #ffd166;
+  --color-transit-blue: #00bbf9;
+
+  --color-sentiment-optimal: #10b981;
+  --color-sentiment-warning: #f59e0b;
+  --color-sentiment-critical: #ef4444;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-canvas-base);
+  color: #e2e8f0;
+  font-family:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Command-surface glass primitive */
+.dyad-glass {
+  background: rgba(14, 17, 23, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 8px 32px 0 rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Telemetry ticker marquee */
+@keyframes dyad-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.dyad-marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: dyad-marquee 32s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dyad-marquee-track {
+    animation: none;
+  }
+}
+
+/* MapLibre dark chrome tweaks */
+.maplibregl-ctrl-attrib {
+  background: rgba(8, 9, 12, 0.7) !important;
+  color: #64748b !important;
+}
+.maplibregl-ctrl-attrib a {
+  color: #94a3b8 !important;
+}
+.maplibregl-ctrl-group {
+  background: rgba(14, 17, 23, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+.maplibregl-ctrl-group button + button {
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}

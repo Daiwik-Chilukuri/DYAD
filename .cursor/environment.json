@@ -1,0 +1,12 @@
+{
+  "name": "DYAD — Transit War Room",
+  "install": "bash .cursor/install.sh",
+  "terminals": [
+    {
+      "name": "map-canvas-ui (next dev)",
+      "command": "cd prototype-map-canvas-ui && pnpm dev",
+      "description": "Next.js dev server for the DYAD map-canvas-ui prototype on http://localhost:3000"
+    }
+  ],
+  "ports": [{ "name": "map-canvas-ui web", "port": 3000 }]
+}
