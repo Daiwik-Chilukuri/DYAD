@@ -1,0 +1,10 @@
+{
+  "dataset_id": "bengaluru_road_widths",
+  "source_page": "https://data.opencity.in/dataset/bengaluru-road-width-map",
+  "resolved_download_url": "https://data.opencity.in/dataset/0a72695d-0c48-4442-b8ee-e2a24b157d66/resource/bd9d5ea1-40c8-4699-87c9-d4a4f303cfff/download/ed239bef-1bf5-4926-8621-2fd84c7db3d0.kml",
+  "license": "Public Domain",
+  "attribution": "KSRSAC; OpenCity",
+  "downloaded_at": "2026-09-19T08:34:28.873755+00:00",
+  "bytes": 25737588,
+  "sha256": "13daf1e57911eb6a76ce6dfe3b66256301b00a5c558eaf094faa0e67d673d06e"
+}

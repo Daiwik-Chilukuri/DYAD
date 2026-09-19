@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "datasets": [
+    {
+      "id": "bmrcl_gtfs_unofficial",
+      "title": "Unofficial BMRCL GTFS",
+      "group": "default",
+      "agent": "core_mobility",
+      "source_type": "url",
+      "source_page": "https://github.com/Vonter/bmrcl-gtfs",
+      "download_url": "https://raw.githubusercontent.com/Vonter/bmrcl-gtfs/main/gtfs/bmrcl.zip",
+      "target": "raw/metro/bmrcl.zip",
+      "format": "GTFS ZIP",
+      "license": "ODbL-1.0",
+      "attribution": "Vonter/bmrcl-gtfs; derived from BMRCL timetables and OpenStreetMap",
+      "temporal_coverage": "rolling unofficial feed",
+      "limitations": [
+        "Unofficial feed",
+        "Intermediate stop times are estimated",
+        "Some short-loop services may be incomplete"
+      ]
+    },
+    {
+      "id": "bbmp_wards_198",
+      "title": "Historical BBMP 198 Ward Boundaries",
+      "group": "default",
+      "agent": "demographics_spatial",
+      "source_type": "url",
+      "source_page": "https://projects.datameet.org/Municipal_Spatial_Data/bangalore/",
+      "download_url": "https://raw.githubusercontent.com/datameet/Municipal_Spatial_Data/master/Bangalore/BBMP_oldWards.geojson",
+      "target": "raw/demographics/bbmp_wards_198.geojson",
+      "format": "GeoJSON",
+      "license": "CC-BY-4.0",
+      "attribution": "DataMeet Municipal Spatial Data",
+      "temporal_coverage": "historical 198-ward geography",
+      "limitations": [
+        "Historical boundaries",
+        "Must not be mixed with current 369-ward identifiers"
+      ]
+    },
+    {
+      "id": "bengaluru_ward_census_2011",
+      "title": "Bengaluru Ward-wise Census 2011",
+      "group": "default",
+      "agent": "demographics_equity",
+      "source_type": "ckan",
+      "ckan_base": "https://data.opencity.in",
+      "package_id": "bengaluru-census-2011",
+      "resource_id": "269cdf01-dae5-4736-8f4d-72a8e57fa3a9",
+      "source_page": "https://data.opencity.in/dataset/bengaluru-census-2011",
+      "target": "raw/demographics/bengaluru_ward_census_2011.csv",
+      "format": "CSV",
+      "license": "Public Domain",
+      "attribution": "Office of the Registrar General & Census Commissioner, India; OpenCity",
+      "temporal_coverage": "2011",
+      "limitations": ["Historical population baseline, not current population"]
+    },
+    {
+      "id": "bengaluru_road_widths",
+      "title": "Bengaluru Road Width Map",
+      "group": "default",
+      "agent": "feasibility",
+      "source_type": "ckan",
+      "ckan_base": "https://data.opencity.in",
+      "package_id": "bengaluru-road-width-map",
+      "resource_id": "bd9d5ea1-40c8-4699-87c9-d4a4f303cfff",
+      "source_page": "https://data.opencity.in/dataset/bengaluru-road-width-map",
+      "target": "raw/roads/bengaluru_road_widths.kml",
+      "format": "KML",
+      "license": "Public Domain",
+      "attribution": "KSRSAC; OpenCity",
+      "temporal_coverage": "source year not stated",
+      "limitations": [
+        "Survey year is not identified",
+        "Covers important roads rather than every road",
+        "Width field and units require source inspection"
+      ]
+    },
+    {
+      "id": "atree_lakes_streams",
+      "title": "Map of Lakes and Streams of Bengaluru Urban",
+      "group": "default",
+      "agent": "feasibility_environment",
+      "source_type": "ckan",
+      "ckan_base": "https://data.opencity.in",
+      "package_id": "map-lakes-streams-bengaluru-urban-within-bbmp-area",
+      "resource_id": "c25e7c1e-f1e0-4dc2-8a6d-216470e363a0",
+      "source_page": "https://data.opencity.in/dataset/map-lakes-streams-bengaluru-urban-within-bbmp-area",
+      "target": "raw/environment/atree_lakes_streams.kml",
+      "format": "KML",
+      "license": "CC-BY",
+      "attribution": "ATREE-CSEI",
+      "temporal_coverage": "source year not stated",
+      "limitations": [
+        "Physical geometry is not itself a legal buffer",
+        "Potential duplicates must be resolved before combining other water datasets"
+      ]
+    },
+    {
+      "id": "bengaluru_urban_slums",
+      "title": "Bengaluru Urban Slum Boundaries",
+      "group": "default",
+      "agent": "demographics_equity",
+      "source_type": "ckan",
+      "ckan_base": "https://data.opencity.in",
+      "package_id": "bengaluru-urban-slums",
+      "resource_id": "f6a01da3-8d5f-45b8-8768-7593278e3ad6",
+      "source_page": "https://data.opencity.in/dataset/bengaluru-urban-slums",
+      "target": "raw/demographics/bengaluru_urban_slums.geojsonl",
+      "format": "GeoJSON Lines",
+      "license": "Public Domain",
+      "attribution": "OpenCity",
+      "temporal_coverage": "published 2026",
+      "limitations": [
+        "Use as one equity indicator only",
+        "Do not infer occupation or income from geometry alone"
+      ]
+    },
+    {
+      "id": "osm_bengaluru_pois",
+      "title": "OpenStreetMap Bengaluru Planning POIs",
+      "group": "default",
+      "agent": "poi",
+      "source_type": "overpass",
+      "source_page": "https://www.openstreetmap.org/copyright",
+      "endpoint": "https://overpass.kumi.systems/api/interpreter",
+      "query": "[out:json][timeout:180];(nwr[\"amenity\"~\"hospital|clinic|college|university|school|government|townhall\"](12.70,77.30,13.20,77.90);nwr[\"office\"](12.70,77.30,13.20,77.90);nwr[\"railway\"=\"station\"](12.70,77.30,13.20,77.90);nwr[\"public_transport\"=\"station\"](12.70,77.30,13.20,77.90);nwr[\"shop\"~\"mall|department_store\"](12.70,77.30,13.20,77.90););out center tags;",
+      "target": "raw/poi/osm_bengaluru_pois.json",
+      "format": "Overpass JSON",
+      "license": "ODbL-1.0",
+      "attribution": "OpenStreetMap contributors",
+      "temporal_coverage": "snapshot at download time",
+      "limitations": [
+        "Completeness varies by OpenStreetMap contributor coverage",
+        "Ways and relations use representative center points for clustering",
+        "The extract is deliberately limited to planning-relevant POI categories"
+      ]
+    },
+    {
+      "id": "bengaluru_mobility_indicators_2011",
+      "title": "Bengaluru Zone-wise Mobility Indicators 2011",
+      "group": "default",
+      "agent": "traffic_census",
+      "source_type": "ckan",
+      "source_page": "https://data.opencity.in/dataset/bengaluru-mobility-indicators",
+      "ckan_base": "https://data.opencity.in",
+      "package_id": "bengaluru-mobility-indicators",
+      "resource_id": "9e224133-7275-412c-b8e8-c66436dd9d9b",
+      "target": "raw/mobility/bengaluru_mobility_indicators_2011.csv",
+      "format": "CSV",
+      "license": "Public Domain",
+      "attribution": "Directorate of Urban Land Transport, Karnataka; OpenCity",
+      "temporal_coverage": "2010-2011",
+      "limitations": [
+        "Historical baseline",
+        "Zone-level rather than corridor-level observations"
+      ]
+    },
+    {
+      "id": "openstreetmap_india",
+      "title": "OpenStreetMap India Extract",
+      "group": "large",
+      "agent": "poi_mobility_feasibility",
+      "source_type": "url",
+      "source_page": "https://download.geofabrik.de/asia/india.html",
+      "download_url": "https://download.geofabrik.de/asia/india-latest.osm.pbf",
+      "target": "raw/osm/india-latest.osm.pbf",
+      "format": "OSM PBF",
+      "license": "ODbL-1.0",
+      "attribution": "OpenStreetMap contributors; Geofabrik extract",
+      "temporal_coverage": "daily rolling extract",
+      "limitations": [
+        "Large download",
+        "Must be clipped to Bengaluru and converted before browser use",
+        "Coverage and tag completeness vary by contributor activity"
+      ]
+    },
+    {
+      "id": "bmrcl_station_ridership_august_2025",
+      "title": "BMRCL Station-wise Hourly Ridership, August 2025",
+      "group": "restricted",
+      "agent": "mobility",
+      "source_type": "ckan",
+      "ckan_base": "https://data.opencity.in",
+      "package_id": "bmrcl-station-wise-ridership-data",
+      "resource_id": "45259d6e-41b4-4012-8553-0d27219f83a7",
+      "source_page": "https://data.opencity.in/dataset/bmrcl-station-wise-ridership-data",
+      "target": "restricted-noncommercial/bmrcl_station_ridership_august_2025.xlsx",
+      "format": "XLSX",
+      "license": "CC-BY-NC-SA-4.0",
+      "attribution": "BMRCL; RTI collection credited by OpenCity",
+      "temporal_coverage": "August 2025",
+      "limitations": [
+        "Non-commercial license",
+        "One-month snapshot",
+        "Requires station-code normalization"
+      ]
+    }
+  ]
+}

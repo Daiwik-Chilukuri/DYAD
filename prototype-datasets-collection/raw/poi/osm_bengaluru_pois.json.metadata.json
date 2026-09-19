@@ -1,0 +1,10 @@
+{
+  "dataset_id": "osm_bengaluru_pois",
+  "source_page": "https://www.openstreetmap.org/copyright",
+  "resolved_download_url": "https://overpass.kumi.systems/api/interpreter",
+  "license": "ODbL-1.0",
+  "attribution": "OpenStreetMap contributors",
+  "downloaded_at": "2026-09-19T08:52:23.199206+00:00",
+  "bytes": 2418810,
+  "sha256": "315ce923562686f459d96c34aad676e69104001c21cad90bef0e6b706132af1e"
+}

@@ -1,0 +1,166 @@
+{
+  "generated_at": "2026-09-19T08:57:52.422090+00:00",
+  "catalog_dataset_count": 10,
+  "missing_default_datasets": [],
+  "invalid_checksums": [],
+  "raw_files": [
+    {
+      "dataset_id": "bmrcl_gtfs_unofficial",
+      "group": "default",
+      "path": "raw/metro/bmrcl.zip",
+      "present": true,
+      "bytes": 2369725,
+      "metadata_present": true,
+      "checksum_valid": true
+    },
+    {
+      "dataset_id": "bbmp_wards_198",
+      "group": "default",
+      "path": "raw/demographics/bbmp_wards_198.geojson",
+      "present": true,
+      "bytes": 1881095,
+      "metadata_present": true,
+      "checksum_valid": true
+    },
+    {
+      "dataset_id": "bengaluru_ward_census_2011",
+      "group": "default",
+      "path": "raw/demographics/bengaluru_ward_census_2011.csv",
+      "present": true,
+      "bytes": 16236,
+      "metadata_present": true,
+      "checksum_valid": true
+    },
+    {
+      "dataset_id": "bengaluru_road_widths",
+      "group": "default",
+      "path": "raw/roads/bengaluru_road_widths.kml",
+      "present": true,
+      "bytes": 25737588,
+      "metadata_present": true,
+      "checksum_valid": true
+    },
+    {
+      "dataset_id": "atree_lakes_streams",
+      "group": "default",
+      "path": "raw/environment/atree_lakes_streams.kml",
+      "present": true,
+      "bytes": 3127879,
+      "metadata_present": true,
+      "checksum_valid": true
+    },
+    {
+      "dataset_id": "bengaluru_urban_slums",
+      "group": "default",
+      "path": "raw/demographics/bengaluru_urban_slums.geojsonl",
+      "present": true,
+      "bytes": 420262,
+      "metadata_present": true,
+      "checksum_valid": true
+    },
+    {
+      "dataset_id": "osm_bengaluru_pois",
+      "group": "default",
+      "path": "raw/poi/osm_bengaluru_pois.json",
+      "present": true,
+      "bytes": 2418810,
+      "metadata_present": true,
+      "checksum_valid": true
+    },
+    {
+      "dataset_id": "bengaluru_mobility_indicators_2011",
+      "group": "default",
+      "path": "raw/mobility/bengaluru_mobility_indicators_2011.csv",
+      "present": true,
+      "bytes": 1601,
+      "metadata_present": true,
+      "checksum_valid": true
+    },
+    {
+      "dataset_id": "openstreetmap_india",
+      "group": "large",
+      "path": "raw/osm/india-latest.osm.pbf",
+      "present": false,
+      "bytes": 0,
+      "metadata_present": false,
+      "checksum_valid": null
+    },
+    {
+      "dataset_id": "bmrcl_station_ridership_august_2025",
+      "group": "restricted",
+      "path": "restricted-noncommercial/bmrcl_station_ridership_august_2025.xlsx",
+      "present": false,
+      "bytes": 0,
+      "metadata_present": false,
+      "checksum_valid": null
+    }
+  ],
+  "geojson": [
+    {
+      "path": "normalized/demographics/underserved_areas.geojson",
+      "feature_count": 509,
+      "coordinate_count": 8429,
+      "coordinates_outside_bengaluru_bounds": 0,
+      "invalid_geometries": 0,
+      "errors": [],
+      "status": "valid"
+    },
+    {
+      "path": "normalized/demographics/wards_with_census.geojson",
+      "feature_count": 198,
+      "coordinate_count": 41062,
+      "coordinates_outside_bengaluru_bounds": 0,
+      "invalid_geometries": 0,
+      "errors": [],
+      "status": "valid",
+      "matched_census_features": 198,
+      "unmatched_census_features": 0
+    },
+    {
+      "path": "normalized/environment/lakes_streams.geojson",
+      "feature_count": 4108,
+      "coordinate_count": 20393,
+      "coordinates_outside_bengaluru_bounds": 0,
+      "invalid_geometries": 0,
+      "errors": [],
+      "status": "valid"
+    },
+    {
+      "path": "normalized/metro/lines.geojson",
+      "feature_count": 19,
+      "coordinate_count": 4541,
+      "coordinates_outside_bengaluru_bounds": 0,
+      "invalid_geometries": 0,
+      "errors": [],
+      "status": "valid"
+    },
+    {
+      "path": "normalized/metro/stations.geojson",
+      "feature_count": 83,
+      "coordinate_count": 83,
+      "coordinates_outside_bengaluru_bounds": 0,
+      "invalid_geometries": 0,
+      "errors": [],
+      "status": "valid"
+    },
+    {
+      "path": "normalized/poi/pois.geojson",
+      "feature_count": 8213,
+      "coordinate_count": 8213,
+      "coordinates_outside_bengaluru_bounds": 0,
+      "invalid_geometries": 0,
+      "errors": [],
+      "status": "valid"
+    },
+    {
+      "path": "normalized/roads/road_widths.geojson",
+      "feature_count": 23238,
+      "coordinate_count": 126018,
+      "coordinates_outside_bengaluru_bounds": 0,
+      "invalid_geometries": 0,
+      "errors": [],
+      "status": "valid"
+    }
+  ],
+  "status": "valid"
+}

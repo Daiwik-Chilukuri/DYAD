@@ -1,0 +1,2027 @@
+{
+  "$schema": "../../schemas/corridor-analysis-response.schema.json",
+  "schema_version": "1.0.0",
+  "analysis_id": "silk_board_sarjapur_exploratory",
+  "status": "success",
+  "generated_at": "2026-09-19T10:17:07.354764+00:00",
+  "coordinate_reference_system": {
+    "name": "EPSG:4326",
+    "geojson_coordinate_order": [
+      "longitude",
+      "latitude"
+    ]
+  },
+  "request": {
+    "corridor": {
+      "type": "Feature",
+      "id": "proposed-corridor",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            77.6235,
+            12.9177
+          ],
+          [
+            77.6506,
+            12.9235
+          ],
+          [
+            77.6804,
+            12.9128
+          ],
+          [
+            77.6974,
+            12.9045
+          ],
+          [
+            77.7275,
+            12.895
+          ],
+          [
+            77.7852,
+            12.86
+          ]
+        ]
+      },
+      "properties": {
+        "name": "Silk Board to Sarjapur exploratory alignment",
+        "kind": "proposed_corridor",
+        "style_token": "corridor-proposed"
+      }
+    },
+    "catchment_m": 2000
+  },
+  "summary": {
+    "corridor_length_km": 19.301022073816622,
+    "population_reached_2011": 371761,
+    "poi_count": 804,
+    "water_watchpoint_count": 11,
+    "water_intersection_count": 7,
+    "projected_metro_minutes": 35.76433829017564,
+    "projected_minutes_saved_one_way": 47.54942605723425
+  },
+  "agents": {
+    "economic_specialist": {
+      "status": "success",
+      "title": "Economic and social activity",
+      "method": {
+        "name": "DBSCAN",
+        "eps_m": 500,
+        "min_samples": 3
+      },
+      "metrics": [
+        {
+          "key": "poi_count",
+          "label": "POIs in catchment",
+          "value": 804,
+          "unit": "count"
+        },
+        {
+          "key": "cluster_count",
+          "label": "Activity clusters",
+          "value": 16,
+          "unit": "count"
+        },
+        {
+          "key": "noise_poi_count",
+          "label": "Unclustered POIs",
+          "value": 28,
+          "unit": "count"
+        }
+      ],
+      "breakdown": {
+        "categories": {
+          "education": 182,
+          "healthcare": 171,
+          "corporate": 405,
+          "civic": 19,
+          "commercial": 18,
+          "public_transit": 9
+        }
+      },
+      "warnings": [
+        "OSM completeness varies by category and neighbourhood",
+        "Ways and relations are represented by center points"
+      ]
+    },
+    "demographics_specialist": {
+      "status": "success",
+      "title": "Population and equity catchment",
+      "method": {
+        "population": "area-weighted polygon intersection",
+        "segmentation_model": "KMeans(k<=3) on density, SC/ST share, overlap"
+      },
+      "metrics": [
+        {
+          "key": "ward_count",
+          "label": "Intersected wards",
+          "value": 17,
+          "unit": "count"
+        },
+        {
+          "key": "population_reached_2011",
+          "label": "Population reached",
+          "value": 371761,
+          "unit": "people"
+        },
+        {
+          "key": "sc_st_share",
+          "label": "Population-weighted SC/ST share",
+          "value": 12.020893738654554,
+          "unit": "percent",
+          "display_precision": 1
+        }
+      ],
+      "breakdown": {
+        "catchment_archetypes": [
+          {
+            "archetype": 0,
+            "ward_count": 6,
+            "mean_density_per_sq_km": 18233.043948605664,
+            "mean_sc_st_share": 0.19232731870236888,
+            "wards": [
+              "Agaram",
+              "Lakkasandra",
+              "Ejipura",
+              "Varthuru",
+              "Mangammanapalya",
+              "Jayanagar East"
+            ]
+          },
+          {
+            "archetype": 1,
+            "ward_count": 10,
+            "mean_density_per_sq_km": 19535.290291388323,
+            "mean_sc_st_share": 0.10836382097779554,
+            "wards": [
+              "Koramangala",
+              "Suddagunte Palya",
+              "Jakkasandra",
+              "BTM Layout",
+              "Bellanduru",
+              "HSR Layout",
+              "Bommanahalli",
+              "Bilekhalli",
+              "Hongasandra",
+              "Madivala"
+            ]
+          },
+          {
+            "archetype": 2,
+            "ward_count": 1,
+            "mean_density_per_sq_km": 71761.21511526249,
+            "mean_sc_st_share": 0.05058071890755445,
+            "wards": [
+              "Gurappanapalya"
+            ]
+          }
+        ]
+      },
+      "warnings": [
+        "Population is a Census 2011 baseline",
+        "Areal weighting assumes population is uniform within each ward",
+        "SC/ST share is an equity signal, not a complete income proxy"
+      ]
+    },
+    "ecological_specialist": {
+      "status": "success",
+      "title": "Water-body proximity screening",
+      "method": "projected line-to-water distance and intersection",
+      "metrics": [
+        {
+          "key": "watchpoint_count",
+          "label": "Environmental watchpoints",
+          "value": 11,
+          "unit": "count"
+        },
+        {
+          "key": "intersection_count",
+          "label": "Alignment intersections",
+          "value": 7,
+          "unit": "count"
+        },
+        {
+          "key": "watch_distance_m",
+          "label": "Screening distance",
+          "value": 75,
+          "unit": "metres"
+        }
+      ],
+      "warnings": [
+        "Watch distance is an analytical threshold, not a legal conclusion",
+        "Legal buffers must be configured from a dated authoritative rule",
+        "Source geometry may not represent seasonal water extent"
+      ]
+    },
+    "mobility_specialist": {
+      "status": "success",
+      "title": "Mobility and road comparison",
+      "method": {
+        "model": "Ridge regression",
+        "road_scenario": "BPR"
+      },
+      "metrics": [
+        {
+          "key": "corridor_length_km",
+          "label": "Corridor length",
+          "value": 19.301022073816622,
+          "unit": "kilometres",
+          "display_precision": 2
+        },
+        {
+          "key": "projected_metro_minutes",
+          "label": "Projected metro time",
+          "value": 35.76433829017564,
+          "unit": "minutes",
+          "display_precision": 1
+        },
+        {
+          "key": "road_minutes",
+          "label": "Road baseline",
+          "value": 83.31376434740989,
+          "unit": "minutes",
+          "display_precision": 1
+        },
+        {
+          "key": "minutes_saved",
+          "label": "Projected one-way time saved",
+          "value": 47.54942605723425,
+          "unit": "minutes",
+          "display_precision": 1
+        }
+      ],
+      "breakdown": {
+        "gtfs_model": {
+          "model": "Ridge regression",
+          "training_examples": 14,
+          "features": [
+            "distance_km",
+            "stop_count"
+          ],
+          "r2_on_training_patterns": 0.9981590078612638,
+          "cross_validated_mae_minutes": 1.2504025347192216,
+          "cross_validated_r2": 0.9911367591230948,
+          "coefficients": {
+            "distance_km": 1.8548703059426799,
+            "stop_count": 0.0,
+            "intercept": -0.03655442889101579
+          },
+          "median_station_spacing_km": 1.1920277777777777,
+          "projected_stop_count": 17,
+          "projected_metro_minutes": 35.76433829017564
+        },
+        "road_comparison": {
+          "road_minutes_at_13_9_kmh": 83.31376434740989,
+          "bpr_minutes_at_vc_1_5": 72.76657652383096,
+          "projected_minutes_saved_one_way": 47.54942605723425,
+          "bpr_parameters": {
+            "free_flow_kmh": 28,
+            "alpha": 0.15,
+            "beta": 4,
+            "v_c": 1.5
+          }
+        },
+        "road_widths": {
+          "nearby_segment_count": 97,
+          "segments_with_width": 97,
+          "median_width_m": 45.0,
+          "below_20m_count": 24,
+          "between_20m_and_30m_count": 5,
+          "at_least_30m_count": 68
+        },
+        "historical_city_context": {
+          "zones": 11,
+          "mean_public_transport_mode_share_pct": 26.90909090909091,
+          "mean_two_wheeler_mode_share_pct": 25.454545454545453,
+          "mean_car_van_mode_share_pct": 5.636363636363637,
+          "source_period": "2010-2011"
+        }
+      },
+      "warnings": [
+        "The unofficial GTFS contains synthesized intermediate timings",
+        "The BPR scenario uses an assumed V/C ratio, not live traffic telemetry",
+        "Mobility indicators are a 2010-2011 historical baseline"
+      ]
+    }
+  },
+  "map": {
+    "layers": [
+      {
+        "id": "proposed-corridor",
+        "source_agent": "request",
+        "render_as": "line",
+        "style_token": "corridor-proposed",
+        "geojson": {
+          "type": "FeatureCollection",
+          "features": [
+            {
+              "type": "Feature",
+              "id": "proposed-corridor",
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  [
+                    77.6235,
+                    12.9177
+                  ],
+                  [
+                    77.6506,
+                    12.9235
+                  ],
+                  [
+                    77.6804,
+                    12.9128
+                  ],
+                  [
+                    77.6974,
+                    12.9045
+                  ],
+                  [
+                    77.7275,
+                    12.895
+                  ],
+                  [
+                    77.7852,
+                    12.86
+                  ]
+                ]
+              },
+              "properties": {
+                "name": "Silk Board to Sarjapur exploratory alignment",
+                "kind": "proposed_corridor",
+                "style_token": "corridor-proposed"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "poi-clusters",
+        "source_agent": "economic_specialist",
+        "render_as": "circle",
+        "style_token": "poi-cluster",
+        "geojson": {
+          "type": "FeatureCollection",
+          "features": [
+            {
+              "type": "Feature",
+              "id": "poi-cluster-0",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.63065419958507,
+                  12.918988099170125
+                ]
+              },
+              "properties": {
+                "kind": "poi_cluster",
+                "title": "Angel Heart Montessori Play School",
+                "poi_count": 482,
+                "category_counts": {
+                  "education": 107,
+                  "corporate": 230,
+                  "healthcare": 111,
+                  "civic": 18,
+                  "commercial": 9,
+                  "public_transit": 7
+                },
+                "examples": [
+                  "Angel Heart Montessori Play School",
+                  "Wipro K1 office",
+                  "Narayana Hrudayalaya Dental Clinic",
+                  "Dr Ganesh Medical and Diabetic Clinic",
+                  "Digi m2m Solutions"
+                ],
+                "style_token": "poi-cluster",
+                "source_agent": "economic_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "poi-cluster-1",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.67865753136364,
+                  12.92191240590909
+                ]
+              },
+              "properties": {
+                "kind": "poi_cluster",
+                "title": "Clinic",
+                "poi_count": 220,
+                "category_counts": {
+                  "healthcare": 37,
+                  "commercial": 8,
+                  "civic": 1,
+                  "corporate": 162,
+                  "education": 12
+                },
+                "examples": [
+                  "Clinic",
+                  "Apollo Hospital",
+                  "Sunny Medicals Hospital Clinic",
+                  "Foodworld",
+                  "Passport Seva Kendra"
+                ],
+                "style_token": "poi-cluster",
+                "source_agent": "economic_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "poi-cluster-2",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.707185425,
+                  12.908285591666667
+                ]
+              },
+              "properties": {
+                "kind": "poi_cluster",
+                "title": "Karunalayam Hospital",
+                "poi_count": 12,
+                "category_counts": {
+                  "healthcare": 2,
+                  "corporate": 4,
+                  "public_transit": 1,
+                  "education": 5
+                },
+                "examples": [
+                  "Karunalayam Hospital",
+                  "Unisys",
+                  "Carmelaram",
+                  "Accenture",
+                  "Uber"
+                ],
+                "style_token": "poi-cluster",
+                "source_agent": "economic_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "poi-cluster-4",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.7878721,
+                  12.861504966666667
+                ]
+              },
+              "properties": {
+                "kind": "poi_cluster",
+                "title": "Sarjapura Bus Stand",
+                "poi_count": 9,
+                "category_counts": {
+                  "public_transit": 1,
+                  "healthcare": 4,
+                  "education": 4
+                },
+                "examples": [
+                  "Sarjapura Bus Stand",
+                  "Nandi Health Care",
+                  "Sri Rama Clinic",
+                  "Sarjapura Urban Primary Health Centre",
+                  "Town Hospital"
+                ],
+                "style_token": "poi-cluster",
+                "source_agent": "economic_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "poi-cluster-10",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.71674485714286,
+                  12.899876385714286
+                ]
+              },
+              "properties": {
+                "kind": "poi_cluster",
+                "title": "Lakshya Public School",
+                "poi_count": 7,
+                "category_counts": {
+                  "education": 4,
+                  "corporate": 1,
+                  "healthcare": 2
+                },
+                "examples": [
+                  "Lakshya Public School",
+                  "St Patrick's Academy",
+                  "St. Jerome's College",
+                  "IndiQube The Fore",
+                  "Camillian Pastoral Health Centre"
+                ],
+                "style_token": "poi-cluster",
+                "source_agent": "economic_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "poi-cluster-3",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.66464743333333,
+                  12.911574750000002
+                ]
+              },
+              "properties": {
+                "kind": "poi_cluster",
+                "title": "Dr. Arpita Agarwal Clinic",
+                "poi_count": 6,
+                "category_counts": {
+                  "healthcare": 5,
+                  "education": 1
+                },
+                "examples": [
+                  "Dr. Arpita Agarwal Clinic",
+                  "Mahaveer Orthopeadic Clinic",
+                  "Aria Clinic",
+                  "The Local Dentist",
+                  "Kidzee Play School"
+                ],
+                "style_token": "poi-cluster",
+                "source_agent": "economic_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "poi-cluster-5",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.7502065,
+                  12.879752716666667
+                ]
+              },
+              "properties": {
+                "kind": "poi_cluster",
+                "title": "SAMAN Portable Office Solutions",
+                "poi_count": 6,
+                "category_counts": {
+                  "corporate": 1,
+                  "healthcare": 2,
+                  "education": 3
+                },
+                "examples": [
+                  "SAMAN Portable Office Solutions",
+                  "Balaji Nursing Home",
+                  "Sri Lakshmi Multi Speciality Hospital"
+                ],
+                "style_token": "poi-cluster",
+                "source_agent": "economic_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "poi-cluster-9",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.77690128,
+                  12.84518196
+                ]
+              },
+              "properties": {
+                "kind": "poi_cluster",
+                "title": "Security Gate 1",
+                "poi_count": 5,
+                "category_counts": {
+                  "corporate": 2,
+                  "education": 3
+                },
+                "examples": [
+                  "Security Gate 1",
+                  "Security Gate 2",
+                  "Azim Premji School",
+                  "Azim Premji University",
+                  "Azim Premji University"
+                ],
+                "style_token": "poi-cluster",
+                "source_agent": "economic_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "poi-cluster-11",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.69740306,
+                  12.88762558
+                ]
+              },
+              "properties": {
+                "kind": "poi_cluster",
+                "title": "Prakriya Green Wisdom School",
+                "poi_count": 5,
+                "category_counts": {
+                  "education": 5
+                },
+                "examples": [
+                  "Prakriya Green Wisdom School",
+                  "Primus Public School",
+                  "Bhoomi College",
+                  "Bangalore Technological Institute",
+                  "Sri Chaitanya Techno School"
+                ],
+                "style_token": "poi-cluster",
+                "source_agent": "economic_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "poi-cluster-13",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.68059194,
+                  12.8962287
+                ]
+              },
+              "properties": {
+                "kind": "poi_cluster",
+                "title": "Narayana CO-Kaveri Bhavan",
+                "poi_count": 5,
+                "category_counts": {
+                  "education": 5
+                },
+                "examples": [
+                  "Narayana CO-Kaveri Bhavan",
+                  "Glentree Academy",
+                  "Government School",
+                  "Narayana",
+                  "Amrita Vishwa Vidyapeetham"
+                ],
+                "style_token": "poi-cluster",
+                "source_agent": "economic_specialist"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "ward-impacts",
+        "source_agent": "demographics_specialist",
+        "render_as": "circle",
+        "style_token": "ward-impact",
+        "geojson": {
+          "type": "FeatureCollection",
+          "features": [
+            {
+              "type": "Feature",
+              "id": "ward-174",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.64912830495746,
+                  12.916882541287542
+                ]
+              },
+              "properties": {
+                "kind": "ward_impact",
+                "ward_number": 174.0,
+                "ward_name": "HSR Layout",
+                "population_reached_2011": 58786,
+                "overlap_ratio": 0.9326184183631748,
+                "sc_st_share": 0.10480224644233972,
+                "style_token": "ward-impact",
+                "source_agent": "demographics_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "ward-150",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.6832415316615,
+                  12.917653666162868
+                ]
+              },
+              "properties": {
+                "kind": "ward_impact",
+                "ward_number": 150.0,
+                "ward_name": "Bellanduru",
+                "population_reached_2011": 48430,
+                "overlap_ratio": 0.6040184449061096,
+                "sc_st_share": 0.1359940134696932,
+                "style_token": "ward-impact",
+                "source_agent": "demographics_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "ward-172",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.61442098265519,
+                  12.920693974289941
+                ]
+              },
+              "properties": {
+                "kind": "ward_impact",
+                "ward_number": 172.0,
+                "ward_name": "Madivala",
+                "population_reached_2011": 42624,
+                "overlap_ratio": 0.9999999999999998,
+                "sc_st_share": 0.09248310810810811,
+                "style_token": "ward-impact",
+                "source_agent": "demographics_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "ward-176",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.61100384884583,
+                  12.911029923719452
+                ]
+              },
+              "properties": {
+                "kind": "ward_impact",
+                "ward_number": 176.0,
+                "ward_name": "BTM Layout",
+                "population_reached_2011": 33839,
+                "overlap_ratio": 0.6476382879524073,
+                "sc_st_share": 0.08690909090909091,
+                "style_token": "ward-impact",
+                "source_agent": "demographics_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "ward-173",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.62954850657773,
+                  12.920658934232039
+                ]
+              },
+              "properties": {
+                "kind": "ward_impact",
+                "ward_number": 173.0,
+                "ward_name": "Jakkasandra",
+                "population_reached_2011": 33521,
+                "overlap_ratio": 0.9999999999999997,
+                "sc_st_share": 0.1367202649085648,
+                "style_token": "ward-impact",
+                "source_agent": "demographics_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "ward-151",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.62546001556326,
+                  12.928997592573376
+                ]
+              },
+              "properties": {
+                "kind": "ward_impact",
+                "ward_number": 151.0,
+                "ward_name": "Koramangala",
+                "population_reached_2011": 29665,
+                "overlap_ratio": 0.7742137304287425,
+                "sc_st_share": 0.15155548595886836,
+                "style_token": "ward-impact",
+                "source_agent": "demographics_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "ward-175",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.62470980726454,
+                  12.908535746511435
+                ]
+              },
+              "properties": {
+                "kind": "ward_impact",
+                "ward_number": 175.0,
+                "ward_name": "Bommanahalli",
+                "population_reached_2011": 24884,
+                "overlap_ratio": 0.5709378071036695,
+                "sc_st_share": 0.11008374440747963,
+                "style_token": "ward-impact",
+                "source_agent": "demographics_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "ward-171",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.60691324036937,
+                  12.9210075984947
+                ]
+              },
+              "properties": {
+                "kind": "ward_impact",
+                "ward_number": 171.0,
+                "ward_name": "Gurappanapalya",
+                "population_reached_2011": 19148,
+                "overlap_ratio": 0.39084132378429826,
+                "sc_st_share": 0.05058071890755445,
+                "style_token": "ward-impact",
+                "source_agent": "demographics_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "ward-114",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.65246655343229,
+                  12.928997592573376
+                ]
+              },
+              "properties": {
+                "kind": "ward_impact",
+                "ward_number": 114.0,
+                "ward_name": "Agaram",
+                "population_reached_2011": 16715,
+                "overlap_ratio": 0.45278664188145723,
+                "sc_st_share": 0.3179921985047134,
+                "style_token": "ward-impact",
+                "source_agent": "demographics_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "ward-189",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.6329739190728,
+                  12.90351586824697
+                ]
+              },
+              "properties": {
+                "kind": "ward_impact",
+                "ward_number": 189.0,
+                "ward_name": "Hongasandra",
+                "population_reached_2011": 16418,
+                "overlap_ratio": 0.23949054523975002,
+                "sc_st_share": 0.07175365405373865,
+                "style_token": "ward-impact",
+                "source_agent": "demographics_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "ward-152",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.6121720921195,
+                  12.927639645286133
+                ]
+              },
+              "properties": {
+                "kind": "ward_impact",
+                "ward_number": 152.0,
+                "ward_name": "Suddagunte Palya",
+                "population_reached_2011": 15138,
+                "overlap_ratio": 0.378487684880304,
+                "sc_st_share": 0.09663224741855639,
+                "style_token": "ward-impact",
+                "source_agent": "demographics_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "ward-188",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.61830489015597,
+                  12.907775211886028
+                ]
+              },
+              "properties": {
+                "kind": "ward_impact",
+                "ward_number": 188.0,
+                "ward_name": "Bilekhalli",
+                "population_reached_2011": 11585,
+                "overlap_ratio": 0.23223863022216207,
+                "sc_st_share": 0.09670435410151551,
+                "style_token": "ward-impact",
+                "source_agent": "demographics_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "ward-148",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.63211707810161,
+                  12.9339138143181
+                ]
+              },
+              "properties": {
+                "kind": "ward_impact",
+                "ward_number": 148.0,
+                "ward_name": "Ejipura",
+                "population_reached_2011": 10044,
+                "overlap_ratio": 0.21368869015059244,
+                "sc_st_share": 0.17411284146030126,
+                "style_token": "ward-impact",
+                "source_agent": "demographics_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "ward-190",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.64023412813285,
+                  12.904473365049249
+                ]
+              },
+              "properties": {
+                "kind": "ward_impact",
+                "ward_number": 190.0,
+                "ward_name": "Mangammanapalya",
+                "population_reached_2011": 6880,
+                "overlap_ratio": 0.10440952378832485,
+                "sc_st_share": 0.10610107755349825,
+                "style_token": "ward-impact",
+                "source_agent": "demographics_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "ward-149",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.71755227912459,
+                  12.914437458728772
+                ]
+              },
+              "properties": {
+                "kind": "ward_impact",
+                "ward_number": 149.0,
+                "ward_name": "Varthuru",
+                "population_reached_2011": 3717,
+                "overlap_ratio": 0.06803749874002855,
+                "sc_st_share": 0.17420594965675057,
+                "style_token": "ward-impact",
+                "source_agent": "demographics_specialist"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "water-watchpoints",
+        "source_agent": "ecological_specialist",
+        "render_as": "circle",
+        "style_token": "environment-risk",
+        "geojson": {
+          "type": "FeatureCollection",
+          "features": [
+            {
+              "type": "Feature",
+              "id": "water-watchpoint-106",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.64464487525643,
+                  12.922225471457098
+                ]
+              },
+              "properties": {
+                "source_id": "106",
+                "name": "Agara kere",
+                "kind": "water_watchpoint",
+                "coordinates": [
+                  77.64464487525643,
+                  12.922225471457098
+                ],
+                "distance_m": 0.0,
+                "intersects_alignment": true,
+                "water_kind": "lake",
+                "title": "Agara kere",
+                "severity": "critical",
+                "style_token": "environment-critical",
+                "source_agent": "ecological_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "water-watchpoint-145",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.67344628184038,
+                  12.91529680484255
+                ]
+              },
+              "properties": {
+                "source_id": "145",
+                "name": "Kaikondanahalli kere",
+                "kind": "water_watchpoint",
+                "coordinates": [
+                  77.67344628184038,
+                  12.91529680484255
+                ],
+                "distance_m": 0.0,
+                "intersects_alignment": true,
+                "water_kind": "lake",
+                "title": "Kaikondanahalli kere",
+                "severity": "critical",
+                "style_token": "environment-critical",
+                "source_agent": "ecological_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "water-watchpoint-3123",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.64215267168915,
+                  12.92169208471576
+                ]
+              },
+              "properties": {
+                "source_id": "3123",
+                "name": null,
+                "kind": "water_watchpoint",
+                "coordinates": [
+                  77.64215267168915,
+                  12.92169208471576
+                ],
+                "distance_m": 0.0,
+                "intersects_alignment": true,
+                "water_kind": "stream",
+                "title": "Unnamed stream",
+                "severity": "critical",
+                "style_token": "environment-critical",
+                "source_agent": "ecological_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "water-watchpoint-3133",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.66329088327265,
+                  12.918943206341698
+                ]
+              },
+              "properties": {
+                "source_id": "3133",
+                "name": null,
+                "kind": "water_watchpoint",
+                "coordinates": [
+                  77.66329088327265,
+                  12.918943206341698
+                ],
+                "distance_m": 0.0,
+                "intersects_alignment": true,
+                "water_kind": "stream",
+                "title": "Unnamed stream",
+                "severity": "critical",
+                "style_token": "environment-critical",
+                "source_agent": "ecological_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "water-watchpoint-3227",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.67698395355958,
+                  12.914026567010488
+                ]
+              },
+              "properties": {
+                "source_id": "3227",
+                "name": null,
+                "kind": "water_watchpoint",
+                "coordinates": [
+                  77.67698395355958,
+                  12.914026567010488
+                ],
+                "distance_m": 0.0,
+                "intersects_alignment": true,
+                "water_kind": "stream",
+                "title": "Unnamed stream",
+                "severity": "critical",
+                "style_token": "environment-critical",
+                "source_agent": "ecological_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "water-watchpoint-3289",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.6873441621695,
+                  12.90940961494078
+                ]
+              },
+              "properties": {
+                "source_id": "3289",
+                "name": null,
+                "kind": "water_watchpoint",
+                "coordinates": [
+                  77.6873441621695,
+                  12.90940961494078
+                ],
+                "distance_m": 0.0,
+                "intersects_alignment": true,
+                "water_kind": "stream",
+                "title": "Unnamed stream",
+                "severity": "critical",
+                "style_token": "environment-critical",
+                "source_agent": "ecological_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "water-watchpoint-3309",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.6887329464694,
+                  12.908731561429649
+                ]
+              },
+              "properties": {
+                "source_id": "3309",
+                "name": null,
+                "kind": "water_watchpoint",
+                "coordinates": [
+                  77.6887329464694,
+                  12.908731561429649
+                ],
+                "distance_m": 0.0,
+                "intersects_alignment": true,
+                "water_kind": "stream",
+                "title": "Unnamed stream",
+                "severity": "critical",
+                "style_token": "environment-critical",
+                "source_agent": "ecological_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "water-watchpoint-3279",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.6887329464694,
+                  12.908832391462
+                ]
+              },
+              "properties": {
+                "source_id": "3279",
+                "name": null,
+                "kind": "water_watchpoint",
+                "coordinates": [
+                  77.6887329464694,
+                  12.908832391462
+                ],
+                "distance_m": 10.024046326846502,
+                "intersects_alignment": false,
+                "water_kind": "stream",
+                "title": "Unnamed stream",
+                "severity": "warning",
+                "style_token": "environment-warning",
+                "source_agent": "ecological_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "water-watchpoint-3231",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.6762338877706,
+                  12.9141097718015
+                ]
+              },
+              "properties": {
+                "source_id": "3231",
+                "name": null,
+                "kind": "water_watchpoint",
+                "coordinates": [
+                  77.6762338877706,
+                  12.9141097718015
+                ],
+                "distance_m": 19.41872371810266,
+                "intersects_alignment": false,
+                "water_kind": "stream",
+                "title": "Unnamed stream",
+                "severity": "warning",
+                "style_token": "environment-warning",
+                "source_agent": "ecological_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "water-watchpoint-3237",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.68262229555,
+                  12.9121654737817
+                ]
+              },
+              "properties": {
+                "source_id": "3237",
+                "name": null,
+                "kind": "water_watchpoint",
+                "coordinates": [
+                  77.68262229555,
+                  12.9121654737817
+                ],
+                "distance_m": 44.78428937546625,
+                "intersects_alignment": false,
+                "water_kind": "stream",
+                "title": "Unnamed stream",
+                "severity": "warning",
+                "style_token": "environment-warning",
+                "source_agent": "ecological_specialist"
+              }
+            },
+            {
+              "type": "Feature",
+              "id": "water-watchpoint-107",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  77.6656925936704,
+                  12.9175661128038
+                ]
+              },
+              "properties": {
+                "source_id": "107",
+                "name": "Ambalipura Kelagina kere",
+                "kind": "water_watchpoint",
+                "coordinates": [
+                  77.6656925936704,
+                  12.9175661128038
+                ],
+                "distance_m": 53.70621572513454,
+                "intersects_alignment": false,
+                "water_kind": "lake",
+                "title": "Ambalipura Kelagina kere",
+                "severity": "warning",
+                "style_token": "environment-warning",
+                "source_agent": "ecological_specialist"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "focus_points": [
+      {
+        "id": "focus-poi-cluster-0",
+        "kind": "poi_cluster",
+        "title": "Angel Heart Montessori Play School",
+        "subtitle": "482 POIs in this activity cluster",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "poi-clusters",
+          "feature_id": "poi-cluster-0"
+        },
+        "coordinate": {
+          "longitude": 77.63065419958507,
+          "latitude": 12.918988099170125
+        },
+        "camera": {
+          "zoom": 14.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-poi-cluster-1",
+        "kind": "poi_cluster",
+        "title": "Clinic",
+        "subtitle": "220 POIs in this activity cluster",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "poi-clusters",
+          "feature_id": "poi-cluster-1"
+        },
+        "coordinate": {
+          "longitude": 77.67865753136364,
+          "latitude": 12.92191240590909
+        },
+        "camera": {
+          "zoom": 14.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-poi-cluster-2",
+        "kind": "poi_cluster",
+        "title": "Karunalayam Hospital",
+        "subtitle": "12 POIs in this activity cluster",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "poi-clusters",
+          "feature_id": "poi-cluster-2"
+        },
+        "coordinate": {
+          "longitude": 77.707185425,
+          "latitude": 12.908285591666667
+        },
+        "camera": {
+          "zoom": 14.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-poi-cluster-4",
+        "kind": "poi_cluster",
+        "title": "Sarjapura Bus Stand",
+        "subtitle": "9 POIs in this activity cluster",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "poi-clusters",
+          "feature_id": "poi-cluster-4"
+        },
+        "coordinate": {
+          "longitude": 77.7878721,
+          "latitude": 12.861504966666667
+        },
+        "camera": {
+          "zoom": 14.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-poi-cluster-10",
+        "kind": "poi_cluster",
+        "title": "Lakshya Public School",
+        "subtitle": "7 POIs in this activity cluster",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "poi-clusters",
+          "feature_id": "poi-cluster-10"
+        },
+        "coordinate": {
+          "longitude": 77.71674485714286,
+          "latitude": 12.899876385714286
+        },
+        "camera": {
+          "zoom": 14.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-poi-cluster-3",
+        "kind": "poi_cluster",
+        "title": "Dr. Arpita Agarwal Clinic",
+        "subtitle": "6 POIs in this activity cluster",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "poi-clusters",
+          "feature_id": "poi-cluster-3"
+        },
+        "coordinate": {
+          "longitude": 77.66464743333333,
+          "latitude": 12.911574750000002
+        },
+        "camera": {
+          "zoom": 14.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-poi-cluster-5",
+        "kind": "poi_cluster",
+        "title": "SAMAN Portable Office Solutions",
+        "subtitle": "6 POIs in this activity cluster",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "poi-clusters",
+          "feature_id": "poi-cluster-5"
+        },
+        "coordinate": {
+          "longitude": 77.7502065,
+          "latitude": 12.879752716666667
+        },
+        "camera": {
+          "zoom": 14.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-poi-cluster-9",
+        "kind": "poi_cluster",
+        "title": "Security Gate 1",
+        "subtitle": "5 POIs in this activity cluster",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "poi-clusters",
+          "feature_id": "poi-cluster-9"
+        },
+        "coordinate": {
+          "longitude": 77.77690128,
+          "latitude": 12.84518196
+        },
+        "camera": {
+          "zoom": 14.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-poi-cluster-11",
+        "kind": "poi_cluster",
+        "title": "Prakriya Green Wisdom School",
+        "subtitle": "5 POIs in this activity cluster",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "poi-clusters",
+          "feature_id": "poi-cluster-11"
+        },
+        "coordinate": {
+          "longitude": 77.69740306,
+          "latitude": 12.88762558
+        },
+        "camera": {
+          "zoom": 14.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-poi-cluster-13",
+        "kind": "poi_cluster",
+        "title": "Narayana CO-Kaveri Bhavan",
+        "subtitle": "5 POIs in this activity cluster",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "poi-clusters",
+          "feature_id": "poi-cluster-13"
+        },
+        "coordinate": {
+          "longitude": 77.68059194,
+          "latitude": 12.8962287
+        },
+        "camera": {
+          "zoom": 14.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-ward-174",
+        "kind": "ward_impact",
+        "title": "HSR Layout",
+        "subtitle": "Approximately 58,786 Census-2011 residents in catchment",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "ward-impacts",
+          "feature_id": "ward-174"
+        },
+        "coordinate": {
+          "longitude": 77.64912830495746,
+          "latitude": 12.916882541287542
+        },
+        "camera": {
+          "zoom": 13.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-ward-150",
+        "kind": "ward_impact",
+        "title": "Bellanduru",
+        "subtitle": "Approximately 48,430 Census-2011 residents in catchment",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "ward-impacts",
+          "feature_id": "ward-150"
+        },
+        "coordinate": {
+          "longitude": 77.6832415316615,
+          "latitude": 12.917653666162868
+        },
+        "camera": {
+          "zoom": 13.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-ward-172",
+        "kind": "ward_impact",
+        "title": "Madivala",
+        "subtitle": "Approximately 42,624 Census-2011 residents in catchment",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "ward-impacts",
+          "feature_id": "ward-172"
+        },
+        "coordinate": {
+          "longitude": 77.61442098265519,
+          "latitude": 12.920693974289941
+        },
+        "camera": {
+          "zoom": 13.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-ward-176",
+        "kind": "ward_impact",
+        "title": "BTM Layout",
+        "subtitle": "Approximately 33,839 Census-2011 residents in catchment",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "ward-impacts",
+          "feature_id": "ward-176"
+        },
+        "coordinate": {
+          "longitude": 77.61100384884583,
+          "latitude": 12.911029923719452
+        },
+        "camera": {
+          "zoom": 13.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-ward-173",
+        "kind": "ward_impact",
+        "title": "Jakkasandra",
+        "subtitle": "Approximately 33,521 Census-2011 residents in catchment",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "ward-impacts",
+          "feature_id": "ward-173"
+        },
+        "coordinate": {
+          "longitude": 77.62954850657773,
+          "latitude": 12.920658934232039
+        },
+        "camera": {
+          "zoom": 13.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-ward-151",
+        "kind": "ward_impact",
+        "title": "Koramangala",
+        "subtitle": "Approximately 29,665 Census-2011 residents in catchment",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "ward-impacts",
+          "feature_id": "ward-151"
+        },
+        "coordinate": {
+          "longitude": 77.62546001556326,
+          "latitude": 12.928997592573376
+        },
+        "camera": {
+          "zoom": 13.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-ward-175",
+        "kind": "ward_impact",
+        "title": "Bommanahalli",
+        "subtitle": "Approximately 24,884 Census-2011 residents in catchment",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "ward-impacts",
+          "feature_id": "ward-175"
+        },
+        "coordinate": {
+          "longitude": 77.62470980726454,
+          "latitude": 12.908535746511435
+        },
+        "camera": {
+          "zoom": 13.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-ward-171",
+        "kind": "ward_impact",
+        "title": "Gurappanapalya",
+        "subtitle": "Approximately 19,148 Census-2011 residents in catchment",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "ward-impacts",
+          "feature_id": "ward-171"
+        },
+        "coordinate": {
+          "longitude": 77.60691324036937,
+          "latitude": 12.9210075984947
+        },
+        "camera": {
+          "zoom": 13.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-ward-114",
+        "kind": "ward_impact",
+        "title": "Agaram",
+        "subtitle": "Approximately 16,715 Census-2011 residents in catchment",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "ward-impacts",
+          "feature_id": "ward-114"
+        },
+        "coordinate": {
+          "longitude": 77.65246655343229,
+          "latitude": 12.928997592573376
+        },
+        "camera": {
+          "zoom": 13.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-ward-189",
+        "kind": "ward_impact",
+        "title": "Hongasandra",
+        "subtitle": "Approximately 16,418 Census-2011 residents in catchment",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "ward-impacts",
+          "feature_id": "ward-189"
+        },
+        "coordinate": {
+          "longitude": 77.6329739190728,
+          "latitude": 12.90351586824697
+        },
+        "camera": {
+          "zoom": 13.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-ward-152",
+        "kind": "ward_impact",
+        "title": "Suddagunte Palya",
+        "subtitle": "Approximately 15,138 Census-2011 residents in catchment",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "ward-impacts",
+          "feature_id": "ward-152"
+        },
+        "coordinate": {
+          "longitude": 77.6121720921195,
+          "latitude": 12.927639645286133
+        },
+        "camera": {
+          "zoom": 13.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-ward-188",
+        "kind": "ward_impact",
+        "title": "Bilekhalli",
+        "subtitle": "Approximately 11,585 Census-2011 residents in catchment",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "ward-impacts",
+          "feature_id": "ward-188"
+        },
+        "coordinate": {
+          "longitude": 77.61830489015597,
+          "latitude": 12.907775211886028
+        },
+        "camera": {
+          "zoom": 13.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-ward-148",
+        "kind": "ward_impact",
+        "title": "Ejipura",
+        "subtitle": "Approximately 10,044 Census-2011 residents in catchment",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "ward-impacts",
+          "feature_id": "ward-148"
+        },
+        "coordinate": {
+          "longitude": 77.63211707810161,
+          "latitude": 12.9339138143181
+        },
+        "camera": {
+          "zoom": 13.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-ward-190",
+        "kind": "ward_impact",
+        "title": "Mangammanapalya",
+        "subtitle": "Approximately 6,880 Census-2011 residents in catchment",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "ward-impacts",
+          "feature_id": "ward-190"
+        },
+        "coordinate": {
+          "longitude": 77.64023412813285,
+          "latitude": 12.904473365049249
+        },
+        "camera": {
+          "zoom": 13.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-ward-149",
+        "kind": "ward_impact",
+        "title": "Varthuru",
+        "subtitle": "Approximately 3,717 Census-2011 residents in catchment",
+        "severity": "info",
+        "feature_ref": {
+          "layer_id": "ward-impacts",
+          "feature_id": "ward-149"
+        },
+        "coordinate": {
+          "longitude": 77.71755227912459,
+          "latitude": 12.914437458728772
+        },
+        "camera": {
+          "zoom": 13.5,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-water-watchpoint-106",
+        "kind": "water_watchpoint",
+        "title": "Agara kere",
+        "subtitle": "Alignment intersection",
+        "severity": "critical",
+        "feature_ref": {
+          "layer_id": "water-watchpoints",
+          "feature_id": "water-watchpoint-106"
+        },
+        "coordinate": {
+          "longitude": 77.64464487525643,
+          "latitude": 12.922225471457098
+        },
+        "camera": {
+          "zoom": 15,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-water-watchpoint-145",
+        "kind": "water_watchpoint",
+        "title": "Kaikondanahalli kere",
+        "subtitle": "Alignment intersection",
+        "severity": "critical",
+        "feature_ref": {
+          "layer_id": "water-watchpoints",
+          "feature_id": "water-watchpoint-145"
+        },
+        "coordinate": {
+          "longitude": 77.67344628184038,
+          "latitude": 12.91529680484255
+        },
+        "camera": {
+          "zoom": 15,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-water-watchpoint-3123",
+        "kind": "water_watchpoint",
+        "title": "Unnamed stream",
+        "subtitle": "Alignment intersection",
+        "severity": "critical",
+        "feature_ref": {
+          "layer_id": "water-watchpoints",
+          "feature_id": "water-watchpoint-3123"
+        },
+        "coordinate": {
+          "longitude": 77.64215267168915,
+          "latitude": 12.92169208471576
+        },
+        "camera": {
+          "zoom": 15,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-water-watchpoint-3133",
+        "kind": "water_watchpoint",
+        "title": "Unnamed stream",
+        "subtitle": "Alignment intersection",
+        "severity": "critical",
+        "feature_ref": {
+          "layer_id": "water-watchpoints",
+          "feature_id": "water-watchpoint-3133"
+        },
+        "coordinate": {
+          "longitude": 77.66329088327265,
+          "latitude": 12.918943206341698
+        },
+        "camera": {
+          "zoom": 15,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-water-watchpoint-3227",
+        "kind": "water_watchpoint",
+        "title": "Unnamed stream",
+        "subtitle": "Alignment intersection",
+        "severity": "critical",
+        "feature_ref": {
+          "layer_id": "water-watchpoints",
+          "feature_id": "water-watchpoint-3227"
+        },
+        "coordinate": {
+          "longitude": 77.67698395355958,
+          "latitude": 12.914026567010488
+        },
+        "camera": {
+          "zoom": 15,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-water-watchpoint-3289",
+        "kind": "water_watchpoint",
+        "title": "Unnamed stream",
+        "subtitle": "Alignment intersection",
+        "severity": "critical",
+        "feature_ref": {
+          "layer_id": "water-watchpoints",
+          "feature_id": "water-watchpoint-3289"
+        },
+        "coordinate": {
+          "longitude": 77.6873441621695,
+          "latitude": 12.90940961494078
+        },
+        "camera": {
+          "zoom": 15,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-water-watchpoint-3309",
+        "kind": "water_watchpoint",
+        "title": "Unnamed stream",
+        "subtitle": "Alignment intersection",
+        "severity": "critical",
+        "feature_ref": {
+          "layer_id": "water-watchpoints",
+          "feature_id": "water-watchpoint-3309"
+        },
+        "coordinate": {
+          "longitude": 77.6887329464694,
+          "latitude": 12.908731561429649
+        },
+        "camera": {
+          "zoom": 15,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-water-watchpoint-3279",
+        "kind": "water_watchpoint",
+        "title": "Unnamed stream",
+        "subtitle": "10.0 m from alignment",
+        "severity": "warning",
+        "feature_ref": {
+          "layer_id": "water-watchpoints",
+          "feature_id": "water-watchpoint-3279"
+        },
+        "coordinate": {
+          "longitude": 77.6887329464694,
+          "latitude": 12.908832391462
+        },
+        "camera": {
+          "zoom": 15,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-water-watchpoint-3231",
+        "kind": "water_watchpoint",
+        "title": "Unnamed stream",
+        "subtitle": "19.4 m from alignment",
+        "severity": "warning",
+        "feature_ref": {
+          "layer_id": "water-watchpoints",
+          "feature_id": "water-watchpoint-3231"
+        },
+        "coordinate": {
+          "longitude": 77.6762338877706,
+          "latitude": 12.9141097718015
+        },
+        "camera": {
+          "zoom": 15,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-water-watchpoint-3237",
+        "kind": "water_watchpoint",
+        "title": "Unnamed stream",
+        "subtitle": "44.8 m from alignment",
+        "severity": "warning",
+        "feature_ref": {
+          "layer_id": "water-watchpoints",
+          "feature_id": "water-watchpoint-3237"
+        },
+        "coordinate": {
+          "longitude": 77.68262229555,
+          "latitude": 12.9121654737817
+        },
+        "camera": {
+          "zoom": 15,
+          "pitch": 45,
+          "bearing": 0
+        }
+      },
+      {
+        "id": "focus-water-watchpoint-107",
+        "kind": "water_watchpoint",
+        "title": "Ambalipura Kelagina kere",
+        "subtitle": "53.7 m from alignment",
+        "severity": "warning",
+        "feature_ref": {
+          "layer_id": "water-watchpoints",
+          "feature_id": "water-watchpoint-107"
+        },
+        "coordinate": {
+          "longitude": 77.6656925936704,
+          "latitude": 12.9175661128038
+        },
+        "camera": {
+          "zoom": 15,
+          "pitch": 45,
+          "bearing": 0
+        }
+      }
+    ]
+  },
+  "errors": []
+}

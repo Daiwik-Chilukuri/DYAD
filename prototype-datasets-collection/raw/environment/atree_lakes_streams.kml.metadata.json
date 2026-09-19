@@ -1,0 +1,10 @@
+{
+  "dataset_id": "atree_lakes_streams",
+  "source_page": "https://data.opencity.in/dataset/map-lakes-streams-bengaluru-urban-within-bbmp-area",
+  "resolved_download_url": "https://data.opencity.in/dataset/14aaf1e9-d3a9-4d5a-b698-bb93bd064264/resource/c25e7c1e-f1e0-4dc2-8a6d-216470e363a0/download/dae235c7-89a9-48de-be2c-5c19621b1ecb.kml",
+  "license": "CC-BY",
+  "attribution": "ATREE-CSEI",
+  "downloaded_at": "2026-09-19T08:34:30.803009+00:00",
+  "bytes": 3127879,
+  "sha256": "947f54f1af7eb40986ef14e1b4fdd14ff0a3119d09e559b5ca634bea1c40afeb"
+}
