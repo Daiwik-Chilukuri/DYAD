@@ -56,8 +56,8 @@ def process_dataset(file_path: str | Path, upload_to_modal: bool = True) -> dict
     print(f"    Category:      {result['category'].upper()} (Confidence: {result['confidence']*100:.1f}%)")
     print(f"    Subtopic:      {result['subtopic']}")
     print(f"    Standardized:  {result['renamed_filename']}")
-    print(f"    Primary Agent: {result['primary_consumer']}")
-    print(f"    Visualizer:    {'ENABLED (Agent 1 will render features)' if result['visualizer_agent_enabled'] else 'DISABLED'}")
+    print(f"    Target Agents: {', '.join(result['target_agents'])}")
+    print(f"    Visualizer:    {'YES (Prefixed with visualizer-)' if result['is_visualizer_dataset'] else 'NO (Domain tabular only)'}")
     print(f"    Jev Latency:   {elapsed}ms")
 
     # 3. Stage Locally
@@ -97,8 +97,8 @@ def main():
             print("=" * 70)
             print(f"   Original:      {res['original_filename']}")
             print(f"   Renamed:       {res['renamed_filename']}")
-            print(f"   Target Agent:  {res['primary_consumer']}")
-            print(f"   Visualizer:    {'YES' if res['visualizer_agent_enabled'] else 'NO'}")
+            print(f"   Target Agents: {', '.join(res.get('target_agents', [res.get('primary_consumer', 'None')]))}")
+            print(f"   Visualizer:    {'YES (Prefixed with visualizer-)' if res.get('is_visualizer_dataset') else 'NO (Domain tabular only)'}")
             print("=" * 70 + "\n")
     except Exception as e:
         print(f"\n[x] Ingestion Error: {e}", file=sys.stderr)

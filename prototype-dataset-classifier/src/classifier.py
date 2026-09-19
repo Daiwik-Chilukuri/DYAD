@@ -179,18 +179,26 @@ class JevDatasetClassifier:
             lng_col = fingerprint.get("lng_col") or "none"
             latency_ms = 0
 
-        # Construct standardized downstream filename: <class>-<whats_inside_dataset>.<ext>
+        # Construct standardized downstream filename:
+        # Option A: visualizer-<class>-<whats_inside>.<ext> for map features, or <class>-<whats_inside>.<ext> for tabular
         clean_stem = fingerprint.get("clean_stem", "dataset")
-        # Strip old category prefix if it already has one
+        # Strip old category/visualizer prefix if it already has one
+        if clean_stem.startswith("visualizer_") or clean_stem.startswith("visualizer-"):
+            clean_stem = clean_stem[11:]
         for c in TARGET_CATEGORIES.keys():
             if clean_stem.startswith(f"{c}_") or clean_stem.startswith(f"{c}-"):
                 clean_stem = clean_stem[len(c) + 1 :]
 
         ext = fingerprint.get("file_extension", ".csv")
         whats_inside = f"{subtopic}_{clean_stem}" if subtopic != "general_unclassified" else clean_stem
-        # Clean double underscores
         whats_inside = whats_inside.replace("__", "_").strip("_")
-        renamed_filename = f"{cat}-{whats_inside}{ext}"
+
+        if viz_ready and cat != "other":
+            renamed_filename = f"visualizer-{cat}-{whats_inside}{ext}"
+            assigned_agents = ["Agent 1: Structured Output Spatial Visualizer Agent", AGENT_ASSIGNMENTS.get(cat, "None (Other)")]
+        else:
+            renamed_filename = f"{cat}-{whats_inside}{ext}"
+            assigned_agents = [AGENT_ASSIGNMENTS.get(cat, "None (Other)")]
 
         return {
             "status": "success",
@@ -199,8 +207,9 @@ class JevDatasetClassifier:
             "subtopic": subtopic,
             "original_filename": fingerprint.get("original_filename"),
             "renamed_filename": renamed_filename,
-            "primary_consumer": AGENT_ASSIGNMENTS.get(cat, "None (Other)"),
-            "visualizer_agent_enabled": viz_ready,
+            "primary_consumer": assigned_agents[0] if assigned_agents else "None (Other)",
+            "target_agents": assigned_agents,
+            "is_visualizer_dataset": bool(viz_ready and cat != "other"),
             "spatial_metadata": {
                 "file_format": fingerprint.get("file_format"),
                 "geometry_type": fingerprint.get("geometry_type"),
