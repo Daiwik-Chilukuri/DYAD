@@ -556,7 +556,11 @@ export default function Dashboard() {
                 <span className="text-[10px] font-mono uppercase text-slate-400">Origin Station</span>
                 {originStation && (
                   <button
-                    onClick={() => setOriginStation(null)}
+                    onClick={() => {
+                      setOriginStation(null);
+                      setVisualizerGeoJSON(null);
+                      setDossier(null);
+                    }}
                     className="text-[9.5px] font-mono text-cyan-400 hover:underline cursor-pointer"
                   >
                     Clear
@@ -571,7 +575,11 @@ export default function Dashboard() {
                 <span className="text-[10px] font-mono uppercase text-slate-400">Candidate Terminus</span>
                 {destinationCoords && (
                   <button
-                    onClick={() => setDestinationCoords(null)}
+                    onClick={() => {
+                      setDestinationCoords(null);
+                      setVisualizerGeoJSON(null);
+                      setDossier(null);
+                    }}
                     className="text-[9.5px] font-mono text-cyan-400 hover:underline cursor-pointer"
                   >
                     Clear

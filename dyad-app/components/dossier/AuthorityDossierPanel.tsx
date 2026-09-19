@@ -63,6 +63,15 @@ export function AuthorityDossierPanel({
 }: AuthorityDossierPanelProps) {
   const [activeView, setActiveView] = useState<'dossier' | 'telemetry'>('dossier');
 
+  // Automatically switch tab based on evaluation state
+  React.useEffect(() => {
+    if (isEvaluating) {
+      setActiveView('telemetry');
+    } else if (dossier) {
+      setActiveView('dossier');
+    }
+  }, [isEvaluating, Boolean(dossier)]);
+
   // Normalize dossier pillars (handling both naming schemes)
   const demographics = dossier?.demographics ?? dossier?.demographics_pillar;
   const economic = dossier?.economic ?? dossier?.economic_pillar;
@@ -191,7 +200,7 @@ export function AuthorityDossierPanel({
 
             {/* 3. Main Scrollable Body */}
             <div className="flex-1 overflow-y-auto p-3.5 flex flex-col gap-4 scrollbar-thin scrollbar-thumb-white/10">
-              {activeView === 'telemetry' || isEvaluating ? (
+              {activeView === 'telemetry' ? (
                 /* Telemetry View */
                 <SwarmTelemetryStream
                   isScanning={isEvaluating}
@@ -199,75 +208,69 @@ export function AuthorityDossierPanel({
                   logs={telemetryLogs}
                   stage={currentStage}
                 />
-              ) : null}
-
-              {activeView === 'dossier' && (
+              ) : dossier ? (
                 <>
-                  {dossier ? (
-                    <>
-                      {/* Feasibility Gauge */}
-                      <FeasibilityScoreGauge score={viabilityScore} />
+                  {/* Feasibility Gauge */}
+                  <FeasibilityScoreGauge score={viabilityScore} />
 
-                      {/* Executive Summary Statement */}
-                      {dossier.executive_summary && (
-                        <div className="p-3 rounded-xl bg-[#161B22]/50 border border-white/[0.04] text-[11.5px] leading-relaxed text-slate-300 font-sans">
-                          <p className="line-clamp-4">{dossier.executive_summary}</p>
-                        </div>
-                      )}
-
-                      {/* 4 Domain Pillar Impact Cards */}
-                      {demographics && economic && mobility && ecological && (
-                        <DomainPillarCards
-                          demographics={demographics}
-                          economic={economic}
-                          mobility={mobility}
-                          ecological={ecological}
-                        />
-                      )}
-
-                      {/* Actionable Risk Warnings List */}
-                      <ActionableRiskWarnings warnings={warnings} />
-
-                      {/* Suggested Station List */}
-                      <SuggestedStationList
-                        stations={stations}
-                        onStationClick={onStationSelect}
-                        selectedStationId={selectedStationId}
-                      />
-
-                      {/* Policy Recommendations */}
-                      <PolicyRecommendations recommendations={policies} />
-                    </>
-                  ) : (
-                    /* Standby / Empty State when not yet evaluated */
-                    <div className="flex flex-col items-center justify-center text-center p-6 my-auto gap-3">
-                      <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/[0.06] text-slate-400">
-                        <MapPin className="size-6 text-emerald-400" />
-                      </div>
-                      <div className="flex flex-col gap-1">
-                        <h4 className="text-sm font-semibold text-slate-200">
-                          Corridor Ready For Evaluation
-                        </h4>
-                        <p className="text-xs text-slate-400 max-w-[280px] font-sans leading-relaxed">
-                          Select an origin station and drop a candidate terminus pin on the canvas to dispatch the 5-agent feasibility swarm.
-                        </p>
-                      </div>
-
-                      {onEvaluateTrigger && (
-                        <motion.button
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                          onClick={onEvaluateTrigger}
-                          disabled={isEvaluating}
-                          className="mt-2 px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs flex items-center gap-2 shadow-lg shadow-emerald-500/20 cursor-pointer disabled:opacity-50"
-                        >
-                          <Sparkles className="size-3.5" />
-                          <span>Run Feasibility Swarm</span>
-                        </motion.button>
-                      )}
+                  {/* Executive Summary Statement */}
+                  {dossier.executive_summary && (
+                    <div className="p-3 rounded-xl bg-[#161B22]/50 border border-white/[0.04] text-[11.5px] leading-relaxed text-slate-300 font-sans">
+                      <p className="line-clamp-4">{dossier.executive_summary}</p>
                     </div>
                   )}
+
+                  {/* 4 Domain Pillar Impact Cards */}
+                  {demographics && economic && mobility && ecological && (
+                    <DomainPillarCards
+                      demographics={demographics}
+                      economic={economic}
+                      mobility={mobility}
+                      ecological={ecological}
+                    />
+                  )}
+
+                  {/* Actionable Risk Warnings List */}
+                  <ActionableRiskWarnings warnings={warnings} />
+
+                  {/* Suggested Station List */}
+                  <SuggestedStationList
+                    stations={stations}
+                    onStationClick={onStationSelect}
+                    selectedStationId={selectedStationId}
+                  />
+
+                  {/* Policy Recommendations */}
+                  <PolicyRecommendations recommendations={policies} />
                 </>
+              ) : (
+                /* Standby / Empty State when not yet evaluated */
+                <div className="flex flex-col items-center justify-center text-center p-6 my-auto gap-3">
+                  <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/[0.06] text-slate-400">
+                    <MapPin className="size-6 text-emerald-400" />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <h4 className="text-sm font-semibold text-slate-200">
+                      Corridor Ready For Evaluation
+                    </h4>
+                    <p className="text-xs text-slate-400 max-w-[280px] font-sans leading-relaxed">
+                      Select an origin station and drop a candidate terminus pin on the canvas to dispatch the 5-agent feasibility swarm.
+                    </p>
+                  </div>
+
+                  {onEvaluateTrigger && (
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={onEvaluateTrigger}
+                      disabled={isEvaluating}
+                      className="mt-2 px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs flex items-center gap-2 shadow-lg shadow-emerald-500/20 cursor-pointer disabled:opacity-50"
+                    >
+                      <Sparkles className="size-3.5" />
+                      <span>Run Feasibility Swarm</span>
+                    </motion.button>
+                  )}
+                </div>
               )}
             </div>
 

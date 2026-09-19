@@ -162,18 +162,18 @@ export function MapCanvas({
             paint: {
               'fill-color': [
                 'case',
-                ['in', 'lake', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'intersection_type'], '']]], '#06b6d4',
-                ['in', 'wetland', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'intersection_type'], '']]], '#10b981',
-                ['in', 'slum', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'intersection_type'], '']]], '#f59e0b',
-                ['in', 'ward', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'intersection_type'], '']]], '#8b5cf6',
+                ['any', ['has', 'lake_name'], ['in', 'lake', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'type'], ['get', 'intersection_type'], '']]]], '#06b6d4',
+                ['in', 'wetland', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'type'], ['get', 'intersection_type'], '']]], '#10b981',
+                ['any', ['has', 'Slum_Name'], ['in', 'slum', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'type'], ['get', 'intersection_type'], '']]]], '#f59e0b',
+                ['any', ['has', 'WARD_NAME'], ['in', 'ward', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'type'], ['get', 'intersection_type'], '']]]], '#8b5cf6',
                 '#38bdf8',
               ],
               'fill-opacity': [
                 'case',
-                ['in', 'lake', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'intersection_type'], '']]], 0.35,
-                ['in', 'wetland', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'intersection_type'], '']]], 0.25,
-                ['in', 'slum', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'intersection_type'], '']]], 0.25,
-                ['in', 'ward', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'intersection_type'], '']]], 0.08,
+                ['any', ['has', 'lake_name'], ['in', 'lake', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'type'], ['get', 'intersection_type'], '']]]], 0.35,
+                ['in', 'wetland', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'type'], ['get', 'intersection_type'], '']]], 0.25,
+                ['any', ['has', 'Slum_Name'], ['in', 'slum', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'type'], ['get', 'intersection_type'], '']]]], 0.25,
+                ['any', ['has', 'WARD_NAME'], ['in', 'ward', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'type'], ['get', 'intersection_type'], '']]]], 0.08,
                 0.15,
               ],
             },
@@ -188,10 +188,10 @@ export function MapCanvas({
             paint: {
               'line-color': [
                 'case',
-                ['in', 'lake', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'intersection_type'], '']]], '#00F5D4',
-                ['in', 'wetland', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'intersection_type'], '']]], '#10b981',
-                ['in', 'slum', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'intersection_type'], '']]], '#f59e0b',
-                ['in', 'ward', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'intersection_type'], '']]], '#a855f7',
+                ['any', ['has', 'lake_name'], ['in', 'lake', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'type'], ['get', 'intersection_type'], '']]]], '#00F5D4',
+                ['in', 'wetland', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'type'], ['get', 'intersection_type'], '']]], '#10b981',
+                ['any', ['has', 'Slum_Name'], ['in', 'slum', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'type'], ['get', 'intersection_type'], '']]]], '#f59e0b',
+                ['any', ['has', 'WARD_NAME'], ['in', 'ward', ['downcase', ['coalesce', ['get', 'source_dataset'], ['get', 'type'], ['get', 'intersection_type'], '']]]], '#a855f7',
                 '#38bdf8',
               ],
               'line-width': 1.5,
@@ -868,6 +868,80 @@ export function MapCanvas({
       essential: true,
     });
   }, [activeStationFocus, isLoaded]);
+
+  // Reactive Visualizer GeoJSON Layering (Populated dynamically from Visualizer Subagent)
+  useEffect(() => {
+    const m = mapRef.current;
+    if (!m || !isLoaded) return;
+
+    // 1. Update visualizer-features-source with polygons, lines, and hubs
+    const visualizerSource = m.getSource('visualizer-features-source') as any;
+    if (visualizerSource) {
+      visualizerSource.setData(visualizerGeoJSON || { type: 'FeatureCollection', features: [] });
+    }
+
+    // 2. Extract and update POIs source from visualizer features
+    const poiSource = m.getSource('pois') as any;
+    if (poiSource) {
+      if (visualizerGeoJSON && Array.isArray(visualizerGeoJSON.features)) {
+        const pointFeatures = visualizerGeoJSON.features
+          .filter((f: any) => f.geometry?.type === 'Point')
+          .map((f: any) => {
+            let category = f.properties?.category;
+            const combinedType = (
+              (f.properties?.type || '') + ' ' +
+              (f.properties?.source_dataset || '') + ' ' +
+              (f.properties?.hub_name || '') + ' ' +
+              (f.properties?.hospital_name || '')
+            ).toLowerCase();
+
+            if (!category) {
+              if (combinedType.includes('hosp') || f.properties?.hospital_name) category = 'hospital';
+              else if (combinedType.includes('edu') || combinedType.includes('school') || combinedType.includes('univ')) category = 'education';
+              else if (combinedType.includes('civic') || combinedType.includes('bus') || combinedType.includes('transit') || combinedType.includes('stop')) category = 'civic';
+              else category = 'corporate';
+            }
+
+            return {
+              ...f,
+              properties: {
+                ...f.properties,
+                name: f.properties?.name || f.properties?.hub_name || f.properties?.hospital_name || f.properties?.title || 'Anchor POI',
+                category,
+                agent: f.properties?.source_dataset ? `Visualizer Agent: ${f.properties.source_dataset}` : 'Visualizer Agent Output',
+              },
+            };
+          });
+
+        poiSource.setData({
+          type: 'FeatureCollection',
+          features: pointFeatures,
+        });
+
+        // Compute buffer stats callback for the parent
+        if (onBufferStatsChangeRef.current) {
+          const stats: BufferStats = {
+            total: pointFeatures.length,
+            byCategory: {
+              corporate: pointFeatures.filter((f: any) => f.properties?.category === 'corporate').length,
+              hospital: pointFeatures.filter((f: any) => f.properties?.category === 'hospital').length,
+              education: pointFeatures.filter((f: any) => f.properties?.category === 'education').length,
+              civic: pointFeatures.filter((f: any) => f.properties?.category === 'civic').length,
+            },
+          };
+          onBufferStatsChangeRef.current(stats);
+        }
+      } else {
+        poiSource.setData({ type: 'FeatureCollection', features: [] });
+        if (onBufferStatsChangeRef.current) {
+          onBufferStatsChangeRef.current({
+            total: 0,
+            byCategory: { corporate: 0, hospital: 0, education: 0, civic: 0 },
+          });
+        }
+      }
+    }
+  }, [visualizerGeoJSON, isLoaded]);
 
   // Reactive Catchment Buffer & POI recalculation
   useEffect(() => {
