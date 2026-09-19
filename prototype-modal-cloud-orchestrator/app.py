@@ -76,20 +76,37 @@ def stream_corridor_analysis(request_dict: Dict[str, Any]):
     """
     from fastapi.responses import StreamingResponse
     try:
-        from .orchestrator import DyadOrchestrator
-        from .schemas.dossier import CorridorRequest
+        from .master_orchestrator import DyadMasterOrchestrator
     except ImportError:
-        from orchestrator import DyadOrchestrator
-        from schemas.dossier import CorridorRequest
+        from master_orchestrator import DyadMasterOrchestrator
 
     def sse_event_generator():
         try:
-            request = CorridorRequest(**request_dict)
-            orchestrator = DyadOrchestrator()
+            origin = request_dict.get("origin")
+            destination = request_dict.get("destination")
+            if not origin or not destination:
+                coords = request_dict.get("coordinates", [])
+                if len(coords) >= 2:
+                    origin = {"name": "Origin", "coordinates": coords[0]}
+                    destination = {"name": "Destination", "coordinates": coords[-1]}
+                else:
+                    raise ValueError("Corridor payload must include 'origin' and 'destination' objects.")
 
-            for event in orchestrator.execute_stream(request):
+            radius_m = float(request_dict.get("catchment_radius_meters", 1500.0))
+            corridor_id = request_dict.get("corridor_id")
+            run_id = request_dict.get("run_id")
+
+            orchestrator = DyadMasterOrchestrator()
+
+            for event in orchestrator.execute_stream(
+                origin_station=origin,
+                destination_pin=destination,
+                catchment_radius_meters=radius_m,
+                corridor_id=corridor_id,
+                run_id=run_id,
+            ):
                 event_type = event.get("type", "message")
-                payload = json.dumps(event)
+                payload = json.dumps(event, ensure_ascii=False)
                 yield f"event: {event_type}\ndata: {payload}\n\n"
 
             yield f"event: done\ndata: {json.dumps({'type': 'done', 'message': '[DONE]'})}\n\n"
@@ -102,8 +119,9 @@ def stream_corridor_analysis(request_dict: Dict[str, Any]):
         sse_event_generator(),
         media_type="text/event-stream",
         headers={
-            "Cache-Control": "no-cache",
+            "Cache-Control": "no-cache, no-transform",
             "Connection": "keep-alive",
+            "X-Accel-Buffering": "no",
             "Access-Control-Allow-Origin": "*",
         },
     )

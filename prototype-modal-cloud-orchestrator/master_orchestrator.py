@@ -19,7 +19,7 @@ import math
 import os
 import sys
 import time
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any, Dict, Iterator, List, Optional, Tuple
 
@@ -243,7 +243,7 @@ class DyadMasterOrchestrator:
         # Execute in parallel with ThreadPoolExecutor
         with ThreadPoolExecutor(max_workers=max(1, len(tasks_to_run))) as pool:
             futures = [pool.submit(run_task, k) for k in tasks_to_run]
-            for fut in futures:
+            for fut in as_completed(futures):
                 agent_k, res = fut.result()
                 swarm_results[agent_k] = res
 

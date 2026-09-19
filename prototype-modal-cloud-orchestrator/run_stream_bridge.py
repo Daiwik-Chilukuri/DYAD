@@ -17,9 +17,9 @@ from typing import Any, Dict, List, Optional
 # 1. Force unbuffered UTF-8 standard output and error for Windows console / child_process pipes
 try:
     if hasattr(sys.stdout, "reconfigure"):
-        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace", newline="")
     if hasattr(sys.stderr, "reconfigure"):
-        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace", newline="")
 except Exception:
     pass
 

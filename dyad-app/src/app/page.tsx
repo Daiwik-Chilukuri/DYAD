@@ -190,10 +190,12 @@ export default function Dashboard() {
           );
           break;
 
-        case 'telemetry':
-          if (event.stage) setCurrentStage(event.stage);
-          if (event.message) addTelemetryLog(event.message, event.stage, event.agent);
+        case 'telemetry': {
+          const stage = event.stage || event.status;
+          if (stage) setCurrentStage(stage);
+          if (event.message) addTelemetryLog(event.message, stage, event.agent);
           break;
+        }
 
         case 'dataset_sync':
           setCurrentStage('Datasets Synced');
@@ -362,7 +364,7 @@ export default function Dashboard() {
         let eventType = 'message';
         let dataContent = '';
 
-        for (const line of packet.split('\n')) {
+        for (const line of packet.split(/\r?\n/)) {
           const trimmed = line.trim();
           if (trimmed.startsWith('event:')) {
             eventType = trimmed.slice(6).trim();
@@ -391,7 +393,7 @@ export default function Dashboard() {
         if (done) break;
 
         buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split('\n\n');
+        const lines = buffer.split(/\r?\n\r?\n/);
         buffer = lines.pop() || '';
 
         for (const packet of lines) {
