@@ -1,0 +1,10 @@
+{
+  "dataset_id": "bmrcl_gtfs_unofficial",
+  "source_page": "https://github.com/Vonter/bmrcl-gtfs",
+  "resolved_download_url": "https://raw.githubusercontent.com/Vonter/bmrcl-gtfs/main/gtfs/bmrcl.zip",
+  "license": "ODbL-1.0",
+  "attribution": "Vonter/bmrcl-gtfs; derived from BMRCL timetables and OpenStreetMap",
+  "downloaded_at": "2026-09-19T08:32:20.727822+00:00",
+  "bytes": 2369725,
+  "sha256": "c19f56f32ad53525c71191125409dc8dded12dd2cebfc576ad9a4db23a62b8a7"
+}

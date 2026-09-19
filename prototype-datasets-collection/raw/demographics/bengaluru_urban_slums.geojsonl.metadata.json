@@ -1,0 +1,10 @@
+{
+  "dataset_id": "bengaluru_urban_slums",
+  "source_page": "https://data.opencity.in/dataset/bengaluru-urban-slums",
+  "resolved_download_url": "https://data.opencity.in/dataset/7f7e9fd2-5192-4ee1-baa4-aff17ecde1cf/resource/f6a01da3-8d5f-45b8-8768-7593278e3ad6/download/bbmp_bangalore_slum_boundaries.geojson",
+  "license": "Public Domain",
+  "attribution": "OpenCity",
+  "downloaded_at": "2026-09-19T08:34:31.292349+00:00",
+  "bytes": 420262,
+  "sha256": "74ace71eedf460041e5749f568592abea21ad4da40c873624cb2dec0f7a403ff"
+}

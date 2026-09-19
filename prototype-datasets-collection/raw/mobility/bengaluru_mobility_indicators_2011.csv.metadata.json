@@ -1,0 +1,10 @@
+{
+  "dataset_id": "bengaluru_mobility_indicators_2011",
+  "source_page": "https://data.opencity.in/dataset/bengaluru-mobility-indicators",
+  "resolved_download_url": "https://data.opencity.in/dataset/b2ea98f5-e88a-4668-a144-d42ba29501c4/resource/9e224133-7275-412c-b8e8-c66436dd9d9b/download/a2b10c01-abfe-4e22-829c-85c5c5b029b6.csv",
+  "license": "Public Domain",
+  "attribution": "Directorate of Urban Land Transport, Karnataka; OpenCity",
+  "downloaded_at": "2026-09-19T08:52:23.744318+00:00",
+  "bytes": 1601,
+  "sha256": "7879f9785914fb5b53a7d7e5535e8533bbc10caf14fd26849bef26952655e6cc"
+}

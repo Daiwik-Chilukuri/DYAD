@@ -1,0 +1,706 @@
+{
+  "experiment": {
+    "id": "silk_board_sarjapur_exploratory",
+    "name": "Silk Board to Sarjapur exploratory alignment",
+    "coordinates": [
+      [
+        77.6235,
+        12.9177
+      ],
+      [
+        77.6506,
+        12.9235
+      ],
+      [
+        77.6804,
+        12.9128
+      ],
+      [
+        77.6974,
+        12.9045
+      ],
+      [
+        77.7275,
+        12.895
+      ],
+      [
+        77.7852,
+        12.86
+      ]
+    ]
+  },
+  "generated_at": "2026-09-19T09:31:58.320907+00:00",
+  "agents": {
+    "poi_agent": {
+      "agent": "poi_agent",
+      "algorithm": {
+        "name": "DBSCAN",
+        "eps_m": 500,
+        "min_samples": 3
+      },
+      "catchment_m": 2000,
+      "poi_count": 804,
+      "category_counts": {
+        "education": 182,
+        "healthcare": 171,
+        "corporate": 405,
+        "civic": 19,
+        "commercial": 18,
+        "public_transit": 9
+      },
+      "cluster_count": 16,
+      "noise_poi_count": 28,
+      "top_clusters": [
+        {
+          "cluster_id": 0,
+          "poi_count": 482,
+          "coordinates": [
+            77.63065419958507,
+            12.918988099170125
+          ],
+          "category_counts": {
+            "education": 107,
+            "corporate": 230,
+            "healthcare": 111,
+            "civic": 18,
+            "commercial": 9,
+            "public_transit": 7
+          },
+          "examples": [
+            "Angel Heart Montessori Play School",
+            "Wipro K1 office",
+            "Narayana Hrudayalaya Dental Clinic",
+            "Dr Ganesh Medical and Diabetic Clinic",
+            "Digi m2m Solutions"
+          ]
+        },
+        {
+          "cluster_id": 1,
+          "poi_count": 220,
+          "coordinates": [
+            77.67865753136364,
+            12.92191240590909
+          ],
+          "category_counts": {
+            "healthcare": 37,
+            "commercial": 8,
+            "civic": 1,
+            "corporate": 162,
+            "education": 12
+          },
+          "examples": [
+            "Clinic",
+            "Apollo Hospital",
+            "Sunny Medicals Hospital Clinic",
+            "Foodworld",
+            "Passport Seva Kendra"
+          ]
+        },
+        {
+          "cluster_id": 2,
+          "poi_count": 12,
+          "coordinates": [
+            77.707185425,
+            12.908285591666667
+          ],
+          "category_counts": {
+            "healthcare": 2,
+            "corporate": 4,
+            "public_transit": 1,
+            "education": 5
+          },
+          "examples": [
+            "Karunalayam Hospital",
+            "Unisys",
+            "Carmelaram",
+            "Accenture",
+            "Uber"
+          ]
+        },
+        {
+          "cluster_id": 4,
+          "poi_count": 9,
+          "coordinates": [
+            77.7878721,
+            12.861504966666667
+          ],
+          "category_counts": {
+            "public_transit": 1,
+            "healthcare": 4,
+            "education": 4
+          },
+          "examples": [
+            "Sarjapura Bus Stand",
+            "Nandi Health Care",
+            "Sri Rama Clinic",
+            "Sarjapura Urban Primary Health Centre",
+            "Town Hospital"
+          ]
+        },
+        {
+          "cluster_id": 10,
+          "poi_count": 7,
+          "coordinates": [
+            77.71674485714286,
+            12.899876385714286
+          ],
+          "category_counts": {
+            "education": 4,
+            "corporate": 1,
+            "healthcare": 2
+          },
+          "examples": [
+            "Lakshya Public School",
+            "St Patrick's Academy",
+            "St. Jerome's College",
+            "IndiQube The Fore",
+            "Camillian Pastoral Health Centre"
+          ]
+        },
+        {
+          "cluster_id": 3,
+          "poi_count": 6,
+          "coordinates": [
+            77.66464743333333,
+            12.911574750000002
+          ],
+          "category_counts": {
+            "healthcare": 5,
+            "education": 1
+          },
+          "examples": [
+            "Dr. Arpita Agarwal Clinic",
+            "Mahaveer Orthopeadic Clinic",
+            "Aria Clinic",
+            "The Local Dentist",
+            "Kidzee Play School"
+          ]
+        },
+        {
+          "cluster_id": 5,
+          "poi_count": 6,
+          "coordinates": [
+            77.7502065,
+            12.879752716666667
+          ],
+          "category_counts": {
+            "corporate": 1,
+            "healthcare": 2,
+            "education": 3
+          },
+          "examples": [
+            "SAMAN Portable Office Solutions",
+            "Balaji Nursing Home",
+            "Sri Lakshmi Multi Speciality Hospital"
+          ]
+        },
+        {
+          "cluster_id": 9,
+          "poi_count": 5,
+          "coordinates": [
+            77.77690128,
+            12.84518196
+          ],
+          "category_counts": {
+            "corporate": 2,
+            "education": 3
+          },
+          "examples": [
+            "Security Gate 1",
+            "Security Gate 2",
+            "Azim Premji School",
+            "Azim Premji University",
+            "Azim Premji University"
+          ]
+        },
+        {
+          "cluster_id": 11,
+          "poi_count": 5,
+          "coordinates": [
+            77.69740306,
+            12.88762558
+          ],
+          "category_counts": {
+            "education": 5
+          },
+          "examples": [
+            "Prakriya Green Wisdom School",
+            "Primus Public School",
+            "Bhoomi College",
+            "Bangalore Technological Institute",
+            "Sri Chaitanya Techno School"
+          ]
+        },
+        {
+          "cluster_id": 13,
+          "poi_count": 5,
+          "coordinates": [
+            77.68059194,
+            12.8962287
+          ],
+          "category_counts": {
+            "education": 5
+          },
+          "examples": [
+            "Narayana CO-Kaveri Bhavan",
+            "Glentree Academy",
+            "Government School",
+            "Narayana",
+            "Amrita Vishwa Vidyapeetham"
+          ]
+        }
+      ],
+      "limitations": [
+        "OSM completeness varies by category and neighbourhood",
+        "Ways and relations are represented by center points"
+      ]
+    },
+    "traffic_census_agent": {
+      "agent": "traffic_census_agent",
+      "algorithm": {
+        "population": "area-weighted polygon intersection",
+        "segmentation_model": "KMeans(k<=3) on density, SC/ST share, overlap"
+      },
+      "census_year": 2011,
+      "catchment_m": 2000,
+      "intersected_ward_count": 17,
+      "area_weighted_population_reached_2011": 371761,
+      "population_weighted_sc_st_share": 0.12020893738654553,
+      "catchment_archetypes": [
+        {
+          "archetype": 0,
+          "ward_count": 6,
+          "mean_density_per_sq_km": 18233.043948605664,
+          "mean_sc_st_share": 0.19232731870236888,
+          "wards": [
+            "Agaram",
+            "Lakkasandra",
+            "Ejipura",
+            "Varthuru",
+            "Mangammanapalya",
+            "Jayanagar East"
+          ]
+        },
+        {
+          "archetype": 1,
+          "ward_count": 10,
+          "mean_density_per_sq_km": 19535.290291388323,
+          "mean_sc_st_share": 0.10836382097779554,
+          "wards": [
+            "Koramangala",
+            "Suddagunte Palya",
+            "Jakkasandra",
+            "BTM Layout",
+            "Bellanduru",
+            "HSR Layout",
+            "Bommanahalli",
+            "Bilekhalli",
+            "Hongasandra",
+            "Madivala"
+          ]
+        },
+        {
+          "archetype": 2,
+          "ward_count": 1,
+          "mean_density_per_sq_km": 71761.21511526249,
+          "mean_sc_st_share": 0.05058071890755445,
+          "wards": [
+            "Gurappanapalya"
+          ]
+        }
+      ],
+      "top_ward_impacts": [
+        {
+          "ward_number": 174.0,
+          "ward_name": "HSR Layout",
+          "coordinates": [
+            77.64912830495746,
+            12.916882541287542
+          ],
+          "overlap_ratio": 0.9326184183631748,
+          "population_reached_2011": 58785.736764686,
+          "population_density_per_sq_km": 8912.7653792404,
+          "sc_st_share": 0.10480224644233972,
+          "catchment_archetype": 1
+        },
+        {
+          "ward_number": 150.0,
+          "ward_name": "Bellanduru",
+          "coordinates": [
+            77.6832415316615,
+            12.917653666162868
+          ],
+          "overlap_ratio": 0.6040184449061096,
+          "population_reached_2011": 48430.19891257187,
+          "population_density_per_sq_km": 3016.609206897273,
+          "sc_st_share": 0.1359940134696932,
+          "catchment_archetype": 1
+        },
+        {
+          "ward_number": 172.0,
+          "ward_name": "Madivala",
+          "coordinates": [
+            77.61442098265519,
+            12.920693974289941
+          ],
+          "overlap_ratio": 0.9999999999999998,
+          "population_reached_2011": 42623.99999999999,
+          "population_density_per_sq_km": 36522.06689571367,
+          "sc_st_share": 0.09248310810810811,
+          "catchment_archetype": 1
+        },
+        {
+          "ward_number": 176.0,
+          "ward_name": "BTM Layout",
+          "coordinates": [
+            77.61100384884583,
+            12.911029923719452
+          ],
+          "overlap_ratio": 0.6476382879524073,
+          "population_reached_2011": 33839.10054551328,
+          "population_density_per_sq_km": 24504.28682907947,
+          "sc_st_share": 0.08690909090909091,
+          "catchment_archetype": 1
+        },
+        {
+          "ward_number": 173.0,
+          "ward_name": "Jakkasandra",
+          "coordinates": [
+            77.62954850657773,
+            12.920658934232039
+          ],
+          "overlap_ratio": 0.9999999999999997,
+          "population_reached_2011": 33520.999999999985,
+          "population_density_per_sq_km": 21966.35486632753,
+          "sc_st_share": 0.1367202649085648,
+          "catchment_archetype": 1
+        },
+        {
+          "ward_number": 151.0,
+          "ward_name": "Koramangala",
+          "coordinates": [
+            77.62546001556326,
+            12.928997592573376
+          ],
+          "overlap_ratio": 0.7742137304287425,
+          "population_reached_2011": 29664.773295107698,
+          "population_density_per_sq_km": 10305.35858596945,
+          "sc_st_share": 0.15155548595886836,
+          "catchment_archetype": 1
+        },
+        {
+          "ward_number": 175.0,
+          "ward_name": "Bommanahalli",
+          "coordinates": [
+            77.62470980726454,
+            12.908535746511435
+          ],
+          "overlap_ratio": 0.5709378071036695,
+          "population_reached_2011": 24884.324322613433,
+          "population_density_per_sq_km": 23731.27459780324,
+          "sc_st_share": 0.11008374440747963,
+          "catchment_archetype": 1
+        },
+        {
+          "ward_number": 171.0,
+          "ward_name": "Gurappanapalya",
+          "coordinates": [
+            77.60691324036937,
+            12.9210075984947
+          ],
+          "overlap_ratio": 0.39084132378429826,
+          "population_reached_2011": 19147.707293516556,
+          "population_density_per_sq_km": 71761.21511526249,
+          "sc_st_share": 0.05058071890755445,
+          "catchment_archetype": 2
+        },
+        {
+          "ward_number": 114.0,
+          "ward_name": "Agaram",
+          "coordinates": [
+            77.65246655343229,
+            12.928997592573376
+          ],
+          "overlap_ratio": 0.45278664188145723,
+          "population_reached_2011": 16715.071671695874,
+          "population_density_per_sq_km": 3258.470052979397,
+          "sc_st_share": 0.3179921985047134,
+          "catchment_archetype": 0
+        },
+        {
+          "ward_number": 189.0,
+          "ward_name": "Hongasandra",
+          "coordinates": [
+            77.6329739190728,
+            12.90351586824697
+          ],
+          "overlap_ratio": 0.23949054523975002,
+          "population_reached_2011": 16418.034838365824,
+          "population_density_per_sq_km": 31724.90451336046,
+          "sc_st_share": 0.07175365405373865,
+          "catchment_archetype": 1
+        },
+        {
+          "ward_number": 152.0,
+          "ward_name": "Suddagunte Palya",
+          "coordinates": [
+            77.6121720921195,
+            12.927639645286133
+          ],
+          "overlap_ratio": 0.378487684880304,
+          "population_reached_2011": 15138.371932157519,
+          "population_density_per_sq_km": 23007.031112582747,
+          "sc_st_share": 0.09663224741855639,
+          "catchment_archetype": 1
+        },
+        {
+          "ward_number": 188.0,
+          "ward_name": "Bilekhalli",
+          "coordinates": [
+            77.61830489015597,
+            12.907775211886028
+          ],
+          "overlap_ratio": 0.23223863022216207,
+          "population_reached_2011": 11584.991830002333,
+          "population_density_per_sq_km": 11662.250926908959,
+          "sc_st_share": 0.09670435410151551,
+          "catchment_archetype": 1
+        },
+        {
+          "ward_number": 148.0,
+          "ward_name": "Ejipura",
+          "coordinates": [
+            77.63211707810161,
+            12.9339138143181
+          ],
+          "overlap_ratio": 0.21368869015059244,
+          "population_reached_2011": 10044.223191838448,
+          "population_density_per_sq_km": 29165.747429405797,
+          "sc_st_share": 0.17411284146030126,
+          "catchment_archetype": 0
+        },
+        {
+          "ward_number": 190.0,
+          "ward_name": "Mangammanapalya",
+          "coordinates": [
+            77.64023412813285,
+            12.904473365049249
+          ],
+          "overlap_ratio": 0.10440952378832485,
+          "population_reached_2011": 6879.543522412725,
+          "population_density_per_sq_km": 18542.18138834735,
+          "sc_st_share": 0.10610107755349825,
+          "catchment_archetype": 0
+        },
+        {
+          "ward_number": 149.0,
+          "ward_name": "Varthuru",
+          "coordinates": [
+            77.71755227912459,
+            12.914437458728772
+          ],
+          "overlap_ratio": 0.06803749874002855,
+          "population_reached_2011": 3716.54836867406,
+          "population_density_per_sq_km": 2030.449112901425,
+          "sc_st_share": 0.17420594965675057,
+          "catchment_archetype": 0
+        }
+      ],
+      "limitations": [
+        "Population is a Census 2011 baseline",
+        "Areal weighting assumes population is uniform within each ward",
+        "SC/ST share is an equity signal, not a complete income proxy"
+      ]
+    },
+    "water_bodies_agent": {
+      "agent": "water_bodies_agent",
+      "algorithm": "projected line-to-water distance and intersection",
+      "watch_distance_m": 75,
+      "features_scanned": 4108,
+      "watchpoint_count": 11,
+      "alignment_intersection_count": 7,
+      "watchpoints": [
+        {
+          "source_id": "106",
+          "name": "Agara kere",
+          "kind": "lake",
+          "coordinates": [
+            77.64464487525643,
+            12.922225471457098
+          ],
+          "distance_m": 0.0,
+          "intersects_alignment": true
+        },
+        {
+          "source_id": "145",
+          "name": "Kaikondanahalli kere",
+          "kind": "lake",
+          "coordinates": [
+            77.67344628184038,
+            12.91529680484255
+          ],
+          "distance_m": 0.0,
+          "intersects_alignment": true
+        },
+        {
+          "source_id": "3123",
+          "name": null,
+          "kind": "stream",
+          "coordinates": [
+            77.64215267168915,
+            12.92169208471576
+          ],
+          "distance_m": 0.0,
+          "intersects_alignment": true
+        },
+        {
+          "source_id": "3133",
+          "name": null,
+          "kind": "stream",
+          "coordinates": [
+            77.66329088327265,
+            12.918943206341698
+          ],
+          "distance_m": 0.0,
+          "intersects_alignment": true
+        },
+        {
+          "source_id": "3227",
+          "name": null,
+          "kind": "stream",
+          "coordinates": [
+            77.67698395355958,
+            12.914026567010488
+          ],
+          "distance_m": 0.0,
+          "intersects_alignment": true
+        },
+        {
+          "source_id": "3289",
+          "name": null,
+          "kind": "stream",
+          "coordinates": [
+            77.6873441621695,
+            12.90940961494078
+          ],
+          "distance_m": 0.0,
+          "intersects_alignment": true
+        },
+        {
+          "source_id": "3309",
+          "name": null,
+          "kind": "stream",
+          "coordinates": [
+            77.6887329464694,
+            12.908731561429649
+          ],
+          "distance_m": 0.0,
+          "intersects_alignment": true
+        },
+        {
+          "source_id": "3279",
+          "name": null,
+          "kind": "stream",
+          "coordinates": [
+            77.6887329464694,
+            12.908832391462
+          ],
+          "distance_m": 10.024046326846502,
+          "intersects_alignment": false
+        },
+        {
+          "source_id": "3231",
+          "name": null,
+          "kind": "stream",
+          "coordinates": [
+            77.6762338877706,
+            12.9141097718015
+          ],
+          "distance_m": 19.41872371810266,
+          "intersects_alignment": false
+        },
+        {
+          "source_id": "3237",
+          "name": null,
+          "kind": "stream",
+          "coordinates": [
+            77.68262229555,
+            12.9121654737817
+          ],
+          "distance_m": 44.78428937546625,
+          "intersects_alignment": false
+        },
+        {
+          "source_id": "107",
+          "name": "Ambalipura Kelagina kere",
+          "kind": "lake",
+          "coordinates": [
+            77.6656925936704,
+            12.9175661128038
+          ],
+          "distance_m": 53.70621572513454,
+          "intersects_alignment": false
+        }
+      ],
+      "limitations": [
+        "Watch distance is an analytical threshold, not a legal conclusion",
+        "Legal buffers must be configured from a dated authoritative rule",
+        "Source geometry may not represent seasonal water extent"
+      ]
+    },
+    "mobility_traffic_agent": {
+      "agent": "mobility_traffic_agent",
+      "corridor_length_km": 19.301022073816622,
+      "gtfs_schedule_model": {
+        "model": "Ridge regression",
+        "training_examples": 14,
+        "features": [
+          "distance_km",
+          "stop_count"
+        ],
+        "r2_on_training_patterns": 0.9981590078612638,
+        "cross_validated_mae_minutes": 1.2504025347192216,
+        "cross_validated_r2": 0.9911367591230948,
+        "coefficients": {
+          "distance_km": 1.8548703059426799,
+          "stop_count": 0.0,
+          "intercept": -0.03655442889101579
+        },
+        "median_station_spacing_km": 1.1920277777777777,
+        "projected_stop_count": 17,
+        "projected_metro_minutes": 35.76433829017564
+      },
+      "road_comparison": {
+        "road_minutes_at_13_9_kmh": 83.31376434740989,
+        "bpr_minutes_at_vc_1_5": 72.76657652383096,
+        "projected_minutes_saved_one_way": 47.54942605723425,
+        "bpr_parameters": {
+          "free_flow_kmh": 28,
+          "alpha": 0.15,
+          "beta": 4,
+          "v_c": 1.5
+        }
+      },
+      "road_widths": {
+        "nearby_segment_count": 97,
+        "segments_with_width": 97,
+        "median_width_m": 45.0,
+        "below_20m_count": 24,
+        "between_20m_and_30m_count": 5,
+        "at_least_30m_count": 68
+      },
+      "historical_city_context": {
+        "zones": 11,
+        "mean_public_transport_mode_share_pct": 26.90909090909091,
+        "mean_two_wheeler_mode_share_pct": 25.454545454545453,
+        "mean_car_van_mode_share_pct": 5.636363636363637,
+        "source_period": "2010-2011"
+      },
+      "limitations": [
+        "The unofficial GTFS contains synthesized intermediate timings",
+        "The BPR scenario uses an assumed V/C ratio, not live traffic telemetry",
+        "Mobility indicators are a 2010-2011 historical baseline"
+      ]
+    }
+  }
+}

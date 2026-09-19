@@ -1,0 +1,10 @@
+{
+  "dataset_id": "bengaluru_ward_census_2011",
+  "source_page": "https://data.opencity.in/dataset/bengaluru-census-2011",
+  "resolved_download_url": "https://data.opencity.in/dataset/023a1c0c-1901-4eb1-b1bf-66a900485099/resource/269cdf01-dae5-4736-8f4d-72a8e57fa3a9/download/83390055-d933-420f-82b7-608e139336c2.csv",
+  "license": "Public Domain",
+  "attribution": "Office of the Registrar General & Census Commissioner, India; OpenCity",
+  "downloaded_at": "2026-09-19T08:34:23.257134+00:00",
+  "bytes": 16236,
+  "sha256": "06a1b1d6c4641c79373fa29c812f7e0746e626bd8b7c0249c97dc7ac7b1e0116"
+}
