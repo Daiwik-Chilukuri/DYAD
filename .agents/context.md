@@ -28,6 +28,7 @@
 | Layer | Technology | Key Details |
 | :--- | :--- | :--- |
 | **Frontend Framework** | **Next.js 14/15 (App Router, TypeScript)** | High-performance React, server components, Tailwind CSS, Lucide React, Framer Motion. |
+| **Design System & Craft** | **Watermelon UI + Tri-Layer Stack** | React 19 + Tailwind v4 + Motion with **Taste**, **Impeccable** (strict tokens), and **Emil Kowalski** (spring physics). See [`.agents/design-system.md`](./design-system.md). |
 | **Map Rendering** | **MapLibre GL JS** | Open-source WebGL vector renderer, CARTO Dark Matter basemap, neon line shaders, 3D camera controls. |
 | **Local Spatial Math** | **Turf.js (`@turf/turf`)** | Deterministic in-browser and edge geometry compute: buffer, booleanIntersects, pointsWithinPolygon. |
 | **Cloud Agent Execution** | **Modal AI (`modal.com`)** | Serverless cloud containers running parallel agent tasks, batch corridor simulations, and geospatial dataset experiments. |
@@ -86,6 +87,13 @@ When building a prototype, design its primary functionality as clean, modular fu
 * The orchestrating agent will inspect all `prototype-*/` directories, extract the verified modules, and cleanly assemble them into the unified production Next.js App (`src/`) and Modal cloud deployment (`modal_app/`).
 * Having separate prototype folders guarantees **zero merge conflicts**, **zero accidental code overwrites**, and **rapid parallel velocity**!
 
+### Rule 6: Strict UI Craft & Anti-Slop Discipline
+All frontend components, map layers, widgets, and drawer interactions must strictly follow [`.agents/design-system.md`](./design-system.md):
+* **Taste:** High-contrast dark command center aesthetic; no generic SaaS templates or fuzzy purple blobs.
+* **Impeccable:** Mathematical 4px/8px rhythm; no arbitrary CSS values; single-level cards; tabular figures for telemetry (`font-mono tabular-nums`).
+* **Emil Kowalski:** Physics-based spring animations (`motionSprings`); origin-aware popover/drawer transforms; tactile button feedback (`whileTap: scale 0.98`).
+* **Watermelon UI:** Extend and skin Watermelon UI primitives professionally without breaking design consistency.
+
 ---
 
 ## 4. Environment Variables & Secrets
@@ -109,4 +117,4 @@ NEXT_PUBLIC_MAP_STYLE="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/sty
 
 When prompting your AI agent in Cursor, Windsurf, Claude Code, Antigravity, or Copilot, copy and paste this quick blurb at the top:
 
-> **Agent Instruction:** "I am working on DYAD. Read `.agents/context.md` before taking action. Create/modify files ONLY inside my dedicated isolated prototype folder (e.g., `prototype-<feature-name>/`) to avoid git merge conflicts with teammates. Make folder names descriptive and self-documenting."
+> **Agent Instruction:** "I am working on DYAD. Read `.agents/context.md` and `.agents/design-system.md` before taking action. Create/modify files ONLY inside my dedicated isolated prototype folder (e.g., `prototype-<feature-name>/`) to avoid git merge conflicts with teammates. Enforce the Tri-Layer Design Stack (Taste + Impeccable + Emil Kowalski) on all UI code."

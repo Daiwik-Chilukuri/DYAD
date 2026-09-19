@@ -8,3 +8,4 @@ To avoid merge conflicts among teammates who use different coding agent platform
 2. **Always create an isolated, self-descriptive prototype subfolder** (e.g., `prototype-agent-orchestration/`, `prototype-datasets-collection/`, `prototype-modal-cloud-experiments/`, `prototype-map-canvas-ui/`).
 3. Make sure any other agent or teammate can instantly understand the prototype's purpose purely from its directory name.
 4. Export clean, modular functions/components so that all prototypes can be synthesized together at the end of the sprint using an integration session (`/teamwork-preview` or `/goal`).
+5. **Strict Design Craft:** All UI code must strictly adhere to [`.agents/design-system.md`](./.agents/design-system.md) combining **Taste**, **Impeccable** spacing tokens, and **Emil Kowalski** spring micro-interactions on top of **Watermelon UI**. Zero AI slop permitted.
