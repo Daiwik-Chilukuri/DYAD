@@ -291,11 +291,12 @@ class DyadMasterOrchestrator:
         }
 
     def _get_available_datasets(self) -> List[str]:
-        """Discovers files in the Modal Volume."""
+        """Discovers files directly from Modal Volume API (0 container cold starts)."""
         try:
             import modal
-            fn = modal.Function.from_name("dyad-subagents-swarm", "list_available_datasets_modal")
-            return fn.remote()
+            vol = modal.Volume.from_name("dyad-datasets-volume")
+            entries = vol.listdir("")
+            return sorted([e.path for e in entries if not e.path.endswith(".meta.json")])
         except Exception as e:
             print(f"[Master Orchestrator] Warning: Failed to query Modal volume: {e}")
             return []

@@ -572,18 +572,3 @@ Provide a 4-point environmental regulatory review detailing legal compliance ris
     }
 
 
-# ----------------------------------------------------------------------
-# Modal Volume Dataset Discovery Function
-# ----------------------------------------------------------------------
-@app.function(
-    image=image,
-    volumes={VOLUME_MOUNT_PATH: datasets_volume},
-    timeout=30,
-)
-def list_available_datasets_modal() -> List[str]:
-    """Inspects the Modal Volume and returns the list of active dataset filenames."""
-    datasets_volume.reload()
-    volume_dir = Path(VOLUME_MOUNT_PATH)
-    if not volume_dir.exists():
-        return []
-    return sorted([f.name for f in volume_dir.iterdir() if f.is_file() and not f.name.endswith(".meta.json")])
