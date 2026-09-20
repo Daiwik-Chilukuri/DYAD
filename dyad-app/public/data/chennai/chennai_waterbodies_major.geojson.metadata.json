@@ -1,0 +1,13 @@
+{
+  "dataset":"chennai_waterbodies_major.geojson",
+  "city":"Chennai, Tamil Nadu, India",
+  "pillar":"Pillar 4: Ecological Risk & Statutory Waterbody Buffers",
+  "source_urls":[
+    "https://raw.githubusercontent.com/SundareshPrasanna/neer-vazhvu/main/public/data/basins/chennai-rivers/waterbodies-major.geojson",
+    "https://data.opencity.in/dataset/chennai-waterbodies"
+  ],
+  "geometry_type":"Polygon and MultiPolygon",
+  "timestamp_utc":"2026-09-20T05:02:18.868230+00:00",
+  "verification":"GeoJSON FeatureCollection with named Chennai basin waterbody polygons; properties include name, water_type, area_ha, source, and year.",
+  "regulatory_use":"Screen waterbody polygons against CRZ and Pallikaranai statutory datasets before approvals."
+}

@@ -1,0 +1,25 @@
+{
+  "city": "Chennai",
+  "country": "India",
+  "source": "TomTom Traffic Index",
+  "source_url": "https://www.tomtom.com/traffic-index/city/chennai/",
+  "report_year": 2025,
+  "scope": "Chennai city road network",
+  "metrics": {
+    "average_congestion_level_pct": 58.6,
+    "average_speed_kmh": 19.2,
+    "average_distance_driven_in_15_min_km": 4.8,
+    "time_lost_due_to_traffic_in_rush_hour_hours": 132,
+    "morning_rush_hour": {
+      "time_for_10_km": "33 min 54 s",
+      "congestion_level_pct": 69.4,
+      "average_speed_kmh": 17.7
+    },
+    "evening_rush_hour": {
+      "time_for_10_km": "41 min 6 s",
+      "congestion_level_pct": 100.9,
+      "average_speed_kmh": 14.6
+    }
+  },
+  "note": "Snapshot transcribed from the rendered Chennai 2025 traffic report; it is city-wide and not an OMR-only arterial measurement."
+}

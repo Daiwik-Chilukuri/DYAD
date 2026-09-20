@@ -1,0 +1,11 @@
+{
+  "dataset":"chennai_cmrl_phase1_stops.csv",
+  "city":"Chennai, Tamil Nadu, India",
+  "pillar":"Pillar 3: Mobility & Congestion",
+  "source_urls":[
+    "https://raw.githubusercontent.com/ungalsoththu/ChennaiGTFS/main/data/cmrl/stops.txt"
+  ],
+  "geometry_type":"tabular CSV with stop_lat/stop_lon coordinates",
+  "timestamp_utc":"2026-09-20T05:02:18.881798+00:00",
+  "verification":"Raw CMRL GTFS stops table retained alongside the derived station GeoJSON."
+}

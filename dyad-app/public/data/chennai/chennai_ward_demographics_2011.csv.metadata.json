@@ -1,0 +1,13 @@
+{
+  "dataset":"chennai_ward_demographics_2011.csv",
+  "city":"Chennai, Tamil Nadu, India",
+  "pillar":"Pillar 1: Demographics & Spatial Equity",
+  "source_urls":[
+    "https://raw.githubusercontent.com/elseasama/covid19chennai/gh-pages/chennai_data/demographics.csv"
+  ],
+  "geometry_type":"tabular CSV; no geometry",
+  "timestamp_utc":"2026-09-20T05:02:18.856950+00:00",
+  "verification":"Parsed header includes ZONE_NO, ZONE_NAME, WARD_NO, WARD_NAME, HOUSEHOLDS, POPULATION; 200 ward records were read.",
+  "population_field":"POPULATION",
+  "ward_name_field":"WARD_NAME"
+}

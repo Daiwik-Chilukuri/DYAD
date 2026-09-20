@@ -1,0 +1,15 @@
+{
+  "dataset":"chennai_cmrl_phase2_corridors.geojson",
+  "city":"Chennai, Tamil Nadu, India",
+  "pillar":"Pillar 3: Mobility & Congestion",
+  "source_urls":[
+    "https://chennaimetrorail.org/kml/maps/c3-phase-2-line-compressed-24012024.kml",
+    "https://chennaimetrorail.org/kml/maps/c4-phase-2-line-compressed-24012024.kml",
+    "https://chennaimetrorail.org/kml/maps/c5-phase-2-line-compressed-24012024.kml",
+    "https://chennaimetrorail.org/project-status/"
+  ],
+  "geometry_type":"LineString or MultiLineString",
+  "timestamp_utc":"2026-09-20T05:02:18.865211+00:00",
+  "verification":"Converted 12723 official CMRL Phase II KML line placemarks; C3 explicitly covers Madhavaram to SIPCOT and CMRL reports 118.9 km / 128 stations for Phase II.",
+  "focus_corridor":"OMR IT Expressway / C3 Madhavaram to SIPCOT"
+}

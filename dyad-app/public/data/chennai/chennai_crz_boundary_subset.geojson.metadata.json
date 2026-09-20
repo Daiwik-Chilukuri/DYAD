@@ -1,0 +1,17 @@
+{
+  "dataset":"chennai_crz_boundary_subset.geojson",
+  "city":"Chennai, Tamil Nadu, India",
+  "pillar":"Pillar 4: Ecological Risk & Statutory Waterbody Buffers",
+  "source_urls":[
+    "https://data.opencity.in/dataset/e83a36d7-1ed5-4183-a7b0-964d2c4be1cf/resource/ac2d71ac-733a-465a-aae9-3d1c17caff27/download/tn_crz_boundary.geojson"
+  ],
+  "geometry_type":"Source-defined GeoJSON geometry",
+  "timestamp_utc":"2026-09-20T05:02:18.872564+00:00",
+  "verification":"Filtered the downloaded Tamil Nadu CRZ FeatureCollection by intersection with the requested Chennai bbox; 36 source features retained. This is a spatial subset, not a newly computed legal buffer.",
+  "source_filter_bbox":[
+    12.88,
+    80.12,
+    13.2,
+    80.32
+  ]
+}

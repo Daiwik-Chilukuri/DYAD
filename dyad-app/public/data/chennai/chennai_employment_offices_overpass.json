@@ -1,0 +1,7158 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-09-20T04:58:48Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 335503095,
+  "lat": 12.9978776,
+  "lon": 80.2614478,
+  "tags": {
+    "name": "Corporation Ward 152 Office",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 340890453,
+  "lat": 12.9859085,
+  "lon": 80.2593534,
+  "tags": {
+    "name": "Ward 155 Corporation Office",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 343729097,
+  "lat": 13.0440148,
+  "lon": 80.2581688,
+  "tags": {
+    "country": "LK",
+    "diplomatic": "embassy",
+    "embassy": "high_commission",
+    "name": "Sri Lankan High Commission",
+    "office": "diplomatic"
+  }
+},
+{
+  "type": "node",
+  "id": 365983844,
+  "lat": 13.0144099,
+  "lon": 80.2203957,
+  "tags": {
+    "landuse": "commercial",
+    "name": "Wipro CDC3",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 365983846,
+  "lat": 13.0137159,
+  "lon": 80.2204402,
+  "tags": {
+    "landuse": "commercial",
+    "name": "iGATE",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 365983847,
+  "lat": 13.0126016,
+  "lon": 80.2204721,
+  "tags": {
+    "landuse": "commercial",
+    "name": "Wipro CDC1",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 366488527,
+  "lat": 13.0671507,
+  "lon": 80.2712598,
+  "tags": {
+    "addr:street": "27/44, Mount Road, 27/44, Anna Salai, Border Thottam, Padupakkam, Triplicane, Chennai, Tamil Nadu 600002",
+    "name": "Akshaya Shanthi",
+    "office": "it",
+    "phone": "88704 81818",
+    "website": "https://www.akshaya.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 366857802,
+  "lat": 13.0685381,
+  "lon": 80.2470849,
+  "tags": {
+    "addr:city": "chennai",
+    "addr:housenumber": "old.no - 50, new no. - 6",
+    "addr:postcode": "600006",
+    "addr:street": "College Road",
+    "name": "Regional Meteorological Centre - IMD Chennai",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 370142855,
+  "lat": 13.0322794,
+  "lon": 80.2091556,
+  "tags": {
+    "name": "RTO Office KK Nagar",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 378691589,
+  "lat": 13.0561950,
+  "lon": 80.2492361,
+  "tags": {
+    "landuse": "commercial",
+    "name": "Institute of Chartered Accountants of India",
+    "office": "financial"
+  }
+},
+{
+  "type": "node",
+  "id": 378691595,
+  "lat": 13.0588864,
+  "lon": 80.2483643,
+  "tags": {
+    "country": "AT",
+    "diplomatic": "embassy",
+    "embassy": "yes",
+    "name": "Austria",
+    "name:fr": "Ambassade d'Autriche",
+    "office": "diplomatic",
+    "phone": "(+91) 44 2833 4501/2",
+    "target": "IN"
+  }
+},
+{
+  "type": "node",
+  "id": 386002550,
+  "lat": 13.0321643,
+  "lon": 80.2462621,
+  "tags": {
+    "country": "RU",
+    "diplomatic": "embassy",
+    "embassy": "yes",
+    "fixme": "diplomatic=consulate/embassy/*?",
+    "name": "Russia",
+    "office": "diplomatic"
+  }
+},
+{
+  "type": "node",
+  "id": 415650790,
+  "lat": 13.0376821,
+  "lon": 80.2635487,
+  "tags": {
+    "building": "yes",
+    "name": "Mylapore Telephone Exchange",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 432468226,
+  "lat": 12.9479808,
+  "lon": 80.1410933,
+  "tags": {
+    "name": "AU-KBC Research Centre",
+    "office": "research",
+    "website": "https://www.au-kbc.org/"
+  }
+},
+{
+  "type": "node",
+  "id": 941426010,
+  "lat": 13.0696251,
+  "lon": 80.2064345,
+  "tags": {
+    "landuse": "commercial",
+    "name": "Election Commission Office",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 959586453,
+  "lat": 13.0527045,
+  "lon": 80.2467016,
+  "tags": {
+    "name": "Hafiz Court",
+    "office": "iSOFT"
+  }
+},
+{
+  "type": "node",
+  "id": 959607555,
+  "lat": 13.0526572,
+  "lon": 80.2470166,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "17",
+    "addr:postcode": "600034",
+    "addr:street": "kodambakkam High Road",
+    "name": "Shafika",
+    "office": "Zealous_Services"
+  }
+},
+{
+  "type": "node",
+  "id": 1180504483,
+  "lat": 13.0673587,
+  "lon": 80.2523404,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "HARIRAM",
+    "addr:interpolation": "37/9",
+    "addr:postcode": "600 006",
+    "addr:street": "4th Collage Road",
+    "name": "Corporate Media Men Advertising Ltd",
+    "office": "advertising_agency"
+  }
+},
+{
+  "type": "node",
+  "id": 1664155551,
+  "lat": 13.1021032,
+  "lon": 80.1930428,
+  "tags": {
+    "building": "yes",
+    "name": "Wheels India Limited",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 1664155552,
+  "lat": 13.1017165,
+  "lon": 80.1909828,
+  "tags": {
+    "building": "yes",
+    "name": "Brakes India Limited",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 1664155553,
+  "lat": 13.1020143,
+  "lon": 80.1925224,
+  "tags": {
+    "building": "yes",
+    "name": "Sundaram Clayton",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 1723635344,
+  "lat": 12.9908849,
+  "lon": 80.2424570,
+  "tags": {
+    "office": "Transparent Chennai"
+  }
+},
+{
+  "type": "node",
+  "id": 1917378397,
+  "lat": 13.1011835,
+  "lon": 80.1893593,
+  "tags": {
+    "building": "yes",
+    "name": "Lucas TVS Limited",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 1917378398,
+  "lat": 13.1098935,
+  "lon": 80.1914657,
+  "tags": {
+    "building": "yes",
+    "name": "Sundaram Brake Lining",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 1977806954,
+  "lat": 13.1088481,
+  "lon": 80.1895988,
+  "tags": {
+    "building": "yes",
+    "name": "Sundaram Fasteners",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 1990726913,
+  "lat": 13.0191213,
+  "lon": 80.2569717,
+  "tags": {
+    "name": "Krishnamurthi Foundation of India",
+    "office": "ngo"
+  }
+},
+{
+  "type": "node",
+  "id": 2017710578,
+  "lat": 12.9909554,
+  "lon": 80.2424547,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housename": "IIT Research Park",
+    "addr:housenumber": "CEWiT, 3rd Floor",
+    "addr:postcode": "600113",
+    "addr:street": "Kanagam road, Taramani",
+    "alt_name": "CEWiT",
+    "comment": "Office of CEWiT",
+    "email": "admin@cewit.org.in",
+    "fax": "+91-44-6646 9200",
+    "layer": "3",
+    "name": "Centre of Excellence in Wireless Technology",
+    "office": "research",
+    "opening_hours": "Mo-Fr 10:00-17:00",
+    "phone": "+91-44-66469201",
+    "wikidata": "Q5065763",
+    "wikipedia": "en:Cewit"
+  }
+},
+{
+  "type": "node",
+  "id": 2017711276,
+  "lat": 12.9909491,
+  "lon": 80.2426261,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housename": "IIT Research Park",
+    "addr:housenumber": "RITCO, 3rd Floor",
+    "addr:street": "Kanagam road, Taramani",
+    "comment": "RITCOE",
+    "layer": "3",
+    "name": "Reliance Telecom Center of Excellence",
+    "office": "telecommunication"
+  }
+},
+{
+  "type": "node",
+  "id": 2442528616,
+  "lat": 13.0853329,
+  "lon": 80.2155527,
+  "tags": {
+    "name": "Vinzas Solutions India Private Limited",
+    "office": "it",
+    "website": "https://www.vinzasolutions.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 2475523033,
+  "lat": 12.8872649,
+  "lon": 80.1843505,
+  "tags": {
+    "name": "Sithalapakkam Panchayat Office",
+    "name:ta": "சித்தாளப்பாக்கம் பஞ்சாயத்து அலுவலகம்",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 2562495656,
+  "lat": 13.0336562,
+  "lon": 80.2505994,
+  "tags": {
+    "addr:city": "chennai",
+    "addr:housenumber": "1",
+    "addr:street": "Alwarpet",
+    "currency:XBT": "yes",
+    "name": "Service Integrator",
+    "office": "telecommunication",
+    "payment:onchain": "yes",
+    "survey:date": "2023-04-23",
+    "website": "http://gcl.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 2564083944,
+  "lat": 13.0686478,
+  "lon": 80.2568372,
+  "tags": {
+    "addr:city": "Egmore",
+    "addr:housename": "Cisons Complex",
+    "addr:housenumber": "77",
+    "addr:postcode": "600008",
+    "addr:street": "Montieth Road",
+    "email": "info@visionation.in",
+    "name": "Visionation Property Care",
+    "name:en": "Visionation Property Care",
+    "note": "Site investigation, Patta, Document Registration, Document Verification, Land Survey, Pathway and entrance investigation, Legal Opinion, Property Construction Property Investigation, EC NOC Property Tax Assessment",
+    "office": "estate_agent",
+    "phone": "044 6555 6333",
+    "website": "https://www.visionation.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 2651399932,
+  "lat": 13.0213390,
+  "lon": 80.1735506,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housename": "DLF IT Park",
+    "addr:postcode": "600089",
+    "addr:street": "Mount Poonamallee Highway",
+    "addr:unit": "6th Floor, Block 10",
+    "name": "GlobalEnglish India Pvt Ltd.",
+    "office": "it",
+    "opening_hours": "09:30-18:30",
+    "phone": "+91 44 4564 1111",
+    "website": "https://globalenglish.com/",
+    "wheelchair": "yes",
+    "wikidata": "Q5570041",
+    "wikipedia": "en:GlobalEnglish"
+  }
+},
+{
+  "type": "node",
+  "id": 2690929388,
+  "lat": 13.0229686,
+  "lon": 80.1734986,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:postcode": "600089",
+    "addr:street": "Mugalivakkam",
+    "office": "company",
+    "website": "https://www.zoho.com",
+    "wikidata": "Q8063247",
+    "wikimedia_commons": "Category:Zoho Corporation",
+    "wikipedia": "en:ZOHO Corporation"
+  }
+},
+{
+  "type": "node",
+  "id": 2794065478,
+  "lat": 13.0539022,
+  "lon": 80.2212493,
+  "tags": {
+    "addr:area": "Kodambakkam",
+    "building": "yes",
+    "name": "BSNL Customer Service Center",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 2799328224,
+  "lat": 13.0723565,
+  "lon": 80.2623858,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "55",
+    "addr:postcode": "600008",
+    "addr:street": "Adithanar Road",
+    "name": "MOTOR FINANCE CORPORATION ",
+    "office": "financial"
+  }
+},
+{
+  "type": "node",
+  "id": 2815428501,
+  "lat": 13.0612432,
+  "lon": 80.2461155,
+  "tags": {
+    "name": "NIIT Nungambakkam",
+    "office": "educational_institution"
+  }
+},
+{
+  "type": "node",
+  "id": 2850520626,
+  "lat": 13.0338335,
+  "lon": 80.2479924,
+  "tags": {
+    "consulate": "consulate_general",
+    "country": "JP",
+    "diplomatic": "consulate",
+    "name": "चेन्नई में जापान के वाणिज्य दूतावास जनरल",
+    "name:en": "Consulate-General of Japan in Chennai",
+    "name:ja": "在チェンナイ日本国総領事館",
+    "office": "diplomatic",
+    "phone": "+91-44-2432-3860",
+    "website": "https://www.chennai.in.emb-japan.go.jp/index.html"
+  }
+},
+{
+  "type": "node",
+  "id": 2989205003,
+  "lat": 13.0057342,
+  "lon": 80.2605395,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "33",
+    "addr:postcode": "600020",
+    "addr:street": "Padmanabha Nagar 5th Street",
+    "fixme": "Survey closing hours",
+    "name": "Eloka Enterprises Private Limited",
+    "office": "company",
+    "opening_hours": "09:00+",
+    "smoking": "no",
+    "website": "https://eloka.net/"
+  }
+},
+{
+  "type": "node",
+  "id": 3118891215,
+  "lat": 13.0456033,
+  "lon": 80.2502361,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "#32/30",
+    "addr:postcode": "600028",
+    "addr:street": "Chokkalingam Nagar",
+    "ele": "1",
+    "name": "Logic Soft Pvt. Ltd.",
+    "office": "company",
+    "opening_hours": "09:00-19:00",
+    "phone": "+914447981917",
+    "website": "https://www.logicsoft.co.in/",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 3157620727,
+  "lat": 12.9249871,
+  "lon": 80.1262373,
+  "tags": {
+    "addr:street": "Bharathmatha Street",
+    "name": "Sub-Registrar Office",
+    "office": "government",
+    "opening_hours": "Mo-Fr 10:00-16:00"
+  }
+},
+{
+  "type": "node",
+  "id": 3182651397,
+  "lat": 13.0371594,
+  "lon": 80.2346071,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "20",
+    "addr:postcode": "600017",
+    "addr:street": "Kannadasan Road",
+    "check_date": "2025-11-21",
+    "name": "LMS India Engg. Solutions Pvt. Ltd",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 3221523274,
+  "lat": 13.0322668,
+  "lon": 80.2304697,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "64",
+    "addr:postcode": "600017",
+    "addr:street": "South Usman Road",
+    "name": "Chennaicommercials",
+    "office": "company",
+    "opening_hours:url": "http://www.chennaicommercials.com/",
+    "smoking": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 3256666199,
+  "lat": 12.9297292,
+  "lon": 80.2335815,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "3, 4",
+    "addr:postcode": "600097",
+    "addr:street": "Fourrts Avenue, Thuraipakkam",
+    "name": "Zanec",
+    "office": "it",
+    "opening_hours": "10:00-19:00"
+  }
+},
+{
+  "type": "node",
+  "id": 3268890163,
+  "lat": 13.0379841,
+  "lon": 80.2280797,
+  "tags": {
+    "addr:city": "t.nagar",
+    "addr:housenumber": "7 annex",
+    "addr:postcode": "600017",
+    "addr:street": "Rameswaram Street",
+    "name": "THARASU Group of Magazines",
+    "office": "publisher",
+    "phone": "+919444040232"
+  }
+},
+{
+  "type": "node",
+  "id": 3488536151,
+  "lat": 13.0896359,
+  "lon": 80.2858907,
+  "tags": {
+    "name": "Tamil Nadu Oil and Seeds Association",
+    "office": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3605191046,
+  "lat": 13.0473124,
+  "lon": 80.1982133,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:street": "Chakrapani St",
+    "name": "Spritle Software",
+    "office": "it",
+    "smoking": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 3681834858,
+  "lat": 12.9097890,
+  "lon": 80.2258531,
+  "tags": {
+    "name": "Gamesa",
+    "office": "it"
+  }
+},
+{
+  "type": "node",
+  "id": 3686670072,
+  "lat": 12.9772088,
+  "lon": 80.2604763,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "770",
+    "addr:postcode": "600041",
+    "addr:street": "48th Cross St Valmiki Nagar, Thiruvalluvar Nagar, Thiruvanmiyur",
+    "name": "WizDemy Software Private Limited",
+    "office": "company",
+    "opening_hours": "09:00-18:00"
+  }
+},
+{
+  "type": "node",
+  "id": 3694620524,
+  "lat": 13.0429249,
+  "lon": 80.2359621,
+  "tags": {
+    "brand": "Life Insurance Corporation",
+    "brand:wikidata": "Q2767170",
+    "brand:wikipedia": "en:Life Insurance Corporation",
+    "name": "LIC Housing Finance Ltd",
+    "office": "insurance",
+    "short_name": "LIC"
+  }
+},
+{
+  "type": "node",
+  "id": 3704226008,
+  "lat": 12.8960990,
+  "lon": 80.2235545,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "6",
+    "addr:postcode": "600119",
+    "addr:street": "Elcot Avenue",
+    "addr:suburb": "Sholinganallur",
+    "name": "Qmax Test Equipments Private Limited",
+    "office": "yes",
+    "phone": "+91 44 24509627",
+    "website": "https://www.qmaxtest.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 3746877972,
+  "lat": 12.9722829,
+  "lon": 80.1401319,
+  "tags": {
+    "name": "CSC Computer Education",
+    "office": "educational_institution"
+  }
+},
+{
+  "type": "node",
+  "id": 3870859717,
+  "lat": 13.0908748,
+  "lon": 80.1905236,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:postcode": "600050",
+    "addr:street": "Madurai veerar street",
+    "name": "Jeevan Bhima Nagar Owners Welfare Association",
+    "office": "administrative"
+  }
+},
+{
+  "type": "node",
+  "id": 3883257762,
+  "lat": 12.9479174,
+  "lon": 80.2092498,
+  "tags": {
+    "internet_access": "wlan",
+    "name": "Fayola Towers",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 3883296157,
+  "lat": 12.9479958,
+  "lon": 80.1981571,
+  "tags": {
+    "name": "Adyog Software Solutions Pvt Ltd.",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 3998879476,
+  "lat": 13.0179760,
+  "lon": 80.2398067,
+  "tags": {
+    "name": "தமிழ் இணையக் கல்விக்கழகம்",
+    "name:en": "Tamil Virtual Academy",
+    "office": "research"
+  }
+},
+{
+  "type": "node",
+  "id": 3998902934,
+  "lat": 13.0093782,
+  "lon": 80.2682869,
+  "tags": {
+    "name": "பிரம்ம ஞான சபை",
+    "office": "research"
+  }
+},
+{
+  "type": "node",
+  "id": 4036545343,
+  "lat": 13.0852284,
+  "lon": 80.2175481,
+  "tags": {
+    "name": "Sri Gokulam Chit Funds",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 4066311356,
+  "lat": 13.0435956,
+  "lon": 80.2114638,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "10-C",
+    "addr:postcode": "600083",
+    "addr:street": "92nd St, 18th avenue, Ashok Nagar",
+    "description": "Touch Mark Media is one of the leading Digital Media Marketing and Advertising Company in Chennai. Digital marketing helps all the business persons to bring out more sales for their business.",
+    "name": "Touchmark Media",
+    "office": "it",
+    "opening_hours": "09:00-17:30",
+    "website": "http://www.touchmarkmedia.in"
+  }
+},
+{
+  "type": "node",
+  "id": 4104572594,
+  "lat": 13.0339901,
+  "lon": 80.2645386,
+  "tags": {
+    "name": "prime academy office",
+    "office": "lawyer"
+  }
+},
+{
+  "type": "node",
+  "id": 4221573010,
+  "lat": 13.0637732,
+  "lon": 80.2497868,
+  "tags": {
+    "addr:postcode": "600006",
+    "addr:street": "Pycrofts Garden Road",
+    "email": "reach@blazedream.com",
+    "name": "Blaze Dream Technologies Pvt Ltd",
+    "office": "it",
+    "opening_hours": "Mo-Fr 08:30-21:00",
+    "phone": "+914442047468",
+    "website": "https://www.blazedream.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 4233639318,
+  "lat": 12.9714506,
+  "lon": 80.1422770,
+  "tags": {
+    "name": "Airtel",
+    "office": "telecommunication"
+  }
+},
+{
+  "type": "node",
+  "id": 4258398875,
+  "lat": 13.0356156,
+  "lon": 80.2689542,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "235/10",
+    "addr:postcode": "600004",
+    "addr:street": "Kutchery Road",
+    "description": "Versutus Management Services Private Limited (Versutus) are into providing support services in the area of Human Resource Management, Statutory Compliance, Payroll Processing & Management, Due Diligence Auditing and Third Party Payroll.",
+    "name": "Versutus Management Service Private ltd",
+    "office": "company",
+    "opening_hours": "10:00-17:30",
+    "smoking": "no",
+    "website": "https://www.versutus.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 4278233215,
+  "lat": 12.9831655,
+  "lon": 80.2235237,
+  "tags": {
+    "name": "New India Insurance Co. div office Velachery",
+    "office": "insurance"
+  }
+},
+{
+  "type": "node",
+  "id": 4280392327,
+  "lat": 12.9913665,
+  "lon": 80.2099878,
+  "tags": {
+    "addr:postcode": "600042",
+    "addr:street": "Justice Ramakrishna Salai",
+    "name": "BSNL Exchange",
+    "office": "government",
+    "opening_hours": "Mo-Fr 10:00-22:00"
+  }
+},
+{
+  "type": "node",
+  "id": 4306145321,
+  "lat": 13.1149595,
+  "lon": 80.1857492,
+  "tags": {
+    "name": "Ambattur Municipality Higher secondary school",
+    "office": "educational_institution"
+  }
+},
+{
+  "type": "node",
+  "id": 4308319901,
+  "lat": 13.0727185,
+  "lon": 80.2617491,
+  "tags": {
+    "addr:street": "Adithanar Road",
+    "name": "EMPEE GROUP OF COMPANY",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 4314785542,
+  "lat": 13.0010205,
+  "lon": 80.2166976,
+  "tags": {
+    "addr:city": "chennai",
+    "addr:housenumber": "14",
+    "addr:postcode": "600032",
+    "addr:street": "Gulmohar Avenue, velachery main road",
+    "name": "South India Shelters Pvt. Ltd.",
+    "office": "estate_agent",
+    "smoking": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4324801889,
+  "lat": 13.0724579,
+  "lon": 80.2620643,
+  "tags": {
+    "addr:housenumber": "55",
+    "addr:postcode": "600002",
+    "addr:street": "Adithanar Road",
+    "email": "motorfinance@live.in",
+    "name": "MOTOR FINANCE CORPORATION",
+    "office": "company",
+    "opening_hours": "Mo-Su 10:00-18:30",
+    "phone": "+91 44 2852 1868"
+  }
+},
+{
+  "type": "node",
+  "id": 4332194892,
+  "lat": 13.0685377,
+  "lon": 80.2606735,
+  "tags": {
+    "addr:street": "Montieth Lane",
+    "name": "TAMIL NADU CABIL",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 4338115536,
+  "lat": 13.0706255,
+  "lon": 80.2598154,
+  "tags": {
+    "name": "KRISHNAMURTHY",
+    "office": "lawyer"
+  }
+},
+{
+  "type": "node",
+  "id": 4358646184,
+  "lat": 12.9852560,
+  "lon": 80.2186007,
+  "tags": {
+    "comment": "office to pay metro water tax :Chennai Corporation",
+    "government": "tax",
+    "name": "Metro Water",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 4405513861,
+  "lat": 12.9068000,
+  "lon": 80.2328004,
+  "tags": {
+    "name": "Yes Yes Mega Powers",
+    "office": "engineer"
+  }
+},
+{
+  "type": "node",
+  "id": 4411798695,
+  "lat": 13.0262651,
+  "lon": 80.1831059,
+  "tags": {
+    "name:en": "bsnl office(ramapuram)",
+    "office": "telecommunication"
+  }
+},
+{
+  "type": "node",
+  "id": 4411853090,
+  "lat": 13.0225730,
+  "lon": 80.1837779,
+  "tags": {
+    "name:en": "Millennium computers",
+    "office": "telecommunication"
+  }
+},
+{
+  "type": "node",
+  "id": 4412742151,
+  "lat": 12.9122028,
+  "lon": 80.2275533,
+  "tags": {
+    "addr:city": "Karapakkam",
+    "addr:street": "Rajiv Gandhi Salai",
+    "name": "Prestige Cyber Towers",
+    "office": "it"
+  }
+},
+{
+  "type": "node",
+  "id": 4414419421,
+  "lat": 13.0900867,
+  "lon": 80.2895815,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "Pondicherry Maritime Academy Chennai, 130",
+    "addr:postcode": "600001",
+    "addr:street": "Angappan Naicken Street",
+    "description": "4 Storied Building, On right side of Angappa Naicken Street if you face Parrys Signal or the Madras High Court",
+    "ele": "4",
+    "level": "4",
+    "name": "Pondicherry Maritime Academy Chennai",
+    "name_1": "Pondicherry Maritime Academy",
+    "name_2": "maritime",
+    "name_3": "training",
+    "name_4": "DGS",
+    "note": "Maritime Training Institute. DGS and Value-added courses. Flag State Courses & Documentation.",
+    "office": "educational_institution",
+    "opening_hours": "8:00-20:00",
+    "phone": "+914442086555 +9144442152251",
+    "source": "Owner",
+    "website": "https://www.pondicherrymaritime.com/",
+    "wheelchair": "yes",
+    "wikidata": "Q865132",
+    "wikipedia": "en:Merchant navy"
+  }
+},
+{
+  "type": "node",
+  "id": 4415983490,
+  "lat": 13.0943272,
+  "lon": 80.2907778,
+  "tags": {
+    "addr:housenumber": "80/72",
+    "addr:postcode": "600001",
+    "addr:street": "Moore Street",
+    "email": "kingmarine2011@gmail.com",
+    "name:en": "King marine services",
+    "office": "yes",
+    "phone": "04442077979"
+  }
+},
+{
+  "type": "node",
+  "id": 4421925893,
+  "lat": 13.0653924,
+  "lon": 80.2481463,
+  "tags": {
+    "addr:street": "Haddows Road",
+    "name:en": "Reliance Communication",
+    "office": "telecommunication"
+  }
+},
+{
+  "type": "node",
+  "id": 4426284855,
+  "lat": 13.0848530,
+  "lon": 80.2245512,
+  "tags": {
+    "name": "Official Gates",
+    "office": "it"
+  }
+},
+{
+  "type": "node",
+  "id": 4518445190,
+  "lat": 13.0428997,
+  "lon": 80.2594227,
+  "tags": {
+    "addr:housenumber": "222",
+    "addr:postcode": "600018",
+    "addr:street": "TTK Road",
+    "amenity": "bank",
+    "atm": "yes",
+    "brand": "Andhra Bank",
+    "brand:wikidata": "Q2003476",
+    "brand:wikipedia": "en:Andhra Bank",
+    "name": "Andhra Bank",
+    "name:en": "Vodafone office for SIMs for foreigners;Andhra Bank",
+    "office": "telecommunication",
+    "opening_hours": "Mo-Sa 10:00-20:00",
+    "operator": "Vodafone",
+    "website": "https://www.andhrabank.in"
+  }
+},
+{
+  "type": "node",
+  "id": 4550111390,
+  "lat": 12.9875004,
+  "lon": 80.1752151,
+  "tags": {
+    "name:en": "Office asg chennai",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 4580826990,
+  "lat": 13.0346417,
+  "lon": 80.1662450,
+  "tags": {
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 4580960017,
+  "lat": 12.9846115,
+  "lon": 80.2576048,
+  "tags": {
+    "name": "corporation office",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 4626968263,
+  "lat": 12.9746640,
+  "lon": 80.2629357,
+  "tags": {
+    "addr:city": "Chennai City Corporation Limits",
+    "addr:postcode": "600041",
+    "addr:street": "Kottivakkam Kuppam Road",
+    "name": "Tamil Nadu Electricity Board",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 4698134989,
+  "lat": 13.1005003,
+  "lon": 80.2734013,
+  "tags": {
+    "addr:street": "Wall Tax Road",
+    "name:en": "Parcel office, Chennai central",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 4713665593,
+  "lat": 13.0683352,
+  "lon": 80.2790283,
+  "tags": {
+    "addr:street": "Swami Sivananda Salai",
+    "name:en": "Tata Communications Ltd",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 4793224996,
+  "lat": 12.9708334,
+  "lon": 80.2121887,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "FlaatNo G3, Astalakshmi Homes",
+    "addr:postcode": "600091",
+    "addr:street": "10th Street, Ram Nagar, Puzhuthivakkam",
+    "name": "DMedium",
+    "office": "it"
+  }
+},
+{
+  "type": "node",
+  "id": 4830775366,
+  "lat": 13.1006471,
+  "lon": 80.1398164,
+  "tags": {
+    "government": "healthcare",
+    "name": "National Institute of Epidemiology",
+    "office": "government",
+    "operator": "Central govt of India"
+  }
+},
+{
+  "type": "node",
+  "id": 4841099728,
+  "lat": 13.0638932,
+  "lon": 80.2598552,
+  "tags": {
+    "addr:street": "Ethiraj Salai",
+    "name:en": "AIR TEL",
+    "office": "telecommunication"
+  }
+},
+{
+  "type": "node",
+  "id": 4843562868,
+  "lat": 13.0359082,
+  "lon": 80.2415135,
+  "tags": {
+    "brand": "Bhartiya Janta Party",
+    "brand:wikidata": "Q10230",
+    "description": "BJP Office",
+    "name": "BJP Tamilnadu Head Quarters",
+    "office": "political_party"
+  }
+},
+{
+  "type": "node",
+  "id": 4978570060,
+  "lat": 12.9826792,
+  "lon": 80.2520018,
+  "tags": {
+    "addr:city": "chennai",
+    "addr:housenumber": "Type II/17",
+    "addr:postcode": "600041",
+    "addr:street": "Dr.VSI Estate, Thiruvanmiyur",
+    "name": "Hexolabs Interactive Tech Pvt Ltd",
+    "note": "Near NIFT, Opposite to Origin Towers.",
+    "office": "it",
+    "phone": "044 42169699"
+  }
+},
+{
+  "type": "node",
+  "id": 4992173836,
+  "lat": 12.9965863,
+  "lon": 80.2097961,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "28",
+    "addr:street": "Vigneshwara Street",
+    "name": "Group10 Technologies Pvt Ltd",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 5087493134,
+  "lat": 12.9224480,
+  "lon": 80.1331971,
+  "tags": {
+    "addr:street": "Velachery - Tambaram Main Road",
+    "brand": "Life Insurance Corporation",
+    "brand:wikidata": "Q2767170",
+    "brand:wikipedia": "en:Life Insurance Corporation",
+    "name": "LIC satellite office, selaiyur",
+    "name:en": "LIC satellite office, selaiyur",
+    "office": "insurance",
+    "short_name": "LIC"
+  }
+},
+{
+  "type": "node",
+  "id": 5087493232,
+  "lat": 12.9242095,
+  "lon": 80.1277898,
+  "tags": {
+    "name": "Sneham seva center for tambaram municipality",
+    "name:en": "Sneham seva center for tambaram municipality",
+    "office": "government",
+    "opening_hours": "Mo-Fr 10:00-04:00"
+  }
+},
+{
+  "type": "node",
+  "id": 5167730830,
+  "lat": 12.9716586,
+  "lon": 80.2146452,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:postcode": "600042",
+    "addr:street": "6th Main Road",
+    "addr:unit": "Ramnagar, Velacherry",
+    "name": "Trumatics",
+    "office": "it"
+  }
+},
+{
+  "type": "node",
+  "id": 5167730831,
+  "lat": 12.9715645,
+  "lon": 80.2146372,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:postcode": "600042",
+    "addr:street": "6th Main Road",
+    "addr:unit": "Ramnagar, Velacherry",
+    "name": "Q-Pro",
+    "office": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5192973221,
+  "lat": 13.0436389,
+  "lon": 80.2117031,
+  "tags": {
+    "addr:postcode": "600083",
+    "addr:street": "92nd St",
+    "email": "stellarbuzi@gmail.com",
+    "name:en": "Stellar Business solution",
+    "office": "company",
+    "opening_hours": "Mo-Sa 00:00-24:00",
+    "phone": "9600193482"
+  }
+},
+{
+  "type": "node",
+  "id": 5212376621,
+  "lat": 12.9268815,
+  "lon": 80.1981917,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:postcode": "600015",
+    "addr:street": "JEENIS ROAD",
+    "email": "ceochn@nic.in",
+    "name": "Chief Education Office",
+    "name:en": "PANAGAL MALIGAI, SAIDAPET, CHENNAI-600015",
+    "office": "government",
+    "opening_hours": "Mo-Fr 00:00-24:00",
+    "phone": "044 24321735"
+  }
+},
+{
+  "type": "node",
+  "id": 5212388522,
+  "lat": 12.9269380,
+  "lon": 80.1982540,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:postcode": "600015",
+    "addr:street": "JEENIS ROAD",
+    "name:en": "SAIDAPET, TAMILNADU",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 5226266430,
+  "lat": 12.8991972,
+  "lon": 80.2275682,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:postcode": "600119",
+    "government": "transportation",
+    "name": "Regional Transport Office, Sholinganallur",
+    "name:ta": "வட்டாரப் போக்குவரத்து அலுவலகம், சோழிங்கநல்லூர்",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 5227463357,
+  "lat": 13.0211094,
+  "lon": 80.2065031,
+  "tags": {
+    "name": "NSIC",
+    "office": "government",
+    "website": "https://nsic.co.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 5230078138,
+  "lat": 12.9757227,
+  "lon": 80.2176898,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "7",
+    "addr:postcode": "600042",
+    "addr:street": "Vijayanagar 1st Main Road, Velachery",
+    "mobile_phone:repair": "8344777333",
+    "name": "Payilagam Software Training Institute",
+    "office": "educational_institution"
+  }
+},
+{
+  "type": "node",
+  "id": 5230370406,
+  "lat": 13.0822304,
+  "lon": 80.1694593,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:postcode": "600037",
+    "addr:street": "1st Ave, 4th Block, Mogappair West, Mogappair",
+    "name": "Amutha Matriculation Higher Secondary School",
+    "office": "educational_institution"
+  }
+},
+{
+  "type": "node",
+  "id": 5230370407,
+  "lat": 13.0822570,
+  "lon": 80.1712373,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:postcode": "600037",
+    "addr:street": "D Block, 1st Ave, Mogappair West, Ambattur Industrial Estate",
+    "check_date": "2023-10-07",
+    "name": "Chennai Metro Water Office",
+    "office": "water_utility"
+  }
+},
+{
+  "type": "node",
+  "id": 5230395336,
+  "lat": 13.0803365,
+  "lon": 80.1722338,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:postcode": "600037",
+    "addr:street": "Block No. 8, J.J. Nagar West, Mogappair West, Mogappair",
+    "description": "Mar Gregorios College is a private college located in Mogappair West, near Chennai. MGC was founded by the Malankara Syrian Catholic Management. The Trust was founded on August 1, 1930 at Trivandrum, Kerala.",
+    "name": "Mar Gregorios College Of Arts",
+    "office": "educational_institution",
+    "wikidata": "Q6754392",
+    "wikipedia": "en:Mar Gregorios College of Arts and Science, Chennai"
+  }
+},
+{
+  "type": "node",
+  "id": 5230395338,
+  "lat": 13.0819432,
+  "lon": 80.1675141,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:postcode": "600037",
+    "addr:street": "Mogappair West, Mogappair",
+    "name": "BSNL Office",
+    "office": "telecommunication",
+    "website": "https://www.bsnl.co.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 5230395340,
+  "lat": 13.0819149,
+  "lon": 80.1674427,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:postcode": "600037",
+    "addr:street": "Mogappair West, Mogappair",
+    "name": "Airtel Express",
+    "office": "telecommunication"
+  }
+},
+{
+  "type": "node",
+  "id": 5242847354,
+  "lat": 13.0186186,
+  "lon": 80.1878055,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "No.7/41, Mount Poonamalle High Rd, Nandambakkam",
+    "addr:postcode": "600089",
+    "addr:street": "Nandambakkam Bridge",
+    "name": "Tata Communications Ltd.",
+    "name:ta": "ஜெயந்த் தொழில்நுட்ப பூங்கா",
+    "office": "company",
+    "opening_hours": "24/7",
+    "smoking": "isolated"
+  }
+},
+{
+  "type": "node",
+  "id": 5246576321,
+  "lat": 12.9227996,
+  "lon": 80.1255647,
+  "tags": {
+    "government": "public_service",
+    "name": "TN Electricity Board Office",
+    "name:en": "Tamil nadu electricity board office",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 5250282011,
+  "lat": 12.9855145,
+  "lon": 80.2458023,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:postcode": "600113",
+    "addr:street": "Taramani Road",
+    "addr:unit": "1",
+    "description": "OFS delivers digital value to businesses by building innovative software, web-based or mobile, that will engage their customers & employees. www.objectfrontier.com",
+    "name": "ObjectFrontier Software",
+    "office": "company",
+    "phone": "(+91) 44-3061-2100",
+    "website": "https://www.objectfrontier.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 5255065021,
+  "lat": 13.1171002,
+  "lon": 80.2841149,
+  "tags": {
+    "addr:postcode": "600021",
+    "addr:street": "Thiruvottriyur High Road",
+    "name:en": "SUB REGISTER RAYAPURAM",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 5259058323,
+  "lat": 12.8854875,
+  "lon": 80.1520231,
+  "tags": {
+    "name:en": "Village administration office, agaram then",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 5259538621,
+  "lat": 12.9749219,
+  "lon": 80.1351372,
+  "tags": {
+    "name:en": "Pammal Municipality office",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 5271891564,
+  "lat": 13.0236386,
+  "lon": 80.2286104,
+  "tags": {
+    "addr:street": "Saidapet",
+    "name": "Theekathir Office",
+    "office": "newspaper"
+  }
+},
+{
+  "type": "node",
+  "id": 5306603541,
+  "lat": 13.0867855,
+  "lon": 80.2051489,
+  "tags": {
+    "addr:street": "15th Main Road",
+    "name": "Periyar University Study Center",
+    "office": "educational_institution",
+    "phone": "9884462255"
+  }
+},
+{
+  "type": "node",
+  "id": 5306605791,
+  "lat": 13.0877980,
+  "lon": 80.2046081,
+  "tags": {
+    "addr:street": "Central Revenue Quarters",
+    "government": "yes",
+    "name": "Kendriya Bhandar Regional Office",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 5306607745,
+  "lat": 13.0881117,
+  "lon": 80.2035167,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:postcode": "600040",
+    "addr:street": "Central Revenue Quarters Road",
+    "name": "Central PWD Service Center",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 5318579593,
+  "lat": 13.0828529,
+  "lon": 80.1976383,
+  "tags": {
+    "government": "yes",
+    "name": "C.P.W.D Service Center",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 5318582177,
+  "lat": 13.0829041,
+  "lon": 80.1969507,
+  "tags": {
+    "government": "yes",
+    "name": "Nirman Bhavan",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 5321394007,
+  "lat": 13.0740178,
+  "lon": 80.2005555,
+  "tags": {
+    "addr:street": "Jawaharlal Nehru Road, Koyembedu, Chennai",
+    "description": "Boarding point and ticket booking",
+    "name": "Parveen Travels",
+    "office": "travel_agent",
+    "phone": "04423634899"
+  }
+},
+{
+  "type": "node",
+  "id": 5321394340,
+  "lat": 13.0746733,
+  "lon": 80.2001601,
+  "tags": {
+    "addr:street": "Jawaharlal Nehru Road, Koyembedu, Chennai",
+    "name": "DMDK Office",
+    "office": "political_party"
+  }
+},
+{
+  "type": "node",
+  "id": 5330907195,
+  "lat": 13.0416861,
+  "lon": 80.1762054,
+  "tags": {
+    "addr:city": "Valasaravakkam",
+    "addr:housenumber": "32",
+    "addr:neighbourhood": "Rajaji avenue",
+    "addr:postcode": "600087",
+    "addr:street": "Arcot Road",
+    "addr:suburb": "Valasaravakkam",
+    "name": "3ST",
+    "office": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5359126722,
+  "lat": 13.0080142,
+  "lon": 80.2302799,
+  "tags": {
+    "addr:postcode": "600031",
+    "addr:street": "No.1 Sardar Patel road",
+    "name:en": "Ashok Leyland corporate office",
+    "office": "company",
+    "opening_hours": "Mo-Sa 00:00-24:00",
+    "phone": "04422206000",
+    "website": "https://www.ashokleyland.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 5372430634,
+  "lat": 13.0817411,
+  "lon": 80.1799131,
+  "tags": {
+    "addr:housenumber": "187/188",
+    "addr:street": "Thiruvalluvar salai",
+    "name": "Trail cloud innovation services Pvt.Ltd",
+    "office": "company",
+    "opening_hours": "Mo-Fr 09:00-20:00",
+    "website": "https://www.trail.do/"
+  }
+},
+{
+  "type": "node",
+  "id": 5393408521,
+  "lat": 13.0393500,
+  "lon": 80.2608471,
+  "tags": {
+    "addr:housenumber": "New no 20, Old No 30, 3rd floor",
+    "addr:street": "Musiri Subramanium street, oliver road",
+    "description": "software company",
+    "name": "TVF - Contagious online media network private limited",
+    "name:en": "Contagious Online Media Private Limited",
+    "office": "company",
+    "opening_hours": "Mo-Fr 09:00-19:30",
+    "phone": "044-49521737",
+    "website": "www.tvfplay.com"
+  }
+},
+{
+  "type": "node",
+  "id": 5409626620,
+  "lat": 13.0816820,
+  "lon": 80.1914269,
+  "tags": {
+    "addr:street": "Padikuppam road, Balaji Nagar, Thirumangalam, Anna Nagar West, Chennai",
+    "description": "Grocery, fruits, vegetables & Stationery",
+    "name": "Way2SearchAnything",
+    "office": "advertising_agency",
+    "opening_hours": "Mo-Sa 07:00-21:30",
+    "phone": "04449506678",
+    "website": "https://www.way2searchonlineshopping.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 5413494197,
+  "lat": 13.0997636,
+  "lon": 80.2146409,
+  "tags": {
+    "name": "ICF Cooperative Society Store",
+    "office": "cooperative"
+  }
+},
+{
+  "type": "node",
+  "id": 5448153186,
+  "lat": 12.9062268,
+  "lon": 80.2184576,
+  "tags": {
+    "addr:housenumber": "ELCOT - SEZ Unit-II Special Economic Zone, SDB2, #602/3, No 138, Shollinganallur - Medavakkam High Road, Shollinganallur Village, Tambaram Taluk, Kancheepuram (Dist), Chennai 600119. TN, India",
+    "name": "HCL Technologies Ltd.",
+    "office": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5518300718,
+  "lat": 13.0532595,
+  "lon": 80.2430787,
+  "tags": {
+    "name": "US Biometrics Centre",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 5561615008,
+  "lat": 12.9970029,
+  "lon": 80.1952630,
+  "tags": {
+    "addr:street": "MKN Road",
+    "name": "ST Courier",
+    "office": "courier",
+    "phone": "+91 9551785177",
+    "website": "https://stcourier.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 5570545749,
+  "lat": 12.9854425,
+  "lon": 80.2276665,
+  "tags": {
+    "name": "Manogaran Typewriting Institute",
+    "office": "educational_institution"
+  }
+},
+{
+  "type": "node",
+  "id": 5570584570,
+  "lat": 12.9816370,
+  "lon": 80.2294314,
+  "tags": {
+    "name": "TSR Packers And Movers",
+    "office": "moving_company"
+  }
+},
+{
+  "type": "node",
+  "id": 5617280830,
+  "lat": 13.0119785,
+  "lon": 80.1301156,
+  "tags": {
+    "addr:city": "chennai",
+    "addr:postcode": "600122",
+    "addr:street": "Kundrathur Main Road peripanicherry",
+    "name": "KMB",
+    "office": "estate_agent"
+  }
+},
+{
+  "type": "node",
+  "id": 5662608324,
+  "lat": 12.9574772,
+  "lon": 80.2455679,
+  "tags": {
+    "name:en": "Gold Coast It solutions",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 5671945731,
+  "lat": 12.9679914,
+  "lon": 80.2481244,
+  "tags": {
+    "addr:city": "CHENNAI",
+    "addr:housenumber": "# 4/363, Block-B, III Floor",
+    "addr:postcode": "600096",
+    "addr:street": "Old Mahabalipuram Road",
+    "description": "Ducen IT helps Business and IT users of Fortune 1000 companies with advanced analytics, business intelligence and data management through its unique end-to-end data science platform called Analance. ",
+    "email": "sales@ducenit.com",
+    "name": "Ducen IT",
+    "office": "it",
+    "phone": "+91 44 4225 6666",
+    "website": "https://www.ducenit.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 5771638253,
+  "lat": 13.0113208,
+  "lon": 80.2113135,
+  "tags": {
+    "addr:postcode": "600032",
+    "addr:street": "Corporation Water Works Road",
+    "name:en": "e-con Systems India Pvt. Ltd.",
+    "office": "company",
+    "opening_hours": "Mo-Fr 09:00-20:00",
+    "phone": "044-4010-5500",
+    "website": "https://www.e-consystems.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 5802035255,
+  "lat": 12.9470303,
+  "lon": 80.2314817,
+  "tags": {
+    "name": "Chennai Two Software Park",
+    "name:ta": "சென்னை 2 மென்பொருள் பூங்கா",
+    "office": "company",
+    "smoking": "isolated"
+  }
+},
+{
+  "type": "node",
+  "id": 5804109153,
+  "lat": 12.9057608,
+  "lon": 80.2266263,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "51",
+    "addr:postcode": "600119",
+    "addr:street": "Rattha Tek Meadows Tower B, 3rd Floor, Rajiv Gandhi Salai (OMR), Sholinganallur",
+    "name": "BETA CAE Systems India Pvt. Ltd. (Chennai Office)",
+    "office": "company",
+    "phone": "+914430095400",
+    "website": "https://www.beta-cae.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 5849503686,
+  "lat": 13.0582659,
+  "lon": 80.2588506,
+  "tags": {
+    "addr:housenumber": "202",
+    "addr:postcode": "600002",
+    "addr:street": "Anna Salai (Mount Road)",
+    "country": "FI",
+    "diplomatic": "consulate",
+    "name:en": "Consulate of Finland",
+    "name:hi": "फिन्लैंड का उच्चायोग",
+    "name:ta": "ஃபின்லாந்து தூதரகம",
+    "office": "diplomatic",
+    "target": "IN",
+    "website": "http://www.finland.org.in"
+  }
+},
+{
+  "type": "node",
+  "id": 5849503687,
+  "lat": 13.0655472,
+  "lon": 80.2470628,
+  "tags": {
+    "name:en": "Foreigner's Regional Registration Office, Chennai",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 5851464592,
+  "lat": 13.0059156,
+  "lon": 80.2265244,
+  "tags": {
+    "addr:postcode": "600022",
+    "addr:street": "Sardar Patel Road",
+    "name": "தமிழ்நாடு ராஜ் பவன்",
+    "name:en": "Tamil Nadu Raj Bhavan",
+    "name:hi": "तमिल नाडु राजभवन",
+    "office": "government",
+    "website": "https://www.tnrajbhavan.gov.in"
+  }
+},
+{
+  "type": "node",
+  "id": 5851482985,
+  "lat": 13.0851536,
+  "lon": 80.2820219,
+  "tags": {
+    "name": "Tamil Nadu Public Service Commission",
+    "name:en": "Tamil Nadu Public Service Commission",
+    "name:ta": "தமிழ்நாடு அரசு பணியாளர் தேர்வாணையம்",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 5851482986,
+  "lat": 12.9838095,
+  "lon": 80.1688264,
+  "tags": {
+    "addr:postcode": "600027",
+    "name:en": "Airports Authority of India (AAI) Operational Office",
+    "name:hi": "भारतीय विमानपत्तन प्राधिकरण - परिचालन कार्यालय",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 5860420712,
+  "lat": 12.9965217,
+  "lon": 80.2078964,
+  "tags": {
+    "addr:housenumber": "Plot No. 34",
+    "addr:street": "City Limits Road",
+    "name": "CodeMyCompany",
+    "office": "company",
+    "website": "https://www.codemycompany.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 5892458785,
+  "lat": 12.9876045,
+  "lon": 80.2542499,
+  "tags": {
+    "addr:housenumber": "H42/1",
+    "addr:postcode": "600041",
+    "addr:street": "Appucoloney,thiruvamayur",
+    "email": "spipanchayat@gmail.com",
+    "name": "சட்ட பஞ்சாயத்து இயக்கம்",
+    "name:en": "satta panchayat Iyakkam",
+    "office": "ngo",
+    "opening_hours": "Mo-Su 10:00-17:00",
+    "phone": "+9176671 00100",
+    "website": "https://www.sattapanchayat.org/"
+  }
+},
+{
+  "type": "node",
+  "id": 5936049188,
+  "lat": 12.9469572,
+  "lon": 80.2313978,
+  "tags": {
+    "level": "4,5,8",
+    "name": "Comcast India Engineering Center",
+    "office": "it",
+    "wheelchair": "designated"
+  }
+},
+{
+  "type": "node",
+  "id": 5989898293,
+  "lat": 12.9266823,
+  "lon": 80.1312589,
+  "tags": {
+    "addr:housenumber": "25/09",
+    "addr:street": "Thiruvalluvar Street",
+    "name": "சங்கர குட்றாலிங்கம்",
+    "name:en": "R SANKARA KUTRALINGAM COMMISSNER OF OTHS",
+    "office": "lawyer"
+  }
+},
+{
+  "type": "node",
+  "id": 6002033613,
+  "lat": 13.0306832,
+  "lon": 80.2384880,
+  "tags": {
+    "check_date": "2025-11-21",
+    "description": "A GIS Product Development company",
+    "level": "2",
+    "name": "GeoConcept India",
+    "office": "company",
+    "opening_hours": "Mo-Fr 09:00-18:00"
+  }
+},
+{
+  "type": "node",
+  "id": 6010166735,
+  "lat": 12.9593035,
+  "lon": 80.2474059,
+  "tags": {
+    "addr:street": "Burma Colony, Perungudi, Chennai",
+    "name": "வி.பி.சிந்தன் இல்லம் (CITU Perungudi Office)",
+    "office": "political_party"
+  }
+},
+{
+  "type": "node",
+  "id": 6011857185,
+  "lat": 13.0410771,
+  "lon": 80.2161675,
+  "tags": {
+    "addr:housenumber": "2/86",
+    "addr:postcode": "600083",
+    "addr:street": "7th Avenue, Ashok Nagar",
+    "name:en": "Detroit Engineered Products",
+    "office": "company",
+    "opening_hours": "Mo-Sa 09:00-18:00",
+    "phone": "+914442141453",
+    "website": "http://www.depind.com"
+  }
+},
+{
+  "type": "node",
+  "id": 6045880760,
+  "lat": 13.0347937,
+  "lon": 80.2503672,
+  "tags": {
+    "addr:street": "Thiruvalluvar Salai, Teynampet, Chennai-18",
+    "description": "Drainage Cleaning and Drinking Water Board of Tamil Nadu Government",
+    "name": "Chennai Drinking Water and Drainage Clearance Board",
+    "office": "government",
+    "phone": "04428459000"
+  }
+},
+{
+  "type": "node",
+  "id": 6050605286,
+  "lat": 13.0537796,
+  "lon": 80.2743911,
+  "tags": {
+    "addr:street": "Chengalvarayan Street",
+    "name": "தமிழ்நாடு அரசு இசேவை மையம்",
+    "name:en": "Tamilnadu government E sevai centre",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 6057945754,
+  "lat": 13.0293422,
+  "lon": 80.2480471,
+  "tags": {
+    "name": "Mangaldeep Puja Agarbathis",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 6103568490,
+  "lat": 13.0174651,
+  "lon": 80.2200463,
+  "tags": {
+    "addr:street": "Kamabar Street, Abith Colony, Saidapet",
+    "name": "Tamil Nadu Medical and Sales Representative Association",
+    "office": "association"
+  }
+},
+{
+  "type": "node",
+  "id": 6129638011,
+  "lat": 13.0141985,
+  "lon": 80.2013231,
+  "tags": {
+    "name": "General Electric",
+    "office": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6141721985,
+  "lat": 13.0993630,
+  "lon": 80.1674694,
+  "tags": {
+    "name:en": "Hcl amb 6",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 6141721986,
+  "lat": 13.0993701,
+  "lon": 80.1674229,
+  "tags": {
+    "name:en": "HCL amb 6",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 6257601883,
+  "lat": 13.0484318,
+  "lon": 80.2506962,
+  "tags": {
+    "government": "yes",
+    "name": "Bank Employees Federation of India",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 6261225290,
+  "lat": 13.1142291,
+  "lon": 80.2654107,
+  "tags": {
+    "addr:street": "Sathyamoorty Nagar Main Rd",
+    "name:en": "Tamilnadu Slum Clearence Board",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 6267534692,
+  "lat": 13.0624321,
+  "lon": 80.2765276,
+  "tags": {
+    "name": "Centre of Indian Trade Unions State Committee Office",
+    "office": "foundation"
+  }
+},
+{
+  "type": "node",
+  "id": 6315542831,
+  "lat": 13.0464790,
+  "lon": 80.2457607,
+  "tags": {
+    "description": "A Part of Free Software Movement of India",
+    "email": "ask@fsftn.org",
+    "name": "Free Software Foundation Tamil Nadu (FSFTN)",
+    "name:ta": "கட்டற்ற மென்பொருள் அறக்கட்டளை தமிழ்நாடு",
+    "office": "foundation",
+    "website": "https://fsftn.org",
+    "wikidata": "Q5367367",
+    "wikipedia": "en:Free Software Foundation Tamil Nadu"
+  }
+},
+{
+  "type": "node",
+  "id": 6378558385,
+  "lat": 13.0774493,
+  "lon": 80.2652478,
+  "tags": {
+    "name:en": "TNRERA",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 6498142799,
+  "lat": 12.9803219,
+  "lon": 80.2520981,
+  "tags": {
+    "name": "Tamil Nadu Electricity Employees Central Point",
+    "office": "association"
+  }
+},
+{
+  "type": "node",
+  "id": 6535108760,
+  "lat": 12.9857792,
+  "lon": 80.2465105,
+  "tags": {
+    "name": "McKinsey & Company Chennai Knowledge Center",
+    "note": "location approximate",
+    "office": "company",
+    "phone": "+914430647500",
+    "website": "https://www.mckinsey.com/knowledge-network/chennai",
+    "wikidata": "Q310207"
+  }
+},
+{
+  "type": "node",
+  "id": 6535115587,
+  "lat": 13.0123208,
+  "lon": 80.2218473,
+  "tags": {
+    "brand": "McKinsey & Company",
+    "brand:wikidata": "Q310207",
+    "name": "McKinsey & Company",
+    "office": "consulting",
+    "phone": "+914466413000",
+    "website": "https://www.mckinsey.com/in"
+  }
+},
+{
+  "type": "node",
+  "id": 6535119492,
+  "lat": 12.9815286,
+  "lon": 80.2404302,
+  "tags": {
+    "name": "McKinsey & Company Chennai Service Center",
+    "note": "location approximate",
+    "office": "company",
+    "wikidata": "Q310207"
+  }
+},
+{
+  "type": "node",
+  "id": 6547155939,
+  "lat": 13.0414107,
+  "lon": 80.2589906,
+  "tags": {
+    "name": "hutmatrix Architects",
+    "office": "architect"
+  }
+},
+{
+  "type": "node",
+  "id": 6688394990,
+  "lat": 13.0913122,
+  "lon": 80.2131224,
+  "tags": {
+    "addr:city": "Anna Nagar, Chennai",
+    "addr:housenumber": "113",
+    "addr:postcode": "600040",
+    "addr:street": "6th Main Road",
+    "description": "A NGO that provides legal help for Women. Visit https://msum.in",
+    "name": "Magalir Satta Uthavi Maiyam (MSUM)",
+    "name:ta": "மகளிர் சட்ட உதவி மையம்",
+    "office": "ngo",
+    "website": "https://msum.in"
+  }
+},
+{
+  "type": "node",
+  "id": 6739258988,
+  "lat": 13.0701245,
+  "lon": 80.2708305,
+  "tags": {
+    "addr:street": "Wallers Road",
+    "name:en": "Ashok LCD service",
+    "office": "company",
+    "opening_hours": "Mo-Sa 00:00-24:00; Su 13:05-21:00"
+  }
+},
+{
+  "type": "node",
+  "id": 6760767420,
+  "lat": 13.0344075,
+  "lon": 80.2667219,
+  "tags": {
+    "check_date": "2024-05-22",
+    "internet_access": "no",
+    "name": "Rail Vikas Nigam Limited",
+    "name:en": "Rail Vikas Nigam Limited",
+    "office": "government",
+    "payment:cards": "no",
+    "payment:cash": "yes",
+    "payment:credit_cards": "no",
+    "payment:debit_cards": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6763252487,
+  "lat": 12.9879330,
+  "lon": 80.2580053,
+  "tags": {
+    "addr:housenumber": "27",
+    "addr:street": "3rd East Street",
+    "name:en": "mozhi trust",
+    "office": "ngo",
+    "phone": "009104424424166"
+  }
+},
+{
+  "type": "node",
+  "id": 6788124685,
+  "lat": 13.0145816,
+  "lon": 80.2018161,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "HQ10 Primus, Office no. 205, 2nd floor",
+    "addr:postcode": "600032",
+    "addr:street": "SP-7A, South Phase, Guindy Industrial Estate, Guindy",
+    "name": "Beez Innovation Labs Pvt. Ltd.",
+    "office": "it",
+    "opening_hours": "Mo-Fr 09:00-18:00",
+    "phone": "+91 44 4004 0468",
+    "website": "https://www.beezlabs.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 6812204694,
+  "lat": 13.0543975,
+  "lon": 80.2022255,
+  "tags": {
+    "name": "லேங்ஸ்கேப் லேங்குவேஜ் சல்யுசன்",
+    "name:en": "Langscape language solution",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 7041287442,
+  "lat": 13.0776398,
+  "lon": 80.2718247,
+  "tags": {
+    "addr:street": "Singanna Street, Chindadripet",
+    "description": "CITU Employees Union Office",
+    "name": "Cottee Union Office",
+    "office": "association"
+  }
+},
+{
+  "type": "node",
+  "id": 7043758337,
+  "lat": 13.0325826,
+  "lon": 80.2652197,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "No. 4",
+    "addr:postcode": "600004",
+    "addr:street": "Alamelumangapuram",
+    "air_conditioning": "yes",
+    "email": "interact@madarth.com",
+    "internet_access": "yes",
+    "name": "MADARTH",
+    "office": "advertising_agency",
+    "opening_hours": "Mo-Fr 09:00-18:00"
+  }
+},
+{
+  "type": "node",
+  "id": 7057741986,
+  "lat": 13.0713047,
+  "lon": 80.2507551,
+  "tags": {
+    "addr:housenumber": "14",
+    "addr:street": "Venugopal Avenue",
+    "email": "info@damnienfoundation.in",
+    "name:en": "Damien Foundation India Trust",
+    "office": "ngo"
+  }
+},
+{
+  "type": "node",
+  "id": 7088458506,
+  "lat": 13.0344351,
+  "lon": 80.2334762,
+  "tags": {
+    "name": "Rmade Technologies",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 7132435092,
+  "lat": 13.0127665,
+  "lon": 80.2022965,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "BLOCK NO.5, Kochar Jade,",
+    "addr:postcode": "600032",
+    "addr:street": "PLOT NO. SP 22, Ekkatuthangal, Guindy",
+    "name": "iSprout Business Centre",
+    "office": "coworking_space",
+    "opening_hours": "Mo-Sa 09:00-20:00"
+  }
+},
+{
+  "type": "node",
+  "id": 7132435093,
+  "lat": 12.9537329,
+  "lon": 80.2419353,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "Saravana Matrix Tower",
+    "addr:postcode": "600096",
+    "addr:street": "Old Mahabalipuram Rd, Seevaram, Perungudi",
+    "email": "info@isprout.in",
+    "name": "iSprout Business Centre",
+    "office": "coworking_space",
+    "opening_hours": "Mo-Sa 09:00-20:00",
+    "phone": "084649 99920"
+  }
+},
+{
+  "type": "node",
+  "id": 7136003588,
+  "lat": 13.0527334,
+  "lon": 80.2540999,
+  "tags": {
+    "name:en": "Tata consultancy services",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 7159775624,
+  "lat": 12.9079073,
+  "lon": 80.2241936,
+  "tags": {
+    "name": "S4 Tower",
+    "office": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7159775625,
+  "lat": 12.9072829,
+  "lon": 80.2238688,
+  "tags": {
+    "name": "S3 Tower",
+    "office": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7159775626,
+  "lat": 12.9064299,
+  "lon": 80.2236771,
+  "tags": {
+    "name": "S1 Tower",
+    "office": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7159775627,
+  "lat": 12.9068498,
+  "lon": 80.2237651,
+  "tags": {
+    "name": "S2 Tower",
+    "office": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7162410756,
+  "lat": 13.0160677,
+  "lon": 80.2003626,
+  "tags": {
+    "addr:full": "Plot 12C, 1, 3rd Cross St, South Phase, Guindy Industrial Estate, Guindy, Chennai, Tamil Nadu 600032",
+    "description": "Software Company",
+    "email": "info@quadkast.com",
+    "name": "Quadkast Technologies",
+    "office": "it",
+    "opening_hours": "Mo-Fr 09:30-19:00",
+    "website": "http://quadkast.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 7176576232,
+  "lat": 13.0149158,
+  "lon": 80.1928843,
+  "tags": {
+    "addr:street": "Nandambakkam, Tamil Nadu 600089",
+    "name": "EPF office",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 7255721618,
+  "lat": 13.0556736,
+  "lon": 80.2424720,
+  "tags": {
+    "name": "Star Health and Allied Insurance Co Ltd",
+    "office": "insurance"
+  }
+},
+{
+  "type": "node",
+  "id": 7257227125,
+  "lat": 13.0537469,
+  "lon": 80.2492294,
+  "tags": {
+    "name": "Sri Lankan Airlines",
+    "office": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7261140337,
+  "lat": 13.0767699,
+  "lon": 80.2398586,
+  "tags": {
+    "government": "administrative",
+    "name": "Office of the Registrar of Cooperative Societies",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 7261455965,
+  "lat": 13.0543101,
+  "lon": 80.2461365,
+  "tags": {
+    "description": "Elearning material",
+    "name": "Edufic Digital",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 7263114085,
+  "lat": 13.0542861,
+  "lon": 80.2459365,
+  "tags": {
+    "name": "Global Logistics",
+    "office": "logistics"
+  }
+},
+{
+  "type": "node",
+  "id": 7263150884,
+  "lat": 13.0557846,
+  "lon": 80.2458485,
+  "tags": {
+    "name": "Kerry Indev Logistics",
+    "office": "logistics"
+  }
+},
+{
+  "type": "node",
+  "id": 7263935431,
+  "lat": 13.0551015,
+  "lon": 80.2456139,
+  "tags": {
+    "brand": "Muthoot Finance",
+    "brand:wikidata": "Q6943861",
+    "brand:wikipedia": "en:Muthoot Finance",
+    "name": "Muthoot Finance",
+    "office": "financial"
+  }
+},
+{
+  "type": "node",
+  "id": 7263942006,
+  "lat": 13.0550902,
+  "lon": 80.2458113,
+  "tags": {
+    "name": "Bajaj Capital",
+    "office": "financial_advisor"
+  }
+},
+{
+  "type": "node",
+  "id": 7264009012,
+  "lat": 13.0530391,
+  "lon": 80.2457061,
+  "tags": {
+    "name": "Indigo Airlines",
+    "office": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7264107242,
+  "lat": 13.0547172,
+  "lon": 80.2452575,
+  "tags": {
+    "name": "Maruti Couriers and Cargo",
+    "office": "courier"
+  }
+},
+{
+  "type": "node",
+  "id": 7264147284,
+  "lat": 13.0544481,
+  "lon": 80.2474837,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "1",
+    "addr:postcode": "600034",
+    "addr:street": "Dr Thirumurthy Nagar 5th Street",
+    "name": "CARE Institute of Behavorial Sciences",
+    "office": "educational_institution",
+    "phone": "044 2821 2828"
+  }
+},
+{
+  "type": "node",
+  "id": 7264247854,
+  "lat": 13.0579692,
+  "lon": 80.2486758,
+  "tags": {
+    "government": "administrative",
+    "name": "Hindu Religious and Charitable Endowments Department",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 7267092802,
+  "lat": 13.0546081,
+  "lon": 80.2473655,
+  "tags": {
+    "name": "Keith Electronics Pvt Ltd",
+    "office": "electronics"
+  }
+},
+{
+  "type": "node",
+  "id": 7267104203,
+  "lat": 13.0556313,
+  "lon": 80.2450538,
+  "tags": {
+    "name": "Voltas Aerocool",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 7271385932,
+  "lat": 13.0546090,
+  "lon": 80.2474731,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "19/20",
+    "addr:postcode": "600034",
+    "addr:street": "Dr Thirumurthy Nagar 5th Street",
+    "description": "Clothing accessories",
+    "email": "vinayakarkb@gmail.com",
+    "name": "Shri Vinayaka Impex",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 7272129958,
+  "lat": 13.0518707,
+  "lon": 80.2469517,
+  "tags": {
+    "name": "Sundaram Finance Holdings",
+    "office": "financial_services"
+  }
+},
+{
+  "type": "node",
+  "id": 7272149140,
+  "lat": 13.0518576,
+  "lon": 80.2468873,
+  "tags": {
+    "name": "Kin Technologies Pvt Ltd",
+    "office": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7272171211,
+  "lat": 13.0522745,
+  "lon": 80.2479848,
+  "tags": {
+    "name": "Professional Courier",
+    "office": "courier"
+  }
+},
+{
+  "type": "node",
+  "id": 7272173009,
+  "lat": 13.0518420,
+  "lon": 80.2470965,
+  "tags": {
+    "name": "The Krishna Group",
+    "office": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7272177286,
+  "lat": 13.0518211,
+  "lon": 80.2479092,
+  "tags": {
+    "government": "administrative",
+    "name": "Handloom Export Promotion Council",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 7314258199,
+  "lat": 13.0524834,
+  "lon": 80.2425334,
+  "tags": {
+    "description": "TANGEDCO",
+    "name": "Tamil Nadu Electricity Generation & Distribution office",
+    "office": "energy_supplier"
+  }
+},
+{
+  "type": "node",
+  "id": 7572041375,
+  "lat": 12.9910761,
+  "lon": 80.2688773,
+  "tags": {
+    "name": "Roanuz Softwares",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 7577899276,
+  "lat": 13.0035558,
+  "lon": 80.2723636,
+  "tags": {
+    "name": "Vetivert Collective",
+    "office": "foundation"
+  }
+},
+{
+  "type": "node",
+  "id": 7652507268,
+  "lat": 13.0467106,
+  "lon": 80.2454686,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "16,",
+    "addr:postcode": "600017",
+    "addr:street": "Doctor Shivaji Ganesan Road",
+    "consulate": "consulate_general",
+    "country": "SG",
+    "diplomatic": "consulate",
+    "name": "Consulate General of the Republic of Singapore",
+    "office": "diplomatic"
+  }
+},
+{
+  "type": "node",
+  "id": 7652633326,
+  "lat": 13.0363457,
+  "lon": 80.2164706,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "23/49, G1, Ground Floor, Chandra Flats,",
+    "addr:postcode": "600033",
+    "addr:street": "7th Avenue",
+    "name": "Malligai Dental Academy",
+    "office": "educational_institution"
+  }
+},
+{
+  "type": "node",
+  "id": 7682535985,
+  "lat": 12.9753946,
+  "lon": 80.1318030,
+  "tags": {
+    "addr:postcode": "600070",
+    "addr:street": "Pammal Main Road",
+    "name:en": "EB office - Pammal",
+    "office": "government",
+    "opening_hours": "Mo-Fr 09:00-13:00",
+    "phone": "044 2248 3490"
+  }
+},
+{
+  "type": "node",
+  "id": 7868260223,
+  "lat": 13.1179892,
+  "lon": 80.1541191,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:postcode": "600053",
+    "addr:street": "West Park Street",
+    "government": "transportation",
+    "name": "Ambattur Regional Trasnport Office",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 8097034426,
+  "lat": 13.0290954,
+  "lon": 80.2143700,
+  "tags": {
+    "addr:street": "7/41, Raghava Colony W St, Ragavan Colony, Mettuppalayam, Ashok Nagar, Chennai, Tamil Nadu 600083",
+    "name": "TNEB Substation 33/11KV",
+    "office": "energy_supplier",
+    "phone": "044 2371 2221",
+    "website": "tangedco.gov.in"
+  }
+},
+{
+  "type": "node",
+  "id": 8111858205,
+  "lat": 13.0308803,
+  "lon": 80.2106363,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "22/2",
+    "addr:postcode": "600083",
+    "addr:street": "12th Avenue",
+    "addr:suburb": "Ashok Nagar",
+    "description": "Film Production Company",
+    "name": "Stone Bench Pvt Ltd",
+    "office": "financial",
+    "opening_hours": "Mo-Fr 10:30-18:30",
+    "phone": "044 4285 3134",
+    "website": "https://www.stonebench.co.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 8151821343,
+  "lat": 12.9915008,
+  "lon": 80.1988272,
+  "tags": {
+    "government": "social_welfare",
+    "name": "Tamil Nadu Public Distribution Scheme Service Office",
+    "office": "government",
+    "operator": "Public Distribution System",
+    "operator:wikidata": "Q60901",
+    "operator:wikipedia": "en:Public distribution system"
+  }
+},
+{
+  "type": "node",
+  "id": 8219719307,
+  "lat": 13.0317124,
+  "lon": 80.2565933,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "52",
+    "addr:postcode": "600018",
+    "addr:street": "CP Ramaswamy Road",
+    "description": "Sunaadalahari, musical wing of Indira Ranganathan Trust is a charitable organisation with a mission to promote art forms and its artists.",
+    "email": "info@sunaadalahari.org",
+    "name": "Sunaadalahari",
+    "office": "ngo",
+    "phone": "+91 93445 35941",
+    "website": "https://www.sunaadalahari.org/"
+  }
+},
+{
+  "type": "node",
+  "id": 8430636718,
+  "lat": 13.1444405,
+  "lon": 80.2992198,
+  "tags": {
+    "name": "Sri Lakshmi Agro",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 8478795417,
+  "lat": 13.0161967,
+  "lon": 80.2013694,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:country": "IN",
+    "addr:housenumber": "#122 1ST FLOOR.",
+    "addr:locality": "GUINDY",
+    "addr:postcode": "600032",
+    "addr:state": "Tamilnadu",
+    "addr:street": "HQ10 GUINDY SIDCO INDUSTRIAL ESTATE,",
+    "name": "GUINDY SIDCO INDUSTRIAL ESTATE",
+    "office": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8488595695,
+  "lat": 13.0812197,
+  "lon": 80.2611973,
+  "tags": {
+    "name": "Viduthalai",
+    "office": "newspaper"
+  }
+},
+{
+  "type": "node",
+  "id": 8488622732,
+  "lat": 13.0814046,
+  "lon": 80.2613818,
+  "tags": {
+    "name": "IGNOU Chennai Regional Office",
+    "office": "educational_institution"
+  }
+},
+{
+  "type": "node",
+  "id": 8488629278,
+  "lat": 13.0815688,
+  "lon": 80.2614806,
+  "tags": {
+    "name": "Dravidar Kazhagam - HQ",
+    "office": "political_party"
+  }
+},
+{
+  "type": "node",
+  "id": 8577515098,
+  "lat": 12.9544658,
+  "lon": 80.2120275,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "12",
+    "addr:postcode": "600100",
+    "addr:street": "Balaji Nagar, Velachery Main Road",
+    "level": "1",
+    "name": "HDFC Home Loans Velachery Branch",
+    "office": "financial",
+    "opening_hours": "Mo-Fr 09:30-17:15; Sa[1-2,4] 10:00-13:00; Sa[3] off; Su off; PH off",
+    "operator:website": "https://www.hdfc.com",
+    "operator:wikidata": "Q1446319",
+    "operator:wikipedia": "en:Housing Development Finance Corporation",
+    "phone": "+91 44 2246 3711;+91 44 2246 3712",
+    "website": "https://www.hdfc.com"
+  }
+},
+{
+  "type": "node",
+  "id": 8632152619,
+  "lat": 13.0606049,
+  "lon": 80.2585845,
+  "tags": {
+    "name": "Vikatan Publisher",
+    "office": "newspaper",
+    "survey:date": "2021-04-11"
+  }
+},
+{
+  "type": "node",
+  "id": 8637425942,
+  "lat": 13.0576593,
+  "lon": 80.2612712,
+  "tags": {
+    "addr:housenumber": "44",
+    "name": "Lodha Estates and Finance",
+    "office": "estate_agent"
+  }
+},
+{
+  "type": "node",
+  "id": 8666382807,
+  "lat": 13.0494308,
+  "lon": 80.2453743,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "SKCL Harmony Square",
+    "addr:postcode": "600017",
+    "addr:street": "Prakasam Street, Gangai Karai Puram, T. Nagar",
+    "name": "Zupersoft Solution PVT Ltd",
+    "office": "company",
+    "opening_hours": "Mo-Sa 09:00-18:00",
+    "website": "https://zuper.co/"
+  }
+},
+{
+  "type": "node",
+  "id": 8669165864,
+  "lat": 12.9689522,
+  "lon": 80.1855157,
+  "tags": {
+    "government": "administrative",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 8669165872,
+  "lat": 12.9670958,
+  "lon": 80.1947873,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "5/389",
+    "addr:postcode": "600091",
+    "addr:street": "Madipakkam Main Road",
+    "email": "js@jacobscientifics.com",
+    "name": "Jacob Scientifics - Head Office",
+    "office": "company",
+    "phone": "+91 44 2258 4161;+91 44 2258 4162",
+    "website": "http://www.jacobscientifics.com"
+  }
+},
+{
+  "type": "node",
+  "id": 8882544817,
+  "lat": 13.0842897,
+  "lon": 80.2220047,
+  "tags": {
+    "addr:housenumber": "A1",
+    "addr:postcode": "600102",
+    "addr:street": "Anna Nagar 2nd Avenue",
+    "email": "ritsca2016@gmail.com",
+    "name:en": "Rits and Associates Chartered Accountants",
+    "office": "company",
+    "opening_hours": "Mo-Sa 09:30-06:30",
+    "phone": "49526946",
+    "website": "https://www.ritsca.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 8967676339,
+  "lat": 13.0470610,
+  "lon": 80.2337325,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "4",
+    "addr:postcode": "600017",
+    "addr:street": "Bazullah Road",
+    "addr:suburb": "T. Nagar",
+    "air_conditioning": "yes",
+    "level": "1",
+    "name": "Shastra Cards Private Limited",
+    "office": "company",
+    "opening_hours": "Mo-Sa 10:00-20:00",
+    "phone": "091763 33222",
+    "website": "http://www.shastracards.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 8986257910,
+  "lat": 12.9664865,
+  "lon": 80.2618513,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:country": "IN",
+    "addr:housename": "Lakshmi Nilayam Apts",
+    "addr:housenumber": "Plot No. 18-A, Door No. 3/356",
+    "addr:postcode": "600041",
+    "addr:street": "19th St, Venkateswara Nagar, Kottivakkam",
+    "building": "apartments",
+    "designation": "NGO",
+    "name": "YogaVahini",
+    "office": "yes",
+    "source": "https://www.yogavahini.com/contact-us"
+  }
+},
+{
+  "type": "node",
+  "id": 9042473900,
+  "lat": 13.0840052,
+  "lon": 80.2100159,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "AD13/18,2nd Floor",
+    "addr:postcode": "600040",
+    "addr:street": "5th Avenue, Shanthi Colony,",
+    "description": "Schatz Enterprises Private Limited",
+    "name": "Schatz Enterprises Private Limited",
+    "office": "consulting",
+    "opening_hours": "Mo-Su 10:00-18:00",
+    "website": "https://schatzmarkets.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 9345560480,
+  "lat": 13.0880867,
+  "lon": 80.2436417,
+  "tags": {
+    "name": "SARF Communications",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 9345560481,
+  "lat": 13.0915424,
+  "lon": 80.1967956,
+  "tags": {
+    "name": "IPCS Automation",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 9348174750,
+  "lat": 13.0657747,
+  "lon": 80.2563165,
+  "tags": {
+    "name": "Maaya Systems",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 9360052318,
+  "lat": 13.0983220,
+  "lon": 80.2917114,
+  "tags": {
+    "addr:housenumber": "7",
+    "addr:street": "Vadamaracoir Street",
+    "name": "மனித நேய மக்கள் கட்சி தலைமை அலுவலகம்",
+    "name:en": "Manitha Neya Makkal Katchi Head Office",
+    "office": "ngo",
+    "opening_hours": "24/7",
+    "phone": "044-25247824",
+    "website": "https://www.mmkinfo.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 9378509592,
+  "lat": 12.9911741,
+  "lon": 80.2420297,
+  "tags": {
+    "name": "Helxyon Healthcare",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 9378879817,
+  "lat": 12.9230149,
+  "lon": 80.1309031,
+  "tags": {
+    "name": "Nexus Interiors",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 9400398350,
+  "lat": 12.9206461,
+  "lon": 80.1769625,
+  "tags": {
+    "office": "forestry"
+  }
+},
+{
+  "type": "node",
+  "id": 9436487461,
+  "lat": 13.0632970,
+  "lon": 80.2596184,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "74",
+    "addr:postcode": "600008",
+    "addr:street": "Ethiraj Salai",
+    "name": "VFS Global Services Pvt. Ltd.",
+    "office": "company",
+    "opening_hours": "Mo-Fr 08:00-16:00; PH off"
+  }
+},
+{
+  "type": "node",
+  "id": 9504015645,
+  "lat": 13.0816273,
+  "lon": 80.1976205,
+  "tags": {
+    "name": "Cafeteria | PT area",
+    "office": "educational_institution"
+  }
+},
+{
+  "type": "node",
+  "id": 9565908906,
+  "lat": 13.0101135,
+  "lon": 80.2110496,
+  "tags": {
+    "name": "Saama Technologies pvt. Ltd",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 9567727980,
+  "lat": 13.0018411,
+  "lon": 80.2059504,
+  "tags": {
+    "addr:street": "M.K.N. Road",
+    "alt_name": "VAO office",
+    "name": "Village Administrator's Office - Alandur",
+    "office": "government",
+    "short_name": "VAO office"
+  }
+},
+{
+  "type": "node",
+  "id": 9768615294,
+  "lat": 12.9633028,
+  "lon": 80.2445952,
+  "tags": {
+    "name": "Trimble Information Technologies India Pvt Ltd",
+    "office": "company",
+    "website": "https://www.trimble.com/en/"
+  }
+},
+{
+  "type": "node",
+  "id": 9872385055,
+  "lat": 13.0904988,
+  "lon": 80.2857169,
+  "tags": {
+    "brand": "The Oriental Insurance Company",
+    "brand:wikidata": "Q20707811",
+    "name": "The Oriental Insurance Company",
+    "office": "insurance"
+  }
+},
+{
+  "type": "node",
+  "id": 9872392713,
+  "lat": 13.0890388,
+  "lon": 80.2891867,
+  "tags": {
+    "brand": "Life Insurance Corporation",
+    "brand:wikidata": "Q2767170",
+    "name": "Life Insurance Corporation",
+    "office": "insurance",
+    "short_name": "LIC"
+  }
+},
+{
+  "type": "node",
+  "id": 9873524702,
+  "lat": 13.0903109,
+  "lon": 80.2873952,
+  "tags": {
+    "brand": "United India Insurance Company",
+    "brand:wikidata": "Q24952429",
+    "name": "United India Insurance Company",
+    "office": "insurance"
+  }
+},
+{
+  "type": "node",
+  "id": 9873524742,
+  "lat": 13.0901972,
+  "lon": 80.2877313,
+  "tags": {
+    "name": "Themis Attorneys",
+    "office": "lawyer"
+  }
+},
+{
+  "type": "node",
+  "id": 9891659946,
+  "lat": 13.0659100,
+  "lon": 80.2480058,
+  "tags": {
+    "government": "administrative",
+    "name": "Food Corporation of India",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 9891675975,
+  "lat": 13.0622637,
+  "lon": 80.2459481,
+  "tags": {
+    "government": "administrative",
+    "name": "NABARD",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 9891685428,
+  "lat": 13.0665789,
+  "lon": 80.2462614,
+  "tags": {
+    "government": "warehouse",
+    "name": "Central Stationary Office",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 9920341491,
+  "lat": 13.0043644,
+  "lon": 80.2343449,
+  "tags": {
+    "addr:city": "Guindy National Park",
+    "addr:district": "Chennai",
+    "addr:postcode": "600022",
+    "government": "public_service",
+    "name": "Wildlife Warden",
+    "office": "government",
+    "phone": "+914429505150",
+    "website": "https://guindypark.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 9920494484,
+  "lat": 12.9409165,
+  "lon": 80.2053522,
+  "tags": {
+    "name": "Chennai Metro Water Distribution Station",
+    "office": "water_utility"
+  }
+},
+{
+  "type": "node",
+  "id": 9920595831,
+  "lat": 12.9416909,
+  "lon": 80.1873402,
+  "tags": {
+    "name": "VAO Office",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 9939052117,
+  "lat": 13.0402209,
+  "lon": 80.2571822,
+  "tags": {
+    "addr:housenumber": "322",
+    "addr:street": "Ambujammal Street",
+    "name:en": "Srinivasa gandhi nilayam",
+    "office": "ngo",
+    "opening_hours": "Mo-Su 11:00-16:00"
+  }
+},
+{
+  "type": "node",
+  "id": 9955365821,
+  "lat": 13.0697692,
+  "lon": 80.1989109,
+  "tags": {
+    "name": "Paul Travels",
+    "office": "travel_agent"
+  }
+},
+{
+  "type": "node",
+  "id": 9955386189,
+  "lat": 13.0697036,
+  "lon": 80.1991040,
+  "tags": {
+    "name": "City Travels",
+    "office": "travel_agent"
+  }
+},
+{
+  "type": "node",
+  "id": 9955387139,
+  "lat": 13.0696789,
+  "lon": 80.1988895,
+  "tags": {
+    "name": "National Travels",
+    "office": "travel_agent"
+  }
+},
+{
+  "type": "node",
+  "id": 9955391576,
+  "lat": 13.0696685,
+  "lon": 80.1990036,
+  "tags": {
+    "name": "Olive Travel Lines",
+    "office": "travel_agent"
+  }
+},
+{
+  "type": "node",
+  "id": 9992171607,
+  "lat": 13.0899410,
+  "lon": 80.2844362,
+  "tags": {
+    "name": "Centre of Indian Trade Unions",
+    "office": "political_party"
+  }
+},
+{
+  "type": "node",
+  "id": 10161910232,
+  "lat": 13.0362610,
+  "lon": 80.2674193,
+  "tags": {
+    "addr:city": "Mylapore,Chennai",
+    "addr:housenumber": "Office 275",
+    "addr:postcode": "600004",
+    "addr:street": "Statesman One, Ramakrishna Mutt Rd",
+    "name": "Novac Technology Solutions",
+    "office": "company",
+    "opening_hours": "Mo-Sa 08:00-20:00",
+    "website": "https://www.novactech.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 10268908418,
+  "lat": 12.9984384,
+  "lon": 80.2686708,
+  "tags": {
+    "name": "United Nations High Commissioner for Refugees Field Office Chennai",
+    "office": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10316946120,
+  "lat": 13.0593938,
+  "lon": 80.2565913,
+  "tags": {
+    "name": "Madras Management Association",
+    "office": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10320253722,
+  "lat": 13.0584935,
+  "lon": 80.2592290,
+  "tags": {
+    "name": "Pfizer",
+    "office": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10536610878,
+  "lat": 13.0707547,
+  "lon": 80.2733956,
+  "tags": {
+    "name": "The Hindu",
+    "name:en": "The Hindu",
+    "name:ta": "தி இந்து",
+    "office": "newspaper"
+  }
+},
+{
+  "type": "node",
+  "id": 10593652057,
+  "lat": 13.0438575,
+  "lon": 80.2475343,
+  "tags": {
+    "brand": "Life Insurance Corporation",
+    "brand:short": "LIC",
+    "brand:wikidata": "Q2767170",
+    "name": "Life Insurance Corporation",
+    "office": "insurance",
+    "short_name": "LIC"
+  }
+},
+{
+  "type": "node",
+  "id": 10594467605,
+  "lat": 13.0469523,
+  "lon": 80.2342619,
+  "tags": {
+    "addr:postcode": "601204",
+    "addr:street": "Bazullah Road",
+    "name": "VBC solitaire",
+    "office": "company",
+    "opening_hours": "Su-Fr 08:00-21:00"
+  }
+},
+{
+  "type": "node",
+  "id": 10687917005,
+  "lat": 13.0980028,
+  "lon": 80.2923359,
+  "tags": {
+    "addr:street": "Jafer Serang Street",
+    "name": "வக்ஃப் இல்லம்",
+    "name:en": "Wakf House",
+    "office": "government",
+    "opening_hours": "Mo-Sa 09:00-18:00"
+  }
+},
+{
+  "type": "node",
+  "id": 10698896818,
+  "lat": 13.0456588,
+  "lon": 80.1499119,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "No 45",
+    "addr:postcode": "600095",
+    "addr:street": "1st and 2nd floor, Om sakthi nagar, Kasi Towers, Mettukuppam, Vanagaram",
+    "description": "Digital marketing company with a strong international presence. Our Digital Marketing Consultants use their knowledge and expertise to make a difference for businesses all around the world.",
+    "name": "Arasu Infotech",
+    "office": "it",
+    "opening_hours": "Mo-Su 09:00-21:00",
+    "phone": "9943400155",
+    "website": "arasuinfotechservices.com"
+  }
+},
+{
+  "type": "node",
+  "id": 10703338167,
+  "lat": 13.1003547,
+  "lon": 80.2885624,
+  "tags": {
+    "name": "DM Law Associates",
+    "office": "lawyer"
+  }
+},
+{
+  "type": "node",
+  "id": 10716567124,
+  "lat": 13.0710991,
+  "lon": 80.2017632,
+  "tags": {
+    "addr:housenumber": "No 8 A Kali Amman koil Street, Koyembedu",
+    "addr:street": "SBLT Office",
+    "description": "Near 100 feet road signal",
+    "name": "Shri Bhagiyalakshmi Travels",
+    "office": "travel_agent",
+    "phone": "9840900852"
+  }
+},
+{
+  "type": "node",
+  "id": 10736194041,
+  "lat": 12.9578186,
+  "lon": 80.2001322,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "2/1414",
+    "addr:postcode": "600091",
+    "addr:street": "1st Street, Sigamani Nagar",
+    "consulting": "learning_&_development;transdiciplinary_education",
+    "name": "RTL-Academy",
+    "office": "consulting",
+    "phone": "044 35912841",
+    "website": "www.rtlacademy.org"
+  }
+},
+{
+  "type": "node",
+  "id": 10775229823,
+  "lat": 12.9631500,
+  "lon": 80.2596619,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:postcode": "600041",
+    "addr:street": "VGP Layout Park",
+    "name": "VGP Golden Seaview Residents’ Welfare Association Office",
+    "office": "association"
+  }
+},
+{
+  "type": "node",
+  "id": 10775285715,
+  "lat": 13.0093283,
+  "lon": 80.2086119,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "S-9",
+    "addr:postcode": "600032",
+    "addr:street": "Thiru Vi Ka Indl Estate, Guindy",
+    "name": "Vasant Printers",
+    "office": "coworking"
+  }
+},
+{
+  "type": "node",
+  "id": 10782259572,
+  "lat": 13.0668220,
+  "lon": 80.1517149,
+  "tags": {
+    "addr:city": "Ayanambakkam, Chennai",
+    "addr:housenumber": "No. 90",
+    "addr:postcode": "600095",
+    "addr:street": "Vanagaram - Ambattur Road",
+    "email": "foodin@dataone.in",
+    "fax": "+91 04426530452",
+    "name": "Food Ingredient Specialities Private Limited",
+    "office": "company",
+    "phone": "+91 04426531336"
+  }
+},
+{
+  "type": "node",
+  "id": 10796978290,
+  "lat": 13.0874702,
+  "lon": 80.2809977,
+  "tags": {
+    "brand": "United India Insurance Company",
+    "brand:wikidata": "Q24952429",
+    "name": "United India Insurance Company",
+    "office": "insurance"
+  }
+},
+{
+  "type": "node",
+  "id": 10914802359,
+  "lat": 13.0631997,
+  "lon": 80.2828666,
+  "tags": {
+    "name": "Department Of Tribal Welfare",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 10915906407,
+  "lat": 13.0909141,
+  "lon": 80.2792962,
+  "tags": {
+    "name": "Rohit Krishna",
+    "office": "lawyer"
+  }
+},
+{
+  "type": "node",
+  "id": 10933682514,
+  "lat": 13.0980358,
+  "lon": 80.2798552,
+  "tags": {
+    "name": "R. Anand",
+    "office": "lawyer"
+  }
+},
+{
+  "type": "node",
+  "id": 10967320949,
+  "lat": 13.0977145,
+  "lon": 80.2851658,
+  "tags": {
+    "name": "Tamil Nadu Engineering Works",
+    "office": "engineer"
+  }
+},
+{
+  "type": "node",
+  "id": 10967640639,
+  "lat": 13.0906540,
+  "lon": 80.2815936,
+  "tags": {
+    "name": "S. Prakashchand Jain Advocates",
+    "office": "lawyer"
+  }
+},
+{
+  "type": "node",
+  "id": 10973664828,
+  "lat": 13.0905156,
+  "lon": 80.2798329,
+  "tags": {
+    "name": "Hindustan Marketing",
+    "office": "advertising_agency"
+  }
+},
+{
+  "type": "node",
+  "id": 11004539790,
+  "lat": 12.9202699,
+  "lon": 80.2304318,
+  "tags": {
+    "name": "Emerson Process Management Chennai",
+    "office": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11042181462,
+  "lat": 13.0726541,
+  "lon": 80.2196199,
+  "tags": {
+    "contact:email": "India@iss-relocations.com",
+    "contact:phone": "+91 44 4203 1882;+91 98848 27496;+971 4 234 8100",
+    "contact:website": "https://iss-relocations.com/",
+    "name": "Iss relocations",
+    "office": "logistics",
+    "opening_hours": "Mo-Fr 08:30-17:30",
+    "operator": "ISS Relocations"
+  }
+},
+{
+  "type": "node",
+  "id": 11042181464,
+  "lat": 12.9102111,
+  "lon": 80.1484233,
+  "tags": {
+    "contact:email": "India@iss-relocations.com",
+    "contact:phone": "+91 44 4203 1882;+91 98848 27496;+971 4 234 8100",
+    "contact:website": "https://iss-relocations.com/",
+    "name": "Iss relocations",
+    "office": "logistics",
+    "opening_hours": "Mo-Fr 08:30-17:30",
+    "operator": "ISS Relocations"
+  }
+},
+{
+  "type": "node",
+  "id": 11107521906,
+  "lat": 13.0331787,
+  "lon": 80.2615164,
+  "tags": {
+    "addr:housenumber": "42",
+    "addr:postcode": "600004",
+    "addr:street": "Doctor Ranga Road",
+    "name:en": "Qube Cinema Technologies",
+    "office": "company",
+    "opening_hours": "24/7"
+  }
+},
+{
+  "type": "node",
+  "id": 11112226575,
+  "lat": 13.0473620,
+  "lon": 80.2339555,
+  "tags": {
+    "addr:city": "T.Nagar",
+    "addr:housenumber": "old no 50 new no 85",
+    "addr:postcode": "600017",
+    "addr:street": "Bazullah Road",
+    "description": "Dr. S Vijay Sethu Narayanan Ph.D Astrooger\n8110833000, 8110933000",
+    "name": "Sree Tantric Astrology",
+    "office": "astrologer",
+    "phone": "8110833000",
+    "website": "https://sreetantricastrology.com"
+  }
+},
+{
+  "type": "node",
+  "id": 11124692769,
+  "lat": 12.9843143,
+  "lon": 80.1890185,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "4/7, Sree Vinayaga flats",
+    "addr:postcode": "600061",
+    "addr:street": "27th Street",
+    "name": "Sree Vinayaga Builders",
+    "office": "estate_agent",
+    "opening_hours": "24/7",
+    "phone": "9840224047"
+  }
+},
+{
+  "type": "node",
+  "id": 11152623082,
+  "lat": 12.9647683,
+  "lon": 80.2465261,
+  "tags": {
+    "addr:city": "CHENNAI",
+    "addr:housenumber": "4",
+    "addr:postcode": "600096",
+    "addr:street": "New MGR Road, Veeramamunivar, 1st street",
+    "name": "Truckrr Information services",
+    "office": "it",
+    "opening_hours": "Mo-Sa 09:00-19:00",
+    "phone": "04447768360",
+    "website": "https://www.truckrr.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 11195442362,
+  "lat": 13.0146340,
+  "lon": 80.2017338,
+  "tags": {
+    "brand": "Awfis",
+    "brand:wikidata": "Q60747757",
+    "fee": "yes",
+    "name": "Awfis",
+    "office": "coworking"
+  }
+},
+{
+  "type": "node",
+  "id": 11210050612,
+  "lat": 13.0826128,
+  "lon": 80.2137996,
+  "tags": {
+    "name": "Khalf Co-works",
+    "office": "coworking"
+  }
+},
+{
+  "type": "node",
+  "id": 11226824437,
+  "lat": 12.9701826,
+  "lon": 80.2503475,
+  "tags": {
+    "internet_access": "wlan",
+    "name:en": "TVH Agnitio Park",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 11341182435,
+  "lat": 12.9870923,
+  "lon": 80.2375622,
+  "tags": {
+    "name": "Alumni Affairs Office",
+    "office": "Alumni Affairs"
+  }
+},
+{
+  "type": "node",
+  "id": 11368448862,
+  "lat": 13.0484834,
+  "lon": 80.2381692,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "22",
+    "addr:street": "Bhagirathi Ammal Street",
+    "name": "PBR Associates",
+    "office": "lawyer"
+  }
+},
+{
+  "type": "node",
+  "id": 11495909667,
+  "lat": 13.0570110,
+  "lon": 80.2652809,
+  "tags": {
+    "name": "Murugan Tinkering Works",
+    "office": "engineer"
+  }
+},
+{
+  "type": "node",
+  "id": 11617835281,
+  "lat": 12.9845251,
+  "lon": 80.2199948,
+  "tags": {
+    "name:en": "P.Sathyamoorthy",
+    "office": "lawyer",
+    "opening_hours": "Mo-Fr 10:00-18:00",
+    "phone": "952032356;9566242374"
+  }
+},
+{
+  "type": "node",
+  "id": 11680166045,
+  "lat": 12.9572045,
+  "lon": 80.2505608,
+  "tags": {
+    "name": "Nibav Towers - Nibav lifts",
+    "office": "it"
+  }
+},
+{
+  "type": "node",
+  "id": 11690043769,
+  "lat": 12.9157027,
+  "lon": 80.1923453,
+  "tags": {
+    "name:en": "G.R. Construction Labour Union",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 11690043869,
+  "lat": 12.9154989,
+  "lon": 80.1923830,
+  "tags": {
+    "name:en": "Medavakkam Panchayat Office",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 11690043969,
+  "lat": 12.9157405,
+  "lon": 80.1921298,
+  "tags": {
+    "name:en": "Kappa Current Technology",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 11699797370,
+  "lat": 12.9209408,
+  "lon": 80.1682040,
+  "tags": {
+    "name:en": "Magnific Builders & Interiors",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 11699821669,
+  "lat": 12.9224705,
+  "lon": 80.1481929,
+  "tags": {
+    "name:en": "Penthouse.in",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 11703392922,
+  "lat": 13.0568904,
+  "lon": 80.2566229,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:district": "Chennai",
+    "addr:postcode": "600006",
+    "addr:street": "Madhar Sha Tower, Anna Salai, Thousand Lights East",
+    "name": "Stats Perform India Pvt Ltd - ஸ்டேட்ஸ் பெர்பார்ம் இந்தியா ப்வ்ட் லட",
+    "office": "company",
+    "opening_hours": "Mo-Sa 10:00-17:00",
+    "website": "https://www.statsperform.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 11703751632,
+  "lat": 13.0948156,
+  "lon": 80.2036846,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:district": "Chennai",
+    "addr:housenumber": "1227",
+    "addr:postcode": "600040",
+    "addr:street": "18th Main Road, Anna Nagar West",
+    "name": "efiletax",
+    "office": "tax_advisor",
+    "opening_hours": "Mo-Sa 09:30-18:30",
+    "phone": "9696160160",
+    "website": "https://www.efiletax.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 11761566071,
+  "lat": 12.9464043,
+  "lon": 80.2313393,
+  "tags": {
+    "addr:postcode": "600097",
+    "addr:street": "Pallavaram - Thoraipakkam Road",
+    "name": "Chennai One phase two",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 11792461215,
+  "lat": 12.9739794,
+  "lon": 80.2599858,
+  "tags": {
+    "addr:housenumber": "2/259",
+    "addr:street": "first cross street",
+    "name": "South India AIDS Action Programme",
+    "office": "ngo",
+    "phone": "+914424512285",
+    "website": "https://siaapindia.org/"
+  }
+},
+{
+  "type": "node",
+  "id": 11828649067,
+  "lat": 13.0530302,
+  "lon": 80.2438650,
+  "tags": {
+    "name": "Professional Courier",
+    "office": "courier",
+    "shop": "transportation"
+  }
+},
+{
+  "type": "node",
+  "id": 11834549166,
+  "lat": 13.0629406,
+  "lon": 80.2443871,
+  "tags": {
+    "name": "Blue Dart",
+    "office": "courier"
+  }
+},
+{
+  "type": "node",
+  "id": 11834594625,
+  "lat": 13.0633379,
+  "lon": 80.2435618,
+  "tags": {
+    "description": "airline office",
+    "name": "Fits Air",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 11835005604,
+  "lat": 13.0482040,
+  "lon": 80.2454500,
+  "tags": {
+    "brand": "Life Insurance Corporation",
+    "brand:short": "LIC",
+    "brand:wikidata": "Q2767170",
+    "name": "Life Insurance Corporation",
+    "office": "insurance",
+    "short_name": "LIC"
+  }
+},
+{
+  "type": "node",
+  "id": 11835028450,
+  "lat": 13.0478253,
+  "lon": 80.2447632,
+  "tags": {
+    "name": "MGR research University",
+    "office": "educational_institution"
+  }
+},
+{
+  "type": "node",
+  "id": 11890991053,
+  "lat": 13.0342322,
+  "lon": 80.2564647,
+  "tags": {
+    "name": "Residency Builders",
+    "office": "construction_company"
+  }
+},
+{
+  "type": "node",
+  "id": 11893405530,
+  "lat": 13.0557804,
+  "lon": 80.2486668,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "Rosy Tower",
+    "addr:street": "Uttamar Gandhi Salai (Nungambakkam High Road)",
+    "brand": "The Oriental Insurance Company",
+    "brand:wikidata": "Q20707811",
+    "name": "The Oriental Insurance Company",
+    "office": "insurance"
+  }
+},
+{
+  "type": "node",
+  "id": 11922178747,
+  "lat": 13.1252069,
+  "lon": 80.2013902,
+  "tags": {
+    "brand": "Muthoot Finance",
+    "brand:wikidata": "Q6943861",
+    "name": "Muthoot Finance",
+    "office": "financial"
+  }
+},
+{
+  "type": "node",
+  "id": 11932106269,
+  "lat": 12.9187356,
+  "lon": 80.1877075,
+  "tags": {
+    "name:en": "MPM Tech Solutions",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 11934972869,
+  "lat": 13.0568684,
+  "lon": 80.2454671,
+  "tags": {
+    "description": "Telugu Primary School",
+    "name": "Sri Venkateswara Vidyalaya",
+    "office": "educational_institution"
+  }
+},
+{
+  "type": "node",
+  "id": 11956292869,
+  "lat": 12.9026777,
+  "lon": 80.2265773,
+  "tags": {
+    "addr:postcode": "600119",
+    "contact:facebook": "royalenfield",
+    "contact:instagram": "royalenfield",
+    "contact:twitter": "royalenfield",
+    "email": "support@royalenfield.com",
+    "internet_access": "wlan",
+    "name": "ராயல் என்ஃபீல்டு உலகளாவிய தலைமையகம்",
+    "name:en": "Royal Enfield Global Headquarters",
+    "office": "company",
+    "opening_hours": "Mo-Su 09:00-18:00",
+    "operator": "Siddhartha Lal",
+    "phone": "1800 210 0007",
+    "website": "https://www.royalenfield.com/in/en/home/"
+  }
+},
+{
+  "type": "node",
+  "id": 12027874068,
+  "lat": 13.0380062,
+  "lon": 80.1512771,
+  "tags": {
+    "addr:city": "porur",
+    "addr:district": "Chennai",
+    "addr:housenumber": "4/2",
+    "addr:postcode": "600116",
+    "addr:street": "Samayapuram Nagar Main Road",
+    "name": "Pynesec Technologies Private Limited - Cyber security Services Company",
+    "office": "it",
+    "opening_hours": "Mo-Fr 10:00-19:00",
+    "phone": "+919043111754",
+    "website": "https://www.pynesec.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 12052324622,
+  "lat": 12.9496796,
+  "lon": 80.1933165,
+  "tags": {
+    "branch": "Keelkattalai",
+    "name": "Sri Chaitanya School",
+    "office": "educational_institution",
+    "opening_hours": "Mo-Sa 08:00-18:00",
+    "website": "www.srichaitanyaschool.net"
+  }
+},
+{
+  "type": "node",
+  "id": 12093689557,
+  "lat": 13.0539958,
+  "lon": 80.2522724,
+  "tags": {
+    "name": "SITE",
+    "office": "coworking coliving"
+  }
+},
+{
+  "type": "node",
+  "id": 12127340842,
+  "lat": 12.9829772,
+  "lon": 80.2517272,
+  "tags": {
+    "addr:city": "chennai",
+    "addr:housenumber": "Type II/8",
+    "addr:postcode": "600041",
+    "addr:street": "Dr.VSI Estate, Thiruvanmiyur",
+    "name": "Nesh Technologies",
+    "office": "it",
+    "phone": "9790706090",
+    "website": "https://nesh.live"
+  }
+},
+{
+  "type": "node",
+  "id": 12153386392,
+  "lat": 12.9680511,
+  "lon": 80.2478994,
+  "tags": {
+    "name": "G P Strategies",
+    "office": "it"
+  }
+},
+{
+  "type": "node",
+  "id": 12162845607,
+  "lat": 13.0781589,
+  "lon": 80.1728344,
+  "tags": {
+    "addr:street": "TNHB, Nolambur, Ambattur Industrial Estate, Chennai, Tamil Nadu 600037",
+    "name": "Integrated Sub Registrar Office's Campus",
+    "office": "government",
+    "opening_hours": "Mo-Fr 09:45-17:45"
+  }
+},
+{
+  "type": "node",
+  "id": 12260507780,
+  "lat": 13.0128155,
+  "lon": 80.2330390,
+  "tags": {
+    "addr:city": "Guindy",
+    "addr:district": "Chennai",
+    "addr:postcode": "600025",
+    "addr:street": "Center for Excellent Building",
+    "college": "College of Engineering Guindy",
+    "department": "Mechanical department",
+    "name": "Center for Composite Materials",
+    "office": "research",
+    "opening_hours": "Mo-sa 09:00-17:00",
+    "phone": "044 2235 7602",
+    "university": "Anna University",
+    "website": "https://www.annauniv.edu/CCM/"
+  }
+},
+{
+  "type": "node",
+  "id": 12458790371,
+  "lat": 13.1787327,
+  "lon": 80.3076924,
+  "tags": {
+    "addr:floor": "Ground FlOOR",
+    "addr:postcode": "600019",
+    "check_date": "2024-12-28",
+    "government": "register_office",
+    "level": "1",
+    "name": "சார் பதிவாளர் அலுவலகம், திருவெற்றியூர்",
+    "name:en": "Sub-Register Office, Thiruvottiyur",
+    "note": "609, Thiruvottiyur high road, Wimco nagar",
+    "office": "government",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 12458790373,
+  "lat": 13.1784799,
+  "lon": 80.3084797,
+  "tags": {
+    "addr:floor": "Ground FlOOR",
+    "check_date": "2024-12-28",
+    "description": "எண்.6O1, காந்தி நகர், திருவொற்றியூர். சென்னை-600019",
+    "level": "1",
+    "name": "விம்கோஅரசு நிதி உதவி பெறும் தொடக்கப்பள்ளி",
+    "office": "educational_institution",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 12458790377,
+  "lat": 13.1777009,
+  "lon": 80.3111456,
+  "tags": {
+    "check_date": "2024-12-28",
+    "description": "Founder J.D. Sigamani , Gandhi nagar, thiruvottiyur",
+    "name": "Holy Trinity Nursery & Primary School",
+    "office": "educational_institution"
+  }
+},
+{
+  "type": "node",
+  "id": 12497490237,
+  "lat": 12.9993081,
+  "lon": 80.2009014,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:postcode": "600016",
+    "addr:street": "Meenambakkam, New St, Mela Ilandaikulam, Alandur,",
+    "government": "transportation",
+    "name": "Regional Transport Office,Meenambakkam",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 12517626401,
+  "lat": 13.0124427,
+  "lon": 80.2229811,
+  "tags": {
+    "name": "Inoesis",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 12517652001,
+  "lat": 13.0123066,
+  "lon": 80.2231062,
+  "tags": {
+    "name": "Earthana",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 12517830801,
+  "lat": 13.0123527,
+  "lon": 80.2236047,
+  "tags": {
+    "name": "Layotos Technologies Pvt LTD",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 12517830901,
+  "lat": 13.0123329,
+  "lon": 80.2235998,
+  "tags": {
+    "name": "Yash Infosytems",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 12536084978,
+  "lat": 13.0720986,
+  "lon": 80.2194001,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:postcode": "600029",
+    "addr:street": "Govinda Street",
+    "name": "Maharishi Vidya Mandir, Bala Bhavan Akila Valagam",
+    "office": "educational_institution"
+  }
+},
+{
+  "type": "node",
+  "id": 12550238601,
+  "lat": 12.9118853,
+  "lon": 80.1917383,
+  "tags": {
+    "name": "BSNL exchange",
+    "office": "telecommunication"
+  }
+},
+{
+  "type": "node",
+  "id": 12554298674,
+  "lat": 13.1568847,
+  "lon": 80.3026129,
+  "tags": {
+    "office": "educational_institution"
+  }
+},
+{
+  "type": "node",
+  "id": 12581525294,
+  "lat": 13.1302055,
+  "lon": 80.2145057,
+  "tags": {
+    "check_date": "2025-02-12",
+    "name": "Dexterity Design Services",
+    "office": "graphic_design"
+  }
+},
+{
+  "type": "node",
+  "id": 12718033101,
+  "lat": 13.0130549,
+  "lon": 80.2242278,
+  "tags": {
+    "name": "L.A.S Tower",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 12721828629,
+  "lat": 12.9505260,
+  "lon": 80.2417568,
+  "tags": {
+    "name": "Bahwan Cybertek Pvt. Ltd.",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 12758298442,
+  "lat": 12.9856583,
+  "lon": 80.2461015,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:district": "Chennai",
+    "addr:housenumber": "Floor 1, Ascendas Phase 1 ( Pinnacale )",
+    "addr:postcode": "600113",
+    "addr:street": "International Tech Park, Ascendas, Phase 1, 1st Floor, Pinnacle Building, CSIR Rd, Tharamani",
+    "alt_name": "Anywhere.co",
+    "level": "1",
+    "name": "Full Creative",
+    "office": "company",
+    "opening_hours": "Mo-Fr 09:00-18:00",
+    "phone": "04442666652",
+    "website": "https://full.io/"
+  }
+},
+{
+  "type": "node",
+  "id": 12773528701,
+  "lat": 13.0110563,
+  "lon": 80.2185774,
+  "tags": {
+    "addr:housenumber": "67",
+    "addr:postcode": "600032",
+    "addr:street": "Anna Salai (Mount Road)",
+    "name": "தமிழ்நாடு செய்தித்தாள் காகித நிருவனம்",
+    "name:en": "TNPL",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 12797430328,
+  "lat": 13.0025357,
+  "lon": 80.2474668,
+  "tags": {
+    "office": "security"
+  }
+},
+{
+  "type": "node",
+  "id": 12831616701,
+  "lat": 12.9736131,
+  "lon": 80.2479270,
+  "tags": {
+    "addr:housenumber": "185",
+    "addr:postcode": "600096",
+    "addr:street": "1st Main Road",
+    "name": "New Designer Web",
+    "office": "company",
+    "opening_hours": "Mo-Sa 09:30-18:30",
+    "website": "https://designerweb.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 12836705750,
+  "lat": 13.0634997,
+  "lon": 80.2811949,
+  "tags": {
+    "name": "Survey House",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 12841106305,
+  "lat": 13.0901563,
+  "lon": 80.1926435,
+  "tags": {
+    "addr:postcode": "600050",
+    "addr:street": "Anna Nagar West Extension",
+    "name": "ONGC Anna Nagar Office Complex",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 12841106501,
+  "lat": 12.9737468,
+  "lon": 80.2479697,
+  "tags": {
+    "addr:housenumber": "185",
+    "addr:postcode": "600096",
+    "addr:street": "1st Main Road",
+    "email": "support@zeqube.com",
+    "name": "ZeQube Technologies",
+    "office": "company",
+    "opening_hours": "Mo-Sa 09:30-20:30",
+    "phone": "09600112861",
+    "website": "https://www.zeqube.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 12841106502,
+  "lat": 13.0906274,
+  "lon": 80.1982538,
+  "tags": {
+    "addr:housenumber": "244/2b",
+    "addr:postcode": "600101",
+    "addr:street": "Anna Nagar West Extension",
+    "name": "Laptop Spa",
+    "office": "company",
+    "opening_hours": "Mo-Sa 10:30-19:30",
+    "phone": "04443523331"
+  }
+},
+{
+  "type": "node",
+  "id": 12892124996,
+  "lat": 13.0434384,
+  "lon": 80.1367542,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:district": "Chengalpattu",
+    "addr:housenumber": "S1, Second Floor, Dura Complex, 106/4B",
+    "addr:postcode": "600056",
+    "addr:street": "A. N. Elumalai Salai, Iyyapanthangal",
+    "name": "Dura Housing",
+    "office": "estate_agent",
+    "opening_hours": "Mo-Su 09:00-18:00",
+    "phone": "+919444939804",
+    "website": "https://durahousing.com"
+  }
+},
+{
+  "type": "node",
+  "id": 13041279865,
+  "lat": 13.0154142,
+  "lon": 80.2287148,
+  "tags": {
+    "name": "Central Warehousing Corporation Regional Office",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 13068327311,
+  "lat": 12.9431942,
+  "lon": 80.1957502,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "5/80A",
+    "addr:postcode": "600129",
+    "addr:street": "Ponni Amman Koil Main Rd",
+    "description": "Premium Luxury Interior Designer in Chennai",
+    "name": "LeBlanc Interior",
+    "office": "company",
+    "official_name": "LeBlanc Interior",
+    "opening_hours": "Mo-Sa 10:00-19:00",
+    "phone": "+918072630833",
+    "website": "https://www.leblancinterior.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 13077992493,
+  "lat": 13.0312301,
+  "lon": 80.2394047,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:postcode": "600017",
+    "addr:street": "II Floor, Swathi Complex, No. 34, Flat No 2, Nandanam, Chennai, Tamil Nadu",
+    "name": "NASTAF Technologies PVT LTD",
+    "office": "IT Software Company",
+    "opening_hours": "Mo-Su 09:00-21:00",
+    "website": "https://nastaf.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 13094909601,
+  "lat": 13.1418036,
+  "lon": 80.2518275,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "71",
+    "addr:postcode": "600118",
+    "addr:street": "2nd Street, Part-2 Venkateswara Nagar, Kodungaiyur",
+    "name": "M SYSTEM & SERVICES",
+    "office": "association",
+    "opening_hours": "Mo-Fr 10:00-13:00,15:00-20:30"
+  }
+},
+{
+  "type": "node",
+  "id": 13154785802,
+  "lat": 12.9155626,
+  "lon": 80.1946240,
+  "tags": {
+    "name": "Kiran Packaging",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 13253945580,
+  "lat": 12.9824521,
+  "lon": 80.2521716,
+  "tags": {
+    "addr:city": "Tharamani",
+    "addr:district": "Chennai",
+    "addr:housenumber": "I/16",
+    "addr:postcode": "600041",
+    "addr:street": "2nd Floor, Ragula Tech Park, Dr. VSI Estate",
+    "name": "Zilogic Systems Private Limited (Block III)",
+    "office": "company",
+    "opening_hours": "Mo-Fr 08:00-17:00"
+  }
+},
+{
+  "type": "node",
+  "id": 13286910921,
+  "lat": 12.9695392,
+  "lon": 80.2439381,
+  "tags": {
+    "addr:city": "Perungudi",
+    "addr:district": "Chennai",
+    "addr:housenumber": "40, Global Infocity",
+    "addr:postcode": "600096",
+    "addr:street": "Dr MGR Main Road, Kodandarama Nagar",
+    "name": "Freshworks",
+    "office": "it",
+    "opening_hours": "24/7",
+    "phone": "+91 44 6667 8040",
+    "website": "https://freshworks.com",
+    "wikidata": "Q117782453",
+    "wikipedia": "en:Freshworks"
+  }
+},
+{
+  "type": "node",
+  "id": 13380577398,
+  "lat": 12.9918773,
+  "lon": 80.2308879,
+  "tags": {
+    "name": "Center for Innovation",
+    "office": "research"
+  }
+},
+{
+  "type": "node",
+  "id": 13419989475,
+  "lat": 13.0854724,
+  "lon": 80.2240939,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "133",
+    "addr:postcode": "600102",
+    "addr:street": "1st Avenue",
+    "name": "Tamil Nadu Real Estate Regulatory Authority",
+    "office": "government",
+    "short_name": "TNRERA",
+    "website": "https://rera.tn.gov.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 13439114501,
+  "lat": 12.9854153,
+  "lon": 80.2463893,
+  "tags": {
+    "addr:postcode": "600113",
+    "addr:street": "CSIR road",
+    "level": "9",
+    "name": "Sterling Software Pvt Ltd",
+    "office": "company",
+    "website": "https://sterlingsoftware.global"
+  }
+},
+{
+  "type": "node",
+  "id": 13461588601,
+  "lat": 13.0228387,
+  "lon": 80.1795828,
+  "tags": {
+    "addr:street": "Mount - Poonamallee - Avadi Road",
+    "name": "L&T Shipbuilding",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 13639953901,
+  "lat": 13.1018864,
+  "lon": 80.2304285,
+  "tags": {
+    "name": "Joint Office, Southern Railway",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 13639954001,
+  "lat": 13.1019160,
+  "lon": 80.2303920,
+  "tags": {
+    "addr:street": "Portious Road",
+    "name": "Joint office, Southern Railway",
+    "office": "government",
+    "opening_hours": "Mo-Fr 10:00-18:00"
+  }
+},
+{
+  "type": "node",
+  "id": 13698117601,
+  "lat": 13.1074993,
+  "lon": 80.2028192,
+  "tags": {
+    "addr:housenumber": "No 4/209 F Type",
+    "addr:postcode": "600049",
+    "addr:street": "4th Main Road Sidco Nagar Villivakkam Chennai",
+    "internet_access": "wlan",
+    "name": "DRIVING SCHOOL State Secretary Office TDSWRSO",
+    "office": "ngo",
+    "opening_hours": "24/7",
+    "phone": "9094555556"
+  }
+},
+{
+  "type": "node",
+  "id": 13718255501,
+  "lat": 13.0224473,
+  "lon": 80.2068177,
+  "tags": {
+    "name": "iGold Technologies",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 13728878701,
+  "lat": 13.0950948,
+  "lon": 80.2784373,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:postcode": "600079",
+    "addr:street": "Nalanna Street",
+    "name": "Sree Ragas Trust",
+    "office": "ngo",
+    "opening_hours": "Mo-Sa 10:00-18:00",
+    "website": "https://www.sreeragasedutech.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 13731731401,
+  "lat": 12.9820172,
+  "lon": 80.2482341,
+  "tags": {
+    "name": "DLF DOWNTOWN",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 13742357002,
+  "lat": 12.9856592,
+  "lon": 80.2490231,
+  "tags": {
+    "addr:housenumber": "Phase 1",
+    "addr:postcode": "6000113",
+    "check_date": "2026-04-19",
+    "name": "Ailaysa",
+    "office": "yes",
+    "website": "https://www.ailaysa.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 13742637369,
+  "lat": 13.0407389,
+  "lon": 80.2388643,
+  "tags": {
+    "brand": "Life Insurance Corporation",
+    "brand:short": "LIC",
+    "name": "Life Insurance Corporation",
+    "office": "insurance",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13746287114,
+  "lat": 13.0825657,
+  "lon": 80.2752970,
+  "tags": {
+    "level": "0",
+    "name": "Station Master",
+    "office": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 13749920891,
+  "lat": 13.0147459,
+  "lon": 80.2217776,
+  "tags": {
+    "name": "Professional couriers parcel office",
+    "office": "logistics"
+  }
+},
+{
+  "type": "node",
+  "id": 13839669979,
+  "lat": 13.0323408,
+  "lon": 80.2682983,
+  "tags": {
+    "name": "ரேஹோபோத் நிதி மையம்",
+    "name:en": "Rehoboth Financial Services",
+    "name:ta": "ரேஹோபோத் நிதி மையம்",
+    "office": "financial"
+  }
+},
+{
+  "type": "node",
+  "id": 13864239185,
+  "lat": 12.9372947,
+  "lon": 80.1358222,
+  "tags": {
+    "name": "Government High School, Chitlapakkam",
+    "office": "educational_institution",
+    "school:gender": "mixed"
+  }
+},
+{
+  "type": "node",
+  "id": 13926583429,
+  "lat": 13.0725513,
+  "lon": 80.2024278,
+  "tags": {
+    "brand": "Muthoot Finance",
+    "brand:wikidata": "Q6943861",
+    "name": "Muthoot Finance",
+    "office": "financial"
+  }
+},
+{
+  "type": "node",
+  "id": 13968616101,
+  "lat": 13.0152116,
+  "lon": 80.2257557,
+  "tags": {
+    "name": "அரசாங்க போக்குவரத்து ஊழியர் சங்கம்",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 13994172977,
+  "lat": 13.0430474,
+  "lon": 80.2484500,
+  "tags": {
+    "level": "2",
+    "name": "VFS Global",
+    "office": "visa",
+    "operator": "VFS Global",
+    "operator:wikidata": "Q7906873"
+  }
+},
+{
+  "type": "node",
+  "id": 14004437608,
+  "lat": 12.9543730,
+  "lon": 80.1625605,
+  "tags": {
+    "name": "Wells Fargo",
+    "office": "company",
+    "official_name": "Wells Fargo International Solutions Private Limited",
+    "website": "https://www.wellsfargo.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 14004437609,
+  "lat": 12.9541481,
+  "lon": 80.1631774,
+  "tags": {
+    "name": "Optum Global Solutions",
+    "office": "company"
+  }
+},
+{
+  "type": "node",
+  "id": 14045621283,
+  "lat": 12.9899844,
+  "lon": 80.2119369,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "1375",
+    "addr:postcode": "600042",
+    "addr:street": "TNHB Main Road",
+    "name": "Rujo Engineering Private Limited",
+    "office": "engineer",
+    "website": "https://rujoengineering.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 14048134636,
+  "lat": 13.0232664,
+  "lon": 80.1758087,
+  "tags": {
+    "addr:city": "Chennai Corporation",
+    "addr:district": "Chennai",
+    "addr:postcode": "600089",
+    "addr:street": "DLF IT Park Block 1B, Mount Poonamallee Road, Manapakkam",
+    "level": "9",
+    "name": "Mitsogo Technologies Private Limited",
+    "office": "it",
+    "phone": "+91 484-297-4545",
+    "website": "https://www.mitsogo.com"
+  }
+},
+{
+  "type": "node",
+  "id": 14049301101,
+  "lat": 12.9727610,
+  "lon": 80.2495580,
+  "tags": {
+    "addr:housenumber": "111",
+    "addr:postcode": "600096",
+    "addr:street": "1st Cross",
+    "name": "Sysvine Technologies",
+    "office": "company",
+    "website": "https://sysvine.com"
+  }
+},
+{
+  "type": "node",
+  "id": 14049890102,
+  "lat": 12.9896288,
+  "lon": 80.2127358,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "988",
+    "addr:postcode": "600042",
+    "addr:street": "TNHB Main Road",
+    "name": "yesengapolicy.com",
+    "office": "insurance",
+    "phone": "+919551163535"
+  }
+},
+{
+  "type": "node",
+  "id": 14049890105,
+  "lat": 12.9897402,
+  "lon": 80.2122843,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "993",
+    "addr:postcode": "600042",
+    "addr:street": "TNHB Main Road",
+    "branch": "Velachery Checkpost",
+    "name": "ST Courier",
+    "office": "courier",
+    "phone": "+919940529907"
+  }
+},
+{
+  "type": "node",
+  "id": 14049890109,
+  "lat": 12.9900316,
+  "lon": 80.2112212,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:postcode": "600042",
+    "name": "Meremo Enterprises",
+    "office": "tax_advisor"
+  }
+},
+{
+  "type": "node",
+  "id": 14049890110,
+  "lat": 12.9900475,
+  "lon": 80.2111754,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "1552",
+    "addr:postcode": "600042",
+    "addr:street": "TNHB Main Road",
+    "name": "J.Martin & Associates",
+    "office": "accountant"
+  }
+},
+{
+  "type": "node",
+  "id": 14063569601,
+  "lat": 12.9762328,
+  "lon": 80.2203355,
+  "tags": {
+    "addr:housenumber": "2/189",
+    "addr:postcode": "600042",
+    "addr:street": "100 Feet Road",
+    "check_date": "2026-07-31",
+    "check_date:opening_hours": "2026-07-31",
+    "email": "info@inceptez.com",
+    "name": "Inceptez Technologies",
+    "office": "company",
+    "opening_hours": "Mo-Fr 09:00-20:00",
+    "phone": "08042757266",
+    "website": "https://www.inceptez.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 14066337076,
+  "lat": 13.0921911,
+  "lon": 80.2890091,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "273",
+    "addr:postcode": "600001",
+    "addr:street": "Thambu Chetty Street",
+    "description": "Company Law",
+    "level": "2",
+    "name": "A.Narayanan",
+    "office": "lawyer",
+    "phone": "+918610406951"
+  }
+},
+{
+  "type": "node",
+  "id": 14085336154,
+  "lat": 13.0582765,
+  "lon": 80.2610483,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "11",
+    "addr:postcode": "600002",
+    "addr:street": "Smith Road",
+    "name": "Data Software Research Company Pvt. Ltd.",
+    "office": "it",
+    "short_name": "DSRC"
+  }
+},
+{
+  "type": "node",
+  "id": 14085336155,
+  "lat": 13.0580709,
+  "lon": 80.2611077,
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "13",
+    "addr:postcode": "600002",
+    "addr:street": "Smith Road",
+    "name": "Zebronics India Pvt. Ltd.",
+    "office": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14100123201,
+  "lat": 13.1086479,
+  "lon": 80.2005544,
+  "tags": {
+    "addr:housenumber": "7/330",
+    "addr:postcode": "600049",
+    "addr:street": "57th Street",
+    "email": "forsamindia@outlook.com",
+    "internet_access": "wlan",
+    "name": "Forsam India",
+    "office": "company",
+    "opening_hours": "Mo-Su 09:00-18:00",
+    "phone": "9840272809;9566272809"
+  }
+},
+{
+  "type": "node",
+  "id": 14119190473,
+  "lat": 13.0416984,
+  "lon": 80.2518514,
+  "tags": {
+    "name": "Tamil Nadu Film Exhibitors Association",
+    "office": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14119463064,
+  "lat": 13.0412098,
+  "lon": 80.2480806,
+  "tags": {
+    "name": "Tamil Nadu State Cooperative Societies Election Commission",
+    "office": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14119519404,
+  "lat": 13.0387976,
+  "lon": 80.2522493,
+  "tags": {
+    "name": "Indium",
+    "office": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14121857557,
+  "lat": 13.0586819,
+  "lon": 80.2614101,
+  "tags": {
+    "name": "Help The Blind Foundation",
+    "office": "foundation"
+  }
+},
+{
+  "type": "node",
+  "id": 14196256060,
+  "lat": 12.9884391,
+  "lon": 80.2302471,
+  "tags": {
+    "name": "New I.E. Lab",
+    "office": "research"
+  }
+},
+{
+  "type": "way",
+  "id": 23893614,
+  "center": {
+    "lat": 13.0798161,
+    "lon": 80.2870027
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "3",
+    "int_name": "Fort House",
+    "name": "Tamil Nadu Government Legislature & Secretariat",
+    "name:ml": "തമിഴ്നാട് സർക്കാർ നിയമസഭയും സെക്രട്ടേറിയറ്റും",
+    "name:ta": "தமிழக அரசு தலைமைச் செயலகம்",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 28077658,
+  "center": {
+    "lat": 13.0525341,
+    "lon": 80.2521637
+  },
+  "tags": {
+    "consulate": "consulate_general",
+    "country": "US",
+    "diplomatic": "consulate",
+    "name": "U.S. Consulate General",
+    "office": "diplomatic",
+    "target": "IN",
+    "wikidata": "Q5164570",
+    "wikipedia": "en:Consulate General of the United States, Chennai"
+  }
+},
+{
+  "type": "way",
+  "id": 29267007,
+  "center": {
+    "lat": 13.0637143,
+    "lon": 80.2827558
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Ezhilagam",
+    "office": "government",
+    "wikidata": "Q5423273"
+  }
+},
+{
+  "type": "way",
+  "id": 29883003,
+  "center": {
+    "lat": 13.0198503,
+    "lon": 80.2240915
+  },
+  "tags": {
+    "building": "office",
+    "name": "Panagal Maaligai",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 31897154,
+  "center": {
+    "lat": 13.0627577,
+    "lon": 80.2825834
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "4",
+    "government": "yes",
+    "name": "Tamil Nadu Water Supply and Drainage Board",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 31897155,
+  "center": {
+    "lat": 13.0618249,
+    "lon": 80.2820818
+  },
+  "tags": {
+    "building": "yes",
+    "historic": "building",
+    "name": "Public Works Department",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 47474023,
+  "center": {
+    "lat": 13.0511470,
+    "lon": 80.2771510
+  },
+  "tags": {
+    "landuse": "commercial",
+    "name": "Corporation Office",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 48133626,
+  "center": {
+    "lat": 13.1000869,
+    "lon": 80.2510846
+  },
+  "tags": {
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 95628734,
+  "center": {
+    "lat": 12.9452190,
+    "lon": 80.1218641
+  },
+  "tags": {
+    "barrier": "wall",
+    "landuse": "commercial",
+    "name": "Cognizant Technology Solutions Pvt. Ltd.",
+    "office": "company"
+  }
+},
+{
+  "type": "way",
+  "id": 95772165,
+  "center": {
+    "lat": 12.9445744,
+    "lon": 80.1210236
+  },
+  "tags": {
+    "amenity": "food_court",
+    "building": "yes",
+    "name": "Cafeteria Block",
+    "office": "company"
+  }
+},
+{
+  "type": "way",
+  "id": 95772166,
+  "center": {
+    "lat": 12.9454100,
+    "lon": 80.1215509
+  },
+  "tags": {
+    "building": "yes",
+    "landuse": "commercial",
+    "name": "SDB-2",
+    "office": "company"
+  }
+},
+{
+  "type": "way",
+  "id": 95772167,
+  "center": {
+    "lat": 12.9455812,
+    "lon": 80.1222497
+  },
+  "tags": {
+    "building": "yes",
+    "landuse": "commercial",
+    "name": "SDB-3",
+    "office": "company"
+  }
+},
+{
+  "type": "way",
+  "id": 95772168,
+  "center": {
+    "lat": 12.9463310,
+    "lon": 80.1222113
+  },
+  "tags": {
+    "building": "yes",
+    "landuse": "commercial",
+    "name": "SDB-4",
+    "office": "company"
+  }
+},
+{
+  "type": "way",
+  "id": 95772170,
+  "center": {
+    "lat": 12.9443243,
+    "lon": 80.1215037
+  },
+  "tags": {
+    "building": "yes",
+    "landuse": "commercial",
+    "name": "SDB-1",
+    "office": "company"
+  }
+},
+{
+  "type": "way",
+  "id": 96687171,
+  "center": {
+    "lat": 12.9442885,
+    "lon": 80.1231069
+  },
+  "tags": {
+    "landuse": "commercial",
+    "name": "Computer Science Corporation (CSC)",
+    "office": "company"
+  }
+},
+{
+  "type": "way",
+  "id": 96792775,
+  "center": {
+    "lat": 12.9366267,
+    "lon": 80.1255867
+  },
+  "tags": {
+    "building": "yes",
+    "name": "MEPZ administrative office",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 96792786,
+  "center": {
+    "lat": 12.9370222,
+    "lon": 80.1250937
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Vijaya Garments",
+    "office": "company"
+  }
+},
+{
+  "type": "way",
+  "id": 152173686,
+  "center": {
+    "lat": 13.0125008,
+    "lon": 80.2341423
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Institute of Ocean Management",
+    "office": "educational_institution"
+  }
+},
+{
+  "type": "way",
+  "id": 154089806,
+  "center": {
+    "lat": 12.9035685,
+    "lon": 80.2174691
+  },
+  "tags": {
+    "name": "HCL Technologies",
+    "office": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 158076069,
+  "center": {
+    "lat": 13.0200992,
+    "lon": 80.2718604
+  },
+  "tags": {
+    "landuse": "commercial",
+    "name": "Sun TV Network Office",
+    "office": "television network"
+  }
+},
+{
+  "type": "way",
+  "id": 158076074,
+  "center": {
+    "lat": 13.0190706,
+    "lon": 80.2743055
+  },
+  "tags": {
+    "landuse": "commercial",
+    "name": "TVH Realtors",
+    "office": "company"
+  }
+},
+{
+  "type": "way",
+  "id": 186797307,
+  "center": {
+    "lat": 13.0580665,
+    "lon": 80.2617117
+  },
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "46",
+    "addr:postcode": "600014",
+    "addr:street": "Whites Road",
+    "landuse": "commercial",
+    "name": "Sundaram Towers",
+    "office": "company"
+  }
+},
+{
+  "type": "way",
+  "id": 209546187,
+  "center": {
+    "lat": 13.0689094,
+    "lon": 80.2513163
+  },
+  "tags": {
+    "landuse": "commercial",
+    "name": "Directorate of Public Instruction Campus - DPI",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 211260260,
+  "center": {
+    "lat": 13.0654361,
+    "lon": 80.2491651
+  },
+  "tags": {
+    "addr:housenumber": "20",
+    "addr:postcode": "600006",
+    "addr:street": "Anderson Road",
+    "consulate": "consulate_general",
+    "contact:website": "https://www.gov.uk/world/organisations/british-deputy-high-commissioner-chennai",
+    "country": "GB",
+    "diplomatic": "consulate",
+    "emergency:phone": "+91 44 4219 2151",
+    "name": "British Deputy High Commission",
+    "name:en": "British Deputy High Commission",
+    "name:fr": "Haut-commissariat du Royaume-Uni",
+    "name:hi": "ब्रिटिश उप उच्चायोग चेन्नई",
+    "name:tr": "Birleşik Krallık Yüksek Kurulu Vekilliği",
+    "office": "diplomatic",
+    "opening_hours": "Mo-Th 08:00-16:30; Fr 08:00-13:30",
+    "target": "IN",
+    "wikidata": "Q4969884",
+    "wikipedia": "hi:ब्रिटिश उप उच्चायोग, चेन्नई"
+  }
+},
+{
+  "type": "way",
+  "id": 211423278,
+  "center": {
+    "lat": 13.0625864,
+    "lon": 80.2820117
+  },
+  "tags": {
+    "landuse": "commercial",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 211435478,
+  "center": {
+    "lat": 13.0837122,
+    "lon": 80.2708380
+  },
+  "tags": {
+    "landuse": "commercial",
+    "name": "Fort - Tondiarpet Taluk Office",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 211435542,
+  "center": {
+    "lat": 13.0672009,
+    "lon": 80.2815529
+  },
+  "tags": {
+    "addr:city": "chepauk",
+    "addr:housenumber": "19",
+    "addr:postcode": "600005",
+    "addr:street": "Swami Sivananda Salai",
+    "landuse": "commercial",
+    "name": "Institute of Engineers,Chennai Chapter",
+    "office": "educational_institution",
+    "phone": "+914425360614"
+  }
+},
+{
+  "type": "way",
+  "id": 214598736,
+  "center": {
+    "lat": 13.0106671,
+    "lon": 80.2291784
+  },
+  "tags": {
+    "name": "Highway Research Station",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 217609825,
+  "center": {
+    "lat": 13.0959975,
+    "lon": 80.2922062
+  },
+  "tags": {
+    "landuse": "commercial",
+    "name": "Chennai Collectorate",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 217609829,
+  "center": {
+    "lat": 13.0971301,
+    "lon": 80.2925293
+  },
+  "tags": {
+    "landuse": "commercial",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 217878630,
+  "center": {
+    "lat": 13.1068274,
+    "lon": 80.2452718
+  },
+  "tags": {
+    "landuse": "commercial",
+    "name": "Perambur- Purasawalkam Taluk Office",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 218162625,
+  "center": {
+    "lat": 12.9978706,
+    "lon": 80.2614535
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Corporation Ward 176 Office",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 218163944,
+  "center": {
+    "lat": 13.0006824,
+    "lon": 80.2569506
+  },
+  "tags": {
+    "building": "yes",
+    "layer": "-1",
+    "name": "Barath Sanchar Ningam Limited",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 274370569,
+  "center": {
+    "lat": 13.0672864,
+    "lon": 80.2072853
+  },
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "TNEB Office",
+    "addr:postcode": "600107",
+    "addr:street": "SAF Games Village, Koyambedu",
+    "name": "Tamilnadu Electricity Board (TNEB) office",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 274534529,
+  "center": {
+    "lat": 13.0605219,
+    "lon": 80.1960628
+  },
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:street": "Chinmaya Nagar",
+    "name": "RTO Office, Chinmaya Nagar",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 297510798,
+  "center": {
+    "lat": 12.9222417,
+    "lon": 80.1362062
+  },
+  "tags": {
+    "addr:street": "Velachery - Tambaram Main Road",
+    "name": "Ruby Builders",
+    "office": "estate_agent"
+  }
+},
+{
+  "type": "way",
+  "id": 319255277,
+  "center": {
+    "lat": 12.9296077,
+    "lon": 80.2337156
+  },
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:postcode": "600096",
+    "addr:street": "Fourrts Avenue, Thuraipakkam",
+    "building": "yes",
+    "name": "Siri Towers",
+    "office": "it"
+  }
+},
+{
+  "type": "way",
+  "id": 337930119,
+  "center": {
+    "lat": 13.0246939,
+    "lon": 80.2199961
+  },
+  "tags": {
+    "addr:street": "Jones Road",
+    "building": "yes",
+    "name": "Office of the Deputy Director - Medical Services",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 338925012,
+  "center": {
+    "lat": 13.0211458,
+    "lon": 80.2226669
+  },
+  "tags": {
+    "name": "Highways Office",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 354452716,
+  "center": {
+    "lat": 13.1190938,
+    "lon": 80.1531476
+  },
+  "tags": {
+    "brand": "Life Insurance Corporation",
+    "brand:short": "LIC",
+    "brand:wikidata": "Q2767170",
+    "building": "yes",
+    "name": "LIC - Ambattur Branch",
+    "office": "insurance"
+  }
+},
+{
+  "type": "way",
+  "id": 354458236,
+  "center": {
+    "lat": 13.0356229,
+    "lon": 80.2780044
+  },
+  "tags": {
+    "addr:housenumber": "33",
+    "addr:postcode": "600004",
+    "addr:street": "Santhome High Road",
+    "building": "yes",
+    "building:levels": "2",
+    "consulate": "consulate_general",
+    "country": "RU",
+    "diplomatic": "consulate",
+    "name": "Consulate General of the Russian Federation",
+    "name:en": "Consulate General of the Russian Federation",
+    "name:hi": "रूस का उच्चायोग",
+    "name:ru": "Генеральное консульство Российской Федерации",
+    "name:ta": "ரஷ்ய கூட்டமைப்பின் துணைத் தூதரகம்",
+    "office": "diplomatic",
+    "phone": "+91 44 2498 2320",
+    "target": "IN",
+    "website": "http://www.chennai.mid.ru",
+    "wikidata": "Q5164569"
+  }
+},
+{
+  "type": "way",
+  "id": 354493933,
+  "center": {
+    "lat": 13.1138650,
+    "lon": 80.1473706
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Ambattur Taluk Office",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 354532993,
+  "center": {
+    "lat": 13.0383747,
+    "lon": 80.2089473
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Velankanni Matriculation Higher Secondary School",
+    "office": "educational_institution",
+    "opening_hours:covid19": "off"
+  }
+},
+{
+  "type": "way",
+  "id": 354533071,
+  "center": {
+    "lat": 13.0384584,
+    "lon": 80.2087938
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Velankanni Matriculation Higher Secondary School",
+    "office": "educational_institution",
+    "opening_hours:covid19": "off"
+  }
+},
+{
+  "type": "way",
+  "id": 354533075,
+  "center": {
+    "lat": 13.0383995,
+    "lon": 80.2091723
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Velankanni Matriculation Higher Secondary School",
+    "office": "educational_institution",
+    "opening_hours:covid19": "off"
+  }
+},
+{
+  "type": "way",
+  "id": 354573695,
+  "center": {
+    "lat": 13.0413963,
+    "lon": 80.2368733
+  },
+  "tags": {
+    "addr:city": "T.Nagar, Chennai",
+    "addr:postcode": "600017",
+    "addr:street": "Raja Badar Street",
+    "building": "yes",
+    "name": "Website Learners",
+    "office": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 354740888,
+  "center": {
+    "lat": 12.9829769,
+    "lon": 80.2517297
+  },
+  "tags": {
+    "addr:city": "chennai",
+    "addr:housenumber": "Type II/8",
+    "addr:postcode": "600041",
+    "addr:street": "Dr.VSI Estate, SH 49A, Thiruvanmiyur",
+    "building": "commercial",
+    "building:levels": "3",
+    "name": "Nesh Technologies",
+    "office": "it",
+    "phone": "+91 9790706090",
+    "website": "https://nesh.live"
+  }
+},
+{
+  "type": "way",
+  "id": 354743594,
+  "center": {
+    "lat": 13.0103426,
+    "lon": 80.2291273
+  },
+  "tags": {
+    "building": "yes",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 354743643,
+  "center": {
+    "lat": 13.0097662,
+    "lon": 80.2288322
+  },
+  "tags": {
+    "building": "yes",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 354751121,
+  "center": {
+    "lat": 12.9574430,
+    "lon": 80.2611341
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Madras ENT Research Foundation Speech Trainning",
+    "office": "therapist"
+  }
+},
+{
+  "type": "way",
+  "id": 354773796,
+  "center": {
+    "lat": 12.9563068,
+    "lon": 80.2442858
+  },
+  "tags": {
+    "addr:city": "chennai",
+    "addr:postcode": "600096",
+    "building": "yes",
+    "building:levels": "1,2,3",
+    "name": "ELCOT (Electronic Corporation of Tamil Nadu)",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 354832341,
+  "center": {
+    "lat": 13.0370386,
+    "lon": 80.2166357
+  },
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "40",
+    "addr:postcode": "600033",
+    "addr:street": "Kamatchi Puram 2nd Street",
+    "building": "yes",
+    "level": "2",
+    "name": "Sedin Technologies Dev Center",
+    "office": "company",
+    "opening_hours": "Mo-Fr 08:30-20:00",
+    "smoking": "outside",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 354839450,
+  "center": {
+    "lat": 13.0641923,
+    "lon": 80.2224349
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Talent Reach International",
+    "office": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 354989823,
+  "center": {
+    "lat": 12.9325309,
+    "lon": 80.1298056
+  },
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:district": "Chengalpattu",
+    "addr:housenumber": "131",
+    "addr:postcode": "600059",
+    "addr:street": "Erikkarai Street",
+    "building": "yes",
+    "description": "Young and innovative company, offering fresh and creative business ideas to help brand grow.",
+    "email": "info@novalnet-solutions.com",
+    "name": "Novalnet e-Solutions Pvt. Ltd.",
+    "office": "it",
+    "phone": "+91 44 43574176",
+    "short_name": "Novalnet Solutions",
+    "website": "https://www.novalnet-solutions.com/"
+  }
+},
+{
+  "type": "way",
+  "id": 355048143,
+  "center": {
+    "lat": 13.0653729,
+    "lon": 80.2197222
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Drona Systems",
+    "office": "it"
+  }
+},
+{
+  "type": "way",
+  "id": 355085733,
+  "center": {
+    "lat": 12.9968740,
+    "lon": 80.2646565
+  },
+  "tags": {
+    "building": "yes",
+    "office": "energy_supplier"
+  }
+},
+{
+  "type": "way",
+  "id": 355100244,
+  "center": {
+    "lat": 12.9096628,
+    "lon": 80.2268988
+  },
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "334",
+    "addr:street": "Rajiv Gandhi Salai",
+    "building": "yes",
+    "name": "PayPal",
+    "office": "it"
+  }
+},
+{
+  "type": "way",
+  "id": 355608758,
+  "center": {
+    "lat": 13.0330309,
+    "lon": 80.2670174
+  },
+  "tags": {
+    "building": "yes",
+    "name": "DesignQube Architects and Interiors",
+    "office": "architect"
+  }
+},
+{
+  "type": "way",
+  "id": 355609629,
+  "center": {
+    "lat": 12.9975325,
+    "lon": 80.2643744
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Gnaya Vaapi",
+    "office": "religion",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 355616268,
+  "center": {
+    "lat": 13.0738026,
+    "lon": 80.2277778
+  },
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:district": "CHENNAI",
+    "addr:housenumber": "447/265",
+    "addr:postcode": "600029",
+    "addr:street": "EVR Periyar Salai",
+    "building": "yes",
+    "name": "Unique MEP Engineering Private Limited",
+    "office": "educational_institution",
+    "opening_hours": "Mo-Sa 08:00-20:00",
+    "phone": "8428877755",
+    "website": "https://www.unique-mep.com/"
+  }
+},
+{
+  "type": "way",
+  "id": 355899052,
+  "center": {
+    "lat": 13.0394531,
+    "lon": 80.2484350
+  },
+  "tags": {
+    "addr:housenumber": "7",
+    "addr:postcode": "600018",
+    "addr:street": "Nattumuthu Street",
+    "building": "yes",
+    "name": "பாரதி புத்தகாலயம்",
+    "office": "Trust",
+    "opening_hours": "Mo-Sa 08:00-21:00",
+    "phone": "+9144 24332424",
+    "smoking": "no",
+    "website": "https://thamizhbooks.com/"
+  }
+},
+{
+  "type": "way",
+  "id": 355901901,
+  "center": {
+    "lat": 12.9966421,
+    "lon": 80.2646527
+  },
+  "tags": {
+    "building": "yes",
+    "office": "architect"
+  }
+},
+{
+  "type": "way",
+  "id": 363755386,
+  "center": {
+    "lat": 13.0858602,
+    "lon": 80.1956585
+  },
+  "tags": {
+    "addr:city": "Thirumangalam, Chennai",
+    "addr:district": "CHENNAI",
+    "addr:housenumber": "16/148,1st floor",
+    "addr:postcode": "600040",
+    "addr:street": "Avvai Street",
+    "building": "yes",
+    "name": "VIJAYAKUMAR IAS ACADEMY",
+    "office": "educational_institution",
+    "opening_hours": "Mo-Fr 09:30-17:30",
+    "phone": "9360533992",
+    "website": "https://vijayakumariasacademy.com/"
+  }
+},
+{
+  "type": "way",
+  "id": 363855451,
+  "center": {
+    "lat": 13.0874631,
+    "lon": 80.1977548
+  },
+  "tags": {
+    "addr:city": "Thirumangalam, Chennai",
+    "addr:postcode": "600040",
+    "addr:street": "Ambattur Estate Road",
+    "building": "yes",
+    "government": "administrative",
+    "name": "TamilNadu Housing Board",
+    "name:ta": "தமிழ்நாடு வீட்டு வசதி வாரியம்",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 364637177,
+  "center": {
+    "lat": 12.9496539,
+    "lon": 80.1933437
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Sri Chaitanya School",
+    "office": "educational_institution"
+  }
+},
+{
+  "type": "way",
+  "id": 368451169,
+  "center": {
+    "lat": 13.0863215,
+    "lon": 80.2055098
+  },
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:postcode": "600040",
+    "addr:street": "H Block, 5th Street",
+    "building": "yes",
+    "name": "Tamilnadu Electricity Board Office",
+    "office": "energy_supplier"
+  }
+},
+{
+  "type": "way",
+  "id": 402839821,
+  "center": {
+    "lat": 12.9876455,
+    "lon": 80.2451186
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Central Electronics Engineering Institute",
+    "office": "research"
+  }
+},
+{
+  "type": "way",
+  "id": 402839823,
+  "center": {
+    "lat": 12.9870168,
+    "lon": 80.2451305
+  },
+  "tags": {
+    "building": "yes",
+    "office": "research"
+  }
+},
+{
+  "type": "way",
+  "id": 402839825,
+  "center": {
+    "lat": 12.9876571,
+    "lon": 80.2456853
+  },
+  "tags": {
+    "building": "yes",
+    "office": "research"
+  }
+},
+{
+  "type": "way",
+  "id": 402839827,
+  "center": {
+    "lat": 12.9873081,
+    "lon": 80.2457062
+  },
+  "tags": {
+    "building": "yes",
+    "office": "research"
+  }
+},
+{
+  "type": "way",
+  "id": 462740005,
+  "center": {
+    "lat": 12.9846279,
+    "lon": 80.2575991
+  },
+  "tags": {
+    "building": "yes",
+    "name": "corporation office Thiruvanmiyur",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 468136482,
+  "center": {
+    "lat": 12.9134678,
+    "lon": 80.2187913
+  },
+  "tags": {
+    "addr:city": "Chennai City Corporation Limits",
+    "addr:postcode": "600119",
+    "addr:street": "Elcot SEZ",
+    "name": "Cognizant Technology Solutions",
+    "office": "it",
+    "opening_hours": "09:00-18:00"
+  }
+},
+{
+  "type": "way",
+  "id": 546657840,
+  "center": {
+    "lat": 12.9194979,
+    "lon": 80.1772375
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Tamil Nadu Bio-Diversity Conservation and Greening Project",
+    "office": "government",
+    "website": "http://www.tbgp.org"
+  }
+},
+{
+  "type": "way",
+  "id": 553706272,
+  "center": {
+    "lat": 13.0059528,
+    "lon": 80.1967353
+  },
+  "tags": {
+    "amenity": "townhall",
+    "landuse": "commercial",
+    "name": "St. Thomas Mount Cantonment Board Office",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 560984380,
+  "center": {
+    "lat": 13.0876850,
+    "lon": 80.1924645
+  },
+  "tags": {
+    "addr:city": "Chennai",
+    "building": "yes",
+    "government": "regional",
+    "name": "Regional Revenue Office - Ambattur",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 653527365,
+  "center": {
+    "lat": 13.0669283,
+    "lon": 80.2767262
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Tamil Nadu Films Division",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 670974346,
+  "center": {
+    "lat": 12.9985063,
+    "lon": 80.1953398
+  },
+  "tags": {
+    "landuse": "commercial",
+    "name": "Alandur Taluk Office",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 766595279,
+  "center": {
+    "lat": 12.9074000,
+    "lon": 80.2239718
+  },
+  "tags": {
+    "building": "yes",
+    "office": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 767761372,
+  "center": {
+    "lat": 12.9687342,
+    "lon": 80.2480129
+  },
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "286/1 & 286/2",
+    "addr:postcode": "600096",
+    "addr:street": "Old Mahabalipuram Road, Kandanchavadi",
+    "building": "yes",
+    "fixme": "office in G,1,4,5 = KLA Software India Pvt.,Ltd.,",
+    "name": "Prince Info City I",
+    "office": "it",
+    "opening_hours": "24/7"
+  }
+},
+{
+  "type": "way",
+  "id": 840520356,
+  "center": {
+    "lat": 13.1186863,
+    "lon": 80.1601890
+  },
+  "tags": {
+    "brand": "Life Insurance Corporation",
+    "brand:short": "LIC",
+    "brand:wikidata": "Q2767170",
+    "building": "yes",
+    "name": "LIC Training Office",
+    "office": "insurance"
+  }
+},
+{
+  "type": "way",
+  "id": 848374256,
+  "center": {
+    "lat": 12.9628621,
+    "lon": 80.1987038
+  },
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:postcode": "600091",
+    "addr:street": "Madipakkam",
+    "building": "yes",
+    "building:levels": "2",
+    "name": "Tamil Nadu Electricity Board Office",
+    "name:ta": "தமிழ்நாடு மின்சார வாரியம்",
+    "office": "energy_supplier",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "way",
+  "id": 993020295,
+  "center": {
+    "lat": 13.0132830,
+    "lon": 80.2204311
+  },
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "3rd Floor, Old No.110, New No.111,",
+    "addr:postcode": "600032",
+    "addr:street": "33 Feet Road, Anna Salai, Guindy",
+    "building": "yes",
+    "building:levels": "3",
+    "height_ft": "40",
+    "name": "J&F India Private Limited, Radiance Towers",
+    "office": "company",
+    "phone": "+914449004800",
+    "smoking": "separated",
+    "website": "https://www.jf.ag/en"
+  }
+},
+{
+  "type": "way",
+  "id": 1030842455,
+  "center": {
+    "lat": 12.9770997,
+    "lon": 80.1814520
+  },
+  "tags": {
+    "government": "administrative",
+    "name": "Sanitation Inspection Office",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1032599146,
+  "center": {
+    "lat": 12.9722682,
+    "lon": 80.1936451
+  },
+  "tags": {
+    "government": "public_service",
+    "name": "Government eSeva Center",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1080669050,
+  "center": {
+    "lat": 12.9783758,
+    "lon": 80.1860266
+  },
+  "tags": {
+    "government": "administrative",
+    "name": "Sanitation Inspection Office",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1080669051,
+  "center": {
+    "lat": 12.9784660,
+    "lon": 80.1858589
+  },
+  "tags": {
+    "government": "public_service",
+    "name": "Chennai Corporation e-Sevai Centre",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1089595993,
+  "center": {
+    "lat": 13.0872006,
+    "lon": 80.2845944
+  },
+  "tags": {
+    "brand": "Life Insurance Corporation",
+    "brand:wikidata": "Q2767170",
+    "building": "yes",
+    "building:levels": "6",
+    "name": "United India Building",
+    "office": "insurance",
+    "short_name": "LIC"
+  }
+},
+{
+  "type": "way",
+  "id": 1090962915,
+  "center": {
+    "lat": 13.0918160,
+    "lon": 80.2745755
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "5",
+    "government": "tax",
+    "name": "Integrated Commercial Taxes Office Complex, Chennai (North) Division",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1090989192,
+  "center": {
+    "lat": 13.0787940,
+    "lon": 80.2858926
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "4",
+    "name": "Clive House - Archaeological Survey of India",
+    "office": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1095915250,
+  "center": {
+    "lat": 13.0315963,
+    "lon": 80.2400870
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "2",
+    "name": "BSNL",
+    "office": "telecommunication"
+  }
+},
+{
+  "type": "way",
+  "id": 1103976786,
+  "center": {
+    "lat": 13.0959530,
+    "lon": 80.2922760
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "9",
+    "name": "Chennai District Collector's Office",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1103977627,
+  "center": {
+    "lat": 13.0969383,
+    "lon": 80.2928081
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "7",
+    "name": "Custom House",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1103977629,
+  "center": {
+    "lat": 13.0975003,
+    "lon": 80.2923351
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "4",
+    "name": "Directorate of Lighthouses and Lightships",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1105414359,
+  "center": {
+    "lat": 13.1059605,
+    "lon": 80.2793933
+  },
+  "tags": {
+    "brand": "Life Insurance Corporation",
+    "brand:wikidata": "Q2767170",
+    "building": "yes",
+    "building:levels": "2",
+    "name": "Life Insurance Corporation",
+    "office": "insurance",
+    "short_name": "LIC"
+  }
+},
+{
+  "type": "way",
+  "id": 1105971903,
+  "center": {
+    "lat": 13.0933562,
+    "lon": 80.2750971
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "2",
+    "name": "Chennai Metropolitan Water Supply & Sewerage Board",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1110170916,
+  "center": {
+    "lat": 13.0641959,
+    "lon": 80.2660921
+  },
+  "tags": {
+    "brand": "Life Insurance Corporation",
+    "brand:wikidata": "Q2767170",
+    "building": "yes",
+    "building:levels": "12",
+    "name": "Life Insurance Corporation",
+    "office": "insurance",
+    "short_name": "LIC"
+  }
+},
+{
+  "type": "way",
+  "id": 1110726047,
+  "center": {
+    "lat": 13.0362723,
+    "lon": 80.2672352
+  },
+  "tags": {
+    "building": "yes",
+    "layer": "1",
+    "office": "company"
+  }
+},
+{
+  "type": "way",
+  "id": 1112834745,
+  "center": {
+    "lat": 13.0250574,
+    "lon": 80.2507802
+  },
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "No. 9, RA Puram",
+    "addr:postcode": "600 028",
+    "addr:street": "Boat Club Road",
+    "consulate": "consulate_general",
+    "country": "DE",
+    "diplomatic": "consulate",
+    "name": "Consulate General of the Federal Republic of Germany",
+    "name:de": "Generalkonsulat der Bundesrepublik Deutschland",
+    "office": "diplomatic",
+    "official_name": "Consulate General of the Federal Republic of Germany",
+    "opening_hours": "Mo-Sa 10:00-05:00",
+    "target": "IN",
+    "website": "https://india.diplo.de/in-en/vertretungen/generalkonsulat2",
+    "wheelchair": "no",
+    "wikidata": "Q5164562",
+    "wikipedia": "en:Consulate General of Germany, Chennai"
+  }
+},
+{
+  "type": "way",
+  "id": 1116261441,
+  "center": {
+    "lat": 13.1061718,
+    "lon": 80.2922787
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "2",
+    "office": "energy_supplier"
+  }
+},
+{
+  "type": "way",
+  "id": 1128373253,
+  "center": {
+    "lat": 13.0661548,
+    "lon": 80.2645979
+  },
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "825",
+    "addr:postcode": "600002",
+    "addr:street": "Link Road",
+    "building": "yes",
+    "building:levels": "11",
+    "name": "Tamil Nadu Electricity Board Head Office",
+    "office": "government",
+    "phone": "09445850829"
+  }
+},
+{
+  "type": "way",
+  "id": 1130587009,
+  "center": {
+    "lat": 13.0727447,
+    "lon": 80.2718237
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "7",
+    "name": "Chennai Metropolitan Water Supply and Sewerage Board",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1130609525,
+  "center": {
+    "lat": 13.0824878,
+    "lon": 80.2782409
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "2",
+    "name": "The Bible Society of India Tamil Nadu Auxillary",
+    "office": "religion"
+  }
+},
+{
+  "type": "way",
+  "id": 1130786896,
+  "center": {
+    "lat": 13.0677454,
+    "lon": 80.2695264
+  },
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:housenumber": "10",
+    "addr:postcode": "600002",
+    "addr:street": "Dams Road",
+    "building": "yes",
+    "building:levels": "3",
+    "name": "Bharat Sanchar Nigam Limited",
+    "name:ta": "பாரத் சஞ்சார் நிகாம் லிமிடெட்",
+    "office": "telecommunication"
+  }
+},
+{
+  "type": "way",
+  "id": 1131693913,
+  "center": {
+    "lat": 13.0211665,
+    "lon": 80.2734609
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "12",
+    "name": "Urban Administration Building",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1132166886,
+  "center": {
+    "lat": 13.0843519,
+    "lon": 80.2885349
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "5",
+    "government": "yes",
+    "name": "Reserve Bank of India",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1134367681,
+  "center": {
+    "lat": 13.0238329,
+    "lon": 80.2324180
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "8",
+    "name": "Tamil Nadu Commercial Taxes and Registration Department",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1134367682,
+  "center": {
+    "lat": 13.0240421,
+    "lon": 80.2318429
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "6",
+    "name": "Tamil Nadu Information Comission",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1134367683,
+  "center": {
+    "lat": 13.0246529,
+    "lon": 80.2325816
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "6",
+    "name": "Tamil Nadu Department of Animal Husbandry & Department of Fisheries",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1134367684,
+  "center": {
+    "lat": 13.0247269,
+    "lon": 80.2314205
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Tamil Nadu Finance Department",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1136362732,
+  "center": {
+    "lat": 12.9986453,
+    "lon": 80.2170476
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "5",
+    "name": "Tamil Nadu Forest Department",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1136399861,
+  "center": {
+    "lat": 13.0095852,
+    "lon": 80.2101282
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "9",
+    "name": "Tamil Nadu Small Industries Development Corporation",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1136399869,
+  "center": {
+    "lat": 13.0133474,
+    "lon": 80.2093080
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "5",
+    "name": "Directorate Of Industrial Safety and Health",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1136402720,
+  "center": {
+    "lat": 13.0441322,
+    "lon": 80.2487679
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "6",
+    "name": "Office of the Accountant General (A & E) Tamil Nadu",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1136405605,
+  "center": {
+    "lat": 13.0112217,
+    "lon": 80.2020337
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "3",
+    "name": "Geological Survey of India",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1147247479,
+  "center": {
+    "lat": 13.0659947,
+    "lon": 80.2543304
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "5",
+    "government": "tax",
+    "name": "Commercial Tax Offices",
+    "name:en": "Commercial Tax Offices",
+    "name:ta": "வர்த்தக வரி துறை",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1159446421,
+  "center": {
+    "lat": 13.0668361,
+    "lon": 80.1515526
+  },
+  "tags": {
+    "addr:city": "Ayanambakkam, Chennai",
+    "addr:housenumber": "No. 90",
+    "addr:postcode": "600095",
+    "addr:street": "Vanagaram - Ambattur Road",
+    "building": "yes",
+    "email": "foodin@dataone.in",
+    "fax": "+91 04426530452",
+    "name": "Food Ingredient Specialities Private Limited",
+    "office": "company",
+    "phone": "+91 04426531336"
+  }
+},
+{
+  "type": "way",
+  "id": 1174462600,
+  "center": {
+    "lat": 13.0936132,
+    "lon": 80.2792519
+  },
+  "tags": {
+    "brand": "National Insurance Company",
+    "brand:wikidata": "Q6973776",
+    "building": "yes",
+    "building:levels": "2",
+    "name": "National Insurance Company",
+    "office": "insurance"
+  }
+},
+{
+  "type": "way",
+  "id": 1178077232,
+  "center": {
+    "lat": 13.0941328,
+    "lon": 80.2830259
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "2",
+    "name": "Narayana Guruviah Chetty's Charities",
+    "office": "charity"
+  }
+},
+{
+  "type": "way",
+  "id": 1178720051,
+  "center": {
+    "lat": 13.0937128,
+    "lon": 80.2812474
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "3",
+    "name": "Y. V Kotiah Charities Building",
+    "office": "charity"
+  }
+},
+{
+  "type": "way",
+  "id": 1178720052,
+  "center": {
+    "lat": 13.0937058,
+    "lon": 80.2810635
+  },
+  "tags": {
+    "building": "yes",
+    "office": "charity"
+  }
+},
+{
+  "type": "way",
+  "id": 1202024808,
+  "center": {
+    "lat": 13.1046140,
+    "lon": 80.2744627
+  },
+  "tags": {
+    "landuse": "commercial",
+    "name": "GCC Zone 5 Office",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1237662351,
+  "center": {
+    "lat": 13.0572693,
+    "lon": 80.2653251
+  },
+  "tags": {
+    "addr:city": "Royapettah, Chennai",
+    "addr:district": "Chennai",
+    "addr:housenumber": "15",
+    "addr:postcode": "600014",
+    "addr:street": "Westcott Road",
+    "building": "yes",
+    "building:levels": "5",
+    "name": "Amma People's Progressive Federation (AMMK) Party Headquarters",
+    "office": "political_party"
+  }
+},
+{
+  "type": "way",
+  "id": 1314584112,
+  "center": {
+    "lat": 13.0771511,
+    "lon": 80.2255416
+  },
+  "tags": {
+    "government": "administrative",
+    "landuse": "commercial",
+    "name": "Greater Chennai Corporation Zone 8 Office",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1324942076,
+  "center": {
+    "lat": 13.0127657,
+    "lon": 80.2332119
+  },
+  "tags": {
+    "addr:city": "Guindy",
+    "addr:district": "Chennai",
+    "addr:postcode": "600025",
+    "addr:street": "center for excellent block",
+    "building": "yes",
+    "name": "Center for Excellence",
+    "office": "research"
+  }
+},
+{
+  "type": "way",
+  "id": 1350837450,
+  "center": {
+    "lat": 13.0738994,
+    "lon": 80.2637857
+  },
+  "tags": {
+    "building": "yes",
+    "government": "administrative",
+    "name": "Tamilnadu uniform recruitment board",
+    "office": "government",
+    "source": "microsoft/BuildingFootprints"
+  }
+},
+{
+  "type": "way",
+  "id": 1355890359,
+  "center": {
+    "lat": 12.9985107,
+    "lon": 80.2451331
+  },
+  "tags": {
+    "building": "yes",
+    "layer": "1",
+    "office": "educational_institution",
+    "wikidata": "Q60776625",
+    "wikipedia": "en:International Institute of Tamil Studies"
+  }
+},
+{
+  "type": "way",
+  "id": 1355890360,
+  "center": {
+    "lat": 12.9966018,
+    "lon": 80.2463931
+  },
+  "tags": {
+    "building": "yes",
+    "office": "research"
+  }
+},
+{
+  "type": "way",
+  "id": 1355890361,
+  "center": {
+    "lat": 12.9966060,
+    "lon": 80.2465113
+  },
+  "tags": {
+    "building": "yes",
+    "office": "research"
+  }
+},
+{
+  "type": "way",
+  "id": 1419895750,
+  "center": {
+    "lat": 13.0295805,
+    "lon": 80.2311015
+  },
+  "tags": {
+    "building": "office",
+    "building:levels": "8",
+    "name": "Tamil Nadu Housing Board - Head Office",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1444480046,
+  "center": {
+    "lat": 12.9824351,
+    "lon": 80.2522547
+  },
+  "tags": {
+    "addr:city": "Tharamani",
+    "addr:district": "Chennai",
+    "addr:postcode": "600041",
+    "addr:street": "OMR Service Road, Phase 1, Vikram Sarabhai Instronics Estate,",
+    "building": "yes",
+    "name": "Ragula Tech Park",
+    "office": "company"
+  }
+},
+{
+  "type": "way",
+  "id": 1506909974,
+  "center": {
+    "lat": 13.0777892,
+    "lon": 80.2231994
+  },
+  "tags": {
+    "building": "yes",
+    "government": "administrative",
+    "name": "Taluk Office, Aminjikarai chennai",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1507491435,
+  "center": {
+    "lat": 12.9358894,
+    "lon": 80.1312272
+  },
+  "tags": {
+    "building": "office",
+    "description": "Chengalpattu district branch of the Southern India Regional Council (SIRC)",
+    "name": "ICAI Bhawan",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1531132889,
+  "center": {
+    "lat": 12.9393174,
+    "lon": 80.1379680
+  },
+  "tags": {
+    "alt_name": "alt_name = Chitlapakkam EB Office",
+    "building": "yes",
+    "description": "Electricity bill collection counter",
+    "government": "electricity",
+    "name": "TNPDCL Office (O&M Nehru Nagar)",
+    "office": "government",
+    "operator": "Tamil Nadu Power Distribution Corporation Limited (TNPDCL)"
+  }
+},
+{
+  "type": "way",
+  "id": 1531186391,
+  "center": {
+    "lat": 12.9409668,
+    "lon": 80.1377243
+  },
+  "tags": {
+    "addr:city": "chennai",
+    "addr:district": "Chengalpattu",
+    "addr:housename": "Chitlapakkam Panchayat Union Office Campus",
+    "addr:postcode": "600064",
+    "addr:street": "1st Main Road",
+    "addr:suburb": "chitlapakkam",
+    "building": "yes",
+    "government": "administrative",
+    "name": "Tambaram Constituency MLA Office",
+    "name:ta": "தாம்பரம் தொகுதி சட்டமன்ற உறுப்பினர் அலுவலகம்",
+    "office": "government",
+    "opening_hours": "Mo-Fr 09:00-17:00"
+  }
+},
+{
+  "type": "way",
+  "id": 1533853143,
+  "center": {
+    "lat": 13.1505686,
+    "lon": 80.1914993
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Velammal College Security office",
+    "office": "security"
+  }
+},
+{
+  "type": "way",
+  "id": 1536001843,
+  "center": {
+    "lat": 13.0915891,
+    "lon": 80.1608799
+  },
+  "tags": {
+    "addr:city": "Chennai",
+    "addr:postcode": "600058",
+    "addr:street": "Ambattur Estate Service Road",
+    "building": "yes",
+    "name": "MSC Technology Park",
+    "office": "it"
+  }
+},
+{
+  "type": "way",
+  "id": 1537446411,
+  "center": {
+    "lat": 12.9408141,
+    "lon": 80.1376899
+  },
+  "tags": {
+    "building": "yes",
+    "description": "Serves as the administrative headquarters for the St. Thomas Mount Panchayat Union",
+    "government": "administrative",
+    "name": "Block Development Office",
+    "name:ta": "ஊராட்சி ஒன்றிய அலுவலகம்",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1540387223,
+  "center": {
+    "lat": 12.9227985,
+    "lon": 80.1255660
+  },
+  "tags": {
+    "building": "yes",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1544042985,
+  "center": {
+    "lat": 12.9263787,
+    "lon": 80.2507670
+  },
+  "tags": {
+    "name": "சென்னைக் குடிநீர் வாரியம் குடிநீர் நிரப்பும் நிலையம், ஈஞ்சம்பாக்கம்",
+    "name:en": "Chennai Metro Water Injambakkam Filling Point",
+    "office": "water_utility"
+  }
+},
+{
+  "type": "way",
+  "id": 1544073581,
+  "center": {
+    "lat": 12.8992322,
+    "lon": 80.2271364
+  },
+  "tags": {
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1549829129,
+  "center": {
+    "lat": 13.1138001,
+    "lon": 80.1472085
+  },
+  "tags": {
+    "addr:street": "Taluk Office Road",
+    "building": "yes",
+    "government": "transportation",
+    "name": "Regional Transport Office, Ambattur (TN-13)",
+    "office": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 1552025173,
+  "center": {
+    "lat": 13.0392368,
+    "lon": 80.2521852
+  },
+  "tags": {
+    "landuse": "commercial",
+    "name": "TVS Srichakra Ltd.",
+    "office": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1558383945,
+  "center": {
+    "lat": 13.0928457,
+    "lon": 80.1607051
+  },
+  "tags": {
+    "addr:city": "Ambattur",
+    "addr:district": "Chennai",
+    "addr:postcode": "600058",
+    "addr:street": "Ambattur Estate Service Road",
+    "building": "commercial",
+    "building:levels": "8",
+    "name": "Voora IT Park",
+    "office": "it"
+  }
+}
+
+  ]
+}

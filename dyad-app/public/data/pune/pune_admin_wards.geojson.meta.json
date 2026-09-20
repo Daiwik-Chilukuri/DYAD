@@ -1,0 +1,14 @@
+{
+  "city": "Pune",
+  "city_slug": "pune",
+  "filename": "pune_admin_wards.geojson",
+  "pillar": "demographics",
+  "records": 144,
+  "geometry_type": "Polygon",
+  "crs": "EPSG:4326",
+  "source_url": "Browser Use Cloud Agent V4 Harvest",
+  "license": "ODbL-1.0 / CC-BY-4.0",
+  "harvested_by": "Browser Use Cloud Agent (gpt-5.6-luna)",
+  "description": "OpenCity / DataMeet Municipal Wards",
+  "timestamp": "2026-09-20T10:17:47Z"
+}

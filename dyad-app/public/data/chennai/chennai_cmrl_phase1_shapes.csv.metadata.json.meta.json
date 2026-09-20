@@ -1,0 +1,13 @@
+{
+  "city": "Chennai",
+  "city_slug": "chennai",
+  "filename": "chennai_cmrl_phase1_shapes.csv.metadata.json",
+  "pillar": "demographics",
+  "records": 23,
+  "geometry_type": "Tabular Census",
+  "crs": "EPSG:4326",
+  "source_url": "Browser Use Cloud Agent harvest",
+  "license": "ODbL-1.0 / CC-BY-4.0",
+  "harvested_by": "Browser Use Cloud Agent V4",
+  "timestamp": "2026-09-20T10:32:43Z"
+}

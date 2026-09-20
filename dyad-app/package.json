@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "node tests/e2e/runner.mjs && node tests/e2e/collector-suite.test.mjs"
   },
   "dependencies": {
     "@turf/turf": "^7.4.0",

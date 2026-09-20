@@ -1,0 +1,2746 @@
+{
+  "type": "FeatureCollection",
+  "name": "Pune Metro Line 3 PMRDA route segments",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1479334635,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.8493193,
+            18.5302597
+          ],
+          [
+            73.8496252,
+            18.5301844
+          ],
+          [
+            73.8505023,
+            18.5299632
+          ],
+          [
+            73.8509113,
+            18.5298297
+          ],
+          [
+            73.8517213,
+            18.5295079
+          ],
+          [
+            73.8520472,
+            18.5293954
+          ],
+          [
+            73.8532907,
+            18.5290469
+          ],
+          [
+            73.8547734,
+            18.528654
+          ],
+          [
+            73.8551739,
+            18.5285423
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1479334636,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.8567897,
+            18.5282402
+          ],
+          [
+            73.8569892,
+            18.5281983
+          ],
+          [
+            73.8572699,
+            18.528151
+          ],
+          [
+            73.8573916,
+            18.5281359
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": null,
+        "osm_id": 1479334637,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.8541579,
+            18.5288605
+          ],
+          [
+            73.8547734,
+            18.528654
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1480317360,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.8372126,
+            18.5359383
+          ],
+          [
+            73.8375429,
+            18.5356814
+          ],
+          [
+            73.8378024,
+            18.5354886
+          ],
+          [
+            73.8385688,
+            18.534973
+          ],
+          [
+            73.8394191,
+            18.534385
+          ],
+          [
+            73.8403652,
+            18.5337483
+          ],
+          [
+            73.8409463,
+            18.5333464
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1480317361,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.8409463,
+            18.5333464
+          ],
+          [
+            73.8419927,
+            18.5326425
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1480317363,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.8419927,
+            18.5326425
+          ],
+          [
+            73.842792,
+            18.5320703
+          ],
+          [
+            73.8430361,
+            18.5319165
+          ],
+          [
+            73.8433003,
+            18.5317855
+          ],
+          [
+            73.8435632,
+            18.5316762
+          ],
+          [
+            73.8444403,
+            18.5313888
+          ],
+          [
+            73.8447997,
+            18.5312788
+          ],
+          [
+            73.845599,
+            18.5310842
+          ],
+          [
+            73.8466651,
+            18.530821
+          ],
+          [
+            73.846944,
+            18.5307638
+          ],
+          [
+            73.8474658,
+            18.5306962
+          ],
+          [
+            73.8477438,
+            18.530651
+          ],
+          [
+            73.8480741,
+            18.5305704
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1480317364,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.8480741,
+            18.5305704
+          ],
+          [
+            73.8482633,
+            18.530522
+          ],
+          [
+            73.8493193,
+            18.5302597
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1480317368,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.8362241,
+            18.5367139
+          ],
+          [
+            73.8372126,
+            18.5359383
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1480317369,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.8277531,
+            18.5422184
+          ],
+          [
+            73.8283664,
+            18.5421075
+          ],
+          [
+            73.8286433,
+            18.5420331
+          ],
+          [
+            73.8289082,
+            18.5419355
+          ],
+          [
+            73.829213,
+            18.5417734
+          ],
+          [
+            73.8296512,
+            18.5414667
+          ],
+          [
+            73.8302452,
+            18.5410579
+          ],
+          [
+            73.8304371,
+            18.5409256
+          ],
+          [
+            73.8311504,
+            18.5404675
+          ],
+          [
+            73.8323709,
+            18.5396575
+          ],
+          [
+            73.8329516,
+            18.5392656
+          ],
+          [
+            73.834133,
+            18.5383685
+          ],
+          [
+            73.835888,
+            18.5369885
+          ],
+          [
+            73.8362241,
+            18.5367139
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1480317375,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.8566405,
+            18.5282212
+          ],
+          [
+            73.8570307,
+            18.5281676
+          ],
+          [
+            73.8572775,
+            18.5281421
+          ],
+          [
+            73.8573916,
+            18.5281359
+          ],
+          [
+            73.8575792,
+            18.5281257
+          ],
+          [
+            73.8592167,
+            18.5281168
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1480317376,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.8551739,
+            18.5285423
+          ],
+          [
+            73.855356,
+            18.5284936
+          ],
+          [
+            73.8555381,
+            18.5284448
+          ],
+          [
+            73.8559619,
+            18.5283405
+          ],
+          [
+            73.8562841,
+            18.5282766
+          ],
+          [
+            73.8566405,
+            18.5282212
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1480738528,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.8202962,
+            18.5460547
+          ],
+          [
+            73.8209601,
+            18.5458224
+          ],
+          [
+            73.8225693,
+            18.5452838
+          ],
+          [
+            73.8227805,
+            18.5451897
+          ],
+          [
+            73.8229741,
+            18.5450655
+          ],
+          [
+            73.8236963,
+            18.5445234
+          ],
+          [
+            73.8247457,
+            18.5437617
+          ],
+          [
+            73.8249818,
+            18.543578
+          ],
+          [
+            73.8251937,
+            18.5433497
+          ],
+          [
+            73.8254827,
+            18.5430039
+          ],
+          [
+            73.825747,
+            18.5427733
+          ],
+          [
+            73.8260581,
+            18.5425915
+          ],
+          [
+            73.8263465,
+            18.5424745
+          ],
+          [
+            73.8265914,
+            18.5424291
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1480738531,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.8265914,
+            18.5424291
+          ],
+          [
+            73.8277531,
+            18.5422184
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1480945411,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.808868,
+            18.5501799
+          ],
+          [
+            73.8092095,
+            18.5501223
+          ],
+          [
+            73.809298,
+            18.5501058
+          ],
+          [
+            73.8093932,
+            18.5500829
+          ],
+          [
+            73.8095032,
+            18.5500537
+          ],
+          [
+            73.8096346,
+            18.5500142
+          ],
+          [
+            73.8098063,
+            18.5499545
+          ],
+          [
+            73.8105426,
+            18.5497002
+          ],
+          [
+            73.8108765,
+            18.549582
+          ],
+          [
+            73.8112131,
+            18.5494421
+          ],
+          [
+            73.811923,
+            18.5491571
+          ],
+          [
+            73.8122739,
+            18.5490276
+          ],
+          [
+            73.8128063,
+            18.5488204
+          ],
+          [
+            73.8134031,
+            18.5485584
+          ],
+          [
+            73.8139812,
+            18.5482965
+          ],
+          [
+            73.8145766,
+            18.5480435
+          ],
+          [
+            73.8161464,
+            18.5474431
+          ],
+          [
+            73.8166587,
+            18.5472568
+          ],
+          [
+            73.817055,
+            18.547143
+          ],
+          [
+            73.8179381,
+            18.5469408
+          ],
+          [
+            73.8184829,
+            18.5467673
+          ],
+          [
+            73.819061,
+            18.5465425
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Shivajinagar-Hinjawadi Phase 3)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1480945413,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.8190849,
+            18.5465962
+          ],
+          [
+            73.8203187,
+            18.5461051
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1480945414,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.819061,
+            18.5465425
+          ],
+          [
+            73.8202962,
+            18.5460547
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Shivajinagar-Hinjawadi Phase 3)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1480945417,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.8076031,
+            18.5504337
+          ],
+          [
+            73.8088748,
+            18.5502152
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1480945418,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7985904,
+            18.5549685
+          ],
+          [
+            73.7993984,
+            18.5550224
+          ],
+          [
+            73.7995821,
+            18.5550339
+          ],
+          [
+            73.7997203,
+            18.5550351
+          ],
+          [
+            73.7998316,
+            18.5550186
+          ],
+          [
+            73.7999751,
+            18.5549766
+          ],
+          [
+            73.8000958,
+            18.5549296
+          ],
+          [
+            73.8003171,
+            18.5548406
+          ],
+          [
+            73.8005625,
+            18.5547491
+          ],
+          [
+            73.8009836,
+            18.5546143
+          ],
+          [
+            73.8011177,
+            18.5545622
+          ],
+          [
+            73.8012411,
+            18.5544961
+          ],
+          [
+            73.8013578,
+            18.5544198
+          ],
+          [
+            73.801512,
+            18.5543206
+          ],
+          [
+            73.8016743,
+            18.5542062
+          ],
+          [
+            73.8018392,
+            18.5540968
+          ],
+          [
+            73.8019814,
+            18.5539913
+          ],
+          [
+            73.8021115,
+            18.5538756
+          ],
+          [
+            73.8022456,
+            18.5537447
+          ],
+          [
+            73.802369,
+            18.5535972
+          ],
+          [
+            73.802487,
+            18.5534433
+          ],
+          [
+            73.8026211,
+            18.5532602
+          ],
+          [
+            73.802719,
+            18.553128
+          ],
+          [
+            73.802837,
+            18.5529856
+          ],
+          [
+            73.8029483,
+            18.5528763
+          ],
+          [
+            73.8032206,
+            18.5526538
+          ],
+          [
+            73.803356,
+            18.5525444
+          ],
+          [
+            73.8034472,
+            18.552458
+          ],
+          [
+            73.8039796,
+            18.5518922
+          ],
+          [
+            73.8040708,
+            18.5517918
+          ],
+          [
+            73.8042425,
+            18.551629
+          ],
+          [
+            73.8043766,
+            18.5515108
+          ],
+          [
+            73.8045201,
+            18.5513989
+          ],
+          [
+            73.8046824,
+            18.5512819
+          ],
+          [
+            73.8048755,
+            18.5511421
+          ],
+          [
+            73.8050954,
+            18.5510124
+          ],
+          [
+            73.805306,
+            18.5509005
+          ],
+          [
+            73.8054978,
+            18.5508179
+          ],
+          [
+            73.8057418,
+            18.5507263
+          ],
+          [
+            73.8059363,
+            18.5506627
+          ],
+          [
+            73.8061469,
+            18.5506182
+          ],
+          [
+            73.8063475,
+            18.5505838
+          ],
+          [
+            73.8075954,
+            18.5503939
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1480945420,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.8075954,
+            18.5503939
+          ],
+          [
+            73.808868,
+            18.5501799
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1481226988,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7912188,
+            18.5589596
+          ],
+          [
+            73.7914307,
+            18.5588704
+          ],
+          [
+            73.791644,
+            18.5587547
+          ],
+          [
+            73.7918531,
+            18.5586237
+          ],
+          [
+            73.7923494,
+            18.5583021
+          ],
+          [
+            73.7926618,
+            18.5580986
+          ],
+          [
+            73.7929971,
+            18.5578749
+          ],
+          [
+            73.7931983,
+            18.5577426
+          ],
+          [
+            73.7933874,
+            18.5575964
+          ],
+          [
+            73.7935724,
+            18.5574375
+          ],
+          [
+            73.793787,
+            18.557257
+          ],
+          [
+            73.7939386,
+            18.557093
+          ],
+          [
+            73.7940579,
+            18.5569391
+          ],
+          [
+            73.7941893,
+            18.5567599
+          ],
+          [
+            73.7943932,
+            18.5564827
+          ],
+          [
+            73.7945367,
+            18.5562933
+          ],
+          [
+            73.7946976,
+            18.5560733
+          ],
+          [
+            73.7948291,
+            18.5558877
+          ],
+          [
+            73.7948975,
+            18.5557987
+          ],
+          [
+            73.7949752,
+            18.5557148
+          ],
+          [
+            73.7950718,
+            18.5556283
+          ],
+          [
+            73.7952998,
+            18.555444
+          ],
+          [
+            73.7954366,
+            18.555341
+          ],
+          [
+            73.7955814,
+            18.5552495
+          ],
+          [
+            73.7957625,
+            18.5551579
+          ],
+          [
+            73.7959247,
+            18.5550893
+          ],
+          [
+            73.7960964,
+            18.5550219
+          ],
+          [
+            73.7962573,
+            18.554971
+          ],
+          [
+            73.7963928,
+            18.5549367
+          ],
+          [
+            73.7965457,
+            18.5549037
+          ],
+          [
+            73.79672,
+            18.5548884
+          ],
+          [
+            73.7968675,
+            18.5548846
+          ],
+          [
+            73.79701,
+            18.5548914
+          ],
+          [
+            73.7973038,
+            18.5549078
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Shivajinagar-Hinjawadi Phase 3)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1481226990,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7973015,
+            18.5549566
+          ],
+          [
+            73.7983991,
+            18.5550102
+          ],
+          [
+            73.7985883,
+            18.5550198
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1481226991,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7973038,
+            18.5549078
+          ],
+          [
+            73.797478,
+            18.5549169
+          ],
+          [
+            73.7985904,
+            18.5549685
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1481571372,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7899462,
+            18.5594036
+          ],
+          [
+            73.7901285,
+            18.559337
+          ],
+          [
+            73.7912188,
+            18.5589596
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1481571375,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7804329,
+            18.5641559
+          ],
+          [
+            73.7808102,
+            18.5641499
+          ],
+          [
+            73.7810288,
+            18.5641384
+          ],
+          [
+            73.7812098,
+            18.564113
+          ],
+          [
+            73.7814136,
+            18.564066
+          ],
+          [
+            73.7816269,
+            18.5640024
+          ],
+          [
+            73.7824812,
+            18.5637253
+          ],
+          [
+            73.7826381,
+            18.5636591
+          ],
+          [
+            73.782795,
+            18.5635613
+          ],
+          [
+            73.7829734,
+            18.5634278
+          ],
+          [
+            73.7833918,
+            18.5630692
+          ],
+          [
+            73.7835755,
+            18.5629116
+          ],
+          [
+            73.783711,
+            18.5627603
+          ],
+          [
+            73.7838075,
+            18.5626078
+          ],
+          [
+            73.7839108,
+            18.5623827
+          ],
+          [
+            73.7840033,
+            18.5621958
+          ],
+          [
+            73.7841187,
+            18.5620496
+          ],
+          [
+            73.7842662,
+            18.5619212
+          ],
+          [
+            73.7844258,
+            18.561817
+          ],
+          [
+            73.7845585,
+            18.5617496
+          ],
+          [
+            73.7847047,
+            18.5616975
+          ],
+          [
+            73.7848603,
+            18.5616632
+          ],
+          [
+            73.7857441,
+            18.56155
+          ],
+          [
+            73.7860954,
+            18.5614979
+          ],
+          [
+            73.7864656,
+            18.5614623
+          ],
+          [
+            73.7868786,
+            18.5614432
+          ],
+          [
+            73.7870235,
+            18.5614152
+          ],
+          [
+            73.7871831,
+            18.5613504
+          ],
+          [
+            73.7873373,
+            18.5612639
+          ],
+          [
+            73.7875063,
+            18.5611597
+          ],
+          [
+            73.7876672,
+            18.5610504
+          ],
+          [
+            73.7878147,
+            18.560941
+          ],
+          [
+            73.7879803,
+            18.5607999
+          ],
+          [
+            73.7881144,
+            18.5606817
+          ],
+          [
+            73.7885825,
+            18.5602494
+          ],
+          [
+            73.7887568,
+            18.5600892
+          ],
+          [
+            73.7890083,
+            18.5598947
+          ],
+          [
+            73.7892785,
+            18.5597135
+          ],
+          [
+            73.7895508,
+            18.5595667
+          ],
+          [
+            73.7897559,
+            18.5594777
+          ],
+          [
+            73.7899462,
+            18.5594036
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1481571377,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7881144,
+            18.5606817
+          ],
+          [
+            73.7886328,
+            18.5602845
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Shivajinagar-Hinjawadi Phase 3)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1481571379,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7791085,
+            18.56421
+          ],
+          [
+            73.7802278,
+            18.5641962
+          ],
+          [
+            73.7804335,
+            18.5641921
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1481571380,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.779108,
+            18.5641762
+          ],
+          [
+            73.7793249,
+            18.564174
+          ],
+          [
+            73.7804329,
+            18.5641559
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1481571381,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7748491,
+            18.5699536
+          ],
+          [
+            73.7748925,
+            18.5695765
+          ],
+          [
+            73.7749542,
+            18.5692129
+          ],
+          [
+            73.7750078,
+            18.5689815
+          ],
+          [
+            73.7750682,
+            18.5687895
+          ],
+          [
+            73.7751366,
+            18.568623
+          ],
+          [
+            73.7752077,
+            18.5684705
+          ],
+          [
+            73.7752881,
+            18.5683204
+          ],
+          [
+            73.7754008,
+            18.5681297
+          ],
+          [
+            73.7755242,
+            18.5679225
+          ],
+          [
+            73.7757159,
+            18.5675996
+          ],
+          [
+            73.7758997,
+            18.5672932
+          ],
+          [
+            73.7760083,
+            18.5670949
+          ],
+          [
+            73.7761263,
+            18.5668648
+          ],
+          [
+            73.7762242,
+            18.566655
+          ],
+          [
+            73.7763194,
+            18.5664262
+          ],
+          [
+            73.7764911,
+            18.5659596
+          ],
+          [
+            73.7766064,
+            18.5656355
+          ],
+          [
+            73.7767848,
+            18.565085
+          ],
+          [
+            73.7768572,
+            18.5648561
+          ],
+          [
+            73.776931,
+            18.5647112
+          ],
+          [
+            73.7770101,
+            18.5646006
+          ],
+          [
+            73.7771496,
+            18.5644493
+          ],
+          [
+            73.7773145,
+            18.5643247
+          ],
+          [
+            73.7774648,
+            18.5642357
+          ],
+          [
+            73.7776378,
+            18.5641785
+          ],
+          [
+            73.7778604,
+            18.5641417
+          ],
+          [
+            73.7781138,
+            18.5641378
+          ],
+          [
+            73.778378,
+            18.5641518
+          ],
+          [
+            73.7788991,
+            18.564174
+          ],
+          [
+            73.779108,
+            18.5641762
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1481769125,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7667197,
+            18.5750614
+          ],
+          [
+            73.7674807,
+            18.575112
+          ],
+          [
+            73.7681432,
+            18.5751628
+          ],
+          [
+            73.7688138,
+            18.5752111
+          ],
+          [
+            73.7690552,
+            18.5752213
+          ],
+          [
+            73.7693073,
+            18.5751984
+          ],
+          [
+            73.7695085,
+            18.5751628
+          ],
+          [
+            73.7697043,
+            18.5751196
+          ],
+          [
+            73.7702756,
+            18.5749569
+          ],
+          [
+            73.7705948,
+            18.5748577
+          ],
+          [
+            73.7709303,
+            18.5747341
+          ],
+          [
+            73.7711891,
+            18.5746246
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Shivajinagar-Hinjawadi Phase 3)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1481769126,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.771216,
+            18.5746714
+          ],
+          [
+            73.7721762,
+            18.5741635
+          ],
+          [
+            73.7723543,
+            18.5740699
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1481769127,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7711891,
+            18.5746246
+          ],
+          [
+            73.7713628,
+            18.5745314
+          ],
+          [
+            73.7723307,
+            18.5740289
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1481769129,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7723307,
+            18.5740289
+          ],
+          [
+            73.7725182,
+            18.5739357
+          ],
+          [
+            73.7727287,
+            18.5738518
+          ],
+          [
+            73.7729688,
+            18.5737768
+          ],
+          [
+            73.7731472,
+            18.5737349
+          ],
+          [
+            73.7733389,
+            18.5736993
+          ],
+          [
+            73.7735093,
+            18.5736789
+          ],
+          [
+            73.7737098,
+            18.5736618
+          ],
+          [
+            73.7738861,
+            18.5736319
+          ],
+          [
+            73.774043,
+            18.5735899
+          ],
+          [
+            73.7741838,
+            18.5735302
+          ],
+          [
+            73.7743247,
+            18.5734399
+          ],
+          [
+            73.77444,
+            18.5733433
+          ],
+          [
+            73.7745513,
+            18.5732264
+          ],
+          [
+            73.7746371,
+            18.5731005
+          ],
+          [
+            73.7747055,
+            18.5729683
+          ],
+          [
+            73.7747552,
+            18.5728195
+          ],
+          [
+            73.7747699,
+            18.5726594
+          ],
+          [
+            73.7747866,
+            18.5719321
+          ],
+          [
+            73.7747961,
+            18.5710726
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1481769132,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7747961,
+            18.5710726
+          ],
+          [
+            73.7747973,
+            18.5709367
+          ],
+          [
+            73.7748094,
+            18.570488
+          ],
+          [
+            73.7748491,
+            18.5699536
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Shivajinagar-Hinjawadi Phase 3)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1482515759,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7654066,
+            18.5750285
+          ],
+          [
+            73.7665033,
+            18.575083
+          ],
+          [
+            73.7667177,
+            18.5750963
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1482515760,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.765409,
+            18.5749864
+          ],
+          [
+            73.7656179,
+            18.5749988
+          ],
+          [
+            73.7667197,
+            18.5750614
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1482515761,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7617466,
+            18.5791254
+          ],
+          [
+            73.7620658,
+            18.5782724
+          ],
+          [
+            73.7623474,
+            18.5775021
+          ],
+          [
+            73.7627256,
+            18.5764902
+          ],
+          [
+            73.762931,
+            18.5759386
+          ],
+          [
+            73.7630222,
+            18.5757276
+          ],
+          [
+            73.7631228,
+            18.5755598
+          ],
+          [
+            73.7631765,
+            18.5754949
+          ],
+          [
+            73.7632864,
+            18.5753704
+          ],
+          [
+            73.7634192,
+            18.5752458
+          ],
+          [
+            73.7635318,
+            18.5751644
+          ],
+          [
+            73.7637209,
+            18.575064
+          ],
+          [
+            73.7638939,
+            18.5749991
+          ],
+          [
+            73.7640951,
+            18.5749547
+          ],
+          [
+            73.7643325,
+            18.5749381
+          ],
+          [
+            73.7647932,
+            18.5749499
+          ],
+          [
+            73.765409,
+            18.5749864
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Shivajinagar-Hinjawadi Phase 3)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1482515764,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7613334,
+            18.5803501
+          ],
+          [
+            73.7617159,
+            18.5793346
+          ],
+          [
+            73.7617895,
+            18.5791382
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1482515765,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7612919,
+            18.5803381
+          ],
+          [
+            73.7613751,
+            18.5801144
+          ],
+          [
+            73.7617466,
+            18.5791254
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1482515766,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7577656,
+            18.5897241
+          ],
+          [
+            73.7581266,
+            18.5887538
+          ],
+          [
+            73.7584354,
+            18.5879128
+          ],
+          [
+            73.7588645,
+            18.5868119
+          ],
+          [
+            73.7591381,
+            18.586062
+          ],
+          [
+            73.7595257,
+            18.5850234
+          ],
+          [
+            73.7604926,
+            18.5824353
+          ],
+          [
+            73.7610425,
+            18.5810004
+          ],
+          [
+            73.7612919,
+            18.5803381
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1482515769,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7469095,
+            18.5908497
+          ],
+          [
+            73.7472496,
+            18.5908004
+          ],
+          [
+            73.7475178,
+            18.5907763
+          ],
+          [
+            73.7477793,
+            18.590775
+          ],
+          [
+            73.7480345,
+            18.5907998
+          ],
+          [
+            73.7484583,
+            18.590871
+          ],
+          [
+            73.7489551,
+            18.5909437
+          ],
+          [
+            73.7493058,
+            18.5909434
+          ],
+          [
+            73.7496223,
+            18.5909231
+          ],
+          [
+            73.7505718,
+            18.5908087
+          ],
+          [
+            73.7509715,
+            18.5907807
+          ],
+          [
+            73.751398,
+            18.5907934
+          ],
+          [
+            73.7518432,
+            18.5908722
+          ],
+          [
+            73.7522482,
+            18.5909943
+          ],
+          [
+            73.752621,
+            18.5911392
+          ],
+          [
+            73.7535089,
+            18.5915199
+          ],
+          [
+            73.753934,
+            18.5916788
+          ],
+          [
+            73.7543283,
+            18.5917906
+          ],
+          [
+            73.7547319,
+            18.5918707
+          ],
+          [
+            73.7551718,
+            18.5918999
+          ],
+          [
+            73.7558585,
+            18.5919114
+          ],
+          [
+            73.7561146,
+            18.5919063
+          ],
+          [
+            73.7563614,
+            18.5918733
+          ],
+          [
+            73.7565719,
+            18.5918033
+          ],
+          [
+            73.7567584,
+            18.5917055
+          ],
+          [
+            73.7568844,
+            18.5916139
+          ],
+          [
+            73.7569984,
+            18.5914983
+          ],
+          [
+            73.7570909,
+            18.5913686
+          ],
+          [
+            73.7571802,
+            18.5912209
+          ],
+          [
+            73.7573179,
+            18.5908722
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Shivajinagar-Hinjawadi Phase 3)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1482515770,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7573599,
+            18.5908868
+          ],
+          [
+            73.7577289,
+            18.5899376
+          ],
+          [
+            73.7578069,
+            18.5897384
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1482515771,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7573179,
+            18.5908722
+          ],
+          [
+            73.7573631,
+            18.5907562
+          ],
+          [
+            73.7577656,
+            18.5897241
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "subway",
+        "opening_date": "2026",
+        "osm_id": 1482515773,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7581266,
+            18.5887538
+          ],
+          [
+            73.7578995,
+            18.5894861
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Shivajinagar-Hinjawadi Phase 3)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1482521085,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7368583,
+            18.5928206
+          ],
+          [
+            73.7377152,
+            18.592168
+          ],
+          [
+            73.7378897,
+            18.5920306
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1482521086,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7284571,
+            18.5943631
+          ],
+          [
+            73.7290632,
+            18.5942577
+          ],
+          [
+            73.7304753,
+            18.5940047
+          ],
+          [
+            73.7306872,
+            18.5939729
+          ],
+          [
+            73.7309125,
+            18.5939577
+          ],
+          [
+            73.7311258,
+            18.5939564
+          ],
+          [
+            73.7321142,
+            18.5939818
+          ],
+          [
+            73.7323878,
+            18.5939768
+          ],
+          [
+            73.733635,
+            18.5939335
+          ],
+          [
+            73.7347763,
+            18.5938941
+          ],
+          [
+            73.7349687,
+            18.5938795
+          ],
+          [
+            73.7352034,
+            18.5938293
+          ],
+          [
+            73.7353979,
+            18.5937638
+          ],
+          [
+            73.7355843,
+            18.5936819
+          ],
+          [
+            73.7357305,
+            18.5935903
+          ],
+          [
+            73.7362378,
+            18.5932181
+          ],
+          [
+            73.7368221,
+            18.5927716
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1482521087,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7368221,
+            18.5927716
+          ],
+          [
+            73.7369379,
+            18.5926843
+          ],
+          [
+            73.7378531,
+            18.5919869
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1482521089,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7378531,
+            18.5919869
+          ],
+          [
+            73.7381945,
+            18.5917347
+          ],
+          [
+            73.7385298,
+            18.5914996
+          ],
+          [
+            73.7387872,
+            18.5913547
+          ],
+          [
+            73.7391118,
+            18.5912619
+          ],
+          [
+            73.7394243,
+            18.5911983
+          ],
+          [
+            73.7408579,
+            18.5910216
+          ],
+          [
+            73.7412307,
+            18.5909797
+          ],
+          [
+            73.7415794,
+            18.5909632
+          ],
+          [
+            73.7419603,
+            18.5909873
+          ],
+          [
+            73.7423304,
+            18.5910305
+          ],
+          [
+            73.7432424,
+            18.5911665
+          ],
+          [
+            73.7435522,
+            18.5912008
+          ],
+          [
+            73.7438713,
+            18.5912059
+          ],
+          [
+            73.744912,
+            18.5911144
+          ],
+          [
+            73.7453023,
+            18.5910801
+          ],
+          [
+            73.7456497,
+            18.5910362
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Shivajinagar-Hinjawadi Phase 3)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1482521091,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7456567,
+            18.5910781
+          ],
+          [
+            73.7467707,
+            18.5909112
+          ],
+          [
+            73.7469163,
+            18.5908898
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1482521092,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7456497,
+            18.5910362
+          ],
+          [
+            73.7458375,
+            18.5910082
+          ],
+          [
+            73.7469095,
+            18.5908497
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Shivajinagar-Hinjawadi Phase 3)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1483339704,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7271649,
+            18.5946247
+          ],
+          [
+            73.7282378,
+            18.5944474
+          ],
+          [
+            73.7284659,
+            18.5944084
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1483339705,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7178499,
+            18.5967246
+          ],
+          [
+            73.7183323,
+            18.5968415
+          ],
+          [
+            73.718567,
+            18.5968859
+          ],
+          [
+            73.7187762,
+            18.5969139
+          ],
+          [
+            73.7189948,
+            18.596905
+          ],
+          [
+            73.7191638,
+            18.5968783
+          ],
+          [
+            73.7193005,
+            18.59683
+          ],
+          [
+            73.7194776,
+            18.5967372
+          ],
+          [
+            73.719617,
+            18.5966216
+          ],
+          [
+            73.7204365,
+            18.5959021
+          ],
+          [
+            73.7207248,
+            18.5956581
+          ],
+          [
+            73.7210125,
+            18.5954633
+          ],
+          [
+            73.7216119,
+            18.5950629
+          ],
+          [
+            73.7219539,
+            18.5948646
+          ],
+          [
+            73.7222892,
+            18.5947159
+          ],
+          [
+            73.722599,
+            18.5946142
+          ],
+          [
+            73.7229235,
+            18.5945634
+          ],
+          [
+            73.7232481,
+            18.5945189
+          ],
+          [
+            73.7235753,
+            18.5945062
+          ],
+          [
+            73.7238114,
+            18.5945163
+          ],
+          [
+            73.7241144,
+            18.5945456
+          ],
+          [
+            73.7252933,
+            18.5947438
+          ],
+          [
+            73.7255387,
+            18.5947642
+          ],
+          [
+            73.72576,
+            18.5947731
+          ],
+          [
+            73.7259759,
+            18.5947705
+          ],
+          [
+            73.7261945,
+            18.5947496
+          ],
+          [
+            73.7271574,
+            18.5945859
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "opening_date": "2026",
+        "osm_id": 1483339706,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            73.7271574,
+            18.5945859
+          ],
+          [
+            73.7273371,
+            18.5945538
+          ],
+          [
+            73.7284571,
+            18.5943631
+          ]
+        ]
+      }
+    }
+  ]
+}

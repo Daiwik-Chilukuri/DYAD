@@ -1,0 +1,40 @@
+{
+  "city":"Chennai",
+  "corridor":"OMR IT Expressway (Tidel Park to Siruseri SIPCOT)",
+  "bbox":[
+    12.88,
+    80.12,
+    13.2,
+    80.32
+  ],
+  "generated_at_utc":"2026-09-20T05:02:18.887951+00:00",
+  "pillars":{
+    "1":[
+      "chennai_ward_demographics_2011.csv",
+      "chennai_gcc_wards.geojson"
+    ],
+    "2":[
+      "chennai_employment_offices.geojson"
+    ],
+    "3":[
+      "chennai_cmrl_phase1_stations.geojson",
+      "chennai_cmrl_phase1_routes.geojson",
+      "chennai_cmrl_phase2_corridors.geojson",
+      "chennai_tomtom_traffic_2025.json"
+    ],
+    "4":[
+      "chennai_waterbodies_major.geojson",
+      "pallikaranai_statutory_boundary_analysis.json",
+      "tamil_nadu_crz_boundary.geojson",
+      "chennai_crz_boundary_subset.geojson"
+    ],
+    "5":[
+      "chennai_gcc_boundary.geojson"
+    ]
+  },
+  "verification":{
+    "accepted_formats_only":true,
+    "all_datasets_have_companion_metadata":true,
+    "note":"Pillar 4 regulatory files distinguish source CRZ geometry and Pallikaranai statutory provenance from derived screening subsets."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "dataset":"chennai_gcc_wards.geojson",
+  "city":"Chennai, Tamil Nadu, India",
+  "pillar":"Pillar 1: Demographics & Spatial Equity",
+  "source_urls":[
+    "https://raw.githubusercontent.com/yashveeeeeeer/india-geodata/main/data/urban/municipal-boundaries/chennai/Wards.geojson"
+  ],
+  "geometry_type":"Polygon",
+  "timestamp_utc":"2026-09-20T05:02:18.858944+00:00",
+  "verification":"GeoJSON FeatureCollection with GCC ward polygons and Zone_No, Ward_No, and Zone_Name properties."
+}

@@ -1,0 +1,14 @@
+{
+  "city": "Pune",
+  "city_slug": "pune",
+  "filename": "pune_office_pois_overpass.json",
+  "pillar": "economic",
+  "records": 1240,
+  "geometry_type": "Point",
+  "crs": "EPSG:4326",
+  "source_url": "Browser Use Cloud Agent V4 Harvest",
+  "license": "ODbL-1.0 / CC-BY-4.0",
+  "harvested_by": "Browser Use Cloud Agent (gpt-5.6-luna)",
+  "description": "Overpass Turbo Rajiv Gandhi Infotech Park & Kharadi Offices",
+  "timestamp": "2026-09-20T10:17:47Z"
+}

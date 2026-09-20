@@ -1,0 +1,12 @@
+{
+  "dataset":"chennai_tomtom_traffic_2025.json",
+  "city":"Chennai, Tamil Nadu, India",
+  "pillar":"Pillar 3: Mobility & Congestion",
+  "source_urls":[
+    "https://www.tomtom.com/traffic-index/city/chennai/"
+  ],
+  "geometry_type":"Structured JSON metrics; no geometry",
+  "timestamp_utc":"2026-09-20T05:02:18.866779+00:00",
+  "verification":"Values were transcribed from the rendered TomTom Chennai 2025 report: city-wide morning and evening rush-hour speeds, congestion, travel time, and annual time lost.",
+  "metric_scope":"Chennai city road network; not an OMR-only arterial series"
+}

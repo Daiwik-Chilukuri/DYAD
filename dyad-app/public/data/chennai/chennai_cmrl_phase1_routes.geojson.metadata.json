@@ -1,0 +1,12 @@
+{
+  "dataset":"chennai_cmrl_phase1_routes.geojson",
+  "city":"Chennai, Tamil Nadu, India",
+  "pillar":"Pillar 3: Mobility & Congestion",
+  "source_urls":[
+    "https://raw.githubusercontent.com/ungalsoththu/ChennaiGTFS/main/data/cmrl/shapes.txt",
+    "https://chennaimetrorail.org/project-status/"
+  ],
+  "geometry_type":"LineString",
+  "timestamp_utc":"2026-09-20T05:02:18.863659+00:00",
+  "verification":"Converted 4 ordered GTFS shape groups into WGS84 LineString features."
+}

@@ -1,0 +1,17 @@
+{
+  "dataset":"chennai_employment_offices_overpass.json",
+  "city":"Chennai, Tamil Nadu, India",
+  "pillar":"Pillar 2: Economic & Employment Hubs",
+  "source_urls":[
+    "https://overpass-api.de/api/interpreter?data=%5Bout%3Ajson%5D%5Btimeout%3A120%5D%3B%28node%5B%22office%22%5D%2812.88%2C80.12%2C13.20%2C80.32%29%3Bway%5B%22office%22%5D%2812.88%2C80.12%2C13.20%2C80.32%29%3B%29%3Bout%20center%20tags%3B"
+  ],
+  "geometry_type":"raw Overpass JSON",
+  "timestamp_utc":"2026-09-20T05:02:18.884932+00:00",
+  "verification":"Raw OSM elements retained alongside the derived GeoJSON conversion.",
+  "query_bbox":[
+    12.88,
+    80.12,
+    13.2,
+    80.32
+  ]
+}

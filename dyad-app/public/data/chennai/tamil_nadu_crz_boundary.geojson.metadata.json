@@ -1,0 +1,13 @@
+{
+  "dataset":"tamil_nadu_crz_boundary.geojson",
+  "city":"Chennai, Tamil Nadu, India",
+  "pillar":"Pillar 4: Ecological Risk & Statutory Waterbody Buffers",
+  "source_urls":[
+    "https://data.opencity.in/dataset/tamil-nadu-crz-and-esz-boundaries",
+    "https://data.opencity.in/dataset/e83a36d7-1ed5-4183-a7b0-964d2c4be1cf/resource/ac2d71ac-733a-465a-aae9-3d1c17caff27/download/tn_crz_boundary.geojson"
+  ],
+  "geometry_type":"Source-defined GeoJSON geometry",
+  "timestamp_utc":"2026-09-20T05:02:18.871087+00:00",
+  "verification":"Downloaded from the OpenCity dataset attributed to Government of Tamil Nadu; dataset page identifies this as Tamil Nadu CRZ Boundary GeoJSON and public-domain data.",
+  "crz_rule_context":"Tamil Nadu CRZ classification describes the coastal zone as extending up to 500 m landward from the High Tide Line where applicable."
+}

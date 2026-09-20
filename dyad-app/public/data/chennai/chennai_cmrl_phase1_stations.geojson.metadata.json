@@ -1,0 +1,12 @@
+{
+  "dataset":"chennai_cmrl_phase1_stations.geojson",
+  "city":"Chennai, Tamil Nadu, India",
+  "pillar":"Pillar 3: Mobility & Congestion",
+  "source_urls":[
+    "https://raw.githubusercontent.com/ungalsoththu/ChennaiGTFS/main/data/cmrl/stops.txt",
+    "https://chennaimetrorail.org/project-status/"
+  ],
+  "geometry_type":"Point",
+  "timestamp_utc":"2026-09-20T05:02:18.862091+00:00",
+  "verification":"Converted 44 CMRL GTFS stop records with stop_name, stop_lat, and stop_lon into WGS84 GeoJSON points; official CMRL page confirms Phase I network context."
+}

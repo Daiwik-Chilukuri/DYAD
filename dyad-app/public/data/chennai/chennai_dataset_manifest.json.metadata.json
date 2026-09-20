@@ -1,0 +1,14 @@
+{
+  "dataset":"chennai_dataset_manifest.json",
+  "city":"Chennai, Tamil Nadu, India",
+  "pillar":"Cross-pillar collection manifest",
+  "source_urls":[
+    "https://data.opencity.in/",
+    "https://chennaimetrorail.org/",
+    "https://services2.arcgis.com/",
+    "https://overpass-turbo.eu/"
+  ],
+  "geometry_type":"JSON catalog",
+  "timestamp_utc":"2026-09-20T05:02:18.889439+00:00",
+  "verification":"Catalog of the five verified Chennai collection pillars and their companion metadata files."
+}

@@ -1,0 +1,13 @@
+{
+  "dataset":"chennai_gcc_boundary.geojson",
+  "city":"Chennai, Tamil Nadu, India",
+  "pillar":"Pillar 5: Map Canvas Baseline Visualizer",
+  "source_urls":[
+    "https://www.arcgis.com/home/item.html?id=01aba410bf074d6fa7be84872015226f",
+    "https://services2.arcgis.com/I9cUOJUZvdGAJncI/arcgis/rest/services/Chennai_GCC_Boundary/FeatureServer/39/query?where=1%3D1&outFields=*&f=geojson"
+  ],
+  "geometry_type":"Polygon",
+  "timestamp_utc":"2026-09-20T05:02:18.876755+00:00",
+  "verification":"Official public ArcGIS FeatureServer GeoJSON query returned 16 GCC zone polygons forming the municipal footprint; zone names and original fields are retained.",
+  "boundary_note":"This baseline retains official zone polygons rather than dissolving them, preserving the source's administrative boundaries."
+}

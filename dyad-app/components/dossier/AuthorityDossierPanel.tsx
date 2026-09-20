@@ -22,6 +22,7 @@ import {
   Briefcase,
   Navigation,
   Trees,
+  Play,
 } from 'lucide-react';
 import Link from 'next/link';
 import { BotLogo } from '../BotLogo';
@@ -60,6 +61,7 @@ interface AuthorityDossierPanelProps {
 
 export type DossierSection =
   | 'overview'
+  | 'pillars'
   | 'demographics'
   | 'economic'
   | 'mobility'
@@ -83,6 +85,9 @@ export function AuthorityDossierPanel({
   onEvaluateTrigger,
 }: AuthorityDossierPanelProps) {
   const [activeSection, setActiveSection] = useState<DossierSection>('overview');
+  const [activePillar, setActivePillar] = useState<'all' | 'demographics' | 'economic' | 'mobility' | 'ecological'>('all');
+  const [governanceSubTab, setGovernanceSubTab] = useState<'risks' | 'policies'>('risks');
+  const [isSummaryExpanded, setIsSummaryExpanded] = useState(false);
 
   // Automatically switch tab based on evaluation state
   React.useEffect(() => {
@@ -102,6 +107,34 @@ export function AuthorityDossierPanel({
   const policies = dossier?.policy_recommendations ?? [];
   const stations = dossier?.suggested_stations ?? dossier?.suggested_station_locations ?? [];
   const viabilityScore = dossier?.overall_viability_score ?? 0;
+
+  // Normalized summary fields for high-density overview cards
+  const pop500m = demographics?.catchment_population_500m ?? 0;
+  const pop1500m = demographics?.catchment_population_1500m ?? 0;
+  const equityScore = demographics?.equity_index_score ?? demographics?.equity_score ?? 0;
+  const underservedRatio = demographics?.underserved_transit_ratio ?? demographics?.underserved_demographic_ratio ?? 0;
+  const density = demographics?.density_per_sqkm ?? (pop1500m > 0 ? Math.round(pop1500m / 7.0) : 0);
+
+  const techParks = economic?.tech_parks_within_1km ?? 0;
+  const hospitals = economic?.hospitals_within_1km ?? 0;
+  const commercial = economic?.commercial_centers_within_1km ?? 0;
+  const farebox = economic?.annual_farebox_revenue_inr_cr ?? economic?.projected_annual_farebox_inr_cr ?? 0;
+  const multiplier = economic?.economic_multiplier_index ?? 1.0;
+  const todYield = economic?.estimated_tod_yield_inr_cr ?? (farebox * 2.2);
+
+  const timeSaved = mobility?.peak_hour_travel_time_saved_minutes ?? mobility?.peak_hour_travel_time_saved_mins ?? 0;
+  const congestionReduction = mobility?.arterial_congestion_reduction_pct ?? 0;
+  const feederScore = mobility?.feeder_route_coverage_score ?? 0;
+  const ridership = mobility?.daily_projected_ridership ?? 0;
+
+  const lakeBreaches = ecological?.lake_buffer_infringements_30m ?? ecological?.lake_buffer_infringements ?? 0;
+  const rajakaluveCrossings = ecological?.rajakaluve_crossings_50m ?? ecological?.rajakaluve_buffer_infringements ?? 0;
+  const ktfdStatus = ecological?.ktfd_compliance_status ?? (lakeBreaches === 0 ? 'COMPLIANT' : 'FLAGGED');
+  const floodGrade = ecological?.flood_vulnerability_grade ?? 'MODERATE';
+  const canopyScore = ecological?.tree_canopy_loss_risk_score ?? 25;
+
+  const formatNum = (val?: number) => (val != null ? val.toLocaleString('en-IN') : '0');
+  const formatINR = (val?: number) => (val != null && val > 0 ? `₹${val.toFixed(1)} Cr` : '—');
 
   return (
     <>
@@ -207,123 +240,69 @@ export function AuthorityDossierPanel({
               </div>
             </div>
 
-            {/* 2. Unified Agent & Synthesis Section Sub-Navigation Tabs */}
-            <div className="flex items-center gap-1 px-3 py-2 border-b border-white/[0.06] bg-black/25 shrink-0 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            {/* 2. Streamlined 5-Tab Command Sub-Navigation (No Horizontal Overflow) */}
+            <div className="grid grid-cols-5 gap-1 p-1.5 border-b border-white/[0.06] bg-black/35 shrink-0">
               {[
                 {
                   id: 'overview' as DossierSection,
                   label: 'Overview',
-                  icon: <TrendingUp className="size-3.5 text-emerald-400" />,
-                  badge: dossier ? (
-                    <span className="font-mono tabular-nums text-[10px] text-emerald-400 font-bold ml-0.5">
-                      {viabilityScore.toFixed(0)}
-                    </span>
-                  ) : null,
+                  icon: <TrendingUp className="size-3.5" />,
+                  badge: dossier ? viabilityScore.toFixed(0) : null,
+                  badgeColor: 'text-emerald-400',
                 },
                 {
-                  id: 'demographics' as DossierSection,
-                  label: 'Demographics',
-                  icon: <Users className="size-3.5 text-purple-400" />,
-                  badge: demographics ? (
-                    <span className="font-mono tabular-nums text-[9.5px] text-purple-400 font-bold ml-0.5">
-                      {((demographics.equity_index_score ?? demographics.equity_score ?? 0)).toFixed(0)}
-                    </span>
-                  ) : null,
-                },
-                {
-                  id: 'economic' as DossierSection,
-                  label: 'Economic',
-                  icon: <Briefcase className="size-3.5 text-yellow-400" />,
-                  badge: economic ? (
-                    <span className="font-mono tabular-nums text-[9.5px] text-yellow-400 font-bold ml-0.5">
-                      {(economic.economic_multiplier_index ?? 1).toFixed(1)}x
-                    </span>
-                  ) : null,
-                },
-                {
-                  id: 'mobility' as DossierSection,
-                  label: 'Mobility',
-                  icon: <Navigation className="size-3.5 text-cyan-400" />,
-                  badge: mobility ? (
-                    <span className="font-mono tabular-nums text-[9.5px] text-cyan-400 font-bold ml-0.5">
-                      -{(mobility.peak_hour_travel_time_saved_minutes ?? mobility.peak_hour_travel_time_saved_mins ?? 0).toFixed(0)}m
-                    </span>
-                  ) : null,
-                },
-                {
-                  id: 'ecological' as DossierSection,
-                  label: 'Ecological',
-                  icon: <Trees className="size-3.5 text-emerald-400" />,
-                  badge: ecological ? (
-                    <span
-                      className={`px-1.5 py-0.2 rounded-md text-[9px] font-mono tabular-nums font-bold border ${
-                        (ecological.lake_buffer_infringements_30m ?? ecological.lake_buffer_infringements ?? 0) > 0
-                          ? 'bg-amber-500/15 text-amber-400 border-amber-500/30'
-                          : 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30'
-                      }`}
-                    >
-                      {ecological.ktfd_compliance_status === 'COMPLIANT' ? 'OK' : 'FLAG'}
-                    </span>
-                  ) : null,
+                  id: 'pillars' as DossierSection,
+                  label: 'Pillars',
+                  icon: <Layers className="size-3.5" />,
+                  badge: '4',
+                  badgeColor: 'text-purple-400',
                 },
                 {
                   id: 'stations' as DossierSection,
                   label: 'Stations',
-                  icon: <MapPin className="size-3.5 text-cyan-400" />,
-                  badge: stations.length > 0 ? (
-                    <span className="px-1.5 py-0.2 rounded-md bg-cyan-500/15 text-cyan-400 border border-cyan-500/25 text-[9.5px] font-mono tabular-nums font-bold">
-                      {stations.length}
-                    </span>
-                  ) : null,
+                  icon: <MapPin className="size-3.5" />,
+                  badge: stations.length > 0 ? String(stations.length) : null,
+                  badgeColor: 'text-cyan-400',
                 },
                 {
                   id: 'risks' as DossierSection,
                   label: 'Risks',
-                  icon: <AlertTriangle className="size-3.5 text-amber-400" />,
-                  badge: warnings.length > 0 ? (
-                    <span
-                      className={`px-1.5 py-0.2 rounded-md text-[9.5px] font-mono tabular-nums font-bold border ${
-                        warnings.some((w) => (w.severity || '').toUpperCase() === 'CRITICAL')
-                          ? 'bg-rose-500/15 text-rose-400 border-rose-500/30'
-                          : 'bg-amber-500/15 text-amber-400 border-amber-500/30'
-                      }`}
-                    >
-                      {warnings.length}
-                    </span>
-                  ) : null,
-                },
-                {
-                  id: 'policies' as DossierSection,
-                  label: 'Policies',
-                  icon: <ShieldCheck className="size-3.5 text-indigo-400" />,
-                  badge: policies.length > 0 ? (
-                    <span className="px-1.5 py-0.2 rounded-md bg-indigo-500/15 text-indigo-300 border border-indigo-500/25 text-[9.5px] font-mono tabular-nums font-bold">
-                      {policies.length}
-                    </span>
-                  ) : null,
+                  icon: <AlertTriangle className="size-3.5" />,
+                  badge: warnings.length > 0 ? String(warnings.length) : null,
+                  badgeColor: warnings.some((w) => (w.severity || '').toUpperCase() === 'CRITICAL')
+                    ? 'text-rose-400'
+                    : 'text-amber-400',
                 },
                 {
                   id: 'telemetry' as DossierSection,
-                  label: 'Telemetry',
+                  label: 'Swarm',
                   icon: (
                     <div className="relative size-2 shrink-0">
                       {isEvaluating && <span className="absolute size-2 rounded-full bg-cyan-400 animate-ping" />}
-                      <span className={`size-2 rounded-full block ${isEvaluating ? 'bg-cyan-400' : 'bg-slate-500'}`} />
+                      <span className={`size-2 rounded-full block ${isEvaluating ? 'bg-cyan-400' : 'bg-slate-400'}`} />
                     </div>
                   ),
-                  badge: telemetryLogs.length > 0 ? (
-                    <span className="text-[10px] font-mono text-slate-500">
-                      ({telemetryLogs.length})
-                    </span>
-                  ) : null,
+                  badge: isEvaluating ? 'LIVE' : null,
+                  badgeColor: 'text-cyan-400',
                 },
               ].map((tab) => {
-                const isActive = activeSection === tab.id;
+                const isActive =
+                  activeSection === tab.id ||
+                  (tab.id === 'pillars' && ['pillars', 'demographics', 'economic', 'mobility', 'ecological'].includes(activeSection)) ||
+                  (tab.id === 'risks' && ['risks', 'policies'].includes(activeSection));
                 return (
                   <button
                     key={tab.id}
-                    onClick={() => setActiveSection(tab.id)}
-                    className={`relative px-2.5 py-1.5 rounded-lg text-xs font-medium font-sans flex items-center justify-center gap-1.5 transition-colors shrink-0 cursor-pointer ${
+                    onClick={() => {
+                      if (tab.id === 'pillars') {
+                        setActiveSection('pillars');
+                      } else if (tab.id === 'risks') {
+                        setActiveSection('risks');
+                      } else {
+                        setActiveSection(tab.id);
+                      }
+                    }}
+                    className={`relative py-1.5 px-1 rounded-lg text-xs font-medium font-sans flex items-center justify-center gap-1 transition-colors cursor-pointer ${
                       isActive ? 'text-white font-semibold' : 'text-slate-400 hover:text-slate-200'
                     }`}
                   >
@@ -334,10 +313,14 @@ export function AuthorityDossierPanel({
                         transition={motionSprings.snappy}
                       />
                     )}
-                    <span className="relative z-10 flex items-center gap-1.5">
+                    <span className="relative z-10 flex items-center gap-1 truncate">
                       {tab.icon}
-                      <span>{tab.label}</span>
-                      {tab.badge}
+                      <span className="truncate">{tab.label}</span>
+                      {tab.badge && (
+                        <span className={`font-mono text-[9.5px] tabular-nums font-bold ${tab.badgeColor}`}>
+                          {tab.badge}
+                        </span>
+                      )}
                     </span>
                   </button>
                 );
@@ -345,7 +328,7 @@ export function AuthorityDossierPanel({
             </div>
 
             {/* 3. Main Scrollable Body */}
-            <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-3.5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
               {activeSection === 'telemetry' ? (
                 /* 1. Telemetry View */
                 <SwarmTelemetryStream
@@ -354,584 +337,15 @@ export function AuthorityDossierPanel({
                   logs={telemetryLogs}
                   stage={currentStage}
                 />
-              ) : activeSection === 'demographics' ? (
-                /* 2. Dedicated Demographics Agent Section */
-                demographics ? (
-                  <div className="flex flex-col gap-3">
-                    <div className="p-3.5 rounded-xl bg-[#14161b] border border-white/[0.06] flex items-center justify-between shadow-sm">
-                      <div className="flex items-center gap-2.5">
-                        <div className="p-1.5 rounded-lg bg-purple-500/10 text-purple-400 border border-purple-500/20">
-                          <Users className="size-4" />
-                        </div>
-                        <div className="flex flex-col">
-                          <span className="text-xs font-semibold text-white">
-                            Demographics & Spatial Equity Agent
-                          </span>
-                          <span className="text-[10.5px] text-slate-400 font-sans">
-                            Dasymetric catchment shed & transit-dependence index
-                          </span>
-                        </div>
-                      </div>
-                      <span className="px-2 py-0.5 rounded-md bg-purple-500/15 text-purple-300 border border-purple-500/25 text-[10.5px] font-mono tabular-nums font-bold">
-                        {((demographics.equity_index_score ?? demographics.equity_score ?? 0)).toFixed(1)} / 100 Equity
-                      </span>
-                    </div>
-
-                    <DomainPillarCards
-                      demographics={demographics}
-                      economic={economic!}
-                      mobility={mobility!}
-                      ecological={ecological!}
-                      selectedPillar="demographics"
-                      hideTabBar={true}
-                    />
-                  </div>
-                ) : (
-                  <div className="flex flex-col items-center justify-center text-center p-6 my-auto gap-3">
-                    <div className="p-3 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-purple-400">
-                      <Users className="size-6" />
-                    </div>
-                    <div className="flex flex-col gap-1">
-                      <h4 className="text-sm font-semibold text-slate-200">
-                        Demographics Agent Awaiting Swarm Run
-                      </h4>
-                      <p className="text-xs text-slate-400 max-w-[280px] font-sans leading-relaxed">
-                        Dasymetric population overlays (500m & 1500m) and equity scores are synthesized when you evaluate the corridor.
-                      </p>
-                    </div>
-                    {onEvaluateTrigger && (
-                      <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={onEvaluateTrigger}
-                        disabled={isEvaluating}
-                        className="mt-2 w-full max-w-[280px] px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 cursor-pointer disabled:opacity-50"
-                      >
-                        <Sparkles className="size-3.5" />
-                        <span>Run Feasibility Swarm</span>
-                      </motion.button>
-                    )}
-                  </div>
-                )
-              ) : activeSection === 'economic' ? (
-                /* 3. Dedicated Economic Corridor Agent Section */
-                economic ? (
-                  <div className="flex flex-col gap-3">
-                    <div className="p-3.5 rounded-xl bg-[#14161b] border border-white/[0.06] flex items-center justify-between shadow-sm">
-                      <div className="flex items-center gap-2.5">
-                        <div className="p-1.5 rounded-lg bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">
-                          <Briefcase className="size-4" />
-                        </div>
-                        <div className="flex flex-col">
-                          <span className="text-xs font-semibold text-white">
-                            Economic Corridor & TOD Agent
-                          </span>
-                          <span className="text-[10.5px] text-slate-400 font-sans">
-                            Commercial clusters, farebox yield & land value capture
-                          </span>
-                        </div>
-                      </div>
-                      <span className="px-2 py-0.5 rounded-md bg-yellow-500/15 text-yellow-300 border border-yellow-500/25 text-[10.5px] font-mono tabular-nums font-bold">
-                        {(economic.economic_multiplier_index ?? 1.0).toFixed(2)}x Multiplier
-                      </span>
-                    </div>
-
-                    <DomainPillarCards
-                      demographics={demographics!}
-                      economic={economic}
-                      mobility={mobility!}
-                      ecological={ecological!}
-                      selectedPillar="economic"
-                      hideTabBar={true}
-                    />
-                  </div>
-                ) : (
-                  <div className="flex flex-col items-center justify-center text-center p-6 my-auto gap-3">
-                    <div className="p-3 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 text-yellow-400">
-                      <Briefcase className="size-6" />
-                    </div>
-                    <div className="flex flex-col gap-1">
-                      <h4 className="text-sm font-semibold text-slate-200">
-                        Economic Agent Awaiting Swarm Run
-                      </h4>
-                      <p className="text-xs text-slate-400 max-w-[280px] font-sans leading-relaxed">
-                        Commercial hubs, annual farebox revenue (INR Cr), and TOD land value yields will populate following swarm execution.
-                      </p>
-                    </div>
-                    {onEvaluateTrigger && (
-                      <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={onEvaluateTrigger}
-                        disabled={isEvaluating}
-                        className="mt-2 w-full max-w-[280px] px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 cursor-pointer disabled:opacity-50"
-                      >
-                        <Sparkles className="size-3.5" />
-                        <span>Run Feasibility Swarm</span>
-                      </motion.button>
-                    )}
-                  </div>
-                )
-              ) : activeSection === 'mobility' ? (
-                /* 4. Dedicated Mobility Forecaster Agent Section */
-                mobility ? (
-                  <div className="flex flex-col gap-3">
-                    <div className="p-3.5 rounded-xl bg-[#14161b] border border-white/[0.06] flex items-center justify-between shadow-sm">
-                      <div className="flex items-center gap-2.5">
-                        <div className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                          <Navigation className="size-4" />
-                        </div>
-                        <div className="flex flex-col">
-                          <span className="text-xs font-semibold text-white">
-                            Mobility & Congestion Forecaster Agent
-                          </span>
-                          <span className="text-[10.5px] text-slate-400 font-sans">
-                            Peak travel time savings, arterial relief & feeder coverage
-                          </span>
-                        </div>
-                      </div>
-                      <span className="px-2 py-0.5 rounded-md bg-cyan-500/15 text-cyan-300 border border-cyan-500/25 text-[10.5px] font-mono tabular-nums font-bold">
-                        -{(mobility.peak_hour_travel_time_saved_minutes ?? mobility.peak_hour_travel_time_saved_mins ?? 0).toFixed(1)}m Saved
-                      </span>
-                    </div>
-
-                    <DomainPillarCards
-                      demographics={demographics!}
-                      economic={economic!}
-                      mobility={mobility}
-                      ecological={ecological!}
-                      selectedPillar="mobility"
-                      hideTabBar={true}
-                    />
-                  </div>
-                ) : (
-                  <div className="flex flex-col items-center justify-center text-center p-6 my-auto gap-3">
-                    <div className="p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
-                      <Navigation className="size-6" />
-                    </div>
-                    <div className="flex flex-col gap-1">
-                      <h4 className="text-sm font-semibold text-slate-200">
-                        Mobility Forecaster Awaiting Swarm Run
-                      </h4>
-                      <p className="text-xs text-slate-400 max-w-[280px] font-sans leading-relaxed">
-                        Arterial congestion reduction and feeder network simulations run as part of the 5-agent evaluation swarm.
-                      </p>
-                    </div>
-                    {onEvaluateTrigger && (
-                      <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={onEvaluateTrigger}
-                        disabled={isEvaluating}
-                        className="mt-2 w-full max-w-[280px] px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 cursor-pointer disabled:opacity-50"
-                      >
-                        <Sparkles className="size-3.5" />
-                        <span>Run Feasibility Swarm</span>
-                      </motion.button>
-                    )}
-                  </div>
-                )
-              ) : activeSection === 'ecological' ? (
-                /* 5. Dedicated Ecological Specialist Agent Section */
-                ecological ? (
-                  <div className="flex flex-col gap-3">
-                    <div className="p-3.5 rounded-xl bg-[#14161b] border border-white/[0.06] flex items-center justify-between shadow-sm">
-                      <div className="flex items-center gap-2.5">
-                        <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                          <Trees className="size-4" />
-                        </div>
-                        <div className="flex flex-col">
-                          <span className="text-xs font-semibold text-white">
-                            Ecological & Wetland Specialist Agent
-                          </span>
-                          <span className="text-[10.5px] text-slate-400 font-sans">
-                            KTFD lake buffer setbacks, rajakaluve crossings & flood risk
-                          </span>
-                        </div>
-                      </div>
-                      <span
-                        className={`px-2 py-0.5 rounded-md text-[10.5px] font-mono tabular-nums font-bold border ${
-                          ecological.ktfd_compliance_status === 'COMPLIANT'
-                            ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30'
-                            : 'bg-amber-500/15 text-amber-400 border-amber-500/30'
-                        }`}
-                      >
-                        {ecological.ktfd_compliance_status}
-                      </span>
-                    </div>
-
-                    <DomainPillarCards
-                      demographics={demographics!}
-                      economic={economic!}
-                      mobility={mobility!}
-                      ecological={ecological}
-                      selectedPillar="ecological"
-                      hideTabBar={true}
-                    />
-                  </div>
-                ) : (
-                  <div className="flex flex-col items-center justify-center text-center p-6 my-auto gap-3">
-                    <div className="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-                      <Trees className="size-6" />
-                    </div>
-                    <div className="flex flex-col gap-1">
-                      <h4 className="text-sm font-semibold text-slate-200">
-                        Ecological Specialist Awaiting Swarm Run
-                      </h4>
-                      <p className="text-xs text-slate-400 max-w-[280px] font-sans leading-relaxed">
-                        Lake 30m buffer intersections and KTFD statutory compliance are calculated by the Ecological Specialist agent.
-                      </p>
-                    </div>
-                    {onEvaluateTrigger && (
-                      <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={onEvaluateTrigger}
-                        disabled={isEvaluating}
-                        className="mt-2 w-full max-w-[280px] px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 cursor-pointer disabled:opacity-50"
-                      >
-                        <Sparkles className="size-3.5" />
-                        <span>Run Feasibility Swarm</span>
-                      </motion.button>
-                    )}
-                  </div>
-                )
-              ) : activeSection === 'stations' ? (
-                /* 6. Dedicated Suggested Station Proposals Section */
-                dossier ? (
-                  <div className="flex flex-col gap-3">
-                    <div className="p-3.5 rounded-xl bg-[#14161b] border border-white/[0.06] flex items-center justify-between shadow-sm">
-                      <div className="flex items-center gap-2.5">
-                        <div className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                          <MapPin className="size-4" />
-                        </div>
-                        <div className="flex flex-col">
-                          <span className="text-xs font-semibold text-white">
-                            Suggested Station Interchanges
-                          </span>
-                          <span className="text-[10.5px] text-slate-400 font-sans">
-                            Spatial Visualizer agent • Click card to focus map camera
-                          </span>
-                        </div>
-                      </div>
-                      <span className="px-2 py-0.5 rounded-md bg-cyan-500/15 text-cyan-300 border border-cyan-500/25 text-[10.5px] font-mono tabular-nums font-bold">
-                        {stations.length} Nodes
-                      </span>
-                    </div>
-
-                    <SuggestedStationList
-                      stations={stations}
-                      onStationClick={onStationSelect}
-                      selectedStationId={selectedStationId}
-                    />
-                  </div>
-                ) : (
-                  <div className="flex flex-col items-center justify-center text-center p-6 my-auto gap-3">
-                    <div className="p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
-                      <MapPin className="size-6" />
-                    </div>
-                    <div className="flex flex-col gap-1">
-                      <h4 className="text-sm font-semibold text-slate-200">
-                        Station Proposals Awaiting Swarm Run
-                      </h4>
-                      <p className="text-xs text-slate-400 max-w-[280px] font-sans leading-relaxed">
-                        Station proposals and alignment nodes are dynamically synthesized by the Structured Spatial Visualizer agent upon corridor evaluation.
-                      </p>
-                    </div>
-                    {onEvaluateTrigger && (
-                      <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={onEvaluateTrigger}
-                        disabled={isEvaluating}
-                        className="mt-2 w-full max-w-[280px] px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 cursor-pointer disabled:opacity-50"
-                      >
-                        <Sparkles className="size-3.5" />
-                        <span>Run Feasibility Swarm</span>
-                      </motion.button>
-                    )}
-                  </div>
-                )
-              ) : activeSection === 'risks' ? (
-                /* 7. Dedicated Actionable Risk Warnings Section */
-                dossier ? (
-                  <div className="flex flex-col gap-3">
-                    <div className="p-3.5 rounded-xl bg-[#14161b] border border-white/[0.06] flex items-center justify-between shadow-sm">
-                      <div className="flex items-center gap-2.5">
-                        <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
-                          <AlertTriangle className="size-4" />
-                        </div>
-                        <div className="flex flex-col">
-                          <span className="text-xs font-semibold text-white">
-                            Statutory Risk & Friction Matrix
-                          </span>
-                          <span className="text-[10.5px] text-slate-400 font-sans">
-                            Actionable environmental, zoning & civil engineering mitigations
-                          </span>
-                        </div>
-                      </div>
-                      <span
-                        className={`px-2 py-0.5 rounded-md text-[10.5px] font-mono tabular-nums font-bold border ${
-                          warnings.some((w) => (w.severity || '').toUpperCase() === 'CRITICAL')
-                            ? 'bg-rose-500/15 text-rose-400 border-rose-500/30'
-                            : 'bg-amber-500/15 text-amber-400 border-amber-500/30'
-                        }`}
-                      >
-                        {warnings.length} Flagged
-                      </span>
-                    </div>
-
-                    <ActionableRiskWarnings warnings={warnings} />
-                  </div>
-                ) : (
-                  <div className="flex flex-col items-center justify-center text-center p-6 my-auto gap-3">
-                    <div className="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400">
-                      <AlertTriangle className="size-6" />
-                    </div>
-                    <div className="flex flex-col gap-1">
-                      <h4 className="text-sm font-semibold text-slate-200">
-                        Risk Matrix Awaiting Swarm Run
-                      </h4>
-                      <p className="text-xs text-slate-400 max-w-[280px] font-sans leading-relaxed">
-                        Ecological setback violations (KTFD lake 30m, rajakaluve 50m) and civil friction points are computed upon dispatching the swarm.
-                      </p>
-                    </div>
-                    {onEvaluateTrigger && (
-                      <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={onEvaluateTrigger}
-                        disabled={isEvaluating}
-                        className="mt-2 w-full max-w-[280px] px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 cursor-pointer disabled:opacity-50"
-                      >
-                        <Sparkles className="size-3.5" />
-                        <span>Run Feasibility Swarm</span>
-                      </motion.button>
-                    )}
-                  </div>
-                )
-              ) : activeSection === 'policies' ? (
-                /* 8. Dedicated Policy Directives Section */
-                dossier ? (
-                  <div className="flex flex-col gap-3">
-                    <div className="p-3.5 rounded-xl bg-[#14161b] border border-white/[0.06] flex items-center justify-between shadow-sm">
-                      <div className="flex items-center gap-2.5">
-                        <div className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-                          <ShieldCheck className="size-4" />
-                        </div>
-                        <div className="flex flex-col">
-                          <span className="text-xs font-semibold text-white">
-                            Policy Directives & TOD Governance
-                          </span>
-                          <span className="text-[10.5px] text-slate-400 font-sans">
-                            BMRCL / BBMP statutory compliance and Transit-Oriented Development mandates
-                          </span>
-                        </div>
-                      </div>
-                      <span className="px-2 py-0.5 rounded-md bg-indigo-500/15 text-indigo-300 border border-indigo-500/25 text-[10.5px] font-mono tabular-nums font-bold">
-                        {policies.length} Directives
-                      </span>
-                    </div>
-
-                    <PolicyRecommendations recommendations={policies} />
-                  </div>
-                ) : (
-                  <div className="flex flex-col items-center justify-center text-center p-6 my-auto gap-3">
-                    <div className="p-3 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
-                      <ShieldCheck className="size-6" />
-                    </div>
-                    <div className="flex flex-col gap-1">
-                      <h4 className="text-sm font-semibold text-slate-200">
-                        Policy Directives Awaiting Swarm Run
-                      </h4>
-                      <p className="text-xs text-slate-400 max-w-[280px] font-sans leading-relaxed">
-                        Regulatory mandates, farebox optimization directives, and statutory approvals are formulated following swarm synthesis.
-                      </p>
-                    </div>
-                    {onEvaluateTrigger && (
-                      <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={onEvaluateTrigger}
-                        disabled={isEvaluating}
-                        className="mt-2 w-full max-w-[280px] px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 cursor-pointer disabled:opacity-50"
-                      >
-                        <Sparkles className="size-3.5" />
-                        <span>Run Feasibility Swarm</span>
-                      </motion.button>
-                    )}
-                  </div>
-                )
-              ) : dossier ? (
-                /* 9. Dedicated Overview / Executive Dossier Section */
-                <>
-                  {/* Feasibility Gauge */}
-                  <FeasibilityScoreGauge score={viabilityScore} />
-
-                  {/* Deep Dive Button into /agents */}
-                  <Link
-                    href="/agents"
-                    className="w-full flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-emerald-500/10 via-[#161B22] to-cyan-500/10 border border-emerald-500/30 hover:border-emerald-400/60 transition-all cursor-pointer group shadow-lg shadow-black/40"
-                  >
-                    <div className="flex items-center gap-2.5">
-                      <div className="p-1.5 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 group-hover:scale-105 transition-transform">
-                        <BotLogo className="size-4" isActive={true} />
-                      </div>
-                      <div className="flex flex-col text-left">
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-xs font-semibold text-white tracking-tight">
-                            Full Swarm Audit Traces
-                          </span>
-                          <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                            5 AGENTS
-                          </span>
-                        </div>
-                        <span className="text-[10px] text-slate-400 font-sans">
-                          Inspect deep empirical models, formulas & traces →
-                        </span>
-                      </div>
-                    </div>
-                    <ArrowUpRight className="size-4 text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
-                  </Link>
-
-                  {/* Executive Summary Statement */}
-                  {dossier.executive_summary && (
-                    <div className="p-4 rounded-xl bg-[#13161c] border border-white/[0.07] shadow-sm flex flex-col gap-2.5">
-                      <div className="flex items-center justify-between pb-2 border-b border-white/[0.05]">
-                        <div className="flex items-center gap-2">
-                          <div className="p-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-                            <FileText className="size-3.5" />
-                          </div>
-                          <div className="flex flex-col">
-                            <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400 font-semibold">
-                              Executive Authority Brief
-                            </span>
-                            <span className="text-[10px] text-slate-400 font-mono">
-                              Autonomous Multi-Agent Synthesis
-                            </span>
-                          </div>
-                        </div>
-                        {dossier.overall_viability_score != null && (
-                          <span className="px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 text-[10.5px] font-mono tabular-nums font-bold">
-                            {dossier.overall_viability_score.toFixed(1)} / 100
-                          </span>
-                        )}
-                      </div>
-                      <p className="text-[12.5px] leading-relaxed text-slate-200 font-sans tracking-[0.01em] whitespace-pre-line">
-                        {dossier.executive_summary}
-                      </p>
-                    </div>
-                  )}
-
-                  {/* Agent Jump Matrix */}
-                  <div className="flex flex-col gap-1.5">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-semibold px-0.5">
-                      Swarm Agent Deep Dives
-                    </span>
-                    <div className="grid grid-cols-3 gap-2">
-                      <button
-                        onClick={() => setActiveSection('demographics')}
-                        className="p-2.5 rounded-xl bg-[#14161b] hover:bg-[#181b22] border border-white/[0.05] hover:border-purple-500/30 transition-all flex flex-col gap-1 text-left cursor-pointer group shadow-sm"
-                      >
-                        <div className="flex items-center justify-between text-purple-400">
-                          <Users className="size-3.5" />
-                          <span className="text-[10px] font-mono font-bold tabular-nums">
-                            {((demographics?.equity_index_score ?? demographics?.equity_score ?? 0)).toFixed(0)}
-                          </span>
-                        </div>
-                        <span className="text-[10.5px] font-semibold text-slate-300 group-hover:text-white transition-colors">Demographics</span>
-                        <span className="text-[9px] text-slate-500 truncate">Catchment →</span>
-                      </button>
-
-                      <button
-                        onClick={() => setActiveSection('economic')}
-                        className="p-2.5 rounded-xl bg-[#14161b] hover:bg-[#181b22] border border-white/[0.05] hover:border-yellow-500/30 transition-all flex flex-col gap-1 text-left cursor-pointer group shadow-sm"
-                      >
-                        <div className="flex items-center justify-between text-yellow-400">
-                          <Briefcase className="size-3.5" />
-                          <span className="text-[10px] font-mono font-bold tabular-nums">
-                            {(economic?.economic_multiplier_index ?? 1).toFixed(1)}x
-                          </span>
-                        </div>
-                        <span className="text-[10.5px] font-semibold text-slate-300 group-hover:text-white transition-colors">Economic</span>
-                        <span className="text-[9px] text-slate-500 truncate">TOD Yield →</span>
-                      </button>
-
-                      <button
-                        onClick={() => setActiveSection('mobility')}
-                        className="p-2.5 rounded-xl bg-[#14161b] hover:bg-[#181b22] border border-white/[0.05] hover:border-cyan-500/30 transition-all flex flex-col gap-1 text-left cursor-pointer group shadow-sm"
-                      >
-                        <div className="flex items-center justify-between text-cyan-400">
-                          <Navigation className="size-3.5" />
-                          <span className="text-[10px] font-mono font-bold tabular-nums">
-                            -{(mobility?.peak_hour_travel_time_saved_minutes ?? mobility?.peak_hour_travel_time_saved_mins ?? 0).toFixed(0)}m
-                          </span>
-                        </div>
-                        <span className="text-[10.5px] font-semibold text-slate-300 group-hover:text-white transition-colors">Mobility</span>
-                        <span className="text-[9px] text-slate-500 truncate">Congestion →</span>
-                      </button>
-
-                      <button
-                        onClick={() => setActiveSection('ecological')}
-                        className="p-2.5 rounded-xl bg-[#14161b] hover:bg-[#181b22] border border-white/[0.05] hover:border-emerald-500/30 transition-all flex flex-col gap-1 text-left cursor-pointer group shadow-sm"
-                      >
-                        <div className="flex items-center justify-between text-emerald-400">
-                          <Trees className="size-3.5" />
-                          <span className="text-[10px] font-mono font-bold">
-                            {ecological?.ktfd_compliance_status === 'COMPLIANT' ? 'OK' : 'WARN'}
-                          </span>
-                        </div>
-                        <span className="text-[10.5px] font-semibold text-slate-300 group-hover:text-white transition-colors">Ecological</span>
-                        <span className="text-[9px] text-slate-500 truncate">Setbacks →</span>
-                      </button>
-
-                      <button
-                        onClick={() => setActiveSection('stations')}
-                        className="p-2.5 rounded-xl bg-[#14161b] hover:bg-[#181b22] border border-white/[0.05] hover:border-cyan-500/30 transition-all flex flex-col gap-1 text-left cursor-pointer group shadow-sm"
-                      >
-                        <div className="flex items-center justify-between text-cyan-400">
-                          <MapPin className="size-3.5" />
-                          <span className="text-[10px] font-mono font-bold tabular-nums">{stations.length}</span>
-                        </div>
-                        <span className="text-[10.5px] font-semibold text-slate-300 group-hover:text-white transition-colors">Stations</span>
-                        <span className="text-[9px] text-slate-500 truncate">Proposals →</span>
-                      </button>
-
-                      <button
-                        onClick={() => setActiveSection('risks')}
-                        className="p-2.5 rounded-xl bg-[#14161b] hover:bg-[#181b22] border border-white/[0.05] hover:border-amber-500/30 transition-all flex flex-col gap-1 text-left cursor-pointer group shadow-sm"
-                      >
-                        <div className="flex items-center justify-between text-amber-400">
-                          <AlertTriangle className="size-3.5" />
-                          <span className="text-[10px] font-mono font-bold tabular-nums">{warnings.length}</span>
-                        </div>
-                        <span className="text-[10.5px] font-semibold text-slate-300 group-hover:text-white transition-colors">Risks</span>
-                        <span className="text-[9px] text-slate-500 truncate">Mitigations →</span>
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* 4 Domain Pillar Impact Cards Overview */}
-                  {demographics && economic && mobility && ecological && (
-                    <DomainPillarCards
-                      demographics={demographics}
-                      economic={economic}
-                      mobility={mobility}
-                      ecological={ecological}
-                      selectedPillar="all"
-                      hideTabBar={true}
-                    />
-                  )}
-                </>
-              ) : (
+              ) : !dossier && !isEvaluating ? (
                 /* Standby / Empty State when not yet evaluated */
                 <div className="flex flex-col items-center justify-center text-center p-6 my-auto gap-3">
-                  <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/[0.06] text-slate-400">
+                  <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.06] text-slate-400">
                     <MapPin className="size-6 text-emerald-400" />
                   </div>
                   <div className="flex flex-col gap-1">
                     <h4 className="text-sm font-semibold text-slate-200">
-                      Corridor Ready For Evaluation
+                      Corridor Ready For Feasibility Evaluation
                     </h4>
                     <p className="text-xs text-slate-400 max-w-[280px] font-sans leading-relaxed">
                       Select an origin station and drop a candidate terminus pin on the canvas to dispatch the 5-agent feasibility swarm.
@@ -940,21 +354,26 @@ export function AuthorityDossierPanel({
 
                   {onEvaluateTrigger && (
                     <motion.button
-                      whileHover={{ scale: 1.02 }}
+                      whileHover={{ scale: 1.01 }}
                       whileTap={{ scale: 0.98 }}
+                      transition={motionSprings.snappy}
                       onClick={onEvaluateTrigger}
                       disabled={isEvaluating}
-                      className="mt-2 w-full max-w-[280px] px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 cursor-pointer disabled:opacity-50"
+                      className="mt-2 w-full max-w-[280px] py-3 px-4 rounded-xl bg-[#00F5D4] hover:bg-[#00e2c4] text-slate-950 font-bold text-xs font-mono uppercase tracking-wider flex items-center justify-between shadow-md shadow-[#00F5D4]/15 border border-white/20 cursor-pointer disabled:opacity-50 transition-all select-none"
                     >
-                      <Sparkles className="size-3.5" />
-                      <span>Run Feasibility Swarm</span>
+                      <div className="flex items-center gap-2">
+                        <Play className="size-3.5 fill-slate-950 text-slate-950 shrink-0" />
+                        <span>Run Feasibility</span>
+                      </div>
+                      <span className="px-2 py-0.5 rounded-md bg-slate-950/15 text-slate-950 text-[10px] font-mono font-semibold shrink-0">
+                        5 Agents
+                      </span>
                     </motion.button>
                   )}
 
-                  {/* Prominent Link to /agents even during standby */}
                   <Link
                     href="/agents"
-                    className="w-full max-w-[280px] mt-2.5 flex items-center justify-between p-3 rounded-xl bg-[#161B22]/80 hover:bg-[#161B22] border border-white/[0.08] hover:border-emerald-500/30 transition-all cursor-pointer group"
+                    className="w-full max-w-[280px] mt-2 flex items-center justify-between p-3 rounded-xl bg-[#161B22]/80 hover:bg-[#161B22] border border-white/[0.08] hover:border-emerald-500/30 transition-all cursor-pointer group shadow-sm"
                     title="Inspect 5 Specialized Swarm Agents"
                   >
                     <div className="flex items-center gap-2.5">
@@ -973,7 +392,426 @@ export function AuthorityDossierPanel({
                     <ArrowUpRight className="size-3.5 text-slate-400 group-hover:text-emerald-400 transition-colors shrink-0" />
                   </Link>
                 </div>
-              )}
+              ) : activeSection === 'overview' ? (
+                /* 2. Redesigned High-Impact Executive Overview (No Intimidating Clutter) */
+                <div className="flex flex-col gap-3">
+                  {/* Hero Radial Feasibility Gauge */}
+                  <FeasibilityScoreGauge score={viabilityScore} />
+
+                  {/* 4 Corridor Vital Signs Strip */}
+                  <div className="grid grid-cols-4 gap-2 p-2.5 rounded-xl bg-black/40 border border-white/[0.05]">
+                    <div className="flex flex-col gap-0.5 min-w-0">
+                      <span className="text-[9.5px] uppercase font-mono text-purple-400 flex items-center gap-1 truncate">
+                        <Users className="size-2.5 shrink-0" /> Catchment
+                      </span>
+                      <span className="font-mono tabular-nums text-xs font-bold text-white truncate">
+                        {formatNum(pop500m)}
+                      </span>
+                      <span className="text-[8.5px] text-slate-500 truncate">500m walking</span>
+                    </div>
+                    <div className="flex flex-col gap-0.5 min-w-0">
+                      <span className="text-[9.5px] uppercase font-mono text-yellow-400 flex items-center gap-1 truncate">
+                        <Briefcase className="size-2.5 shrink-0" /> Multiplier
+                      </span>
+                      <span className="font-mono tabular-nums text-xs font-bold text-yellow-400 truncate">
+                        {multiplier.toFixed(1)}x
+                      </span>
+                      <span className="text-[8.5px] text-slate-500 truncate">{formatINR(todYield)}</span>
+                    </div>
+                    <div className="flex flex-col gap-0.5 min-w-0">
+                      <span className="text-[9.5px] uppercase font-mono text-cyan-400 flex items-center gap-1 truncate">
+                        <Navigation className="size-2.5 shrink-0" /> Travel Time
+                      </span>
+                      <span className="font-mono tabular-nums text-xs font-bold text-cyan-400 truncate">
+                        -{timeSaved.toFixed(0)}m
+                      </span>
+                      <span className="text-[8.5px] text-slate-500 truncate">peak savings</span>
+                    </div>
+                    <div className="flex flex-col gap-0.5 min-w-0">
+                      <span className="text-[9.5px] uppercase font-mono text-emerald-400 flex items-center gap-1 truncate">
+                        <Trees className="size-2.5 shrink-0" /> Statutory
+                      </span>
+                      <span className={`font-mono tabular-nums text-xs font-bold truncate ${lakeBreaches > 0 ? 'text-amber-400' : 'text-emerald-400'}`}>
+                        {ktfdStatus === 'COMPLIANT' ? 'CLEARED' : 'FLAGGED'}
+                      </span>
+                      <span className="text-[8.5px] text-slate-500 truncate">{lakeBreaches} breaches</span>
+                    </div>
+                  </div>
+
+                  {/* Executive Authority Synthesis with Expand/Collapse */}
+                  {dossier?.executive_summary && (
+                    <div className="p-3.5 rounded-xl bg-[#13161c] border border-white/[0.06] border-l-2 border-l-emerald-500/80 shadow-sm flex flex-col gap-2">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-1.5">
+                          <FileText className="size-3.5 text-emerald-400" />
+                          <span className="text-[11px] font-mono uppercase tracking-wider text-slate-200 font-semibold">
+                            Executive Authority Synthesis
+                          </span>
+                        </div>
+                        <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-1.5 py-0.2 rounded border border-emerald-500/20">
+                          5-AGENT CONSENSUS
+                        </span>
+                      </div>
+                      <p className={`text-[12px] leading-relaxed text-slate-300 font-sans ${isSummaryExpanded ? '' : 'line-clamp-3'}`}>
+                        {dossier.executive_summary}
+                      </p>
+                      {dossier.executive_summary.length > 200 && (
+                        <button
+                          onClick={() => setIsSummaryExpanded((prev) => !prev)}
+                          className="text-[10.5px] font-mono text-emerald-400 hover:text-emerald-300 flex items-center gap-1 cursor-pointer self-start transition-colors"
+                        >
+                          {isSummaryExpanded ? 'Collapse synthesis ↑' : 'Read full briefing ↓'}
+                        </button>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Curated 4-Pillar Bento Grid (Progressive Disclosure) */}
+                  <div className="flex flex-col gap-2">
+                    <div className="flex items-center justify-between px-0.5">
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-semibold">
+                        Pillar Intelligence Highlights
+                      </span>
+                      <button
+                        onClick={() => {
+                          setActiveSection('pillars');
+                          setActivePillar('all');
+                        }}
+                        className="text-[10px] font-mono text-slate-400 hover:text-white flex items-center gap-1 transition-colors cursor-pointer"
+                      >
+                        <span>Inspect All Pillars</span>
+                        <ChevronRight className="size-3" />
+                      </button>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-2.5">
+                      {/* Bento 1: Demographics */}
+                      <div
+                        onClick={() => {
+                          setActiveSection('pillars');
+                          setActivePillar('demographics');
+                        }}
+                        className="p-3 rounded-xl bg-[#14161b] hover:bg-[#181b22] border border-white/[0.05] hover:border-purple-500/30 transition-all flex flex-col justify-between gap-2 cursor-pointer group shadow-sm"
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-1.5 text-purple-400">
+                            <Users className="size-3.5" />
+                            <span className="text-[11px] font-semibold text-slate-200 group-hover:text-purple-300 transition-colors">
+                              Demographics
+                            </span>
+                          </div>
+                          <span className="text-[10px] font-mono font-bold text-purple-400 bg-purple-500/10 px-1.5 py-0.2 rounded border border-purple-500/20">
+                            {equityScore.toFixed(0)}/100
+                          </span>
+                        </div>
+                        <div>
+                          <div className="font-mono tabular-nums text-sm font-bold text-white tracking-tight">
+                            {formatNum(pop500m)}
+                          </div>
+                          <div className="text-[10px] text-slate-400 font-sans">
+                            {(underservedRatio * 100).toFixed(0)}% transit-dependent
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-between text-[9.5px] text-slate-500 pt-1 border-t border-white/[0.04]">
+                          <span>{formatNum(pop1500m)} feeder shed</span>
+                          <span className="text-purple-400 group-hover:translate-x-0.5 transition-transform">Details →</span>
+                        </div>
+                      </div>
+
+                      {/* Bento 2: Economic */}
+                      <div
+                        onClick={() => {
+                          setActiveSection('pillars');
+                          setActivePillar('economic');
+                        }}
+                        className="p-3 rounded-xl bg-[#14161b] hover:bg-[#181b22] border border-white/[0.05] hover:border-yellow-500/30 transition-all flex flex-col justify-between gap-2 cursor-pointer group shadow-sm"
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-1.5 text-yellow-400">
+                            <Briefcase className="size-3.5" />
+                            <span className="text-[11px] font-semibold text-slate-200 group-hover:text-yellow-300 transition-colors">
+                              Economic & TOD
+                            </span>
+                          </div>
+                          <span className="text-[10px] font-mono font-bold text-yellow-400 bg-yellow-500/10 px-1.5 py-0.2 rounded border border-yellow-500/20">
+                            {multiplier.toFixed(1)}x
+                          </span>
+                        </div>
+                        <div>
+                          <div className="font-mono tabular-nums text-sm font-bold text-white tracking-tight">
+                            {techParks + commercial} POI Hubs
+                          </div>
+                          <div className="text-[10px] text-slate-400 font-sans">
+                            {techParks} Tech Parks • {commercial} Commercial
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-between text-[9.5px] text-slate-500 pt-1 border-t border-white/[0.04]">
+                          <span>{formatINR(farebox)} farebox</span>
+                          <span className="text-yellow-400 group-hover:translate-x-0.5 transition-transform">Details →</span>
+                        </div>
+                      </div>
+
+                      {/* Bento 3: Mobility */}
+                      <div
+                        onClick={() => {
+                          setActiveSection('pillars');
+                          setActivePillar('mobility');
+                        }}
+                        className="p-3 rounded-xl bg-[#14161b] hover:bg-[#181b22] border border-white/[0.05] hover:border-cyan-500/30 transition-all flex flex-col justify-between gap-2 cursor-pointer group shadow-sm"
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-1.5 text-cyan-400">
+                            <Navigation className="size-3.5" />
+                            <span className="text-[11px] font-semibold text-slate-200 group-hover:text-cyan-300 transition-colors">
+                              Mobility
+                            </span>
+                          </div>
+                          <span className="text-[10px] font-mono font-bold text-cyan-400 bg-cyan-500/10 px-1.5 py-0.2 rounded border border-cyan-500/20">
+                            -{timeSaved.toFixed(0)}m
+                          </span>
+                        </div>
+                        <div>
+                          <div className="font-mono tabular-nums text-sm font-bold text-white tracking-tight">
+                            {congestionReduction.toFixed(1)}% Relief
+                          </div>
+                          <div className="text-[10px] text-slate-400 font-sans">
+                            {formatNum(ridership)} daily ridership
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-between text-[9.5px] text-slate-500 pt-1 border-t border-white/[0.04]">
+                          <span>{feederScore.toFixed(0)}% feeder network</span>
+                          <span className="text-cyan-400 group-hover:translate-x-0.5 transition-transform">Details →</span>
+                        </div>
+                      </div>
+
+                      {/* Bento 4: Ecological */}
+                      <div
+                        onClick={() => {
+                          setActiveSection('pillars');
+                          setActivePillar('ecological');
+                        }}
+                        className="p-3 rounded-xl bg-[#14161b] hover:bg-[#181b22] border border-white/[0.05] hover:border-emerald-500/30 transition-all flex flex-col justify-between gap-2 cursor-pointer group shadow-sm"
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-1.5 text-emerald-400">
+                            <Trees className="size-3.5" />
+                            <span className="text-[11px] font-semibold text-slate-200 group-hover:text-emerald-300 transition-colors">
+                              Ecological
+                            </span>
+                          </div>
+                          <span className={`text-[10px] font-mono font-bold px-1.5 py-0.2 rounded border ${
+                            ktfdStatus === 'COMPLIANT'
+                              ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+                              : 'bg-amber-500/10 text-amber-400 border-amber-500/20'
+                          }`}>
+                            {ktfdStatus}
+                          </span>
+                        </div>
+                        <div>
+                          <div className="font-mono tabular-nums text-sm font-bold text-white tracking-tight">
+                            {lakeBreaches} Lake Breaches
+                          </div>
+                          <div className="text-[10px] text-slate-400 font-sans">
+                            {rajakaluveCrossings} rajakaluve crossings
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-between text-[9.5px] text-slate-500 pt-1 border-t border-white/[0.04]">
+                          <span>Flood grade: {floodGrade}</span>
+                          <span className="text-emerald-400 group-hover:translate-x-0.5 transition-transform">Details →</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Key Action Strips for Stations and Risks */}
+                  <div className="grid grid-cols-2 gap-2 pt-0.5">
+                    <button
+                      onClick={() => setActiveSection('stations')}
+                      className="p-2.5 rounded-xl bg-black/40 hover:bg-black/60 border border-white/[0.05] hover:border-cyan-500/30 transition-all flex items-center justify-between text-left cursor-pointer group"
+                    >
+                      <div className="flex items-center gap-2">
+                        <div className="p-1 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                          <MapPin className="size-3.5" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-[11px] font-semibold text-slate-200 group-hover:text-white">
+                            {stations.length} Station Nodes
+                          </span>
+                          <span className="text-[9px] text-slate-400">Click to focus map</span>
+                        </div>
+                      </div>
+                      <ChevronRight className="size-3.5 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all" />
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        setActiveSection('risks');
+                        setGovernanceSubTab('risks');
+                      }}
+                      className="p-2.5 rounded-xl bg-black/40 hover:bg-black/60 border border-white/[0.05] hover:border-amber-500/30 transition-all flex items-center justify-between text-left cursor-pointer group"
+                    >
+                      <div className="flex items-center gap-2">
+                        <div className="p-1 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                          <AlertTriangle className="size-3.5" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-[11px] font-semibold text-slate-200 group-hover:text-white">
+                            {warnings.length} Risk Flags
+                          </span>
+                          <span className="text-[9px] text-slate-400">Actionable mitigations</span>
+                        </div>
+                      </div>
+                      <ChevronRight className="size-3.5 text-slate-500 group-hover:text-amber-400 group-hover:translate-x-0.5 transition-all" />
+                    </button>
+                  </div>
+                </div>
+              ) : activeSection === 'pillars' || ['demographics', 'economic', 'mobility', 'ecological'].includes(activeSection) ? (
+                /* 3. Deep-Dive Pillars Section with Segmented Controller */
+                demographics && economic && mobility && ecological ? (
+                  <div className="flex flex-col gap-3">
+                    {/* Segmented Sub-Tab Switcher */}
+                    <div className="flex items-center gap-1 p-1 rounded-xl bg-black/40 border border-white/[0.05] overflow-x-auto [scrollbar-width:none]">
+                      {[
+                        { id: 'all', label: 'All 4 Pillars', icon: <TrendingUp className="size-3.5" /> },
+                        { id: 'demographics', label: 'Demographics', icon: <Users className="size-3.5 text-purple-400" /> },
+                        { id: 'economic', label: 'Economic', icon: <Briefcase className="size-3.5 text-yellow-400" /> },
+                        { id: 'mobility', label: 'Mobility', icon: <Navigation className="size-3.5 text-cyan-400" /> },
+                        { id: 'ecological', label: 'Ecological', icon: <Trees className="size-3.5 text-emerald-400" /> },
+                      ].map((p) => {
+                        const currentPillar = activeSection === 'pillars' ? activePillar : activeSection;
+                        const isSelected = currentPillar === p.id;
+                        return (
+                          <button
+                            key={p.id}
+                            onClick={() => {
+                              setActiveSection('pillars');
+                              setActivePillar(p.id as any);
+                            }}
+                            className={`relative px-2.5 py-1.5 rounded-lg text-[11px] font-medium flex items-center gap-1.5 transition-colors shrink-0 cursor-pointer ${
+                              isSelected ? 'text-white font-semibold' : 'text-slate-400 hover:text-slate-200'
+                            }`}
+                          >
+                            {isSelected && (
+                              <motion.div
+                                layoutId="active-pillar-subtab-pill"
+                                className="absolute inset-0 rounded-lg bg-white/10 border border-white/15"
+                                transition={motionSprings.snappy}
+                              />
+                            )}
+                            <span className="relative z-10 flex items-center gap-1.5">
+                              {p.icon}
+                              <span>{p.label}</span>
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    <DomainPillarCards
+                      demographics={demographics}
+                      economic={economic}
+                      mobility={mobility}
+                      ecological={ecological}
+                      selectedPillar={activeSection === 'pillars' ? activePillar : (activeSection as any)}
+                      hideTabBar={true}
+                    />
+                  </div>
+                ) : null
+              ) : activeSection === 'stations' ? (
+                /* 4. Suggested Stations Section */
+                <div className="flex flex-col gap-3">
+                  <div className="p-3 rounded-xl bg-[#14161b] border border-white/[0.06] flex items-center justify-between shadow-sm">
+                    <div className="flex items-center gap-2">
+                      <div className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                        <MapPin className="size-4" />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-xs font-semibold text-white">
+                          Suggested Interchange Nodes
+                        </span>
+                        <span className="text-[10.5px] text-slate-400 font-sans">
+                          Click station card to zoom and center map camera
+                        </span>
+                      </div>
+                    </div>
+                    <span className="px-2 py-0.5 rounded-md bg-cyan-500/15 text-cyan-300 border border-cyan-500/25 text-[10.5px] font-mono tabular-nums font-bold">
+                      {stations.length} Nodes
+                    </span>
+                  </div>
+
+                  <SuggestedStationList
+                    stations={stations}
+                    onStationClick={onStationSelect}
+                    selectedStationId={selectedStationId}
+                  />
+                </div>
+              ) : activeSection === 'risks' || activeSection === 'policies' ? (
+                /* 5. Governance & Risks Section */
+                <div className="flex flex-col gap-3">
+                  {/* Segmented Sub-Tab Control: Risks vs Policies */}
+                  <div className="flex items-center gap-1 p-1 rounded-xl bg-black/40 border border-white/[0.05]">
+                    <button
+                      onClick={() => {
+                        setActiveSection('risks');
+                        setGovernanceSubTab('risks');
+                      }}
+                      className={`flex-1 relative py-1.5 px-3 rounded-lg text-xs font-medium flex items-center justify-center gap-1.5 transition-colors cursor-pointer ${
+                        governanceSubTab === 'risks' ? 'text-white font-semibold' : 'text-slate-400 hover:text-slate-200'
+                      }`}
+                    >
+                      {governanceSubTab === 'risks' && (
+                        <motion.div
+                          layoutId="governance-subtab-pill"
+                          className="absolute inset-0 rounded-lg bg-white/10 border border-white/15"
+                          transition={motionSprings.snappy}
+                        />
+                      )}
+                      <span className="relative z-10 flex items-center gap-1.5">
+                        <AlertTriangle className="size-3.5 text-amber-400" />
+                        <span>Actionable Risks</span>
+                        {warnings.length > 0 && (
+                          <span className="font-mono text-[9.5px] tabular-nums font-bold text-amber-400 bg-amber-500/10 px-1.5 rounded">
+                            {warnings.length}
+                          </span>
+                        )}
+                      </span>
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        setActiveSection('risks');
+                        setGovernanceSubTab('policies');
+                      }}
+                      className={`flex-1 relative py-1.5 px-3 rounded-lg text-xs font-medium flex items-center justify-center gap-1.5 transition-colors cursor-pointer ${
+                        governanceSubTab === 'policies' ? 'text-white font-semibold' : 'text-slate-400 hover:text-slate-200'
+                      }`}
+                    >
+                      {governanceSubTab === 'policies' && (
+                        <motion.div
+                          layoutId="governance-subtab-pill"
+                          className="absolute inset-0 rounded-lg bg-white/10 border border-white/15"
+                          transition={motionSprings.snappy}
+                        />
+                      )}
+                      <span className="relative z-10 flex items-center gap-1.5">
+                        <ShieldCheck className="size-3.5 text-indigo-400" />
+                        <span>TOD Directives</span>
+                        {policies.length > 0 && (
+                          <span className="font-mono text-[9.5px] tabular-nums font-bold text-indigo-400 bg-indigo-500/10 px-1.5 rounded">
+                            {policies.length}
+                          </span>
+                        )}
+                      </span>
+                    </button>
+                  </div>
+
+                  {governanceSubTab === 'risks' ? (
+                    <ActionableRiskWarnings warnings={warnings} />
+                  ) : (
+                    <PolicyRecommendations recommendations={policies} />
+                  )}
+                </div>
+              ) : null}
             </div>
 
             {/* 4. Panel Command Footer */}

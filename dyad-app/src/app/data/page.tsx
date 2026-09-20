@@ -8,12 +8,12 @@ import {
   UploadCloud, FileText, Table, FileSpreadsheet,
   Trash2, CheckCircle2, Search, FileCode, Check,
   Eye, X, Download, HardDrive,
-  Layers, Radio, Loader2, RefreshCw, PlusCircle,
-  FlaskConical, CheckCircle, AlertTriangle,
+  Layers, Radio, Loader2, RefreshCw, PlusCircle, FlaskConical,
   Home, LocateFixed, CircleUser
 } from 'lucide-react';
 import { motionSprings } from '../../../lib/motion';
 import { BotLogo } from '../../../components/BotLogo';
+import { SidebarRail } from '../../../components/navigation/SidebarRail';
 
 interface ColumnProfile {
   name: string;
@@ -90,7 +90,7 @@ export default function DataSynthesisPage() {
         }
       }
     } catch (err) {
-      console.error('[DataStudio] Failed to fetch active datasets:', err);
+      console.error('[DataStudio] Failed to fetch datasets:', err);
     } finally {
       setIsLoading(false);
     }
@@ -278,60 +278,7 @@ export default function DataSynthesisPage() {
     <div className="relative w-screen h-screen flex overflow-hidden bg-background text-foreground font-sans selection:bg-primary/30 select-none">
       
       {/* 68px LEFT VERTICAL RAIL (STANDARDIZED ACROSS ALL ROUTES) */}
-      <aside className="relative z-20 w-[68px] flex flex-col items-center border-r border-white/[0.08] bg-[#0E1117]/95 backdrop-blur-xl py-4 h-full shrink-0 select-none">
-        <Link
-          href="/"
-          className="w-10 h-10 bg-emerald-500/10 rounded-xl border border-emerald-500/20 flex items-center justify-center mb-6 shadow-sm group hover:scale-105 transition-transform cursor-pointer"
-          title="Return to Home Canvas"
-        >
-          <Home className="text-emerald-400 size-5" />
-        </Link>
-        <nav className="flex flex-col gap-3">
-          <Link href="/data" title="Data Ingestion & Schema Inspector (Active)">
-            <motion.button 
-              whileHover={{ scale: 1.05 }} 
-              whileTap={{ scale: 0.94 }} 
-              transition={motionSprings.snappy} 
-              className="p-2.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 shadow-md shadow-emerald-500/10 flex items-center justify-center cursor-pointer"
-            >
-              <Database className="size-5" />
-            </motion.button>
-          </Link>
-
-          <Link href="/" title="Corridor GPS Alignment Canvas">
-            <motion.button 
-              whileHover={{ scale: 1.05 }} 
-              whileTap={{ scale: 0.94 }} 
-              transition={motionSprings.snappy} 
-              className="p-2.5 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
-            >
-              <LocateFixed className="size-5" />
-            </motion.button>
-          </Link>
-
-          {/* BOT ICON */}
-          <Link href="/agents" title="Autonomous Multi-Agent Swarm Intelligence (5 Specialized Agents)">
-            <motion.button 
-              whileHover={{ scale: 1.08 }} 
-              whileTap={{ scale: 0.94 }} 
-              transition={motionSprings.snappy} 
-              className="p-2.5 rounded-xl text-emerald-400 hover:text-emerald-300 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/25 transition-all flex items-center justify-center group cursor-pointer shadow-sm"
-            >
-              <BotLogo className="size-5" isActive={true} />
-            </motion.button>
-          </Link>
-        </nav>
-
-        {/* User Profile Logo */}
-        <div className="mt-auto flex flex-col items-center">
-          <button
-            title="User Profile & Authority Credentials"
-            className="w-10 h-10 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] hover:border-emerald-500/30 flex items-center justify-center text-slate-300 hover:text-white transition-all cursor-pointer group shadow-sm"
-          >
-            <CircleUser className="size-5 text-slate-400 group-hover:text-emerald-300 transition-colors" />
-          </button>
-        </div>
-      </aside>
+      <SidebarRail />
 
       {/* MAIN BODY AREA (FULL WIDTH DATA INVENTORY) */}
       <div className="flex-1 flex flex-col h-full overflow-hidden">
@@ -407,10 +354,10 @@ export default function DataSynthesisPage() {
               <div className="rounded-xl p-4 bg-card/40 border border-border/50 flex flex-col justify-between gap-2 shadow-2xs">
                 <div className="flex items-center justify-between text-muted-foreground">
                   <span className="text-xs font-sans">Raw Test Datasets</span>
-                  <FlaskConical className="size-4 text-amber-400" />
+                  <FlaskConical className="size-4 text-primary" />
                 </div>
                 <div className="flex items-baseline gap-1.5">
-                  <span className="text-2xl font-bold font-mono text-amber-400 tabular-nums">
+                  <span className="text-2xl font-bold font-mono text-primary tabular-nums">
                     {rawFiles.length}
                   </span>
                   <span className="text-xs font-mono text-muted-foreground">Available to Pick</span>
@@ -436,21 +383,21 @@ export default function DataSynthesisPage() {
             </div>
 
             {/* SECTION 1: RAW DATASETS TEST BENCH */}
-            <div className="rounded-2xl border border-amber-500/20 bg-[#161B22]/50 backdrop-blur-xl p-5 flex flex-col gap-3 shadow-lg">
+            <div className="rounded-2xl border border-white/[0.08] bg-[#0E1117]/85 backdrop-blur-xl p-5 flex flex-col gap-3 shadow-2xl shadow-black/50 ring-1 ring-white/5">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.06] pb-3">
                 <div className="flex items-center gap-2.5">
-                  <div className="p-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400">
+                  <div className="p-1.5 rounded-lg bg-primary/10 border border-primary/20 text-primary">
                     <FlaskConical className="size-4" />
                   </div>
                   <div>
                     <h2 className="text-xs font-semibold text-white tracking-tight flex items-center gap-2">
                       <span>Raw Datasets Test Bench</span>
-                      <span className="px-1.5 py-0.5 rounded text-[10px] font-mono bg-amber-500/10 text-amber-300 border border-amber-500/20">
+                      <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-primary/10 text-primary border border-primary/20 font-medium">
                         {rawFiles.length} Test Files Ready
                       </span>
                     </h2>
                     <p className="text-[11px] text-slate-400 font-sans mt-0.5">
-                      Pick datasets from <code className="text-amber-300/80 font-mono">prototype-datasets-collection/raw</code> to stage them into active storage for swarm testing.
+                      Pick datasets from <code className="text-primary font-mono bg-primary/10 px-1.5 py-0.5 rounded border border-primary/20">prototype-datasets-collection/raw</code> to stage them into active storage for swarm testing.
                     </p>
                   </div>
                 </div>
@@ -458,9 +405,9 @@ export default function DataSynthesisPage() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={loadRawDatasets}
-                    className="px-2.5 py-1 rounded-lg text-xs font-mono text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition-colors flex items-center gap-1.5 cursor-pointer"
+                    className="px-2.5 py-1 rounded-lg text-xs font-mono text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition-colors flex items-center gap-1.5 cursor-pointer"
                   >
-                    <RefreshCw className={`size-3 ${isLoadingRaw ? 'animate-spin' : ''}`} />
+                    <RefreshCw className={`size-3 text-primary ${isLoadingRaw ? 'animate-spin' : ''}`} />
                     <span>Scan Raw</span>
                   </button>
                 </div>
@@ -468,7 +415,7 @@ export default function DataSynthesisPage() {
 
               {isLoadingRaw ? (
                 <div className="py-6 flex items-center justify-center gap-2 text-xs font-mono text-slate-400">
-                  <Loader2 className="size-4 animate-spin text-amber-400" />
+                  <Loader2 className="size-4 animate-spin text-primary" />
                   <span>Scanning raw datasets directory...</span>
                 </div>
               ) : rawFiles.length === 0 ? (
@@ -486,8 +433,8 @@ export default function DataSynthesisPage() {
                         key={raw.id}
                         className={`p-3 rounded-xl border transition-all flex flex-col justify-between gap-2.5 ${
                           isAlreadyStaged
-                            ? 'bg-[#0E1117]/60 border-emerald-500/30'
-                            : 'bg-[#0E1117]/40 border-white/[0.06] hover:border-white/15'
+                            ? 'bg-[#161B22]/70 border-emerald-500/30 shadow-xs'
+                            : 'bg-[#161B22]/40 border-white/[0.08] hover:border-primary/40 hover:bg-[#161B22]/60'
                         }`}
                       >
                         <div className="flex items-start gap-2.5 min-w-0">
@@ -508,8 +455,8 @@ export default function DataSynthesisPage() {
                           {getFormatBadge(raw.type)}
 
                           {isAlreadyStaged ? (
-                            <span className="text-[11px] font-mono text-emerald-400 flex items-center gap-1">
-                              <CheckCircle className="size-3" />
+                            <span className="text-[11px] font-mono text-emerald-400 font-medium flex items-center gap-1">
+                              <CheckCircle2 className="size-3 text-emerald-400" />
                               <span>Staged</span>
                             </span>
                           ) : (
@@ -519,10 +466,10 @@ export default function DataSynthesisPage() {
                               transition={motionSprings.snappy}
                               disabled={isStaging}
                               onClick={() => handleStageRawFile(raw)}
-                              className="px-2.5 py-1 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-mono font-medium flex items-center gap-1.5 transition-all cursor-pointer disabled:opacity-50"
+                              className="px-2.5 py-1 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary border border-primary/25 hover:border-primary/40 text-xs font-mono font-medium flex items-center gap-1.5 transition-all cursor-pointer disabled:opacity-50"
                             >
                               {isStaging ? (
-                                <Loader2 className="size-3 animate-spin" />
+                                <Loader2 className="size-3 animate-spin text-primary" />
                               ) : (
                                 <PlusCircle className="size-3" />
                               )}
@@ -599,7 +546,7 @@ export default function DataSynthesisPage() {
                   ) : (
                     <UploadCloud className="size-3.5" />
                   )}
-                  <span>{isUploading ? 'Ingesting...' : 'Upload Custom File'}</span>
+                  <span>{isUploading ? 'Ingesting...' : 'Add Dataset'}</span>
                 </button>
               </div>
             </div>
@@ -638,7 +585,7 @@ export default function DataSynthesisPage() {
               )}
             </AnimatePresence>
 
-            {/* ACTIVE DATASET REPOSITORY CARDS */}
+            {/* DATASET REPOSITORY CARDS */}
             <div className="flex flex-col gap-3">
               <div className="flex items-center justify-between px-1 text-[11px] font-mono text-muted-foreground uppercase tracking-wider">
                 <span>Active Datasets in Swarm Storage ({filteredFiles.length})</span>

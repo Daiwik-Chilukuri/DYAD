@@ -1,0 +1,11 @@
+{
+  "dataset":"chennai_cmrl_phase1_shapes.csv",
+  "city":"Chennai, Tamil Nadu, India",
+  "pillar":"Pillar 3: Mobility & Congestion",
+  "source_urls":[
+    "https://raw.githubusercontent.com/ungalsoththu/ChennaiGTFS/main/data/cmrl/shapes.txt"
+  ],
+  "geometry_type":"tabular CSV with ordered shape_pt_lat/shape_pt_lon coordinates",
+  "timestamp_utc":"2026-09-20T05:02:18.883387+00:00",
+  "verification":"Raw CMRL GTFS shapes table retained alongside the derived route GeoJSON."
+}

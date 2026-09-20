@@ -1,0 +1,11 @@
+{
+  "dataset":"chennai_gcc_boundary_zones.geojson",
+  "city":"Chennai, Tamil Nadu, India",
+  "pillar":"Pillar 5: Map Canvas Baseline Visualizer",
+  "source_urls":[
+    "https://services2.arcgis.com/I9cUOJUZvdGAJncI/arcgis/rest/services/Chennai_GCC_Boundary/FeatureServer/39/query?where=1%3D1&outFields=*&f=geojson"
+  ],
+  "geometry_type":"Polygon",
+  "timestamp_utc":"2026-09-20T05:02:18.886478+00:00",
+  "verification":"Raw public ArcGIS FeatureServer GeoJSON query retained alongside the baseline-named copy."
+}

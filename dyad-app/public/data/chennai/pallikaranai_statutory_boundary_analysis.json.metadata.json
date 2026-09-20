@@ -1,0 +1,14 @@
+{
+  "dataset":"pallikaranai_statutory_boundary_analysis.json",
+  "city":"Chennai, Tamil Nadu, India",
+  "pillar":"Pillar 4: Ecological Risk & Statutory Waterbody Buffers",
+  "source_urls":[
+    "https://raw.githubusercontent.com/SundareshPrasanna/neer-vazhvu/main/public/data/rich-bodies/pallikaranai-boundary-analysis.json",
+    "https://tnswa.tn.gov.in/ramsar-site-information.php?token=Pallikaranai-Marsh-Reserve-Forest"
+  ],
+  "geometry_type":"JSON regulatory analysis; geometry not embedded",
+  "timestamp_utc":"2026-09-20T05:02:18.869607+00:00",
+  "verification":"Records TNSWA gazetted boundary provenance, Ramsar official area, OSM ecological comparison, and buffer analysis; use alongside the polygon waterbody and CRZ layers.",
+  "strict_conservation_subject":"Pallikaranai Marsh Reserve Forest",
+  "legal_boundary_source":"Tamil Nadu State Wetland Authority"
+}

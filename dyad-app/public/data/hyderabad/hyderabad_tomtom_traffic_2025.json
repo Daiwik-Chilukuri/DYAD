@@ -1,0 +1,26 @@
+{
+  "city": "Hyderabad",
+  "country": "India",
+  "year": 2025,
+  "source": "TomTom Traffic Index",
+  "source_url": "https://www.tomtom.com/traffic-index/city/hyderabad",
+  "metrics": {
+    "average_congestion_percent": 55.5,
+    "average_speed_rush_hour_kmh": 16.1,
+    "average_speed_normal_hours_kmh": 18.4,
+    "average_speed_highways_kmh": 34.1,
+    "average_travel_time_10km": "32 min 37 s",
+    "morning_rush_hour": {
+      "travel_time_10km": "34 min 53 s",
+      "congestion_percent": 66.4,
+      "average_speed_kmh": 17.2
+    },
+    "evening_rush_hour": {
+      "travel_time_10km": "39 min 28 s",
+      "congestion_percent": 85.7,
+      "average_speed_kmh": 15.2
+    },
+    "time_lost_rush_hour": "123 hours"
+  },
+  "extraction_note": "Values transcribed from the rendered Hyderabad 2025 city traffic report. They describe city-wide and rush-hour conditions, not a corridor-specific measurement."
+}

@@ -1,0 +1,19 @@
+{
+  "dataset":"chennai_employment_offices.geojson",
+  "city":"Chennai, Tamil Nadu, India",
+  "pillar":"Pillar 2: Economic & Employment Hubs",
+  "source_urls":[
+    "https://overpass-turbo.eu/",
+    "https://overpass-api.de/api/interpreter?data=%5Bout%3Ajson%5D%5Btimeout%3A120%5D%3B%28node%5B%22office%22%5D%2812.88%2C80.12%2C13.20%2C80.32%29%3Bway%5B%22office%22%5D%2812.88%2C80.12%2C13.20%2C80.32%29%3B%29%3Bout%20center%20tags%3B"
+  ],
+  "geometry_type":"Point",
+  "timestamp_utc":"2026-09-20T05:02:18.860530+00:00",
+  "verification":"Converted 536 Overpass OSM office elements to point features; original office tags are preserved in osm_tags and missing workforce values remain null.",
+  "query_bbox":[
+    12.88,
+    80.12,
+    13.2,
+    80.32
+  ],
+  "workforce_capacity_field":"workforce_capacity"
+}

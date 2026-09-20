@@ -1,0 +1,462 @@
+{
+  "type": "FeatureCollection",
+  "name": "Pune Metro Line 3 PMRDA stations",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Agriculture College",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": null,
+        "osm_type": "node",
+        "osm_id": 7944597695,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8414867,
+          18.533006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Balewadi Phata",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": "2026",
+        "osm_type": "node",
+        "osm_id": 13647113367,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7797665,
+          18.5641859
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Balewadi Stadium",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": "2026",
+        "osm_type": "node",
+        "osm_id": 7944584964,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7615418,
+          18.5797092
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Balewadi Stadium",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": "2026",
+        "osm_type": "way",
+        "osm_id": 1482515767,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7615457,
+          18.579725
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Baner",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": "2026",
+        "osm_type": "node",
+        "osm_id": 13647113365,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7979381,
+          18.5549643
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Baner Gaon",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": "2026",
+        "osm_type": "node",
+        "osm_id": 13647113366,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7905982,
+          18.5591961
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "District Court (Pink Line)",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": "2026",
+        "osm_type": "node",
+        "osm_id": 13570390374,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.856089,
+          18.5283279
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "High Street",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": "2026",
+        "osm_type": "node",
+        "osm_id": 13647113368,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7748382,
+          18.570512
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hinjawadi",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": "2026",
+        "osm_type": "node",
+        "osm_id": 13647113374,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7373573,
+          18.5923946
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "IISER",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": null,
+        "osm_type": "way",
+        "osm_id": 1480945419,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8082355,
+          18.5503069
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jakat Naka",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": "2026",
+        "osm_type": "node",
+        "osm_id": 13647113373,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7463002,
+          18.5909665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Krushi Anusandhan",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": "2026",
+        "osm_type": "node",
+        "osm_id": 13647113364,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.808227,
+          18.5502692
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Laxmi Nagar",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": "2026",
+        "osm_type": "way",
+        "osm_id": 1481769133,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.774849,
+          18.5705115
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "NICMAR",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": "2026",
+        "osm_type": "node",
+        "osm_id": 13647113369,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7660624,
+          18.5750336
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "NICMAR",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": "2026",
+        "osm_type": "way",
+        "osm_id": 1482515762,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7660635,
+          18.5750379
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pall India",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": "2026",
+        "osm_type": "way",
+        "osm_id": 1483339707,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7278114,
+          18.5944961
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RBI",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": null,
+        "osm_type": "node",
+        "osm_id": 7944597700,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8366919,
+          18.5363707
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Savitribal Phule Pune University",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": "2026",
+        "osm_type": "node",
+        "osm_id": 13647113362,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8271729,
+          18.5423466
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Shivaji Chowk",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": "2026",
+        "osm_type": "way",
+        "osm_id": 1482521088,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7373489,
+          18.5923929
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Shivajinagar",
+        "operator": "PMRDA",
+        "network": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "osm_type": "node",
+        "osm_id": 7944584959,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8485711,
+          18.5304747
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Unnamed station",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": "2026",
+        "osm_type": "way",
+        "osm_id": 1482521093,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7462823,
+          18.5909592
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Unnamed station",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": "2026",
+        "osm_type": "way",
+        "osm_id": 1482515772,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.757556,
+          18.5903031
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wakad Chowk",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": "2026",
+        "osm_type": "node",
+        "osm_id": 7944597702,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7575587,
+          18.5902986
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "YASHADA",
+        "operator": "PMRDA",
+        "network": "Pune Metro",
+        "opening_date": "2026",
+        "osm_type": "node",
+        "osm_id": 13647113363,
+        "source": "OpenStreetMap via Overpass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8196654,
+          18.5463251
+        ]
+      }
+    }
+  ]
+}

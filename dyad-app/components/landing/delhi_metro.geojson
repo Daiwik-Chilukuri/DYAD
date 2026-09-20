@@ -1,0 +1,2970 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            77.16267,
+            28.72592
+          ],
+          [
+            77.17046,
+            28.71642
+          ],
+          [
+            77.18053,
+            28.70696
+          ],
+          [
+            77.19363,
+            28.70278
+          ],
+          [
+            77.20722,
+            28.69785
+          ],
+          [
+            77.21483,
+            28.6948
+          ],
+          [
+            77.2214,
+            28.68802
+          ],
+          [
+            77.2241,
+            28.67726
+          ],
+          [
+            77.22817,
+            28.6675
+          ],
+          [
+            77.23014,
+            28.65785
+          ],
+          [
+            77.22637,
+            28.64931
+          ],
+          [
+            77.22144,
+            28.64307
+          ],
+          [
+            77.21826,
+            28.63282
+          ],
+          [
+            77.21389,
+            28.62295
+          ],
+          [
+            77.21191,
+            28.61474
+          ],
+          [
+            77.21198,
+            28.61166
+          ],
+          [
+            77.21088,
+            28.59726
+          ],
+          [
+            77.21209,
+            28.58708
+          ],
+          [
+            77.20935,
+            28.57526
+          ],
+          [
+            77.20771,
+            28.56892
+          ],
+          [
+            77.20682,
+            28.55979
+          ],
+          [
+            77.20667,
+            28.54335
+          ],
+          [
+            77.20565,
+            28.52798
+          ],
+          [
+            77.20138,
+            28.5206
+          ],
+          [
+            77.18648,
+            28.51302
+          ],
+          [
+            77.17484,
+            28.50671
+          ],
+          [
+            77.16153,
+            28.49927
+          ],
+          [
+            77.14922,
+            28.49383
+          ],
+          [
+            77.12583,
+            28.48076
+          ],
+          [
+            77.10232,
+            28.48203
+          ],
+          [
+            77.09235,
+            28.48182
+          ],
+          [
+            77.08006,
+            28.47957
+          ],
+          [
+            77.07175,
+            28.47209
+          ],
+          [
+            77.07268,
+            28.45927
+          ]
+        ]
+      },
+      "properties": {
+        "line_name": "Yellow Line",
+        "colour": "yellow",
+        "hex_color": "#facc15",
+        "stations_count": 34,
+        "operator": "Delhi Metro Rail Corporation (DMRC)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.17046,
+          28.71642
+        ]
+      },
+      "properties": {
+        "station_name": "Adarsh Nagar",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.20771,
+          28.56892
+        ]
+      },
+      "properties": {
+        "station_name": "AIIMS",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.12583,
+          28.48076
+        ]
+      },
+      "properties": {
+        "station_name": "Arjan Garh",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.18053,
+          28.70696
+        ]
+      },
+      "properties": {
+        "station_name": "Azadpur",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.21191,
+          28.61474
+        ]
+      },
+      "properties": {
+        "station_name": "Central Secretariat",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.23014,
+          28.65785
+        ]
+      },
+      "properties": {
+        "station_name": "Chandni Chowk",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.17484,
+          28.50671
+        ]
+      },
+      "properties": {
+        "station_name": "Chhatarpur",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.22637,
+          28.64931
+        ]
+      },
+      "properties": {
+        "station_name": "Chawri Bazar",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2241,
+          28.67726
+        ]
+      },
+      "properties": {
+        "station_name": "Civil Lines",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.14922,
+          28.49383
+        ]
+      },
+      "properties": {
+        "station_name": "Ghitorni",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.20682,
+          28.55979
+        ]
+      },
+      "properties": {
+        "station_name": "Green Park",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.20722,
+          28.69785
+        ]
+      },
+      "properties": {
+        "station_name": "GTB Nagar",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.10232,
+          28.48203
+        ]
+      },
+      "properties": {
+        "station_name": "Guru Dronacharya",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.20667,
+          28.54335
+        ]
+      },
+      "properties": {
+        "station_name": "Hauz Khas",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.07268,
+          28.45927
+        ]
+      },
+      "properties": {
+        "station_name": "HUDA City Centre",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.07175,
+          28.47209
+        ]
+      },
+      "properties": {
+        "station_name": "IFFCO Chowk",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.20935,
+          28.57526
+        ]
+      },
+      "properties": {
+        "station_name": "INA",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.16267,
+          28.72592
+        ]
+      },
+      "properties": {
+        "station_name": "Jahangirpuri",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.21209,
+          28.58708
+        ]
+      },
+      "properties": {
+        "station_name": "Jor Bagh",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.22817,
+          28.6675
+        ]
+      },
+      "properties": {
+        "station_name": "Kashmere Gate",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Elevated(RL), Underground(YL)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.20565,
+          28.52798
+        ]
+      },
+      "properties": {
+        "station_name": "Malviya Nagar",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.08006,
+          28.47957
+        ]
+      },
+      "properties": {
+        "station_name": "MG Road",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.19363,
+          28.70278
+        ]
+      },
+      "properties": {
+        "station_name": "Model Town",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.22144,
+          28.64307
+        ]
+      },
+      "properties": {
+        "station_name": "New Delhi",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.21389,
+          28.62295
+        ]
+      },
+      "properties": {
+        "station_name": "Patel Chowk",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.18648,
+          28.51302
+        ]
+      },
+      "properties": {
+        "station_name": "Qutab Minar",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.21088,
+          28.59726
+        ]
+      },
+      "properties": {
+        "station_name": "Race Course",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.21826,
+          28.63282
+        ]
+      },
+      "properties": {
+        "station_name": "Rajiv Chowk",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.20138,
+          28.5206
+        ]
+      },
+      "properties": {
+        "station_name": "Saket",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.09235,
+          28.48182
+        ]
+      },
+      "properties": {
+        "station_name": "Sikandarpur",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.16153,
+          28.49927
+        ]
+      },
+      "properties": {
+        "station_name": "Sultanpur",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.21198,
+          28.61166
+        ]
+      },
+      "properties": {
+        "station_name": "Udyog Bhawan",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2214,
+          28.68802
+        ]
+      },
+      "properties": {
+        "station_name": "Vidhan Sabha",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.21483,
+          28.6948
+        ]
+      },
+      "properties": {
+        "station_name": "Vishwa Vidyalaya",
+        "line": "Yellow Line",
+        "colour": "yellow",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            77.05828,
+            28.55226
+          ],
+          [
+            77.06706,
+            28.56583
+          ],
+          [
+            77.06454,
+            28.57487
+          ],
+          [
+            77.05682,
+            28.58068
+          ],
+          [
+            77.04929,
+            28.58657
+          ],
+          [
+            77.04051,
+            28.59232
+          ],
+          [
+            77.03326,
+            28.59722
+          ],
+          [
+            77.02588,
+            28.60223
+          ],
+          [
+            77.02197,
+            28.61564
+          ],
+          [
+            77.03326,
+            28.61932
+          ],
+          [
+            77.04514,
+            28.62025
+          ],
+          [
+            77.05585,
+            28.62177
+          ],
+          [
+            77.0653,
+            28.62481
+          ],
+          [
+            77.07767,
+            28.62943
+          ],
+          [
+            77.08669,
+            28.63305
+          ],
+          [
+            77.09648,
+            28.63657
+          ],
+          [
+            77.10495,
+            28.64039
+          ],
+          [
+            77.11284,
+            28.64379
+          ],
+          [
+            77.1227,
+            28.64902
+          ],
+          [
+            77.13164,
+            28.65274
+          ],
+          [
+            77.14248,
+            28.65784
+          ],
+          [
+            77.15057,
+            28.65575
+          ],
+          [
+            77.15824,
+            28.6516
+          ],
+          [
+            77.16929,
+            28.64498
+          ],
+          [
+            77.17815,
+            28.6425
+          ],
+          [
+            77.18855,
+            28.644
+          ],
+          [
+            77.19988,
+            28.64427
+          ],
+          [
+            77.2084,
+            28.63923
+          ],
+          [
+            77.21826,
+            28.63282
+          ],
+          [
+            77.22436,
+            28.63003
+          ],
+          [
+            77.2341,
+            28.62588
+          ],
+          [
+            77.2425,
+            28.62342
+          ],
+          [
+            77.24993,
+            28.62051
+          ],
+          [
+            77.26792,
+            28.62331
+          ],
+          [
+            77.27869,
+            28.61806
+          ],
+          [
+            77.28925,
+            28.60442
+          ],
+          [
+            77.29455,
+            28.59428
+          ],
+          [
+            77.30204,
+            28.58916
+          ],
+          [
+            77.31139,
+            28.58512
+          ],
+          [
+            77.31757,
+            28.57819
+          ],
+          [
+            77.32612,
+            28.57081
+          ],
+          [
+            77.3342,
+            28.56409
+          ],
+          [
+            77.34598,
+            28.56714
+          ],
+          [
+            77.35608,
+            28.57466
+          ]
+        ]
+      },
+      "properties": {
+        "line_name": "Blue Line",
+        "colour": "blue",
+        "hex_color": "#0284c7",
+        "stations_count": 44,
+        "operator": "Delhi Metro Rail Corporation (DMRC)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.27869,
+          28.61806
+        ]
+      },
+      "properties": {
+        "station_name": "Akshardham",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.22436,
+          28.63003
+        ]
+      },
+      "properties": {
+        "station_name": "Barakhambha Road",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3342,
+          28.56409
+        ]
+      },
+      "properties": {
+        "station_name": "Botanical Garden",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.02197,
+          28.61564
+        ]
+      },
+      "properties": {
+        "station_name": "Dwarka",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.03326,
+          28.61932
+        ]
+      },
+      "properties": {
+        "station_name": "Dwarka Morh",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.05682,
+          28.58068
+        ]
+      },
+      "properties": {
+        "station_name": "Dwarka Sector 10",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.04929,
+          28.58657
+        ]
+      },
+      "properties": {
+        "station_name": "Dwarka Sector 11",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.04051,
+          28.59232
+        ]
+      },
+      "properties": {
+        "station_name": "Dwarka Sector 12",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.03326,
+          28.59722
+        ]
+      },
+      "properties": {
+        "station_name": "Dwarka Sector 13",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.02588,
+          28.60223
+        ]
+      },
+      "properties": {
+        "station_name": "Dwarka Sector 14",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.05828,
+          28.55226
+        ]
+      },
+      "properties": {
+        "station_name": "Dwarka Sector 21",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.06706,
+          28.56583
+        ]
+      },
+      "properties": {
+        "station_name": "Dwarka Sector 8",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.06454,
+          28.57487
+        ]
+      },
+      "properties": {
+        "station_name": "Dwarka Sector 9",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.24993,
+          28.62051
+        ]
+      },
+      "properties": {
+        "station_name": "Indraprastha",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.08669,
+          28.63305
+        ]
+      },
+      "properties": {
+        "station_name": "Janakpuri East",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.07767,
+          28.62943
+        ]
+      },
+      "properties": {
+        "station_name": "Janakpuri West",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.19988,
+          28.64427
+        ]
+      },
+      "properties": {
+        "station_name": "Jhandewalan",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.18855,
+          28.644
+        ]
+      },
+      "properties": {
+        "station_name": "Karol Bagh",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.15057,
+          28.65575
+        ]
+      },
+      "properties": {
+        "station_name": "Kirti Nagar",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2341,
+          28.62588
+        ]
+      },
+      "properties": {
+        "station_name": "Mandi House",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.28925,
+          28.60442
+        ]
+      },
+      "properties": {
+        "station_name": "Mayur Vihar -I",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.29455,
+          28.59428
+        ]
+      },
+      "properties": {
+        "station_name": "Mayur Vihar Extension",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.14248,
+          28.65784
+        ]
+      },
+      "properties": {
+        "station_name": "Moti Nagar",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.04514,
+          28.62025
+        ]
+      },
+      "properties": {
+        "station_name": "Nawada",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.30204,
+          28.58916
+        ]
+      },
+      "properties": {
+        "station_name": "New Ashok Nagar",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.35608,
+          28.57466
+        ]
+      },
+      "properties": {
+        "station_name": "Noida City Centre",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.34598,
+          28.56714
+        ]
+      },
+      "properties": {
+        "station_name": "Noida Golf Course",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.31139,
+          28.58512
+        ]
+      },
+      "properties": {
+        "station_name": "Noida Sector 15",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.31757,
+          28.57819
+        ]
+      },
+      "properties": {
+        "station_name": "Noida Sector 16",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.32612,
+          28.57081
+        ]
+      },
+      "properties": {
+        "station_name": "Noida Sector 18",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.16929,
+          28.64498
+        ]
+      },
+      "properties": {
+        "station_name": "Patel Nagar",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2425,
+          28.62342
+        ]
+      },
+      "properties": {
+        "station_name": "Pragati Maidan",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.17815,
+          28.6425
+        ]
+      },
+      "properties": {
+        "station_name": "Rajendra Place",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.21826,
+          28.63282
+        ]
+      },
+      "properties": {
+        "station_name": "Rajiv Chowk",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1227,
+          28.64902
+        ]
+      },
+      "properties": {
+        "station_name": "Rajouri Garden",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2084,
+          28.63923
+        ]
+      },
+      "properties": {
+        "station_name": "Ramakrishna Ashram Marg",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.13164,
+          28.65274
+        ]
+      },
+      "properties": {
+        "station_name": "Ramesh Nagar",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.15824,
+          28.6516
+        ]
+      },
+      "properties": {
+        "station_name": "Shadipur",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.10495,
+          28.64039
+        ]
+      },
+      "properties": {
+        "station_name": "Subhash Nagar",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.11284,
+          28.64379
+        ]
+      },
+      "properties": {
+        "station_name": "Tagore Garden",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.09648,
+          28.63657
+        ]
+      },
+      "properties": {
+        "station_name": "Tilak Nagar",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0653,
+          28.62481
+        ]
+      },
+      "properties": {
+        "station_name": "Uttam Nagar East",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.05585,
+          28.62177
+        ]
+      },
+      "properties": {
+        "station_name": "Uttam Nagar West",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.26792,
+          28.62331
+        ]
+      },
+      "properties": {
+        "station_name": "Yamuna Bank",
+        "line": "Blue Line",
+        "colour": "blue",
+        "layout": "At-Grade"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            77.27749,
+            28.63064
+          ],
+          [
+            77.28683,
+            28.63663
+          ],
+          [
+            77.29543,
+            28.64171
+          ],
+          [
+            77.30558,
+            28.64849
+          ],
+          [
+            77.31603,
+            28.64695
+          ],
+          [
+            77.32432,
+            28.64544
+          ],
+          [
+            77.33974,
+            28.64997
+          ]
+        ]
+      },
+      "properties": {
+        "line_name": "Blue Line branch",
+        "colour": "blue",
+        "hex_color": "#38bdf8",
+        "stations_count": 7,
+        "operator": "Delhi Metro Rail Corporation (DMRC)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.31603,
+          28.64695
+        ]
+      },
+      "properties": {
+        "station_name": "Anand Vihar",
+        "line": "Blue Line branch",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.30558,
+          28.64849
+        ]
+      },
+      "properties": {
+        "station_name": "Karkarduma",
+        "line": "Blue Line branch",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.32432,
+          28.64544
+        ]
+      },
+      "properties": {
+        "station_name": "Kaushambi",
+        "line": "Blue Line branch",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.27749,
+          28.63064
+        ]
+      },
+      "properties": {
+        "station_name": "Laxmi Nagar",
+        "line": "Blue Line branch",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.28683,
+          28.63663
+        ]
+      },
+      "properties": {
+        "station_name": "Nirman Vihar",
+        "line": "Blue Line branch",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.29543,
+          28.64171
+        ]
+      },
+      "properties": {
+        "station_name": "Preet Vihar",
+        "line": "Blue Line branch",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.33974,
+          28.64997
+        ]
+      },
+      "properties": {
+        "station_name": "Vaishali",
+        "line": "Blue Line branch",
+        "colour": "blue",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            77.03133,
+            28.68321
+          ],
+          [
+            77.04381,
+            28.68221
+          ],
+          [
+            77.05596,
+            28.68208
+          ],
+          [
+            77.06471,
+            28.68231
+          ],
+          [
+            77.07385,
+            28.6818
+          ],
+          [
+            77.08077,
+            28.6809
+          ],
+          [
+            77.09261,
+            28.67959
+          ],
+          [
+            77.10227,
+            28.67855
+          ],
+          [
+            77.11228,
+            28.6773
+          ],
+          [
+            77.11965,
+            28.67734
+          ],
+          [
+            77.13056,
+            28.6749
+          ],
+          [
+            77.14614,
+            28.67289
+          ],
+          [
+            77.15057,
+            28.65575
+          ],
+          [
+            77.15527,
+            28.67153
+          ],
+          [
+            77.16994,
+            28.67319
+          ]
+        ]
+      },
+      "properties": {
+        "line_name": "Green Line",
+        "colour": "green",
+        "hex_color": "#22c55e",
+        "stations_count": 15,
+        "operator": "Delhi Metro Rail Corporation (DMRC)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.15527,
+          28.67153
+        ]
+      },
+      "properties": {
+        "station_name": "Ashok Park Main",
+        "line": "Green Line",
+        "colour": "green",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.16994,
+          28.67319
+        ]
+      },
+      "properties": {
+        "station_name": "Inderlok",
+        "line": "Green Line",
+        "colour": "green",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.15057,
+          28.65575
+        ]
+      },
+      "properties": {
+        "station_name": "Kirti Nagar",
+        "line": "Green Line",
+        "colour": "green",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.11965,
+          28.67734
+        ]
+      },
+      "properties": {
+        "station_name": "Madipur",
+        "line": "Green Line",
+        "colour": "green",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.03133,
+          28.68321
+        ]
+      },
+      "properties": {
+        "station_name": "Mundka",
+        "line": "Green Line",
+        "colour": "green",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.06471,
+          28.68231
+        ]
+      },
+      "properties": {
+        "station_name": "Nangloi",
+        "line": "Green Line",
+        "colour": "green",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.05596,
+          28.68208
+        ]
+      },
+      "properties": {
+        "station_name": "Nangloi Railway station",
+        "line": "Green Line",
+        "colour": "green",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.11228,
+          28.6773
+        ]
+      },
+      "properties": {
+        "station_name": "Paschim Vihar East",
+        "line": "Green Line",
+        "colour": "green",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.10227,
+          28.67855
+        ]
+      },
+      "properties": {
+        "station_name": "Paschim Vihar West",
+        "line": "Green Line",
+        "colour": "green",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.09261,
+          28.67959
+        ]
+      },
+      "properties": {
+        "station_name": "Peera Garhi",
+        "line": "Green Line",
+        "colour": "green",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.14614,
+          28.67289
+        ]
+      },
+      "properties": {
+        "station_name": "Punjabi Bagh East",
+        "line": "Green Line",
+        "colour": "green",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.04381,
+          28.68221
+        ]
+      },
+      "properties": {
+        "station_name": "Rajdhani Park",
+        "line": "Green Line",
+        "colour": "green",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.13056,
+          28.6749
+        ]
+      },
+      "properties": {
+        "station_name": "Shivaji Park",
+        "line": "Green Line",
+        "colour": "green",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.07385,
+          28.6818
+        ]
+      },
+      "properties": {
+        "station_name": "Surajmal Stadium",
+        "line": "Green Line",
+        "colour": "green",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.08077,
+          28.6809
+        ]
+      },
+      "properties": {
+        "station_name": "Udyog Nagar",
+        "line": "Green Line",
+        "colour": "green",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            77.21191,
+            28.61474
+          ],
+          [
+            77.22829,
+            28.60276
+          ],
+          [
+            77.23326,
+            28.5904
+          ],
+          [
+            77.23766,
+            28.5843
+          ],
+          [
+            77.23653,
+            28.57079
+          ],
+          [
+            77.23423,
+            28.56417
+          ],
+          [
+            77.24205,
+            28.55527
+          ],
+          [
+            77.25154,
+            28.55148
+          ],
+          [
+            77.25835,
+            28.55007
+          ],
+          [
+            77.26401,
+            28.54451
+          ],
+          [
+            77.27504,
+            28.54292
+          ],
+          [
+            77.28319,
+            28.53824
+          ],
+          [
+            77.28826,
+            28.52878
+          ],
+          [
+            77.29388,
+            28.51938
+          ],
+          [
+            77.2993,
+            28.50254
+          ],
+          [
+            77.30307,
+            28.49334
+          ]
+        ]
+      },
+      "properties": {
+        "line_name": "Violet Line",
+        "colour": "violet",
+        "hex_color": "#9333ea",
+        "stations_count": 16,
+        "operator": "Delhi Metro Rail Corporation (DMRC)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.30307,
+          28.49334
+        ]
+      },
+      "properties": {
+        "station_name": "Badarpur",
+        "line": "Violet Line",
+        "colour": "violet",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.21191,
+          28.61474
+        ]
+      },
+      "properties": {
+        "station_name": "Central Secretariat",
+        "line": "Violet Line",
+        "colour": "violet",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.26401,
+          28.54451
+        ]
+      },
+      "properties": {
+        "station_name": "Govind Puri",
+        "line": "Violet Line",
+        "colour": "violet",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.23766,
+          28.5843
+        ]
+      },
+      "properties": {
+        "station_name": "Jangpura",
+        "line": "Violet Line",
+        "colour": "violet",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.28319,
+          28.53824
+        ]
+      },
+      "properties": {
+        "station_name": "Jasola Apollo",
+        "line": "Violet Line",
+        "colour": "violet",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.23326,
+          28.5904
+        ]
+      },
+      "properties": {
+        "station_name": "Jawaharlal Nehru Stadium",
+        "line": "Violet Line",
+        "colour": "violet",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.24205,
+          28.55527
+        ]
+      },
+      "properties": {
+        "station_name": "Kailash Colony",
+        "line": "Violet Line",
+        "colour": "violet",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.25835,
+          28.55007
+        ]
+      },
+      "properties": {
+        "station_name": "Kalkaji Mandir",
+        "line": "Violet Line",
+        "colour": "violet",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.22829,
+          28.60276
+        ]
+      },
+      "properties": {
+        "station_name": "Khan Market",
+        "line": "Violet Line",
+        "colour": "violet",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.23653,
+          28.57079
+        ]
+      },
+      "properties": {
+        "station_name": "Lajpat Nagar",
+        "line": "Violet Line",
+        "colour": "violet",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.29388,
+          28.51938
+        ]
+      },
+      "properties": {
+        "station_name": "Mohan Estate",
+        "line": "Violet Line",
+        "colour": "violet",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.23423,
+          28.56417
+        ]
+      },
+      "properties": {
+        "station_name": "Moolchand",
+        "line": "Violet Line",
+        "colour": "violet",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.25154,
+          28.55148
+        ]
+      },
+      "properties": {
+        "station_name": "Nehru Place",
+        "line": "Violet Line",
+        "colour": "violet",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.27504,
+          28.54292
+        ]
+      },
+      "properties": {
+        "station_name": "Okhla",
+        "line": "Violet Line",
+        "colour": "violet",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.28826,
+          28.52878
+        ]
+      },
+      "properties": {
+        "station_name": "Sarita Vihar",
+        "line": "Violet Line",
+        "colour": "violet",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2993,
+          28.50254
+        ]
+      },
+      "properties": {
+        "station_name": "Tughlakabad",
+        "line": "Violet Line",
+        "colour": "violet",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            77.22144,
+            28.64307
+          ],
+          [
+            77.2119,
+            28.62901
+          ],
+          [
+            77.16155,
+            28.59178
+          ],
+          [
+            77.12092,
+            28.54881
+          ],
+          [
+            77.08669,
+            28.55693
+          ],
+          [
+            77.05828,
+            28.55226
+          ]
+        ]
+      },
+      "properties": {
+        "line_name": "Airport Express",
+        "colour": "orange",
+        "hex_color": "#f97316",
+        "stations_count": 6,
+        "operator": "Delhi Metro Rail Corporation (DMRC)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.12092,
+          28.54881
+        ]
+      },
+      "properties": {
+        "station_name": "Delhi Aerocity",
+        "line": "Airport Express",
+        "colour": "orange",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.16155,
+          28.59178
+        ]
+      },
+      "properties": {
+        "station_name": "Dhaula Kuan",
+        "line": "Airport Express",
+        "colour": "orange",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.05828,
+          28.55226
+        ]
+      },
+      "properties": {
+        "station_name": "Dwarka Sector 21",
+        "line": "Airport Express",
+        "colour": "orange",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.08669,
+          28.55693
+        ]
+      },
+      "properties": {
+        "station_name": "Indira Gandhi International Airport",
+        "line": "Airport Express",
+        "colour": "orange",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.22144,
+          28.64307
+        ]
+      },
+      "properties": {
+        "station_name": "New Delhi",
+        "line": "Airport Express",
+        "colour": "orange",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2119,
+          28.62901
+        ]
+      },
+      "properties": {
+        "station_name": "Shivaji Stadium",
+        "line": "Airport Express",
+        "colour": "orange",
+        "layout": "Underground"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            77.10713,
+            28.72072
+          ],
+          [
+            77.11467,
+            28.71483
+          ],
+          [
+            77.12591,
+            28.7076
+          ],
+          [
+            77.13223,
+            28.70317
+          ],
+          [
+            77.14024,
+            28.6981
+          ],
+          [
+            77.15226,
+            28.69591
+          ],
+          [
+            77.1616,
+            28.68894
+          ],
+          [
+            77.16459,
+            28.68254
+          ],
+          [
+            77.16994,
+            28.67319
+          ],
+          [
+            77.18169,
+            28.66999
+          ],
+          [
+            77.19882,
+            28.66662
+          ],
+          [
+            77.20727,
+            28.66636
+          ],
+          [
+            77.21653,
+            28.66711
+          ],
+          [
+            77.22817,
+            28.6675
+          ],
+          [
+            77.24994,
+            28.668
+          ],
+          [
+            77.26678,
+            28.66989
+          ],
+          [
+            77.27756,
+            28.6718
+          ],
+          [
+            77.28962,
+            28.67345
+          ],
+          [
+            77.30095,
+            28.67544
+          ],
+          [
+            77.31239,
+            28.67579
+          ],
+          [
+            77.32142,
+            28.67592
+          ]
+        ]
+      },
+      "properties": {
+        "line_name": "Red Line",
+        "colour": "red",
+        "hex_color": "#ef4444",
+        "stations_count": 21,
+        "operator": "Delhi Metro Rail Corporation (DMRC)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.32142,
+          28.67592
+        ]
+      },
+      "properties": {
+        "station_name": "Dilshad Garden",
+        "line": "Red Line",
+        "colour": "red",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.16994,
+          28.67319
+        ]
+      },
+      "properties": {
+        "station_name": "Inderlok",
+        "line": "Red Line",
+        "colour": "red",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.31239,
+          28.67579
+        ]
+      },
+      "properties": {
+        "station_name": "Jhilmil",
+        "line": "Red Line",
+        "colour": "red",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.16459,
+          28.68254
+        ]
+      },
+      "properties": {
+        "station_name": "Kanhiya Nagar",
+        "line": "Red Line",
+        "colour": "red",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.22817,
+          28.6675
+        ]
+      },
+      "properties": {
+        "station_name": "Kashmere Gate",
+        "line": "Red Line",
+        "colour": "red",
+        "layout": "Elevated(RL), Underground(YL)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1616,
+          28.68894
+        ]
+      },
+      "properties": {
+        "station_name": "Keshav Puram",
+        "line": "Red Line",
+        "colour": "red",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.14024,
+          28.6981
+        ]
+      },
+      "properties": {
+        "station_name": "Kohat Enclave",
+        "line": "Red Line",
+        "colour": "red",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.30095,
+          28.67544
+        ]
+      },
+      "properties": {
+        "station_name": "Mansarovar Park",
+        "line": "Red Line",
+        "colour": "red",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.15226,
+          28.69591
+        ]
+      },
+      "properties": {
+        "station_name": "Netaji Subhash Place",
+        "line": "Red Line",
+        "colour": "red",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.13223,
+          28.70317
+        ]
+      },
+      "properties": {
+        "station_name": "Pitam Pura",
+        "line": "Red Line",
+        "colour": "red",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.19882,
+          28.66662
+        ]
+      },
+      "properties": {
+        "station_name": "Pratap Nagar",
+        "line": "Red Line",
+        "colour": "red",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.20727,
+          28.66636
+        ]
+      },
+      "properties": {
+        "station_name": "Pul Bangash",
+        "line": "Red Line",
+        "colour": "red",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.10713,
+          28.72072
+        ]
+      },
+      "properties": {
+        "station_name": "Rithala",
+        "line": "Red Line",
+        "colour": "red",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.12591,
+          28.7076
+        ]
+      },
+      "properties": {
+        "station_name": "Rohini East",
+        "line": "Red Line",
+        "colour": "red",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.11467,
+          28.71483
+        ]
+      },
+      "properties": {
+        "station_name": "Rohini West",
+        "line": "Red Line",
+        "colour": "red",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.26678,
+          28.66989
+        ]
+      },
+      "properties": {
+        "station_name": "Seelampur",
+        "line": "Red Line",
+        "colour": "red",
+        "layout": "At Grade"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.28962,
+          28.67345
+        ]
+      },
+      "properties": {
+        "station_name": "Shahdara",
+        "line": "Red Line",
+        "colour": "red",
+        "layout": "At Grade"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.18169,
+          28.66999
+        ]
+      },
+      "properties": {
+        "station_name": "Shastri Nagar",
+        "line": "Red Line",
+        "colour": "red",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.24994,
+          28.668
+        ]
+      },
+      "properties": {
+        "station_name": "Shastri Park",
+        "line": "Red Line",
+        "colour": "red",
+        "layout": "At Grade"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.21653,
+          28.66711
+        ]
+      },
+      "properties": {
+        "station_name": "Tis Hazari",
+        "line": "Red Line",
+        "colour": "red",
+        "layout": "Elevated"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.27756,
+          28.6718
+        ]
+      },
+      "properties": {
+        "station_name": "Welcome",
+        "line": "Red Line",
+        "colour": "red",
+        "layout": "At Grade"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1953 @@
+{
+  "query": "[out:json][timeout:60];nwr[\"operator\"=\"PMRDA\"](18.42,73.72,18.66,73.98);out center tags;",
+  "elements": [
+    {
+      "type": "node",
+      "id": 5600783881,
+      "lat": 18.592168,
+      "lon": 73.7377152,
+      "tags": {
+        "construction": "yes",
+        "layer": "3",
+        "network": "Pune Metro Pink line",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "stop_position",
+        "railway": "stop",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7609970260,
+      "lat": 18.5899376,
+      "lon": 73.7577289,
+      "tags": {
+        "construction": "yes",
+        "layer": "3",
+        "network": "Pune Metro Pink Line",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "stop_position",
+        "railway": "stop",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7944584959,
+      "lat": 18.5304747,
+      "lon": 73.8485711,
+      "tags": {
+        "construction": "station",
+        "name": "Shivajinagar",
+        "network": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7944584964,
+      "lat": 18.5797092,
+      "lon": 73.7615418,
+      "tags": {
+        "construction": "station",
+        "layer": "3",
+        "name": "Balewadi Stadium",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7944597695,
+      "lat": 18.533006,
+      "lon": 73.8414867,
+      "tags": {
+        "construction": "station",
+        "name": "Agriculture College",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7944597700,
+      "lat": 18.5363707,
+      "lon": 73.8366919,
+      "tags": {
+        "construction": "station",
+        "construction:railway": "station",
+        "name": "RBI",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7944597702,
+      "lat": 18.5902986,
+      "lon": 73.7575587,
+      "tags": {
+        "construction": "subway",
+        "name": "Wakad Chowk",
+        "name:en": "Wakad Chowk metro Station",
+        "name:mr": "वाकड चौक मेट्रो स्थानक",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10290675315,
+      "lat": 18.575083,
+      "lon": 73.7665033,
+      "tags": {
+        "construction": "yes",
+        "layer": "3",
+        "network": "Pune Metro Pink Line",
+        "operator": "PMRDA",
+        "public_transport": "stop_position",
+        "railway": "stop",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13142480942,
+      "lat": 18.5793346,
+      "lon": 73.7617159,
+      "tags": {
+        "construction": "yes",
+        "layer": "3",
+        "network": "Pune Metro Pink Line",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "stop_position",
+        "railway": "stop",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13570390363,
+      "lat": 18.5282969,
+      "lon": 73.8564202,
+      "tags": {
+        "construction": "yes",
+        "construction:railway": "stop",
+        "name": "District Court (Pink Line)",
+        "network": "Pune Metro Line 3",
+        "operator": "PMRDA",
+        "public_transport": "stop_position",
+        "railway": "stop",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13570390374,
+      "lat": 18.5283279,
+      "lon": 73.856089,
+      "tags": {
+        "construction:railway": "station",
+        "name": "District Court (Pink Line)",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13577039160,
+      "lat": 18.5284936,
+      "lon": 73.855356,
+      "tags": {
+        "construction": "yes",
+        "construction:railway": "stop",
+        "name": "District Court (Pink Line)",
+        "network": "Pune Metro Line 3",
+        "operator": "PMRDA",
+        "public_transport": "stop_position",
+        "railway": "stop",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13595321503,
+      "lat": 18.5749988,
+      "lon": 73.7656179,
+      "tags": {
+        "construction": "yes",
+        "layer": "3",
+        "network": "Pune Metro Pink Line",
+        "operator": "PMRDA",
+        "public_transport": "stop_position",
+        "railway": "stop",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13595321529,
+      "lat": 18.5801144,
+      "lon": 73.7613751,
+      "tags": {
+        "construction": "yes",
+        "layer": "3",
+        "network": "Pune Metro Pink Line",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "stop_position",
+        "railway": "stop",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13595321555,
+      "lat": 18.5907562,
+      "lon": 73.7573631,
+      "tags": {
+        "construction": "yes",
+        "layer": "3",
+        "network": "Pune Metro Pink Line",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "stop_position",
+        "railway": "stop",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13595366534,
+      "lat": 18.5926843,
+      "lon": 73.7369379,
+      "tags": {
+        "construction": "yes",
+        "layer": "3",
+        "network": "Pune Metro Pink line",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "stop_position",
+        "railway": "stop",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13595366541,
+      "lat": 18.5910082,
+      "lon": 73.7458375,
+      "tags": {
+        "construction": "yes",
+        "layer": "3",
+        "network": "Pune Metro Pink Line",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "stop_position",
+        "railway": "stop",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13595366544,
+      "lat": 18.5909112,
+      "lon": 73.7467707,
+      "tags": {
+        "construction": "yes",
+        "layer": "3",
+        "network": "Pune Metro Pink Line",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "stop_position",
+        "railway": "stop",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13647113362,
+      "lat": 18.5423466,
+      "lon": 73.8271729,
+      "tags": {
+        "construction": "yes",
+        "layer": "3",
+        "name": "Savitribal Phule Pune University",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13647113363,
+      "lat": 18.5463251,
+      "lon": 73.8196654,
+      "tags": {
+        "construction": "yes",
+        "layer": "3",
+        "name": "YASHADA",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13647113364,
+      "lat": 18.5502692,
+      "lon": 73.808227,
+      "tags": {
+        "construction": "yes",
+        "layer": "3",
+        "name": "Krushi Anusandhan",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13647113365,
+      "lat": 18.5549643,
+      "lon": 73.7979381,
+      "tags": {
+        "construction": "yes",
+        "layer": "3",
+        "name": "Baner",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13647113366,
+      "lat": 18.5591961,
+      "lon": 73.7905982,
+      "tags": {
+        "construction": "yes",
+        "layer": "3",
+        "name": "Baner Gaon",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13647113367,
+      "lat": 18.5641859,
+      "lon": 73.7797665,
+      "tags": {
+        "construction": "yes",
+        "layer": "3",
+        "name": "Balewadi Phata",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13647113368,
+      "lat": 18.570512,
+      "lon": 73.7748382,
+      "tags": {
+        "construction": "yes",
+        "layer": "3",
+        "name": "High Street",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13647113369,
+      "lat": 18.5750336,
+      "lon": 73.7660624,
+      "tags": {
+        "construction": "yes",
+        "layer": "3",
+        "name": "NICMAR",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13647113373,
+      "lat": 18.5909665,
+      "lon": 73.7463002,
+      "tags": {
+        "construction": "yes",
+        "layer": "3",
+        "name": "Jakat Naka",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13647113374,
+      "lat": 18.5923946,
+      "lon": 73.7373573,
+      "tags": {
+        "layer": "3",
+        "name": "Hinjawadi",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1479334635,
+      "center": {
+        "lat": 18.529401,
+        "lon": 73.8522466
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "subway": "yes",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1479334636,
+      "center": {
+        "lat": 18.528188,
+        "lon": 73.8570907
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "service": "crossover",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1479334637,
+      "center": {
+        "lat": 18.5287572,
+        "lon": 73.8544657
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "service": "crossover",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1480317360,
+      "center": {
+        "lat": 18.5346423,
+        "lon": 73.8390794
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "subway": "yes",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1480317361,
+      "center": {
+        "lat": 18.5329944,
+        "lon": 73.8414695
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "subway": "yes",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1480317363,
+      "center": {
+        "lat": 18.5316064,
+        "lon": 73.8450334
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "subway": "yes",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1480317364,
+      "center": {
+        "lat": 18.5304151,
+        "lon": 73.8486967
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "subway": "yes",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1480317368,
+      "center": {
+        "lat": 18.5363261,
+        "lon": 73.8367183
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "subway": "yes",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1480317369,
+      "center": {
+        "lat": 18.5394661,
+        "lon": 73.8319886
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "subway": "yes",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1480317375,
+      "center": {
+        "lat": 18.528169,
+        "lon": 73.8579286
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "subway": "yes",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1480317376,
+      "center": {
+        "lat": 18.5283818,
+        "lon": 73.8559072
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "subway": "yes",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1480738528,
+      "center": {
+        "lat": 18.5442419,
+        "lon": 73.8234438
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "subway": "yes",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1480738531,
+      "center": {
+        "lat": 18.5423238,
+        "lon": 73.8271722
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1480945411,
+      "center": {
+        "lat": 18.5483612,
+        "lon": 73.8139645
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1480945413,
+      "center": {
+        "lat": 18.5463507,
+        "lon": 73.8197018
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction": "subway",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Shivajinagar-Hinjawadi Phase 3)",
+        "name:mr": "पुणे मेट्रो मार्गिका ३ शिवाजीनगर हिंजवडी",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750",
+        "wikidata": "Q3595697",
+        "wikipedia": "en:Pune Metro"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1480945414,
+      "center": {
+        "lat": 18.5462986,
+        "lon": 73.8196786
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1480945417,
+      "center": {
+        "lat": 18.5503244,
+        "lon": 73.808239
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction": "subway",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Shivajinagar-Hinjawadi Phase 3)",
+        "name:mr": "पुणे मेट्रो मार्गिका ३ शिवाजीनगर हिंजवडी",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750",
+        "wikidata": "Q3595697",
+        "wikipedia": "en:Pune Metro"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1480945418,
+      "center": {
+        "lat": 18.5527145,
+        "lon": 73.8030929
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "subway": "yes",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1480945419,
+      "center": {
+        "lat": 18.5503069,
+        "lon": 73.8082355
+      },
+      "tags": {
+        "building": "yes",
+        "construction": "yes",
+        "construction:railway": "station",
+        "layer": "3",
+        "name": "IISER",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1480945420,
+      "center": {
+        "lat": 18.5502869,
+        "lon": 73.8082317
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1481226988,
+      "center": {
+        "lat": 18.5569221,
+        "lon": 73.7942613
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1481226990,
+      "center": {
+        "lat": 18.5549882,
+        "lon": 73.7979449
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction": "subway",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Shivajinagar-Hinjawadi Phase 3)",
+        "name:mr": "पुणे मेट्रो मार्गिका ३ शिवाजीनगर हिंजवडी",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750",
+        "wikidata": "Q3595697",
+        "wikipedia": "en:Pune Metro"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1481226991,
+      "center": {
+        "lat": 18.5549381,
+        "lon": 73.7979471
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1481571372,
+      "center": {
+        "lat": 18.5591816,
+        "lon": 73.7905825
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction": "subway",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1481571375,
+      "center": {
+        "lat": 18.5617797,
+        "lon": 73.7851895
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1481571377,
+      "center": {
+        "lat": 18.5604831,
+        "lon": 73.7883736
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "service": "crossover"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1481571379,
+      "center": {
+        "lat": 18.5642011,
+        "lon": 73.779771
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction": "subway",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Shivajinagar-Hinjawadi Phase 3)",
+        "name:mr": "पुणे मेट्रो मार्गिका ३ शिवाजीनगर हिंजवडी",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750",
+        "wikidata": "Q3595697",
+        "wikipedia": "en:Pune Metro"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1481571380,
+      "center": {
+        "lat": 18.5641661,
+        "lon": 73.7797705
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction": "subway",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1481571381,
+      "center": {
+        "lat": 18.5670457,
+        "lon": 73.7769785
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1481769125,
+      "center": {
+        "lat": 18.574923,
+        "lon": 73.7689544
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1481769126,
+      "center": {
+        "lat": 18.5743706,
+        "lon": 73.7717851
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction": "subway",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Shivajinagar-Hinjawadi Phase 3)",
+        "name:mr": "पुणे मेट्रो मार्गिका ३ शिवाजीनगर हिंजवडी",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750",
+        "wikidata": "Q3595697",
+        "wikipedia": "en:Pune Metro"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1481769127,
+      "center": {
+        "lat": 18.5743268,
+        "lon": 73.7717599
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1481769129,
+      "center": {
+        "lat": 18.5725507,
+        "lon": 73.7735634
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1481769132,
+      "center": {
+        "lat": 18.5705131,
+        "lon": 73.7748226
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction": "subway",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1481769133,
+      "center": {
+        "lat": 18.5705115,
+        "lon": 73.774849
+      },
+      "tags": {
+        "building": "yes",
+        "construction": "yes",
+        "construction:railway": "station",
+        "layer": "3",
+        "name": "Laxmi Nagar",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1482515759,
+      "center": {
+        "lat": 18.5750624,
+        "lon": 73.7660622
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction": "subway",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Shivajinagar-Hinjawadi Phase 3)",
+        "name:mr": "पुणे मेट्रो मार्गिका ३ शिवाजीनगर हिंजवडी",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750",
+        "wikidata": "Q3595697",
+        "wikipedia": "en:Pune Metro"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1482515760,
+      "center": {
+        "lat": 18.5750239,
+        "lon": 73.7660643
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction": "subway",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1482515761,
+      "center": {
+        "lat": 18.5770317,
+        "lon": 73.7635778
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1482515762,
+      "center": {
+        "lat": 18.5750379,
+        "lon": 73.7660635
+      },
+      "tags": {
+        "building": "yes",
+        "construction": "yes",
+        "construction:railway": "station",
+        "layer": "3",
+        "name": "NICMAR",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1482515764,
+      "center": {
+        "lat": 18.5797442,
+        "lon": 73.7615615
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction": "subway",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Shivajinagar-Hinjawadi Phase 3)",
+        "name:mr": "पुणे मेट्रो मार्गिका ३ शिवाजीनगर हिंजवडी",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750",
+        "wikidata": "Q3595697",
+        "wikipedia": "en:Pune Metro"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1482515765,
+      "center": {
+        "lat": 18.5797318,
+        "lon": 73.7615192
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction": "subway",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1482515766,
+      "center": {
+        "lat": 18.5850311,
+        "lon": 73.7595288
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1482515767,
+      "center": {
+        "lat": 18.579725,
+        "lon": 73.7615457
+      },
+      "tags": {
+        "building": "yes",
+        "construction": "yes",
+        "construction:railway": "station",
+        "layer": "3",
+        "name": "Balewadi Stadium",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1482515769,
+      "center": {
+        "lat": 18.5913432,
+        "lon": 73.7521137
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1482515770,
+      "center": {
+        "lat": 18.5903126,
+        "lon": 73.7575834
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction": "subway",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Shivajinagar-Hinjawadi Phase 3)",
+        "name:mr": "पुणे मेट्रो मार्गिका ३ शिवाजीनगर हिंजवडी",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750",
+        "wikidata": "Q3595697",
+        "wikipedia": "en:Pune Metro"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1482515771,
+      "center": {
+        "lat": 18.5902982,
+        "lon": 73.7575418
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction": "subway",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1482515772,
+      "center": {
+        "lat": 18.5903031,
+        "lon": 73.757556
+      },
+      "tags": {
+        "building": "yes",
+        "construction": "yes",
+        "construction:railway": "station",
+        "layer": "3",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1482515773,
+      "center": {
+        "lat": 18.58912,
+        "lon": 73.758013
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction": "yes",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "subway",
+        "service": "crossover",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1482521085,
+      "center": {
+        "lat": 18.5924256,
+        "lon": 73.737374
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction": "subway",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Shivajinagar-Hinjawadi Phase 3)",
+        "name:mr": "पुणे मेट्रो मार्गिका ३ शिवाजीनगर हिंजवडी",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750",
+        "wikidata": "Q3595697",
+        "wikipedia": "en:Pune Metro"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1482521086,
+      "center": {
+        "lat": 18.5935674,
+        "lon": 73.7326396
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1482521087,
+      "center": {
+        "lat": 18.5923793,
+        "lon": 73.7373376
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction": "subway",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1482521088,
+      "center": {
+        "lat": 18.5923929,
+        "lon": 73.7373489
+      },
+      "tags": {
+        "building": "yes",
+        "construction": "yes",
+        "construction:railway": "station",
+        "layer": "3",
+        "name": "Shivaji Chowk",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1482521089,
+      "center": {
+        "lat": 18.591475,
+        "lon": 73.7417514
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1482521091,
+      "center": {
+        "lat": 18.590984,
+        "lon": 73.7462865
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction": "subway",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Shivajinagar-Hinjawadi Phase 3)",
+        "name:mr": "पुणे मेट्रो मार्गिका ३ शिवाजीनगर हिंजवडी",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750",
+        "wikidata": "Q3595697",
+        "wikipedia": "en:Pune Metro"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1482521092,
+      "center": {
+        "lat": 18.590943,
+        "lon": 73.7462796
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction": "subway",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1482521093,
+      "center": {
+        "lat": 18.5909592,
+        "lon": 73.7462823
+      },
+      "tags": {
+        "building": "yes",
+        "construction": "yes",
+        "construction:railway": "station",
+        "layer": "3",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1483339704,
+      "center": {
+        "lat": 18.5945166,
+        "lon": 73.7278154
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction": "subway",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Shivajinagar-Hinjawadi Phase 3)",
+        "name:mr": "पुणे मेट्रो मार्गिका ३ शिवाजीनगर हिंजवडी",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750",
+        "wikidata": "Q3595697",
+        "wikipedia": "en:Pune Metro"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1483339705,
+      "center": {
+        "lat": 18.5957101,
+        "lon": 73.7225036
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction:railway": "subway",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1483339706,
+      "center": {
+        "lat": 18.5944745,
+        "lon": 73.7278072
+      },
+      "tags": {
+        "bridge": "viaduct",
+        "construction": "subway",
+        "construction:railway": "subway",
+        "covered": "yes",
+        "electrified": "rail",
+        "frequency": "0",
+        "gauge": "1435",
+        "layer": "3",
+        "name": "Pune Metro Line 3 (Pink Line)",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "railway": "construction",
+        "railway:ballastless": "yes",
+        "subway": "yes",
+        "system": "Pune Metro",
+        "voltage": "750"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1483339707,
+      "center": {
+        "lat": 18.5944961,
+        "lon": 73.7278114
+      },
+      "tags": {
+        "building": "yes",
+        "construction": "yes",
+        "construction:railway": "station",
+        "layer": "3",
+        "name": "Pall India",
+        "network": "Pune Metro",
+        "network:wikidata": "Q3595697",
+        "opening_date": "2026",
+        "operator": "PMRDA",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "subway",
+        "subway": "yes"
+      }
+    }
+  ]
+}
