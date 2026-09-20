@@ -28,6 +28,8 @@ interface DomainPillarCardsProps {
   economic: EconomicPillarMetrics;
   mobility: MobilityPillarMetrics;
   ecological: EcologicalPillarMetrics;
+  selectedPillar?: PillarTab;
+  hideTabBar?: boolean;
 }
 
 type PillarTab = 'all' | 'demographics' | 'economic' | 'mobility' | 'ecological';
@@ -37,8 +39,11 @@ export function DomainPillarCards({
   economic,
   mobility,
   ecological,
+  selectedPillar,
+  hideTabBar = false,
 }: DomainPillarCardsProps) {
-  const [activeTab, setActiveTab] = useState<PillarTab>('all');
+  const [internalTab, setInternalTab] = useState<PillarTab>('all');
+  const activeTab = selectedPillar ?? internalTab;
 
   // Format helpers
   const formatINR = (val?: number) =>
@@ -85,32 +90,34 @@ export function DomainPillarCards({
   return (
     <div className="flex flex-col gap-3">
       {/* Pillar Navigation Tabs */}
-      <div className="flex items-center gap-1 p-1 rounded-xl bg-black/40 border border-white/[0.05] overflow-x-auto [scrollbar-width:none]">
-        {tabs.map((tab) => {
-          const isActive = activeTab === tab.id;
-          return (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`relative px-2.5 py-1.5 rounded-lg text-[11px] font-medium flex items-center gap-1.5 transition-colors shrink-0 cursor-pointer ${
-                isActive ? 'text-white font-semibold' : 'text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              {isActive && (
-                <motion.div
-                  layoutId="active-pillar-pill"
-                  className="absolute inset-0 rounded-lg bg-white/10 border border-white/15"
-                  transition={motionSprings.snappy}
-                />
-              )}
-              <span className="relative z-10 flex items-center gap-1.5">
-                {tab.icon}
-                {tab.label}
-              </span>
-            </button>
-          );
-        })}
-      </div>
+      {!hideTabBar && (
+        <div className="flex items-center gap-1 p-1 rounded-xl bg-black/40 border border-white/[0.05] overflow-x-auto [scrollbar-width:none]">
+          {tabs.map((tab) => {
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setInternalTab(tab.id)}
+                className={`relative px-2.5 py-1.5 rounded-lg text-[11px] font-medium flex items-center gap-1.5 transition-colors shrink-0 cursor-pointer ${
+                  isActive ? 'text-white font-semibold' : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="active-pillar-pill"
+                    className="absolute inset-0 rounded-lg bg-white/10 border border-white/15"
+                    transition={motionSprings.snappy}
+                  />
+                )}
+                <span className="relative z-10 flex items-center gap-1.5">
+                  {tab.icon}
+                  {tab.label}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      )}
 
       {/* 1. Demographics & Spatial Equity */}
       {(activeTab === 'all' || activeTab === 'demographics') && (
