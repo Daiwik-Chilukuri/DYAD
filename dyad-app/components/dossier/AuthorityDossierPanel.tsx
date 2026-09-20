@@ -16,6 +16,8 @@ import {
   TrendingUp,
   ArrowUpRight,
   FileText,
+  AlertTriangle,
+  ShieldCheck,
 } from 'lucide-react';
 import Link from 'next/link';
 import { BotLogo } from '../BotLogo';
@@ -52,6 +54,8 @@ interface AuthorityDossierPanelProps {
   onEvaluateTrigger?: () => void;
 }
 
+export type DossierSection = 'overview' | 'stations' | 'risks' | 'policies' | 'telemetry';
+
 export function AuthorityDossierPanel({
   isOpen,
   onToggleOpen,
@@ -65,14 +69,14 @@ export function AuthorityDossierPanel({
   corridorMeta,
   onEvaluateTrigger,
 }: AuthorityDossierPanelProps) {
-  const [activeView, setActiveView] = useState<'dossier' | 'telemetry'>('dossier');
+  const [activeSection, setActiveSection] = useState<DossierSection>('overview');
 
   // Automatically switch tab based on evaluation state
   React.useEffect(() => {
     if (isEvaluating) {
-      setActiveView('telemetry');
+      setActiveSection('telemetry');
     } else if (dossier) {
-      setActiveView('dossier');
+      setActiveSection((prev) => (prev === 'telemetry' ? 'overview' : prev));
     }
   }, [isEvaluating, Boolean(dossier)]);
 
@@ -190,47 +194,100 @@ export function AuthorityDossierPanel({
               </div>
             </div>
 
-            {/* 2. Mode Sub-Navigation Tabs */}
-            <div className="flex items-center gap-1 px-3.5 py-2 border-b border-white/[0.04] bg-black/20 shrink-0">
-              <button
-                onClick={() => setActiveView('dossier')}
-                className={`flex-1 py-1 px-2.5 rounded-lg text-xs font-medium font-sans flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
-                  activeView === 'dossier'
-                    ? 'bg-white/10 text-white shadow-sm font-semibold'
-                    : 'text-slate-400 hover:text-slate-200'
-                }`}
-              >
-                <TrendingUp className="size-3.5 text-emerald-400" />
-                <span>Executive Dossier</span>
-                {dossier && (
-                  <span className="font-mono tabular-nums text-[10.5px] text-emerald-400 font-bold ml-1">
-                    {viabilityScore.toFixed(0)}
-                  </span>
-                )}
-              </button>
-
-              <button
-                onClick={() => setActiveView('telemetry')}
-                className={`flex-1 py-1 px-2.5 rounded-lg text-xs font-medium font-sans flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
-                  activeView === 'telemetry'
-                    ? 'bg-white/10 text-white shadow-sm font-semibold'
-                    : 'text-slate-400 hover:text-slate-200'
-                }`}
-              >
-                <div className="relative size-2">
-                  {isEvaluating && <span className="absolute size-2 rounded-full bg-cyan-400 animate-ping" />}
-                  <span className={`size-2 rounded-full block ${isEvaluating ? 'bg-cyan-400' : 'bg-slate-500'}`} />
-                </div>
-                <span>Swarm Telemetry</span>
-                <span className="text-[10px] font-mono text-slate-500">
-                  ({telemetryLogs.length})
-                </span>
-              </button>
+            {/* 2. Section Sub-Navigation Tabs */}
+            <div className="flex items-center gap-1 px-3 py-2 border-b border-white/[0.06] bg-black/25 shrink-0 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+              {[
+                {
+                  id: 'overview' as DossierSection,
+                  label: 'Overview',
+                  icon: <TrendingUp className="size-3.5 text-emerald-400" />,
+                  badge: dossier ? (
+                    <span className="font-mono tabular-nums text-[10px] text-emerald-400 font-bold ml-0.5">
+                      {viabilityScore.toFixed(0)}
+                    </span>
+                  ) : null,
+                },
+                {
+                  id: 'stations' as DossierSection,
+                  label: 'Stations',
+                  icon: <MapPin className="size-3.5 text-cyan-400" />,
+                  badge: stations.length > 0 ? (
+                    <span className="px-1.5 py-0.2 rounded-md bg-cyan-500/15 text-cyan-400 border border-cyan-500/25 text-[9.5px] font-mono tabular-nums font-bold">
+                      {stations.length}
+                    </span>
+                  ) : null,
+                },
+                {
+                  id: 'risks' as DossierSection,
+                  label: 'Risks',
+                  icon: <AlertTriangle className="size-3.5 text-amber-400" />,
+                  badge: warnings.length > 0 ? (
+                    <span
+                      className={`px-1.5 py-0.2 rounded-md text-[9.5px] font-mono tabular-nums font-bold border ${
+                        warnings.some((w) => (w.severity || '').toUpperCase() === 'CRITICAL')
+                          ? 'bg-rose-500/15 text-rose-400 border-rose-500/30'
+                          : 'bg-amber-500/15 text-amber-400 border-amber-500/30'
+                      }`}
+                    >
+                      {warnings.length}
+                    </span>
+                  ) : null,
+                },
+                {
+                  id: 'policies' as DossierSection,
+                  label: 'Policies',
+                  icon: <ShieldCheck className="size-3.5 text-indigo-400" />,
+                  badge: policies.length > 0 ? (
+                    <span className="px-1.5 py-0.2 rounded-md bg-indigo-500/15 text-indigo-300 border border-indigo-500/25 text-[9.5px] font-mono tabular-nums font-bold">
+                      {policies.length}
+                    </span>
+                  ) : null,
+                },
+                {
+                  id: 'telemetry' as DossierSection,
+                  label: 'Telemetry',
+                  icon: (
+                    <div className="relative size-2 shrink-0">
+                      {isEvaluating && <span className="absolute size-2 rounded-full bg-cyan-400 animate-ping" />}
+                      <span className={`size-2 rounded-full block ${isEvaluating ? 'bg-cyan-400' : 'bg-slate-500'}`} />
+                    </div>
+                  ),
+                  badge: telemetryLogs.length > 0 ? (
+                    <span className="text-[10px] font-mono text-slate-500">
+                      ({telemetryLogs.length})
+                    </span>
+                  ) : null,
+                },
+              ].map((tab) => {
+                const isActive = activeSection === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveSection(tab.id)}
+                    className={`relative px-2.5 py-1.5 rounded-lg text-xs font-medium font-sans flex items-center justify-center gap-1.5 transition-colors shrink-0 cursor-pointer ${
+                      isActive ? 'text-white font-semibold' : 'text-slate-400 hover:text-slate-200'
+                    }`}
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="active-dossier-section-pill"
+                        className="absolute inset-0 rounded-lg bg-white/10 border border-white/15"
+                        transition={motionSprings.snappy}
+                      />
+                    )}
+                    <span className="relative z-10 flex items-center gap-1.5">
+                      {tab.icon}
+                      <span>{tab.label}</span>
+                      {tab.badge}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
 
             {/* 3. Main Scrollable Body */}
             <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-              {activeView === 'telemetry' ? (
+              {activeSection === 'telemetry' ? (
                 /* Telemetry View */
                 <SwarmTelemetryStream
                   isScanning={isEvaluating}
@@ -238,7 +295,174 @@ export function AuthorityDossierPanel({
                   logs={telemetryLogs}
                   stage={currentStage}
                 />
+              ) : activeSection === 'stations' ? (
+                /* Dedicated Suggested Station Proposals Section */
+                dossier ? (
+                  <div className="flex flex-col gap-3">
+                    <div className="p-3.5 rounded-xl bg-[#14161b] border border-white/[0.06] flex items-center justify-between shadow-sm">
+                      <div className="flex items-center gap-2.5">
+                        <div className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                          <MapPin className="size-4" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-xs font-semibold text-white">
+                            Suggested Station Interchanges
+                          </span>
+                          <span className="text-[10.5px] text-slate-400 font-sans">
+                            Interactive nodes • Click card to focus map camera
+                          </span>
+                        </div>
+                      </div>
+                      <span className="px-2 py-0.5 rounded-md bg-cyan-500/15 text-cyan-300 border border-cyan-500/25 text-[10.5px] font-mono tabular-nums font-bold">
+                        {stations.length} Nodes
+                      </span>
+                    </div>
+
+                    <SuggestedStationList
+                      stations={stations}
+                      onStationClick={onStationSelect}
+                      selectedStationId={selectedStationId}
+                    />
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center justify-center text-center p-6 my-auto gap-3">
+                    <div className="p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
+                      <MapPin className="size-6" />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <h4 className="text-sm font-semibold text-slate-200">
+                        Station Proposals Awaiting Swarm Run
+                      </h4>
+                      <p className="text-xs text-slate-400 max-w-[280px] font-sans leading-relaxed">
+                        Station proposals and alignment nodes are dynamically synthesized by the Structured Spatial Visualizer agent upon corridor evaluation.
+                      </p>
+                    </div>
+                    {onEvaluateTrigger && (
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={onEvaluateTrigger}
+                        disabled={isEvaluating}
+                        className="mt-2 w-full max-w-[280px] px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 cursor-pointer disabled:opacity-50"
+                      >
+                        <Sparkles className="size-3.5" />
+                        <span>Run Feasibility Swarm</span>
+                      </motion.button>
+                    )}
+                  </div>
+                )
+              ) : activeSection === 'risks' ? (
+                /* Dedicated Actionable Risk Warnings Section */
+                dossier ? (
+                  <div className="flex flex-col gap-3">
+                    <div className="p-3.5 rounded-xl bg-[#14161b] border border-white/[0.06] flex items-center justify-between shadow-sm">
+                      <div className="flex items-center gap-2.5">
+                        <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                          <AlertTriangle className="size-4" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-xs font-semibold text-white">
+                            Statutory Risk & Friction Matrix
+                          </span>
+                          <span className="text-[10.5px] text-slate-400 font-sans">
+                            Actionable environmental, zoning & civil engineering mitigations
+                          </span>
+                        </div>
+                      </div>
+                      <span
+                        className={`px-2 py-0.5 rounded-md text-[10.5px] font-mono tabular-nums font-bold border ${
+                          warnings.some((w) => (w.severity || '').toUpperCase() === 'CRITICAL')
+                            ? 'bg-rose-500/15 text-rose-400 border-rose-500/30'
+                            : 'bg-amber-500/15 text-amber-400 border-amber-500/30'
+                        }`}
+                      >
+                        {warnings.length} Flagged
+                      </span>
+                    </div>
+
+                    <ActionableRiskWarnings warnings={warnings} />
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center justify-center text-center p-6 my-auto gap-3">
+                    <div className="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400">
+                      <AlertTriangle className="size-6" />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <h4 className="text-sm font-semibold text-slate-200">
+                        Risk Matrix Awaiting Swarm Run
+                      </h4>
+                      <p className="text-xs text-slate-400 max-w-[280px] font-sans leading-relaxed">
+                        Ecological setback violations (KTFD lake 30m, rajakaluve 50m) and civil friction points are computed upon dispatching the swarm.
+                      </p>
+                    </div>
+                    {onEvaluateTrigger && (
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={onEvaluateTrigger}
+                        disabled={isEvaluating}
+                        className="mt-2 w-full max-w-[280px] px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 cursor-pointer disabled:opacity-50"
+                      >
+                        <Sparkles className="size-3.5" />
+                        <span>Run Feasibility Swarm</span>
+                      </motion.button>
+                    )}
+                  </div>
+                )
+              ) : activeSection === 'policies' ? (
+                /* Dedicated Policy Directives Section */
+                dossier ? (
+                  <div className="flex flex-col gap-3">
+                    <div className="p-3.5 rounded-xl bg-[#14161b] border border-white/[0.06] flex items-center justify-between shadow-sm">
+                      <div className="flex items-center gap-2.5">
+                        <div className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                          <ShieldCheck className="size-4" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-xs font-semibold text-white">
+                            Policy Directives & TOD Governance
+                          </span>
+                          <span className="text-[10.5px] text-slate-400 font-sans">
+                            BMRCL / BBMP statutory compliance and Transit-Oriented Development mandates
+                          </span>
+                        </div>
+                      </div>
+                      <span className="px-2 py-0.5 rounded-md bg-indigo-500/15 text-indigo-300 border border-indigo-500/25 text-[10.5px] font-mono tabular-nums font-bold">
+                        {policies.length} Directives
+                      </span>
+                    </div>
+
+                    <PolicyRecommendations recommendations={policies} />
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center justify-center text-center p-6 my-auto gap-3">
+                    <div className="p-3 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+                      <ShieldCheck className="size-6" />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <h4 className="text-sm font-semibold text-slate-200">
+                        Policy Directives Awaiting Swarm Run
+                      </h4>
+                      <p className="text-xs text-slate-400 max-w-[280px] font-sans leading-relaxed">
+                        Regulatory mandates, farebox optimization directives, and statutory approvals are formulated following swarm synthesis.
+                      </p>
+                    </div>
+                    {onEvaluateTrigger && (
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={onEvaluateTrigger}
+                        disabled={isEvaluating}
+                        className="mt-2 w-full max-w-[280px] px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 cursor-pointer disabled:opacity-50"
+                      >
+                        <Sparkles className="size-3.5" />
+                        <span>Run Feasibility Swarm</span>
+                      </motion.button>
+                    )}
+                  </div>
+                )
               ) : dossier ? (
+                /* Dedicated Overview / Executive Dossier Section */
                 <>
                   {/* Feasibility Gauge */}
                   <FeasibilityScoreGauge score={viabilityScore} />
@@ -298,6 +522,45 @@ export function AuthorityDossierPanel({
                     </div>
                   )}
 
+                  {/* Quick Jump Cards to Dedicated Sections */}
+                  <div className="grid grid-cols-3 gap-2">
+                    <button
+                      onClick={() => setActiveSection('stations')}
+                      className="p-2.5 rounded-xl bg-[#14161b] hover:bg-[#181b22] border border-white/[0.05] hover:border-cyan-500/30 transition-all flex flex-col gap-1 text-left cursor-pointer group shadow-sm"
+                    >
+                      <div className="flex items-center justify-between text-cyan-400">
+                        <MapPin className="size-3.5" />
+                        <span className="text-[11px] font-mono font-bold tabular-nums">{stations.length}</span>
+                      </div>
+                      <span className="text-[10.5px] font-semibold text-slate-300 group-hover:text-white transition-colors">Stations</span>
+                      <span className="text-[9px] text-slate-500 truncate">Proposals →</span>
+                    </button>
+
+                    <button
+                      onClick={() => setActiveSection('risks')}
+                      className="p-2.5 rounded-xl bg-[#14161b] hover:bg-[#181b22] border border-white/[0.05] hover:border-amber-500/30 transition-all flex flex-col gap-1 text-left cursor-pointer group shadow-sm"
+                    >
+                      <div className="flex items-center justify-between text-amber-400">
+                        <AlertTriangle className="size-3.5" />
+                        <span className="text-[11px] font-mono font-bold tabular-nums">{warnings.length}</span>
+                      </div>
+                      <span className="text-[10.5px] font-semibold text-slate-300 group-hover:text-white transition-colors">Risk Flags</span>
+                      <span className="text-[9px] text-slate-500 truncate">Mitigations →</span>
+                    </button>
+
+                    <button
+                      onClick={() => setActiveSection('policies')}
+                      className="p-2.5 rounded-xl bg-[#14161b] hover:bg-[#181b22] border border-white/[0.05] hover:border-indigo-500/30 transition-all flex flex-col gap-1 text-left cursor-pointer group shadow-sm"
+                    >
+                      <div className="flex items-center justify-between text-indigo-400">
+                        <ShieldCheck className="size-3.5" />
+                        <span className="text-[11px] font-mono font-bold tabular-nums">{policies.length}</span>
+                      </div>
+                      <span className="text-[10.5px] font-semibold text-slate-300 group-hover:text-white transition-colors">Directives</span>
+                      <span className="text-[9px] text-slate-500 truncate">Governance →</span>
+                    </button>
+                  </div>
+
                   {/* 4 Domain Pillar Impact Cards */}
                   {demographics && economic && mobility && ecological && (
                     <DomainPillarCards
@@ -307,19 +570,6 @@ export function AuthorityDossierPanel({
                       ecological={ecological}
                     />
                   )}
-
-                  {/* Actionable Risk Warnings List */}
-                  <ActionableRiskWarnings warnings={warnings} />
-
-                  {/* Suggested Station List */}
-                  <SuggestedStationList
-                    stations={stations}
-                    onStationClick={onStationSelect}
-                    selectedStationId={selectedStationId}
-                  />
-
-                  {/* Policy Recommendations */}
-                  <PolicyRecommendations recommendations={policies} />
                 </>
               ) : (
                 /* Standby / Empty State when not yet evaluated */

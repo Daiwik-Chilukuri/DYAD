@@ -68,7 +68,7 @@ export function SuggestedStationList({
         </span>
       </div>
 
-      <div className="flex flex-col gap-1.5 max-h-64 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-white/10">
+      <div className="flex flex-col gap-2">
         {processedStations.map((st) => {
           const isSelected = st.station_id === activeId;
           const boardings = st.estimated_daily_boardings ?? st.expected_daily_footfall ?? 25000;

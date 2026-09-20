@@ -93,7 +93,7 @@ export function ActionableRiskWarnings({ warnings = [] }: ActionableRiskWarnings
         </span>
       </div>
 
-      <div className="flex flex-col gap-2 max-h-72 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-white/10">
+      <div className="flex flex-col gap-2">
         {uniqueWarnings.map((w) => {
           const id = w.risk_id;
           const severity = (w.severity || 'MEDIUM').toUpperCase();
