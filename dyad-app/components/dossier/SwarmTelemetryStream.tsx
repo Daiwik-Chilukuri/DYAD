@@ -1,8 +1,20 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Activity, CheckCircle2, Loader2, AlertCircle, Terminal, Radio } from 'lucide-react';
+import React, { useRef, useEffect, useState, useMemo } from 'react';
+import { motion } from 'framer-motion';
+import {
+  Activity,
+  CheckCircle2,
+  Loader2,
+  AlertCircle,
+  Terminal,
+  Radio,
+  Copy,
+  Check,
+  Search,
+  Filter,
+  ArrowDownToLine,
+} from 'lucide-react';
 import { motionSprings } from '../../lib/motion';
 import type { SwarmAgentState, SwarmTelemetryLog } from '../../types/dossier';
 
@@ -11,25 +23,76 @@ interface SwarmTelemetryStreamProps {
   agents: Record<string, SwarmAgentState>;
   logs: SwarmTelemetryLog[];
   stage?: string;
+  className?: string;
 }
+
+type LogCategory = 'ALL' | 'AGENTS' | 'SPATIAL' | 'CAMERA' | 'SYSTEM';
 
 export function SwarmTelemetryStream({
   isScanning,
   agents,
   logs,
   stage = 'Idle',
+  className = '',
 }: SwarmTelemetryStreamProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeCategory, setActiveCategory] = useState<LogCategory>('ALL');
+  const [copied, setCopied] = useState(false);
+  const [autoScroll, setAutoScroll] = useState(true);
 
-  // Auto-scroll logs to latest entry
+  // Auto-scroll logs to latest entry when autoScroll is enabled
   useEffect(() => {
-    if (scrollRef.current) {
+    if (autoScroll && scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-  }, [logs]);
+  }, [logs, autoScroll]);
+
+  // Copy logs handler
+  const handleCopyLogs = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (typeof navigator !== 'undefined') {
+      const text = logs
+        .map(
+          (l) =>
+            `[${new Date(l.timestamp).toLocaleTimeString('en-IN', { hour12: false })}] ${l.message}`
+        )
+        .join('\n');
+      navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    }
+  };
+
+  // Filter logs by category and search
+  const filteredLogs = useMemo(() => {
+    return logs.filter((log) => {
+      const msg = log.message.toLowerCase();
+      // Category filter
+      if (activeCategory === 'AGENTS') {
+        if (!msg.includes('agent') && !msg.includes('subagent') && !msg.includes('completed') && !msg.includes('spawned'))
+          return false;
+      } else if (activeCategory === 'SPATIAL') {
+        if (!msg.includes('buffer') && !msg.includes('polygon') && !msg.includes('poi') && !msg.includes('ward') && !msg.includes('feature'))
+          return false;
+      } else if (activeCategory === 'CAMERA') {
+        if (!msg.includes('camera') && !msg.includes('focusing') && !msg.includes('station'))
+          return false;
+      } else if (activeCategory === 'SYSTEM') {
+        if (!msg.includes('plan') && !msg.includes('corridor') && !msg.includes('evaluation') && !msg.includes('done'))
+          return false;
+      }
+
+      // Search query filter
+      if (searchQuery.trim()) {
+        return msg.includes(searchQuery.toLowerCase());
+      }
+      return true;
+    });
+  }, [logs, activeCategory, searchQuery]);
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className={`flex flex-col gap-3 flex-1 h-full ${className}`}>
       {/* 1. Radar Scan Status Header */}
       <div className="flex items-center justify-between px-1">
         <div className="flex items-center gap-2">
@@ -110,37 +173,165 @@ export function SwarmTelemetryStream({
         })}
       </div>
 
-      {/* 3. Real-Time Telemetry Terminal Logs */}
-      <div className="flex flex-col gap-1 rounded-xl bg-black/40 border border-white/[0.06] p-2.5">
-        <div className="flex items-center justify-between pb-1 mb-1 border-b border-white/[0.04]">
-          <div className="flex items-center gap-1.5 text-[10px] font-mono text-slate-400 uppercase tracking-wider">
-            <Terminal className="size-3 text-cyan-400" />
-            <span>Activity Log</span>
+      {/* 3. Real-Time Telemetry Terminal Logs (Expanded & Full-Height) */}
+      <div className="flex flex-col gap-2 rounded-2xl bg-black/60 border border-white/[0.08] p-3 shadow-xl shadow-black/40 flex-1 min-h-[480px]">
+        {/* Terminal Header Bar */}
+        <div className="flex items-center justify-between pb-2 border-b border-white/[0.06]">
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-cyan-400">
+              <Terminal className="size-3.5" />
+              <span className="text-[10.5px] font-mono font-semibold uppercase tracking-wide">
+                Activity Terminal
+              </span>
+            </div>
+            <span className="text-[10px] font-mono tabular-nums text-slate-400">
+              {filteredLogs.length} / {logs.length} events
+            </span>
           </div>
-          <span className="text-[9.5px] font-mono text-slate-500">
-            {logs.length} events
-          </span>
+
+          <div className="flex items-center gap-1.5">
+            {/* Auto-scroll toggle */}
+            <button
+              onClick={() => setAutoScroll(!autoScroll)}
+              className={`p-1.5 rounded-lg border transition-colors cursor-pointer text-[10px] font-mono flex items-center gap-1 ${
+                autoScroll
+                  ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+                  : 'bg-white/5 text-slate-400 border-white/10 hover:text-slate-200'
+              }`}
+              title={autoScroll ? 'Auto-scroll enabled' : 'Auto-scroll paused'}
+            >
+              <ArrowDownToLine className="size-3" />
+              <span className="hidden sm:inline">Follow</span>
+            </button>
+
+            {/* Copy logs button */}
+            <button
+              onClick={handleCopyLogs}
+              className="p-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer text-[10px] font-mono flex items-center gap-1"
+              title="Copy terminal events to clipboard"
+            >
+              {copied ? (
+                <>
+                  <Check className="size-3 text-emerald-400" />
+                  <span className="text-emerald-400 font-semibold">Copied</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="size-3" />
+                  <span className="hidden sm:inline">Copy</span>
+                </>
+              )}
+            </button>
+          </div>
         </div>
 
+        {/* Filter & Search Bar */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-1.5 py-1">
+          {/* Search Box */}
+          <div className="relative flex-1">
+            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3 text-slate-500" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search terminal events..."
+              className="w-full pl-7 pr-3 py-1 text-[10.5px] font-mono bg-black/40 border border-white/[0.06] rounded-lg text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-cyan-500/40"
+            />
+          </div>
+
+          {/* Category Chips */}
+          <div className="flex items-center gap-1 overflow-x-auto [scrollbar-width:none]">
+            {(['ALL', 'AGENTS', 'SPATIAL', 'CAMERA', 'SYSTEM'] as LogCategory[]).map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-2 py-0.5 rounded-md text-[9.5px] font-mono transition-colors shrink-0 cursor-pointer ${
+                  activeCategory === cat
+                    ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-semibold'
+                    : 'bg-white/[0.03] text-slate-400 hover:text-slate-200 border border-white/[0.04]'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Scrollable Event Stream (Longer & Taller to Cover Dashboard) */}
         <div
           ref={scrollRef}
-          className="h-28 overflow-y-auto font-mono text-[11px] leading-relaxed flex flex-col gap-1 pr-1 select-text scrollbar-thin scrollbar-thumb-white/10"
+          className="flex-1 min-h-[380px] max-h-[580px] overflow-y-auto font-mono text-[11px] leading-relaxed flex flex-col gap-1 pr-1.5 select-text scrollbar-thin scrollbar-thumb-white/10"
         >
-          {logs.length === 0 ? (
-            <span className="text-slate-600 italic text-[10.5px]">Awaiting corridor evaluation trigger...</span>
+          {filteredLogs.length === 0 ? (
+            <div className="flex flex-col items-center justify-center text-center py-16 gap-2 text-slate-600">
+              <Terminal className="size-6 text-slate-700" />
+              <span className="italic text-[11px]">
+                {logs.length === 0
+                  ? 'Awaiting corridor evaluation trigger...'
+                  : 'No events matching search filter.'}
+              </span>
+            </div>
           ) : (
-            logs.map((log) => (
-              <div key={log.id} className="flex items-start gap-2 text-slate-300">
-                <span className="text-slate-500 shrink-0 tabular-nums text-[10px]">
-                  {new Date(log.timestamp).toLocaleTimeString('en-IN', { hour12: false })}
-                </span>
-                <span className="text-cyan-400 shrink-0">›</span>
-                <span className="break-words text-slate-300 font-normal">
-                  {log.message}
-                </span>
-              </div>
-            ))
+            filteredLogs.map((log, index) => {
+              const msg = log.message;
+              const isDone = msg.includes('completed') || msg.includes('done');
+              const isCamera = msg.includes('Focusing camera');
+              const isFeature = msg.includes('features') || msg.includes('GeoJSON');
+              const isSubagent = msg.includes('Subagent') || msg.includes('spawned');
+
+              return (
+                <div
+                  key={log.id}
+                  className={`flex items-start gap-2 py-0.5 px-1.5 rounded hover:bg-white/[0.03] transition-colors ${
+                    isDone
+                      ? 'text-emerald-300 font-semibold'
+                      : isCamera
+                      ? 'text-yellow-300/90'
+                      : isFeature
+                      ? 'text-cyan-300'
+                      : isSubagent
+                      ? 'text-purple-300'
+                      : 'text-slate-300'
+                  }`}
+                >
+                  <span className="text-slate-600 shrink-0 tabular-nums text-[9.5px] w-6 text-right">
+                    {index + 1}
+                  </span>
+                  <span className="text-slate-500 shrink-0 tabular-nums text-[10px]">
+                    {new Date(log.timestamp).toLocaleTimeString('en-IN', { hour12: false })}
+                  </span>
+                  <span
+                    className={`shrink-0 text-[10px] ${
+                      isDone
+                        ? 'text-emerald-400'
+                        : isCamera
+                        ? 'text-yellow-400'
+                        : isFeature
+                        ? 'text-cyan-400'
+                        : 'text-slate-500'
+                    }`}
+                  >
+                    ›
+                  </span>
+                  <span className="break-words font-normal">
+                    {log.message}
+                  </span>
+                </div>
+              );
+            })
           )}
+        </div>
+
+        {/* Blinking Interactive Shell Prompt at Terminal Foot */}
+        <div className="flex items-center gap-2 pt-2 border-t border-white/[0.05] text-[10.5px] font-mono text-slate-500 select-none">
+          <span className="text-emerald-400 font-bold">dyad-swarm@modal-cloud</span>
+          <span className="text-slate-600">:</span>
+          <span className="text-cyan-400 font-semibold">~/orchestrator</span>
+          <span className="text-slate-400">$</span>
+          <span className="text-slate-400">
+            {isScanning ? 'evaluating-corridor --live' : 'ready'}
+          </span>
+          <span className="size-2 bg-emerald-400 animate-pulse inline-block rounded-xs" />
         </div>
       </div>
     </div>

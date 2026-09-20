@@ -5,3 +5,4 @@ export { DomainPillarCards } from './DomainPillarCards';
 export { ActionableRiskWarnings } from './ActionableRiskWarnings';
 export { SuggestedStationList } from './SuggestedStationList';
 export { PolicyRecommendations } from './PolicyRecommendations';
+export { AgentFlashCards } from './AgentFlashCards';

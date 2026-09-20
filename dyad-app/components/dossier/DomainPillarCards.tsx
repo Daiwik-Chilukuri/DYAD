@@ -16,6 +16,7 @@ import {
   Info,
 } from 'lucide-react';
 import { motionSprings } from '../../lib/motion';
+import { AgentFlashCards } from './AgentFlashCards';
 import type {
   DemographicsPillarMetrics,
   EconomicPillarMetrics,
@@ -121,284 +122,321 @@ export function DomainPillarCards({
 
       {/* 1. Demographics & Spatial Equity */}
       {(activeTab === 'all' || activeTab === 'demographics') && (
-        <motion.div
-          layout
-          initial={{ opacity: 0, y: 4 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={motionSprings.smooth}
-          className="flex flex-col gap-2 p-3.5 rounded-xl bg-[#161B22]/60 border border-white/[0.06]"
-        >
-          <div className="flex items-center justify-between border-b border-white/[0.04] pb-2">
-            <div className="flex items-center gap-2">
-              <span className="p-1.5 rounded-lg bg-purple-500/10 text-purple-400 border border-purple-500/20">
-                <Users className="size-3.5" />
+        <div className="flex flex-col gap-3">
+          <motion.div
+            layout
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={motionSprings.smooth}
+            className="flex flex-col gap-2 p-3.5 rounded-xl bg-[#161B22]/60 border border-white/[0.06]"
+          >
+            <div className="flex items-center justify-between border-b border-white/[0.04] pb-2">
+              <div className="flex items-center gap-2">
+                <span className="p-1.5 rounded-lg bg-purple-500/10 text-purple-400 border border-purple-500/20">
+                  <Users className="size-3.5" />
+                </span>
+                <div>
+                  <h4 className="text-xs font-semibold text-slate-200 tracking-tight">
+                    {hideTabBar ? 'Primary Catchment & Equity Metrics' : 'Demographics & Spatial Equity'}
+                  </h4>
+                  <span className="text-[10px] font-mono text-slate-400">Pillar 1 • Catchment & Equity</span>
+                </div>
+              </div>
+              <span className="font-mono tabular-nums text-xs font-semibold text-emerald-400">
+                {equityScore.toFixed(1)}/100 Equity
               </span>
-              <div>
-                <h4 className="text-xs font-semibold text-slate-200 tracking-tight">
-                  Demographics & Spatial Equity
-                </h4>
-                <span className="text-[10px] font-mono text-slate-400">Pillar 1 • Catchment & Equity</span>
+            </div>
+
+            <div className="grid grid-cols-2 gap-2 text-xs">
+              <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
+                <span className="text-[10px] uppercase font-mono text-slate-400">500m Walking Pop</span>
+                <span className="font-mono tabular-nums text-sm font-semibold text-emerald-400">
+                  {formatNum(pop500m)}
+                </span>
+                <span className="text-[9.5px] text-slate-500">primary pedestrian shed</span>
+              </div>
+
+              <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
+                <span className="text-[10px] uppercase font-mono text-slate-400">1500m Feeder Pop</span>
+                <span className="font-mono tabular-nums text-sm font-semibold text-slate-200">
+                  {formatNum(pop1500m)}
+                </span>
+                <span className="text-[9.5px] text-slate-500">first/last mile radius</span>
+              </div>
+
+              <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
+                <span className="text-[10px] uppercase font-mono text-slate-400">Underserved Ratio</span>
+                <span className="font-mono tabular-nums text-sm font-semibold text-cyan-400">
+                  {(underservedRatio * 100).toFixed(1)}%
+                </span>
+                <span className="text-[9.5px] text-slate-500">transit-dependent share</span>
+              </div>
+
+              <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
+                <span className="text-[10px] uppercase font-mono text-slate-400">Urban Density</span>
+                <span className="font-mono tabular-nums text-sm font-semibold text-slate-200">
+                  {formatNum(density)} /km²
+                </span>
+                <span className="text-[9.5px] text-slate-500">BBMP ward dasymetric</span>
               </div>
             </div>
-            <span className="font-mono tabular-nums text-xs font-semibold text-emerald-400">
-              {equityScore.toFixed(1)}/100 Equity
-            </span>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-2 gap-2 text-xs">
-            <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
-              <span className="text-[10px] uppercase font-mono text-slate-400">500m Walking Pop</span>
-              <span className="font-mono tabular-nums text-sm font-semibold text-emerald-400">
-                {formatNum(pop500m)}
-              </span>
-              <span className="text-[9.5px] text-slate-500">primary pedestrian shed</span>
-            </div>
-
-            <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
-              <span className="text-[10px] uppercase font-mono text-slate-400">1500m Feeder Pop</span>
-              <span className="font-mono tabular-nums text-sm font-semibold text-slate-200">
-                {formatNum(pop1500m)}
-              </span>
-              <span className="text-[9.5px] text-slate-500">first/last mile radius</span>
-            </div>
-
-            <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
-              <span className="text-[10px] uppercase font-mono text-slate-400">Underserved Ratio</span>
-              <span className="font-mono tabular-nums text-sm font-semibold text-cyan-400">
-                {(underservedRatio * 100).toFixed(1)}%
-              </span>
-              <span className="text-[9.5px] text-slate-500">transit-dependent share</span>
-            </div>
-
-            <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
-              <span className="text-[10px] uppercase font-mono text-slate-400">Urban Density</span>
-              <span className="font-mono tabular-nums text-sm font-semibold text-slate-200">
-                {formatNum(density)} /km²
-              </span>
-              <span className="text-[9.5px] text-slate-500">BBMP ward dasymetric</span>
-            </div>
-          </div>
-        </motion.div>
+          {activeTab === 'demographics' && (
+            <AgentFlashCards
+              domain="demographics"
+              demographics={demographics}
+            />
+          )}
+        </div>
       )}
 
       {/* 2. Economic Corridor & TOD */}
       {(activeTab === 'all' || activeTab === 'economic') && (
-        <motion.div
-          layout
-          initial={{ opacity: 0, y: 4 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={motionSprings.smooth}
-          className="flex flex-col gap-2 p-3.5 rounded-xl bg-[#161B22]/60 border border-white/[0.06]"
-        >
-          <div className="flex items-center justify-between border-b border-white/[0.04] pb-2">
-            <div className="flex items-center gap-2">
-              <span className="p-1.5 rounded-lg bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">
-                <Briefcase className="size-3.5" />
+        <div className="flex flex-col gap-3">
+          <motion.div
+            layout
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={motionSprings.smooth}
+            className="flex flex-col gap-2 p-3.5 rounded-xl bg-[#161B22]/60 border border-white/[0.06]"
+          >
+            <div className="flex items-center justify-between border-b border-white/[0.04] pb-2">
+              <div className="flex items-center gap-2">
+                <span className="p-1.5 rounded-lg bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">
+                  <Briefcase className="size-3.5" />
+                </span>
+                <div>
+                  <h4 className="text-xs font-semibold text-slate-200 tracking-tight">
+                    {hideTabBar ? 'Primary Commercial & Yield Metrics' : 'Economic Corridor & TOD'}
+                  </h4>
+                  <span className="text-[10px] font-mono text-slate-400">Pillar 2 • Yield & Multiplier</span>
+                </div>
+              </div>
+              <span className="font-mono tabular-nums text-xs font-semibold text-yellow-400">
+                {multiplier.toFixed(2)}x Multiplier
               </span>
-              <div>
-                <h4 className="text-xs font-semibold text-slate-200 tracking-tight">
-                  Economic Corridor & TOD
-                </h4>
-                <span className="text-[10px] font-mono text-slate-400">Pillar 2 • Yield & Multiplier</span>
+            </div>
+
+            <div className="grid grid-cols-3 gap-2 text-xs">
+              <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
+                <span className="text-[10px] uppercase font-mono text-slate-400">Tech Parks</span>
+                <span className="font-mono tabular-nums text-sm font-semibold text-emerald-400">
+                  {techParks}
+                </span>
+                <span className="text-[9.5px] text-slate-500">&lt;1km corridor</span>
+              </div>
+
+              <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
+                <span className="text-[10px] uppercase font-mono text-slate-400">Hospitals</span>
+                <span className="font-mono tabular-nums text-sm font-semibold text-slate-200">
+                  {hospitals}
+                </span>
+                <span className="text-[9.5px] text-slate-500">&lt;1km corridor</span>
+              </div>
+
+              <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
+                <span className="text-[10px] uppercase font-mono text-slate-400">Commercial</span>
+                <span className="font-mono tabular-nums text-sm font-semibold text-slate-200">
+                  {commercial}
+                </span>
+                <span className="text-[9.5px] text-slate-500">&lt;1km corridor</span>
               </div>
             </div>
-            <span className="font-mono tabular-nums text-xs font-semibold text-yellow-400">
-              {multiplier.toFixed(2)}x Multiplier
-            </span>
-          </div>
 
-          <div className="grid grid-cols-3 gap-2 text-xs">
-            <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
-              <span className="text-[10px] uppercase font-mono text-slate-400">Tech Parks</span>
-              <span className="font-mono tabular-nums text-sm font-semibold text-emerald-400">
-                {techParks}
-              </span>
-              <span className="text-[9.5px] text-slate-500">&lt;1km corridor</span>
-            </div>
+            <div className="grid grid-cols-2 gap-2 text-xs pt-1">
+              <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
+                <span className="text-[10px] uppercase font-mono text-slate-400">Annual Farebox</span>
+                <span className="font-mono tabular-nums text-sm font-semibold text-emerald-400">
+                  {formatINR(farebox)}
+                </span>
+                <span className="text-[9.5px] text-slate-500">projected revenue</span>
+              </div>
 
-            <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
-              <span className="text-[10px] uppercase font-mono text-slate-400">Hospitals</span>
-              <span className="font-mono tabular-nums text-sm font-semibold text-slate-200">
-                {hospitals}
-              </span>
-              <span className="text-[9.5px] text-slate-500">&lt;1km corridor</span>
+              <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
+                <span className="text-[10px] uppercase font-mono text-slate-400">Estimated TOD Yield</span>
+                <span className="font-mono tabular-nums text-sm font-semibold text-yellow-400">
+                  {formatINR(todYield)}
+                </span>
+                <span className="text-[9.5px] text-slate-500">land value capture</span>
+              </div>
             </div>
+          </motion.div>
 
-            <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
-              <span className="text-[10px] uppercase font-mono text-slate-400">Commercial</span>
-              <span className="font-mono tabular-nums text-sm font-semibold text-slate-200">
-                {commercial}
-              </span>
-              <span className="text-[9.5px] text-slate-500">&lt;1km corridor</span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-2 text-xs pt-1">
-            <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
-              <span className="text-[10px] uppercase font-mono text-slate-400">Annual Farebox</span>
-              <span className="font-mono tabular-nums text-sm font-semibold text-emerald-400">
-                {formatINR(farebox)}
-              </span>
-              <span className="text-[9.5px] text-slate-500">projected revenue</span>
-            </div>
-
-            <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
-              <span className="text-[10px] uppercase font-mono text-slate-400">Estimated TOD Yield</span>
-              <span className="font-mono tabular-nums text-sm font-semibold text-yellow-400">
-                {formatINR(todYield)}
-              </span>
-              <span className="text-[9.5px] text-slate-500">land value capture</span>
-            </div>
-          </div>
-        </motion.div>
+          {activeTab === 'economic' && (
+            <AgentFlashCards
+              domain="economic"
+              economic={economic}
+            />
+          )}
+        </div>
       )}
 
       {/* 3. Mobility & Congestion */}
       {(activeTab === 'all' || activeTab === 'mobility') && (
-        <motion.div
-          layout
-          initial={{ opacity: 0, y: 4 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={motionSprings.smooth}
-          className="flex flex-col gap-2 p-3.5 rounded-xl bg-[#161B22]/60 border border-white/[0.06]"
-        >
-          <div className="flex items-center justify-between border-b border-white/[0.04] pb-2">
-            <div className="flex items-center gap-2">
-              <span className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                <Navigation className="size-3.5" />
-              </span>
-              <div>
-                <h4 className="text-xs font-semibold text-slate-200 tracking-tight">
-                  Mobility & Congestion
-                </h4>
-                <span className="text-[10px] font-mono text-slate-400">Pillar 3 • Time Delta & Feeder</span>
-              </div>
-            </div>
-            <span className="font-mono tabular-nums text-xs font-semibold text-emerald-400">
-              -{timeSaved.toFixed(1)}m Peak Saved
-            </span>
-          </div>
-
-          <div className="grid grid-cols-2 gap-2 text-xs">
-            <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
-              <span className="text-[10px] uppercase font-mono text-slate-400">Congestion Relief</span>
-              <span className="font-mono tabular-nums text-sm font-semibold text-emerald-400">
-                {congestionReduction.toFixed(1)}%
-              </span>
-              <span className="text-[9.5px] text-slate-500">arterial drop</span>
-            </div>
-
-            <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
-              <span className="text-[10px] uppercase font-mono text-slate-400">Daily Ridership</span>
-              <span className="font-mono tabular-nums text-sm font-semibold text-slate-200">
-                {formatNum(ridership)}
-              </span>
-              <span className="text-[9.5px] text-slate-500">projected boardings</span>
-            </div>
-
-            <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03] col-span-2">
-              <div className="flex items-center justify-between">
-                <span className="text-[10px] uppercase font-mono text-slate-400">Feeder Route Coverage</span>
-                <span className="font-mono tabular-nums text-xs font-semibold text-cyan-400">
-                  {feederScore.toFixed(0)}/100
+        <div className="flex flex-col gap-3">
+          <motion.div
+            layout
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={motionSprings.smooth}
+            className="flex flex-col gap-2 p-3.5 rounded-xl bg-[#161B22]/60 border border-white/[0.06]"
+          >
+            <div className="flex items-center justify-between border-b border-white/[0.04] pb-2">
+              <div className="flex items-center gap-2">
+                <span className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                  <Navigation className="size-3.5" />
                 </span>
+                <div>
+                  <h4 className="text-xs font-semibold text-slate-200 tracking-tight">
+                    {hideTabBar ? 'Primary Speed & Relief Metrics' : 'Mobility & Congestion'}
+                  </h4>
+                  <span className="text-[10px] font-mono text-slate-400">Pillar 3 • Time Delta & Feeder</span>
+                </div>
               </div>
-              <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden mt-1">
-                <div
-                  className="h-full bg-cyan-400 rounded-full transition-all duration-500"
-                  style={{ width: `${Math.min(100, Math.max(0, feederScore))}%` }}
-                />
+              <span className="font-mono tabular-nums text-xs font-semibold text-emerald-400">
+                -{timeSaved.toFixed(1)}m Peak Saved
+              </span>
+            </div>
+
+            <div className="grid grid-cols-2 gap-2 text-xs">
+              <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
+                <span className="text-[10px] uppercase font-mono text-slate-400">Congestion Relief</span>
+                <span className="font-mono tabular-nums text-sm font-semibold text-emerald-400">
+                  {congestionReduction.toFixed(1)}%
+                </span>
+                <span className="text-[9.5px] text-slate-500">arterial drop</span>
+              </div>
+
+              <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
+                <span className="text-[10px] uppercase font-mono text-slate-400">Daily Ridership</span>
+                <span className="font-mono tabular-nums text-sm font-semibold text-slate-200">
+                  {formatNum(ridership)}
+                </span>
+                <span className="text-[9.5px] text-slate-500">projected boardings</span>
+              </div>
+
+              <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03] col-span-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] uppercase font-mono text-slate-400">Feeder Route Coverage</span>
+                  <span className="font-mono tabular-nums text-xs font-semibold text-cyan-400">
+                    {feederScore.toFixed(0)}/100
+                  </span>
+                </div>
+                <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden mt-1">
+                  <div
+                    className="h-full bg-cyan-400 rounded-full transition-all duration-500"
+                    style={{ width: `${Math.min(100, Math.max(0, feederScore))}%` }}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+
+          {activeTab === 'mobility' && (
+            <AgentFlashCards
+              domain="mobility"
+              mobility={mobility}
+            />
+          )}
+        </div>
       )}
 
       {/* 4. Ecological & Risk Friction */}
       {(activeTab === 'all' || activeTab === 'ecological') && (
-        <motion.div
-          layout
-          initial={{ opacity: 0, y: 4 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={motionSprings.smooth}
-          className="flex flex-col gap-2 p-3.5 rounded-xl bg-[#161B22]/60 border border-white/[0.06]"
-        >
-          <div className="flex items-center justify-between border-b border-white/[0.04] pb-2">
-            <div className="flex items-center gap-2">
-              <span className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                <Trees className="size-3.5" />
+        <div className="flex flex-col gap-3">
+          <motion.div
+            layout
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={motionSprings.smooth}
+            className="flex flex-col gap-2 p-3.5 rounded-xl bg-[#161B22]/60 border border-white/[0.06]"
+          >
+            <div className="flex items-center justify-between border-b border-white/[0.04] pb-2">
+              <div className="flex items-center gap-2">
+                <span className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                  <Trees className="size-3.5" />
+                </span>
+                <div>
+                  <h4 className="text-xs font-semibold text-slate-200 tracking-tight">
+                    {hideTabBar ? 'Primary Setback & Flood Metrics' : 'Ecological & Risk Friction'}
+                  </h4>
+                  <span className="text-[10px] font-mono text-slate-400">Pillar 4 • KTFD & Buffers</span>
+                </div>
+              </div>
+              <span
+                className={`font-mono tabular-nums text-[10.5px] font-semibold px-2 py-0.5 rounded-full border ${
+                  ktfdStatus === 'COMPLIANT'
+                    ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+                    : ktfdStatus === 'CRITICAL_BREACH'
+                    ? 'bg-rose-500/10 text-rose-400 border-rose-500/20'
+                    : 'bg-amber-500/10 text-amber-400 border-amber-500/20'
+                }`}
+              >
+                {ktfdStatus}
               </span>
-              <div>
-                <h4 className="text-xs font-semibold text-slate-200 tracking-tight">
-                  Ecological & Risk Friction
-                </h4>
-                <span className="text-[10px] font-mono text-slate-400">Pillar 4 • KTFD & Buffers</span>
+            </div>
+
+            <div className="grid grid-cols-2 gap-2 text-xs">
+              <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
+                <span className="text-[10px] uppercase font-mono text-slate-400">30m Lake Breaches</span>
+                <span
+                  className={`font-mono tabular-nums text-sm font-semibold ${
+                    lakeBreaches > 0 ? 'text-amber-400' : 'text-emerald-400'
+                  }`}
+                >
+                  {lakeBreaches}
+                </span>
+                <span className="text-[9.5px] text-slate-500">statutory buffer zones</span>
+              </div>
+
+              <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
+                <span className="text-[10px] uppercase font-mono text-slate-400">50m Rajakaluve</span>
+                <span
+                  className={`font-mono tabular-nums text-sm font-semibold ${
+                    rajakaluveCrossings > 0 ? 'text-amber-400' : 'text-emerald-400'
+                  }`}
+                >
+                  {rajakaluveCrossings}
+                </span>
+                <span className="text-[9.5px] text-slate-500">stormwater crossings</span>
+              </div>
+
+              <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
+                <span className="text-[10px] uppercase font-mono text-slate-400">Flood Grade</span>
+                <span
+                  className={`font-mono tabular-nums text-sm font-semibold ${
+                    floodGrade === 'HIGH' || floodGrade === 'CRITICAL'
+                      ? 'text-rose-400'
+                      : floodGrade === 'MODERATE'
+                      ? 'text-amber-400'
+                      : 'text-emerald-400'
+                  }`}
+                >
+                  {floodGrade}
+                </span>
+                <span className="text-[9.5px] text-slate-500">vulnerability rating</span>
+              </div>
+
+              <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
+                <span className="text-[10px] uppercase font-mono text-slate-400">Canopy Loss Risk</span>
+                <span className="font-mono tabular-nums text-sm font-semibold text-slate-200">
+                  {canopyScore.toFixed(0)}/100
+                </span>
+                <span className="text-[9.5px] text-slate-500">tree index impact</span>
               </div>
             </div>
-            <span
-              className={`font-mono tabular-nums text-[10.5px] font-semibold px-2 py-0.5 rounded-full border ${
-                ktfdStatus === 'COMPLIANT'
-                  ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
-                  : ktfdStatus === 'CRITICAL_BREACH'
-                  ? 'bg-rose-500/10 text-rose-400 border-rose-500/20'
-                  : 'bg-amber-500/10 text-amber-400 border-amber-500/20'
-              }`}
-            >
-              {ktfdStatus}
-            </span>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-2 gap-2 text-xs">
-            <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
-              <span className="text-[10px] uppercase font-mono text-slate-400">30m Lake Breaches</span>
-              <span
-                className={`font-mono tabular-nums text-sm font-semibold ${
-                  lakeBreaches > 0 ? 'text-amber-400' : 'text-emerald-400'
-                }`}
-              >
-                {lakeBreaches}
-              </span>
-              <span className="text-[9.5px] text-slate-500">statutory buffer zones</span>
-            </div>
-
-            <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
-              <span className="text-[10px] uppercase font-mono text-slate-400">50m Rajakaluve</span>
-              <span
-                className={`font-mono tabular-nums text-sm font-semibold ${
-                  rajakaluveCrossings > 0 ? 'text-amber-400' : 'text-emerald-400'
-                }`}
-              >
-                {rajakaluveCrossings}
-              </span>
-              <span className="text-[9.5px] text-slate-500">stormwater crossings</span>
-            </div>
-
-            <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
-              <span className="text-[10px] uppercase font-mono text-slate-400">Flood Grade</span>
-              <span
-                className={`font-mono tabular-nums text-sm font-semibold ${
-                  floodGrade === 'HIGH' || floodGrade === 'CRITICAL'
-                    ? 'text-rose-400'
-                    : floodGrade === 'MODERATE'
-                    ? 'text-amber-400'
-                    : 'text-emerald-400'
-                }`}
-              >
-                {floodGrade}
-              </span>
-              <span className="text-[9.5px] text-slate-500">vulnerability rating</span>
-            </div>
-
-            <div className="flex flex-col gap-0.5 p-2 rounded-lg bg-black/30 border border-white/[0.03]">
-              <span className="text-[10px] uppercase font-mono text-slate-400">Canopy Loss Risk</span>
-              <span className="font-mono tabular-nums text-sm font-semibold text-slate-200">
-                {canopyScore.toFixed(0)}/100
-              </span>
-              <span className="text-[9.5px] text-slate-500">tree index impact</span>
-            </div>
-          </div>
-        </motion.div>
+          {activeTab === 'ecological' && (
+            <AgentFlashCards
+              domain="ecological"
+              ecological={ecological}
+            />
+          )}
+        </div>
       )}
+
     </div>
   );
 }
