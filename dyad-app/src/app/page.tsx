@@ -10,7 +10,6 @@ import { BotLogo } from '../../components/BotLogo';
 import {
   Database,
   TrendingUp,
-  GitBranch,
   MapPin,
   Navigation,
   Sparkles,
@@ -27,6 +26,9 @@ import {
   Layers,
   Radio,
   ArrowUpRight,
+  Home,
+  LocateFixed,
+  CircleUser,
 } from 'lucide-react';
 import { motionSprings } from '../../lib/motion';
 import { AuthorityDossierPanel } from '../../components/dossier';
@@ -560,17 +562,21 @@ export default function Dashboard() {
       </div>
 
       {/* 2. 68px LEFT VERTICAL NAVIGATION RAIL */}
-      <aside className="relative z-30 w-17 flex flex-col items-center border-r border-sidebar-border bg-sidebar/95 backdrop-blur-xl py-4 h-full shrink-0">
-        <div className="w-10 h-10 bg-primary/10 rounded-xl border border-primary/20 flex items-center justify-center mb-6 shadow-sm">
-          <MapPin className="text-primary size-5" />
-        </div>
+      <aside className="relative z-30 w-[68px] flex flex-col items-center border-r border-white/[0.08] bg-[#0E1117]/95 backdrop-blur-xl py-4 h-full shrink-0 select-none">
+        <Link
+          href="/"
+          title="Home / Corridor Canvas"
+          className="w-10 h-10 bg-emerald-500/10 rounded-xl border border-emerald-500/20 flex items-center justify-center mb-6 shadow-sm group hover:scale-105 transition-transform cursor-pointer"
+        >
+          <Home className="text-emerald-400 size-5" />
+        </Link>
         <nav className="flex flex-col gap-4">
           <Link href="/data" title="Data Ingestion & Synthesis Studio">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.94 }}
               transition={motionSprings.snappy}
-              className="p-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+              className="p-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors cursor-pointer"
             >
               <Database className="size-5" />
             </motion.button>
@@ -580,10 +586,10 @@ export default function Dashboard() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.94 }}
             transition={motionSprings.snappy}
-            className="p-2.5 rounded-lg text-primary bg-primary/10 transition-colors border border-primary/20"
-            title="Corridor Feasibility Canvas (Dashboard)"
+            className="p-2.5 rounded-lg text-primary bg-primary/10 transition-colors border border-primary/20 cursor-pointer"
+            title="Corridor GPS Alignment Canvas"
           >
-            <TrendingUp className="size-5" />
+            <LocateFixed className="size-5" />
           </motion.button>
 
           <Link href="/agents" title="Autonomous Multi-Agent Swarm Intelligence (5 Specialized Agents)">
@@ -598,6 +604,16 @@ export default function Dashboard() {
             </motion.button>
           </Link>
         </nav>
+
+        {/* User Profile Logo */}
+        <div className="mt-auto flex flex-col items-center">
+          <button
+            title="User Profile & Authority Credentials"
+            className="w-10 h-10 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] hover:border-emerald-500/30 flex items-center justify-center text-slate-300 hover:text-white transition-all cursor-pointer group shadow-sm"
+          >
+            <CircleUser className="size-5 text-slate-400 group-hover:text-emerald-300 transition-colors" />
+          </button>
+        </div>
       </aside>
 
       {/* 3. DOCKED LEFT CORRIDOR ENGINE CONTROL SIDEBAR */}
@@ -794,33 +810,13 @@ export default function Dashboard() {
       {/* 4. MAIN CONTENT OVERLAY */}
       <main className="relative z-10 flex-1 flex flex-col pointer-events-none">
         {/* Top Telemetry Header Bar */}
-        <header className="h-14 border-b border-border bg-background/85 backdrop-blur-xl flex items-center justify-between px-6 pointer-events-auto">
+        <header className="h-14 border-b border-white/[0.08] bg-[#0c0e12]/90 backdrop-blur-xl flex items-center justify-between px-6 pointer-events-auto">
           <div className="flex items-center gap-3">
-            {/* Capsule View Buttons */}
-            <div className="flex items-center gap-1.5 bg-[#0e1116] p-1 rounded-full border border-white/[0.08]">
-              <Link href="/data">
-                <button className="px-3 py-1 rounded-full text-xs font-medium text-[#8e95a5] hover:text-white hover:bg-white/5 transition-all flex items-center gap-1.5 cursor-pointer">
-                  <Database className="size-3.5" />
-                  <span>Browse</span>
-                </button>
-              </Link>
-              <button className="px-3 py-1 rounded-full text-xs font-semibold bg-[#00f5d4]/15 text-[#00f5d4] border border-[#00f5d4]/30 flex items-center gap-1.5 shadow-sm cursor-pointer">
-                <MapPin className="size-3.5" />
-                <span>Map</span>
-              </button>
-              <Link href="/agents">
-                <button className="px-3 py-1 rounded-full text-xs font-medium text-[#8e95a5] hover:text-white hover:bg-white/5 transition-all flex items-center gap-1.5 cursor-pointer">
-                  <GitBranch className="size-3.5" />
-                  <span>Swarm</span>
-                </button>
-              </Link>
-            </div>
-
             {/* Dynamic Alignment Metadata */}
-            <div className="hidden lg:flex items-center gap-2 text-xs ml-3 font-mono">
-              <span className="text-slate-300 font-medium">
+            <div className="flex items-center gap-2 text-xs font-mono">
+              <span className="text-slate-200 font-medium">
                 {originStation?.name || 'Origin Snap'} →{' '}
-                {destinationCoords ? 'Candidate Terminus' : 'Click Map'}
+                {destinationCoords ? 'Candidate Terminus' : 'Click Map to set Terminus'}
               </span>
               <span className="text-slate-600">•</span>
               <span className="text-[#00f5d4] font-semibold tabular-nums">

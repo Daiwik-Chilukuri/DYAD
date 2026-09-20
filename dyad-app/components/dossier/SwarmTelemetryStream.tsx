@@ -14,6 +14,11 @@ import {
   Search,
   Filter,
   ArrowDownToLine,
+  Layers,
+  Users,
+  Briefcase,
+  Navigation,
+  Trees,
 } from 'lucide-react';
 import { motionSprings } from '../../lib/motion';
 import type { SwarmAgentState, SwarmTelemetryLog } from '../../types/dossier';
@@ -27,6 +32,40 @@ interface SwarmTelemetryStreamProps {
 }
 
 type LogCategory = 'ALL' | 'AGENTS' | 'SPATIAL' | 'CAMERA' | 'SYSTEM';
+
+const getDomainIcon = (domain: string, className = 'size-3.5') => {
+  switch (domain?.toLowerCase()) {
+    case 'visualizer':
+      return <Layers className={className} />;
+    case 'demographics':
+      return <Users className={className} />;
+    case 'economic':
+      return <Briefcase className={className} />;
+    case 'mobility':
+      return <Navigation className={className} />;
+    case 'ecological':
+      return <Trees className={className} />;
+    default:
+      return <Activity className={className} />;
+  }
+};
+
+const getDomainColor = (domain: string) => {
+  switch (domain?.toLowerCase()) {
+    case 'visualizer':
+      return 'text-teal-400 bg-teal-500/10 border-teal-500/20';
+    case 'demographics':
+      return 'text-purple-400 bg-purple-500/10 border-purple-500/20';
+    case 'economic':
+      return 'text-yellow-400 bg-yellow-500/10 border-yellow-500/20';
+    case 'mobility':
+      return 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20';
+    case 'ecological':
+      return 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20';
+    default:
+      return 'text-slate-400 bg-slate-500/10 border-slate-500/20';
+  }
+};
 
 export function SwarmTelemetryStream({
   isScanning,
@@ -92,31 +131,33 @@ export function SwarmTelemetryStream({
   }, [logs, activeCategory, searchQuery]);
 
   return (
-    <div className={`flex flex-col gap-3 flex-1 h-full ${className}`}>
-      {/* 1. Radar Scan Status Header */}
-      <div className="flex items-center justify-between px-1">
-        <div className="flex items-center gap-2">
-          <div className="relative flex items-center justify-center size-5">
+    <div className={`flex flex-col gap-3 h-full ${className}`}>
+      {/* 1. Header Bar with Radar Pulse & Stage */}
+      <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-black/40 border border-white/[0.05]">
+        <div className="flex items-center gap-2.5">
+          <div className="relative flex items-center justify-center size-3">
             {isScanning ? (
               <>
-                <span className="absolute size-4 rounded-full bg-emerald-400/25 animate-ping" />
-                <span className="size-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#10B981]" />
+                <span className="absolute size-3 rounded-full bg-cyan-400/40 animate-ping" />
+                <span className="size-2 rounded-full bg-cyan-400" />
               </>
             ) : (
-              <span className="size-2 rounded-full bg-slate-500" />
+              <span className="size-2 rounded-full bg-emerald-400" />
             )}
           </div>
-          <span className="text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
-            {isScanning ? 'Multi-Agent Swarm Active' : 'Swarm Telemetry Standby'}
-          </span>
+          <div className="flex items-center gap-1.5">
+            <span className="text-xs font-mono font-medium text-white tracking-tight">
+              {isScanning ? 'Multi-Agent Swarm Calculating' : 'Swarm Audit Complete'}
+            </span>
+            <span className="text-[10px] font-mono text-slate-500">
+              ({Object.values(agents).filter((a) => a.status === 'completed').length}/{Object.keys(agents).length} Ready)
+            </span>
+          </div>
         </div>
 
-        <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/[0.04] border border-white/[0.08]">
-          <Radio className={`size-3 ${isScanning ? 'text-emerald-400 animate-pulse' : 'text-slate-500'}`} />
-          <span className="text-[10.5px] font-mono tabular-nums text-slate-400 uppercase">
-            {stage}
-          </span>
-        </div>
+        <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase">
+          {stage}
+        </span>
       </div>
 
       {/* 2. Subagent Specialized Chips Grid */}
@@ -125,6 +166,7 @@ export function SwarmTelemetryStream({
           const isCompleted = agent.status === 'completed';
           const isRunning = agent.status === 'running';
           const isError = agent.status === 'error';
+          const domain = agent.domain || key;
 
           return (
             <motion.div
@@ -141,21 +183,15 @@ export function SwarmTelemetryStream({
               }`}
             >
               <div className="flex items-center gap-2 min-w-0">
-                {isRunning ? (
-                  <Loader2 className="size-3.5 text-cyan-400 animate-spin shrink-0" />
-                ) : isCompleted ? (
-                  <CheckCircle2 className="size-3.5 text-emerald-400 shrink-0" />
-                ) : isError ? (
-                  <AlertCircle className="size-3.5 text-rose-400 shrink-0" />
-                ) : (
-                  <Activity className="size-3.5 text-slate-500 shrink-0" />
-                )}
+                <span className={`p-1 rounded-lg border shrink-0 ${getDomainColor(domain)}`}>
+                  {getDomainIcon(domain, 'size-3.5')}
+                </span>
                 <span className="text-[11.5px] font-sans font-medium truncate">
                   {agent.name}
                 </span>
               </div>
 
-              <div className="shrink-0 pl-1">
+              <div className="flex items-center gap-1.5 shrink-0 pl-1">
                 {agent.durationSec != null ? (
                   <span className="text-[10px] font-mono tabular-nums text-emerald-400 font-semibold">
                     {agent.durationSec.toFixed(2)}s
@@ -167,6 +203,13 @@ export function SwarmTelemetryStream({
                 ) : (
                   <span className="text-[10px] font-mono text-slate-600">IDLE</span>
                 )}
+                {isRunning ? (
+                  <Loader2 className="size-3 text-cyan-400 animate-spin shrink-0" />
+                ) : isCompleted ? (
+                  <CheckCircle2 className="size-3 text-emerald-400 shrink-0" />
+                ) : isError ? (
+                  <AlertCircle className="size-3 text-rose-400 shrink-0" />
+                ) : null}
               </div>
             </motion.div>
           );

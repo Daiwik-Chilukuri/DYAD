@@ -28,6 +28,10 @@ import {
   AlertCircle,
   ExternalLink,
   RotateCcw,
+  Filter,
+  Home,
+  LocateFixed,
+  CircleUser,
 } from 'lucide-react';
 import { motionSprings } from '../../../lib/motion';
 import { BotLogo } from '../../../components/BotLogo';
@@ -220,6 +224,21 @@ export default function MultiAgentSwarmAuditPage() {
   const mob = dossier.mobility ?? dossier.mobility_pillar;
   const ecol = dossier.ecological ?? dossier.ecological_pillar;
   const viabilityScore = dossier.overall_viability_score ?? 66.5;
+
+  // Normalize suggested stations from both schema keys (suggested_stations / suggested_station_locations)
+  const rawStations =
+    dossier.suggested_stations ??
+    dossier.suggested_station_locations ??
+    BASELINE_DOSSIER.suggested_stations;
+  const stations: StationProposal[] = (
+    Array.isArray(rawStations) && rawStations.length > 0
+      ? rawStations
+      : BASELINE_DOSSIER.suggested_stations
+  ) as StationProposal[];
+
+  const riskWarnings: RiskWarning[] = (
+    dossier.risk_warnings ?? BASELINE_DOSSIER.risk_warnings ?? []
+  ) as RiskWarning[];
 
   // Detect active vs skipped subagents
   const hasDemog = Boolean(demog && (demog.catchment_population_500m > 0 || (demog.equity_score ?? demog.equity_index_score ?? 0) > 0));
@@ -458,16 +477,33 @@ export default function MultiAgentSwarmAuditPage() {
     }
   };
 
+  const getAgentIcon = (domain: string, className = 'size-4') => {
+    switch (domain) {
+      case 'visualizer':
+        return <Layers className={className} />;
+      case 'demographics':
+        return <Users className={className} />;
+      case 'economic':
+        return <Briefcase className={className} />;
+      case 'mobility':
+        return <Navigation className={className} />;
+      case 'ecological':
+        return <Trees className={className} />;
+      default:
+        return <Activity className={className} />;
+    }
+  };
+
   return (
     <div className="relative w-screen h-screen flex overflow-hidden bg-[#08090C] text-slate-100 font-sans selection:bg-emerald-500/30">
       {/* 68px LEFT VERTICAL NAVIGATION RAIL */}
       <aside className="relative z-20 w-[68px] flex flex-col items-center border-r border-white/[0.08] bg-[#0E1117]/95 backdrop-blur-xl py-4 h-full shrink-0 select-none">
         <Link
           href="/"
-          className="w-10 h-10 bg-emerald-500/10 rounded-xl border border-emerald-500/20 flex items-center justify-center mb-6 shadow-sm group hover:scale-105 transition-transform"
-          title="Return to Corridor Canvas"
+          className="w-10 h-10 bg-emerald-500/10 rounded-xl border border-emerald-500/20 flex items-center justify-center mb-6 shadow-sm group hover:scale-105 transition-transform cursor-pointer"
+          title="Return to Home Canvas"
         >
-          <MapPin className="text-emerald-400 size-5" />
+          <Home className="text-emerald-400 size-5" />
         </Link>
 
         <nav className="flex flex-col gap-3">
@@ -482,14 +518,14 @@ export default function MultiAgentSwarmAuditPage() {
             </motion.button>
           </Link>
 
-          <Link href="/" title="Corridor Simulation Canvas">
+          <Link href="/" title="Corridor GPS Alignment Canvas">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.94 }}
               transition={motionSprings.snappy}
               className="p-2.5 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
             >
-              <TrendingUp className="size-5" />
+              <LocateFixed className="size-5" />
             </motion.button>
           </Link>
 
@@ -506,117 +542,110 @@ export default function MultiAgentSwarmAuditPage() {
           </Link>
         </nav>
 
-        <div className="mt-auto flex flex-col items-center gap-2">
-          <span className="text-[9px] font-mono font-bold text-slate-600">DYAD</span>
+        {/* User Profile Logo */}
+        <div className="mt-auto flex flex-col items-center">
+          <button
+            title="User Profile & Authority Credentials"
+            className="w-10 h-10 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] hover:border-emerald-500/30 flex items-center justify-center text-slate-300 hover:text-white transition-all cursor-pointer group shadow-sm"
+          >
+            <CircleUser className="size-5 text-slate-400 group-hover:text-emerald-300 transition-colors" />
+          </button>
         </div>
       </aside>
 
       {/* MAIN CONTENT WORKSPACE */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-        {/* TOP COMMAND BAR */}
-        <header className="h-16 px-6 border-b border-white/[0.08] bg-[#0E1117]/80 backdrop-blur-xl flex items-center justify-between shrink-0 select-none">
+        {/* TOP COMMAND BAR (BIGGER, BOLD & PROMINENT VIABILITY SCORE) */}
+        <header className="min-h-[84px] py-3.5 px-6 border-b border-white/[0.08] bg-[#0c0e12]/95 backdrop-blur-2xl flex flex-col md:flex-row md:items-center justify-between gap-4 shrink-0 select-none shadow-md shadow-black/40">
           <div className="flex items-center gap-4 min-w-0">
             <Link
               href="/"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-slate-400 hover:text-white hover:bg-white/5 transition-colors border border-white/5"
+              className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-mono font-semibold text-slate-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] transition-colors border border-white/[0.08] hover:border-emerald-500/30 group shrink-0"
+              title="Return to interactive Map Canvas"
             >
-              <ArrowLeft className="size-3.5" />
-              <span>Back to Map Canvas</span>
+              <ArrowLeft className="size-4 group-hover:-translate-x-0.5 transition-transform text-emerald-400" />
+              <span>Back to Map</span>
             </Link>
 
-            <div className="h-4 w-px bg-white/10" />
+            <div className="h-9 w-px bg-white/10 hidden sm:block" />
 
             <div className="flex flex-col min-w-0">
-              <div className="flex items-center gap-2">
-                <h1 className="text-sm font-semibold text-white tracking-tight truncate">
-                  Multi-Agent Swarm Deep Intelligence Audit
+              <div className="flex items-center gap-2.5 flex-wrap">
+                <h1 className="text-base sm:text-lg md:text-xl font-bold font-sans text-white tracking-tight truncate">
+                  Multi-Agent Swarm Intelligence Audit
                 </h1>
-                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
                   5 AGENTS
                 </span>
-                {isLiveRun && (
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 flex items-center gap-1">
-                    <span className="size-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                {isLiveRun ? (
+                  <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 flex items-center gap-1.5 shadow-[0_0_12px_rgba(0,245,212,0.2)]">
+                    <span className="size-2 rounded-full bg-cyan-400 animate-pulse" />
                     LIVE RUN DATA
+                  </span>
+                ) : (
+                  <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-medium bg-slate-500/15 text-slate-400 border border-white/10">
+                    REFERENCE BASELINE
                   </span>
                 )}
               </div>
-              <span className="text-[11px] font-mono text-slate-400 truncate">
-                Corridor: {dossier.corridor_name} ({corridorMeta.lengthKm?.toFixed(2)} km) • MoHUA & BMRCL Compliance
-              </span>
+              <div className="flex items-center gap-2 text-xs font-mono text-slate-400 mt-1 truncate">
+                <span className="text-slate-200 font-semibold">{dossier.corridor_name}</span>
+                <span>•</span>
+                <span className="text-cyan-400 tabular-nums font-semibold">{corridorMeta.lengthKm?.toFixed(2)} km</span>
+                <span className="hidden lg:inline">•</span>
+                <span className="hidden lg:inline text-slate-500">MoHUA & BMRCL Statutory Guidelines</span>
+              </div>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 shrink-0">
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#161B22] border border-white/[0.08]">
-              <span className="text-xs text-slate-400 font-sans">Overall Viability:</span>
-              <span className="font-mono tabular-nums text-sm font-bold text-emerald-400">
-                {viabilityScore.toFixed(1)}/100
-              </span>
+          <div className="flex items-center gap-3.5 shrink-0">
+            {/* BIGGER & BOLD OVERALL VIABILITY SCORE DISPLAY */}
+            <div className="flex items-center gap-3.5 px-4 py-2 rounded-2xl bg-[#14161b] border border-emerald-500/30 shadow-[0_0_24px_rgba(16,185,129,0.12)]">
+              <div className="flex flex-col items-end">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold">
+                  Overall Viability
+                </span>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-2xl sm:text-3xl font-mono tabular-nums font-black text-emerald-400 drop-shadow-[0_0_12px_rgba(16,185,129,0.45)]">
+                    {viabilityScore.toFixed(1)}
+                  </span>
+                  <span className="text-xs font-mono font-bold text-slate-500">/ 100</span>
+                </div>
+              </div>
+
+              <div className="h-9 w-px bg-white/10" />
+
+              <div className="flex flex-col gap-0.5">
+                <span
+                  className={`px-2 py-0.5 rounded-md text-[10px] font-mono font-bold tracking-wider uppercase border ${
+                    viabilityScore >= 70
+                      ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/35'
+                      : viabilityScore >= 50
+                      ? 'bg-yellow-500/20 text-yellow-300 border-yellow-500/35'
+                      : 'bg-rose-500/20 text-rose-300 border-rose-500/35'
+                  }`}
+                >
+                  {viabilityScore >= 70 ? 'FEASIBLE' : viabilityScore >= 50 ? 'CONDITIONAL' : 'NON-VIABLE'}
+                </span>
+                <span className="text-[9.5px] font-mono text-slate-400">
+                  {viabilityScore >= 70 ? 'High ROI Corridor' : 'Mitigations Req.'}
+                </span>
+              </div>
             </div>
 
             <button
               onClick={handleExportJSON}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/[0.06] hover:bg-white/10 border border-white/10 text-xs font-mono text-slate-200 transition-all cursor-pointer group"
+              className="flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-white/[0.06] hover:bg-white/10 border border-white/10 hover:border-white/20 text-xs font-mono font-semibold text-slate-200 hover:text-white transition-all cursor-pointer group shadow-sm"
+              title="Download complete multi-agent audit JSON payload"
             >
-              <Download className="size-3.5 group-hover:scale-110 transition-transform" />
-              <span>Export Audit JSON</span>
+              <Download className="size-4 group-hover:scale-110 transition-transform text-emerald-400" />
+              <span className="hidden sm:inline">Export JSON</span>
             </button>
           </div>
         </header>
 
         {/* SCROLLABLE MAIN BODY */}
         <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-6 scrollbar-thin scrollbar-thumb-white/10">
-          {/* NOTICE BANNER IF BASELINE OR LIVE */}
-          {!isLiveRun ? (
-            <motion.div
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex items-center justify-between p-4 rounded-2xl bg-gradient-to-r from-cyan-950/40 via-[#161B22] to-[#0E1117] border border-cyan-500/30 text-xs text-slate-300"
-            >
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded-xl bg-cyan-500/15 border border-cyan-500/30 text-cyan-300">
-                  <Activity className="size-4" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-white">Reference Baseline Architecture Loaded</h4>
-                  <p className="text-slate-400 text-[11.5px] mt-0.5">
-                    No active simulation run in local cache. Run a feasibility swarm evaluation on the Map Canvas to populate live subagent traces.
-                  </p>
-                </div>
-              </div>
-              <Link
-                href="/"
-                className="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/40 text-cyan-300 font-mono text-xs font-medium transition-all"
-              >
-                <span>Launch Canvas</span>
-                <ArrowUpRight className="size-3.5" />
-              </Link>
-            </motion.div>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex items-center justify-between p-3.5 rounded-2xl bg-gradient-to-r from-emerald-950/30 via-[#161B22] to-[#0E1117] border border-emerald-500/25 text-xs text-slate-300"
-            >
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400">
-                  <FileCheck2 className="size-4" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-white">Live Feasibility Swarm Dossier Active</h4>
-                  <p className="text-slate-400 text-[11.5px] mt-0.5">
-                    Viewing real empirical subagent outputs generated for alignment: <span className="text-emerald-400 font-mono font-medium">{corridorMeta.originName || 'Origin'} → {corridorMeta.destName || 'Terminus'}</span>.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-[11px] text-slate-400">
-                  Viability Score: <strong className="text-emerald-400 tabular-nums">{viabilityScore.toFixed(1)}</strong>/100
-                </span>
-              </div>
-            </motion.div>
-          )}
 
           {/* 4 HIGH-LEVEL KPI IMPACT CARDS (DYNAMIC FROM DOSSIER) */}
           <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -698,62 +727,95 @@ export default function MultiAgentSwarmAuditPage() {
           </section>
 
           {/* FILTER TOOLBAR */}
-          <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-2xl bg-[#0E1117]/80 border border-white/[0.08] select-none">
-            <div className="flex items-center gap-1.5">
-              <span className="text-xs font-mono text-slate-400 mr-1">Status:</span>
-              <button
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl bg-[#0E1117]/95 border border-white/[0.12] shadow-2xl shadow-black/60 ring-1 ring-white/5 select-none">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+              <div className="flex items-center gap-2 px-1 text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-slate-200">
+                <Filter className="w-4 h-4 text-emerald-400" />
+                <span>Status:</span>
+              </div>
+              <motion.button
+                whileTap={{ scale: 0.96 }}
                 onClick={() => setStatusFilter('all')}
-                className={`px-3 py-1 rounded-lg text-xs font-mono transition-all cursor-pointer ${
-                  statusFilter === 'all' ? 'bg-white/10 text-white font-semibold shadow-sm' : 'text-slate-400 hover:text-white'
+                className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono font-bold transition-all cursor-pointer ${
+                  statusFilter === 'all'
+                    ? 'bg-white/15 text-white border border-white/30 shadow-md shadow-black/40'
+                    : 'bg-white/[0.03] text-slate-400 hover:text-white hover:bg-white/[0.08] border border-white/[0.05]'
                 }`}
               >
                 All (5)
-              </button>
-              <button
+              </motion.button>
+              <motion.button
+                whileTap={{ scale: 0.96 }}
                 onClick={() => setStatusFilter('completed')}
-                className={`px-3 py-1 rounded-lg text-xs font-mono transition-all cursor-pointer ${
-                  statusFilter === 'completed' ? 'bg-emerald-500/15 text-emerald-400 font-semibold shadow-sm' : 'text-slate-400 hover:text-emerald-400'
+                className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono font-bold transition-all cursor-pointer ${
+                  statusFilter === 'completed'
+                    ? 'bg-emerald-500/25 text-emerald-300 border border-emerald-500/50 shadow-md shadow-emerald-950/40 ring-1 ring-emerald-500/30'
+                    : 'bg-white/[0.03] text-slate-400 hover:text-emerald-400 hover:bg-emerald-500/10 border border-white/[0.05]'
                 }`}
               >
                 Active Only
-              </button>
-              <button
+              </motion.button>
+              <motion.button
+                whileTap={{ scale: 0.96 }}
                 onClick={() => setStatusFilter('skipped')}
-                className={`px-3 py-1 rounded-lg text-xs font-mono transition-all cursor-pointer ${
-                  statusFilter === 'skipped' ? 'bg-amber-500/15 text-amber-400 font-semibold shadow-sm' : 'text-slate-400 hover:text-amber-400'
+                className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono font-bold transition-all cursor-pointer ${
+                  statusFilter === 'skipped'
+                    ? 'bg-amber-500/25 text-amber-300 border border-amber-500/50 shadow-md shadow-amber-950/40 ring-1 ring-amber-500/30'
+                    : 'bg-white/[0.03] text-slate-400 hover:text-amber-400 hover:bg-amber-500/10 border border-white/[0.05]'
                 }`}
               >
                 Skipped / Unassessed
-              </button>
+              </motion.button>
             </div>
 
-            <div className="flex items-center gap-1.5">
-              <span className="text-xs font-mono text-slate-400 mr-1">Domain:</span>
+            <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+              <div className="flex items-center gap-2 px-1 text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-slate-200">
+                <Layers className="w-4 h-4 text-cyan-400" />
+                <span>Domain:</span>
+              </div>
               {(['all', 'visualizer', 'demographics', 'economic', 'mobility', 'ecological'] as const).map((dom) => (
-                <button
+                <motion.button
                   key={dom}
+                  whileTap={{ scale: 0.96 }}
                   onClick={() => setDomainFilter(dom)}
-                  className={`px-2.5 py-1 rounded-lg text-[11px] font-mono capitalize transition-all cursor-pointer ${
-                    domainFilter === dom ? 'bg-white/10 text-white font-semibold' : 'text-slate-400 hover:text-white'
+                  className={`px-3 py-2 rounded-xl text-xs sm:text-sm font-mono capitalize transition-all cursor-pointer flex items-center gap-1.5 ${
+                    domainFilter === dom
+                      ? 'bg-cyan-500/25 text-cyan-300 border border-cyan-500/50 font-bold shadow-md shadow-cyan-950/40 ring-1 ring-cyan-500/30'
+                      : 'bg-white/[0.03] text-slate-400 hover:text-white hover:bg-white/[0.08] border border-white/[0.05]'
                   }`}
                 >
-                  {dom}
-                </button>
+                  {dom !== 'all' && getAgentIcon(dom, 'size-3.5')}
+                  <span>{dom}</span>
+                </motion.button>
               ))}
             </div>
           </div>
 
           {/* 5 DEEP-DIVE SUBAGENT TRACE CARDS */}
           <section className="flex flex-col gap-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <h3 className="text-xs font-mono uppercase tracking-wider text-slate-400">
-                  Subagent Swarm Trace Breakdown ({filteredTraces.length} Active Displayed)
-                </h3>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-1">
+              <div className="flex items-center gap-3">
+                <div className="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                  <Activity className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2.5 flex-wrap">
+                    <h3 className="text-base sm:text-lg font-bold font-mono text-white tracking-tight">
+                      SUBAGENT SWARM TRACE BREAKDOWN
+                    </h3>
+                    <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 tabular-nums">
+                      {filteredTraces.length} / 5 ACTIVE DISPLAYED
+                    </span>
+                  </div>
+                  <p className="text-xs font-mono text-slate-400 mt-0.5">
+                    Live execution logs, mathematical formulations, and domain agent outputs
+                  </p>
+                </div>
               </div>
-              <span className="text-[11px] font-mono text-slate-500">
-                Click any agent card to disclose mathematical formulations and reasoning steps
-              </span>
+              <div className="flex items-center gap-2 text-xs font-mono text-slate-400 bg-white/[0.03] px-3 py-1.5 rounded-lg border border-white/[0.06] self-start sm:self-auto">
+                <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                <span>Click any card to inspect reasoning</span>
+              </div>
             </div>
 
             <div className="flex flex-col gap-3">
@@ -773,8 +835,8 @@ export default function MultiAgentSwarmAuditPage() {
                       className="flex items-center justify-between p-4 cursor-pointer hover:bg-white/[0.02] transition-colors select-none"
                     >
                       <div className="flex items-center gap-3.5 min-w-0">
-                        <div className={`p-2 rounded-xl border ${domainColor(trace.domain)}`}>
-                          <BotLogo className="size-4" isActive={trace.status === 'completed'} />
+                        <div className={`p-2.5 rounded-xl border flex items-center justify-center shrink-0 ${domainColor(trace.domain)}`}>
+                          {getAgentIcon(trace.domain, 'size-4')}
                         </div>
 
                         <div className="flex flex-col min-w-0">
@@ -908,35 +970,64 @@ export default function MultiAgentSwarmAuditPage() {
                 <div className="flex items-center gap-2">
                   <MapPin className="size-4 text-emerald-400" />
                   <h3 className="text-xs font-mono uppercase tracking-wider text-white font-semibold">
-                    Suggested Station Alignments ({dossier.suggested_stations?.length || 0})
+                    Suggested Station Alignments ({stations.length})
                   </h3>
                 </div>
                 <span className="text-[10px] font-mono text-slate-400">MoHUA 800m–1500m Headway</span>
               </div>
 
-              <div className="flex flex-col gap-2">
-                {(dossier.suggested_stations || []).map((st, idx) => (
-                  <div
-                    key={idx}
-                    className="flex flex-col p-2.5 rounded-xl bg-[#161B22]/60 border border-white/[0.04] gap-1"
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-white">{st.name}</span>
-                      {st.interchange_potential && (
-                        <span className="px-1.5 py-0.2 rounded text-[9.5px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                          INTERCHANGE
-                        </span>
-                      )}
+              <div className="flex flex-col gap-2.5">
+                {stations.map((st, idx) => {
+                  const footfall = st.expected_daily_footfall ?? st.estimated_daily_boardings ?? 0;
+                  const isInterchange = Boolean(st.interchange_potential || st.interchange_with);
+                  const typology = st.typology || (isInterchange ? 'UNDERGROUND' : 'ELEVATED');
+                  const lat = st.latitude ?? (st.coordinates ? st.coordinates[1] : undefined);
+                  const lng = st.longitude ?? (st.coordinates ? st.coordinates[0] : undefined);
+
+                  return (
+                    <div
+                      key={st.station_id || idx}
+                      className="flex flex-col p-3 rounded-xl bg-[#14161b] border border-white/[0.06] hover:border-emerald-500/30 transition-all gap-1.5 shadow-sm"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="size-5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-[10px] font-bold flex items-center justify-center shrink-0">
+                            {String(idx + 1).padStart(2, '0')}
+                          </span>
+                          <span className="text-xs font-bold text-white tracking-tight">{st.name}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          {isInterchange && (
+                            <span className="px-2 py-0.5 rounded-md text-[9.5px] font-mono font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                              {st.interchange_with ? `INTERCHANGE (${st.interchange_with})` : 'INTERCHANGE'}
+                            </span>
+                          )}
+                          <span className="px-2 py-0.5 rounded-md text-[9.5px] font-mono font-bold bg-white/5 text-slate-300 border border-white/10">
+                            {typology}
+                          </span>
+                        </div>
+                      </div>
+
+                      <p className="text-[11.5px] text-slate-300 font-sans leading-relaxed">
+                        {st.rationale || 'Intermediate passenger boarding node.'}
+                      </p>
+
+                      <div className="flex items-center justify-between text-[10.5px] font-mono text-slate-400 pt-1 border-t border-white/[0.04]">
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-slate-500">Daily Footfall:</span>
+                          <strong className="text-emerald-400 tabular-nums font-semibold">
+                            {footfall.toLocaleString('en-IN')}
+                          </strong>
+                        </div>
+                        {lat != null && lng != null && (
+                          <span className="text-slate-500 tabular-nums">
+                            {lng.toFixed(4)}° E, {lat.toFixed(4)}° N
+                          </span>
+                        )}
+                      </div>
                     </div>
-                    <p className="text-[11px] text-slate-400 font-sans leading-relaxed">
-                      {st.rationale || 'Intermediate passenger boarding node.'}
-                    </p>
-                    <div className="flex items-center gap-3 text-[10.5px] font-mono text-slate-500 pt-0.5">
-                      <span>Daily Footfall: <strong className="text-slate-300">{(st.expected_daily_footfall || st.estimated_daily_boardings || 0).toLocaleString('en-IN')}</strong></span>
-                      <span>Typology: <strong className="text-slate-300">{st.typology || 'ELEVATED'}</strong></span>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
 
@@ -946,17 +1037,17 @@ export default function MultiAgentSwarmAuditPage() {
                 <div className="flex items-center gap-2">
                   <AlertTriangle className="size-4 text-amber-400" />
                   <h3 className="text-xs font-mono uppercase tracking-wider text-white font-semibold">
-                    Prioritized Risk Audit & Mitigations ({dossier.risk_warnings?.length || 0})
+                    Prioritized Risk Audit & Mitigations ({riskWarnings.length})
                   </h3>
                 </div>
                 <span className="text-[10px] font-mono text-slate-400">Statutory Compliance</span>
               </div>
 
               <div className="flex flex-col gap-2">
-                {(dossier.risk_warnings || []).length > 0 ? (
-                  (dossier.risk_warnings || []).map((rw, idx) => (
+                {riskWarnings.length > 0 ? (
+                  riskWarnings.map((rw, idx) => (
                     <div
-                      key={idx}
+                      key={rw.risk_id || idx}
                       className="flex flex-col p-2.5 rounded-xl bg-amber-500/5 border border-amber-500/20 gap-1"
                     >
                       <div className="flex items-center justify-between">

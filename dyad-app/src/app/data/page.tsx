@@ -4,12 +4,13 @@ import { useState, useRef, useEffect, useCallback, ChangeEvent, DragEvent } from
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Database, TrendingUp, MapPin, 
+  Database, MapPin,
   UploadCloud, FileText, Table, FileSpreadsheet,
   Trash2, CheckCircle2, Search, FileCode, Check,
-  ArrowLeft, Eye, X, Download, HardDrive,
+  Eye, X, Download, HardDrive,
   Layers, Radio, Loader2, RefreshCw, PlusCircle,
-  FlaskConical, CheckCircle, AlertTriangle
+  FlaskConical, CheckCircle, AlertTriangle,
+  Home, LocateFixed, CircleUser
 } from 'lucide-react';
 import { motionSprings } from '../../../lib/motion';
 import { BotLogo } from '../../../components/BotLogo';
@@ -277,30 +278,34 @@ export default function DataSynthesisPage() {
     <div className="relative w-screen h-screen flex overflow-hidden bg-background text-foreground font-sans selection:bg-primary/30 select-none">
       
       {/* 68px LEFT VERTICAL RAIL (STANDARDIZED ACROSS ALL ROUTES) */}
-      <aside className="relative z-20 w-17 flex flex-col items-center border-r border-sidebar-border bg-sidebar/95 backdrop-blur-xl py-4 h-full shrink-0">
-        <Link href="/" className="w-10 h-10 bg-primary/10 rounded-xl border border-primary/20 flex items-center justify-center mb-6 shadow-sm group">
-          <MapPin className="text-primary size-5 group-hover:scale-105 transition-transform" />
+      <aside className="relative z-20 w-[68px] flex flex-col items-center border-r border-white/[0.08] bg-[#0E1117]/95 backdrop-blur-xl py-4 h-full shrink-0 select-none">
+        <Link
+          href="/"
+          className="w-10 h-10 bg-emerald-500/10 rounded-xl border border-emerald-500/20 flex items-center justify-center mb-6 shadow-sm group hover:scale-105 transition-transform cursor-pointer"
+          title="Return to Home Canvas"
+        >
+          <Home className="text-emerald-400 size-5" />
         </Link>
-        <nav className="flex flex-col gap-4">
-          <Link href="/data" title="Data Ingestion & Schema Inspector">
+        <nav className="flex flex-col gap-3">
+          <Link href="/data" title="Data Ingestion & Schema Inspector (Active)">
             <motion.button 
               whileHover={{ scale: 1.05 }} 
               whileTap={{ scale: 0.94 }} 
               transition={motionSprings.snappy} 
-              className="p-2.5 rounded-lg text-primary bg-primary/10 transition-colors border border-primary/20 shadow-sm cursor-pointer"
+              className="p-2.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 shadow-md shadow-emerald-500/10 flex items-center justify-center cursor-pointer"
             >
               <Database className="size-5" />
             </motion.button>
           </Link>
 
-          <Link href="/" title="Corridor Simulation Canvas">
+          <Link href="/" title="Corridor GPS Alignment Canvas">
             <motion.button 
               whileHover={{ scale: 1.05 }} 
               whileTap={{ scale: 0.94 }} 
               transition={motionSprings.snappy} 
-              className="p-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors cursor-pointer"
+              className="p-2.5 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
             >
-              <TrendingUp className="size-5" />
+              <LocateFixed className="size-5" />
             </motion.button>
           </Link>
 
@@ -316,6 +321,16 @@ export default function DataSynthesisPage() {
             </motion.button>
           </Link>
         </nav>
+
+        {/* User Profile Logo */}
+        <div className="mt-auto flex flex-col items-center">
+          <button
+            title="User Profile & Authority Credentials"
+            className="w-10 h-10 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] hover:border-emerald-500/30 flex items-center justify-center text-slate-300 hover:text-white transition-all cursor-pointer group shadow-sm"
+          >
+            <CircleUser className="size-5 text-slate-400 group-hover:text-emerald-300 transition-colors" />
+          </button>
+        </div>
       </aside>
 
       {/* MAIN BODY AREA (FULL WIDTH DATA INVENTORY) */}
@@ -348,18 +363,6 @@ export default function DataSynthesisPage() {
             <span className="text-xs font-mono text-muted-foreground tabular-nums hidden sm:inline-block">
               {files.length} Datasets Active
             </span>
-            <div className="h-3.5 w-px bg-border/60 hidden sm:block" />
-
-            <Link href="/">
-              <motion.button 
-                whileHover={{ scale: 1.02 }} 
-                whileTap={{ scale: 0.98 }}
-                className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1.5 transition-colors cursor-pointer"
-              >
-                <ArrowLeft className="size-3 text-primary" />
-                <span>Map Canvas</span>
-              </motion.button>
-            </Link>
           </div>
         </header>
 
