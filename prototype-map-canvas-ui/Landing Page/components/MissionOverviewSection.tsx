@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
 export function MissionOverviewSection() {
@@ -32,14 +31,14 @@ export function MissionOverviewSection() {
         {/* CLEAN, SIMPLE PURPOSE STATEMENT */}
         <div className="mt-8 sm:mt-10 max-w-3xl">
           <p className="text-zinc-400 text-base sm:text-lg md:text-xl font-normal leading-relaxed">
-            Evaluating an urban transit corridor traditionally demands{' '}
-            <strong className="text-white font-semibold">12 to 24 months</strong> and{' '}
-            <strong className="text-white font-semibold">₹5+ Crore</strong> in manual foot surveys, paper census lookups, and 600-page consultant binders.
+            Early corridor screening often means reconciling{' '}
+            <strong className="text-white font-semibold">fragmented maps, historical census tables, schedules, and environmental layers</strong>{' '}
+            before planners can compare alternatives.
           </p>
           <p className="mt-4 text-zinc-300 text-base sm:text-lg md:text-xl font-normal leading-relaxed">
-            Dyad compresses pre-feasibility reconnaissance into{' '}
-            <span className="text-white font-mono font-bold tracking-tight">&lt; 4 seconds</span>{' '}
-            using deterministic spatial geometry and autonomous AI agents.
+            Dyad turns those inputs into a{' '}
+            <span className="text-white font-semibold">repeatable, explainable pre-feasibility workflow</span>{' '}
+            using deterministic spatial geometry and specialist agents.
           </p>
         </div>
 
@@ -65,22 +64,21 @@ export function MissionOverviewSection() {
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-mono text-zinc-500">&lt; 4.0s</span>
+                  <span className="text-xs font-mono text-zinc-500">Reproducible</span>
                   <ArrowUpRight className="size-4 text-zinc-600 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                 </div>
               </div>
 
               <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-3 group-hover:text-white transition-colors">
-                Kill the 24-Month Wait
+                Screen Corridors Earlier
               </h3>
               
               <p className="text-sm text-zinc-400 leading-relaxed">
-                Planners drop pins anywhere on the map. In milliseconds, Turf.js calculates geodesic walksheds, station alignments, and TomTom live road-vs-rail velocity deltas without waiting for consultant cycles.
+                Planners define a candidate alignment on the map. Deterministic geometry builds catchments, measures nearby features, and prepares traceable inputs for specialist review.
               </p>
             </div>
 
-            <div className="mt-8 pt-4 border-t border-white/[0.05] flex items-center justify-between text-xs font-mono text-zinc-500">
-              <span className="text-zinc-400 font-medium">Turf.js Geodesic Engine</span>
+            <div className="mt-8 pt-4 border-t border-white/[0.05] flex items-center justify-end text-xs font-mono text-zinc-500">
               <span className="text-zinc-400">Deterministic</span>
             </div>
           </div>
@@ -98,23 +96,23 @@ export function MissionOverviewSection() {
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-mono text-zinc-500">Zero Manual GIS</span>
+                  <span className="text-xs font-mono text-zinc-500">Open Data Inputs</span>
                   <ArrowUpRight className="size-4 text-zinc-600 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                 </div>
               </div>
 
               <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-3 group-hover:text-white transition-colors">
-                Eliminate Manual Stitching
+                Unify Spatial Evidence
               </h3>
               
               <p className="text-sm text-zinc-400 leading-relaxed">
-                No more combing through municipal ward registers or manual CAD measurements. Dyad automatically aggregates employment density, major tech parks, hospitals, and census demographics in one unified canvas.
+                Dyad combines historical ward census data, metro geometry, mapped road widths, waterbodies, and planning-relevant POIs in one inspectable canvas.
               </p>
             </div>
 
             <div className="mt-8 pt-4 border-t border-white/[0.05] flex items-center justify-between text-xs font-mono text-zinc-500">
-              <span className="text-zinc-400 font-medium">412 BBMP/Ward POIs</span>
-              <span className="text-zinc-400">Auto-Aggregated</span>
+              <span className="text-zinc-400 font-medium">8,213 POIs • 198 wards</span>
+              <span className="text-zinc-400">Source-Tracked</span>
             </div>
           </div>
         </Link>
@@ -131,23 +129,23 @@ export function MissionOverviewSection() {
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-mono text-zinc-500">MoHUA Ready</span>
+                  <span className="text-xs font-mono text-zinc-500">Decision Support</span>
                   <ArrowUpRight className="size-4 text-zinc-600 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                 </div>
               </div>
 
               <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-3 group-hover:text-white transition-colors">
-                Objective Swarm Audit
+                Surface Risks Before Design
               </h3>
               
               <p className="text-sm text-zinc-400 leading-relaxed">
-                Cloud microVMs continuously cross-examine Right-of-Way conflicts, NGT lake buffer clearances, and Economic Internal Rate of Return (EIRR) hurdles before committing ₹5 Crore to consultant contracts.
+                Specialist agents compare mobility scenarios, catchment demographics, economic activity and waterbody proximity while preserving every assumption and limitation.
               </p>
             </div>
 
             <div className="mt-8 pt-4 border-t border-white/[0.05] flex items-center justify-between text-xs font-mono text-zinc-500">
-              <span className="text-zinc-400 font-medium">Multi-Agent Verification</span>
-              <span className="text-zinc-400">Consensus Vetted</span>
+              <span className="text-zinc-400 font-medium">Structured Pre-Feasibility</span>
+              <span className="text-zinc-400">Review Required</span>
             </div>
           </div>
         </Link>

@@ -36,16 +36,16 @@ export const CITIES_CONFIG: Record<string, CityConfig> = {
     zoom: 4.3,
     pitch: 20,
     bearing: 0,
-    intelHeadline: 'New Delhi was the 4th most congested city in India',
-    intelSubtext: 'Over ₹1.2 Lakh Crore in transit capital projects currently undergoing feasibility assessment. Dyad compresses reconnaissance from 24 months to under 4 seconds.',
+    intelHeadline: 'National metro context preview',
+    intelSubtext: 'This view provides geographic context only. No national corridor analysis has been run with the repository datasets.',
     buttonText: 'Explore India',
     metrics: {
-      peakSpeed: '16.4 km/h',
-      speedDelta: '-2.8% YoY',
-      annualLoss: '₹1,20,000 Cr',
-      corridorPressure: 'High National',
-      pphpd: '42,000 max',
-      metroLines: '16 Cities Active'
+      peakSpeed: 'Not run',
+      speedDelta: 'Not modeled',
+      annualLoss: 'Map only',
+      corridorPressure: 'Context only',
+      pphpd: 'Pending',
+      metroLines: 'Reference geometry'
     },
     highlightCorridors: [
       {
@@ -77,16 +77,16 @@ export const CITIES_CONFIG: Record<string, CityConfig> = {
     zoom: 9.9,
     pitch: 54,
     bearing: -22,
-    intelHeadline: 'Compared to 2024, Bengaluru saw a 4.2 percentage point increase in average congestion in 2025',
-    intelSubtext: 'Silk Board to Bellandur ORR corridor faces severe choke points with 18,450 PPHPD peak pressure. Commuters lose 44 mins each way during rush hours.',
+    intelHeadline: 'Repository sample: Central Silk Board to Bellandur',
+    intelSubtext: 'A 7.06 km pre-feasibility sample compares a GTFS-derived metro estimate with an assumed BPR road scenario and preserves its limitations.',
     buttonText: 'Explore Bengaluru',
     metrics: {
-      peakSpeed: '13.9 km/h',
-      speedDelta: '+4.2% Congestion',
-      annualLoss: '₹20,000 Cr',
-      corridorPressure: 'Critical Peak',
-      pphpd: '18,450 PPHPD',
-      metroLines: 'Namma Metro (5 Lines)'
+      peakSpeed: '12.1 min',
+      speedDelta: 'Model estimate',
+      annualLoss: '33.9 min',
+      corridorPressure: 'Review required',
+      pphpd: '170,880',
+      metroLines: 'Census-2011 catchment'
     },
     highlightCorridors: [
       {
@@ -167,16 +167,16 @@ export const CITIES_CONFIG: Record<string, CityConfig> = {
     zoom: 9.3,
     pitch: 54,
     bearing: -20,
-    intelHeadline: 'Compared to 2024, New Delhi saw a 3.5 percentage point increase in average congestion in 2025',
-    intelSubtext: 'The 392km DMRC network carries over 6.2 million daily trips. Regional rapid transit lines (RRTS) expand suburban catchment into Uttar Pradesh & Haryana.',
+    intelHeadline: 'Delhi network context preview',
+    intelSubtext: 'This view displays reference metro geometry only. DYAD has not run a Delhi corridor analysis with local demographic, mobility, or ecological datasets.',
     buttonText: 'Explore New Delhi',
     metrics: {
-      peakSpeed: '15.2 km/h',
-      speedDelta: '+3.5% Congestion',
-      annualLoss: '₹34,000 Cr',
-      corridorPressure: 'Severe Arterial',
-      pphpd: '26,500 PPHPD',
-      metroLines: 'DMRC (12 Lines + RRTS)'
+      peakSpeed: 'Not run',
+      speedDelta: 'Not modeled',
+      annualLoss: 'Map only',
+      corridorPressure: 'Context only',
+      pphpd: 'Pending',
+      metroLines: 'Reference geometry'
     },
     highlightCorridors: [
       {
@@ -211,16 +211,16 @@ export const CITIES_CONFIG: Record<string, CityConfig> = {
     zoom: 9.9,
     pitch: 54,
     bearing: -20,
-    intelHeadline: 'Hyderabad saw significant traffic friction across HITEC City and the Financial District',
-    intelSubtext: 'Phase-2 expansion targets high-density IT corridors from Raidurg to Rajiv Gandhi International Airport (RGIA) with 70% projected modal shift from personal cars.',
+    intelHeadline: 'Hyderabad network context preview',
+    intelSubtext: 'This view displays reference metro geometry only. DYAD has not run a Hyderabad corridor analysis with local demographic, mobility, or ecological datasets.',
     buttonText: 'Simulate Hyderabad Corridors',
     metrics: {
-      peakSpeed: '18.1 km/h',
-      speedDelta: '+2.9% Congestion',
-      annualLoss: '₹14,500 Cr',
-      corridorPressure: 'High Tech Belt',
-      pphpd: '14,200 PPHPD',
-      metroLines: 'Hyderabad Metro (3 Lines)'
+      peakSpeed: 'Not run',
+      speedDelta: 'Not modeled',
+      annualLoss: 'Map only',
+      corridorPressure: 'Context only',
+      pphpd: 'Pending',
+      metroLines: 'Reference geometry'
     },
     highlightCorridors: [
       {

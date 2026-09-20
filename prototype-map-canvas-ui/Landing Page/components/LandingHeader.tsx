@@ -15,15 +15,15 @@ export function LandingHeader() {
       <div className="w-full px-6 sm:px-10 lg:px-14 py-5 sm:py-5.5 flex items-center justify-between relative z-10">
         
         {/* LEFT: DYAD WORDMARK LOGO (TOP-LEFT ANCHOR) */}
-        <Link href="/" className="flex items-baseline gap-2 group select-none shrink-0">
-          <span className="font-sans text-2xl sm:text-3xl lg:text-[32px] font-black tracking-[-0.06em] text-white group-hover:text-zinc-200 transition-colors">
+        <Link href="/" className="flex items-baseline gap-2.5 group select-none shrink-0" aria-label="DYAD home">
+          <span className="font-sans text-3xl sm:text-4xl lg:text-[42px] font-black tracking-[-0.04em] text-white group-hover:text-zinc-200 transition-colors leading-none">
             DYAD
           </span>
-          <span className="size-2.5 sm:size-3 rounded-xs bg-[#0ab1ba] inline-block shadow-[0_0_14px_#0ab1ba] group-hover:shadow-[0_0_20px_#0ab1ba] transition-all shrink-0" />
+          <span className="size-3 sm:size-3.5 lg:size-4 rounded-xs bg-[#0ab1ba] inline-block shadow-[0_0_14px_#0ab1ba] group-hover:shadow-[0_0_20px_#0ab1ba] transition-all shrink-0" />
         </Link>
 
         {/* CENTER: CLEAN NAVIGATION LINKS (GENEROUSLY SPACED, ZERO HOVER POPUPS) */}
-        <nav className="hidden md:flex items-center gap-10 lg:gap-14 xl:gap-16 text-[15px] sm:text-base font-semibold text-zinc-400 select-none">
+        <nav className="hidden lg:flex items-center gap-8 xl:gap-14 text-base font-semibold text-zinc-400 select-none">
           <a 
             href="#demo" 
             className="hover:text-white transition-colors py-1"
@@ -54,24 +54,24 @@ export function LandingHeader() {
         </nav>
 
         {/* RIGHT: LOGIN AND SIGN UP BUTTONS */}
-        <div className="hidden md:flex items-center gap-3.5 select-none shrink-0">
+        <div className="hidden lg:flex items-center gap-3 select-none shrink-0">
           <Link 
             href="/login"
-            className="text-sm sm:text-[15px] font-semibold text-zinc-400 hover:text-white px-4 py-2 rounded-full hover:bg-white/[0.04] transition-colors"
+            className="rounded-full px-5 py-3 text-base font-semibold text-zinc-300 hover:bg-white/[0.06] hover:text-white transition-colors"
           >
             Log in
           </Link>
 
           <Link 
             href="/signup"
-            className="px-5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-white hover:bg-zinc-200 text-black font-extrabold text-sm sm:text-[15px] shadow-[0_2px_14px_rgba(255,255,255,0.18)] hover:shadow-[0_2px_22px_rgba(255,255,255,0.28)] transition-all"
+            className="rounded-full bg-white px-7 py-3 text-base font-extrabold text-black shadow-[0_4px_18px_rgba(255,255,255,0.18)] hover:bg-zinc-200 hover:shadow-[0_6px_24px_rgba(255,255,255,0.26)] transition-all"
           >
             Sign up
           </Link>
         </div>
 
         {/* MOBILE HAMBURGER BUTTON */}
-        <div className="md:hidden flex items-center">
+        <div className="lg:hidden flex items-center">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2.5 rounded-xl bg-[#0a0a0c] border border-white/10 text-zinc-400 hover:text-white transition-colors"
@@ -85,7 +85,7 @@ export function LandingHeader() {
 
       {/* MOBILE EXPANDABLE DRAWER */}
       {mobileMenuOpen && (
-        <div className="md:hidden px-6 py-5 border-t border-white/[0.06] bg-[#0c0c0e] space-y-4 select-none">
+        <div className="lg:hidden px-6 py-5 border-t border-white/[0.06] bg-[#0c0c0e] space-y-4 select-none">
           <a
             href="#demo"
             onClick={() => setMobileMenuOpen(false)}
@@ -118,14 +118,14 @@ export function LandingHeader() {
             <Link
               href="/login"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex-1 text-center py-2.5 text-sm font-semibold text-zinc-300 hover:text-white rounded-xl border border-white/10 bg-white/[0.03] transition-colors"
+              className="flex-1 text-center py-3.5 text-base font-semibold text-zinc-300 hover:text-white rounded-xl border border-white/10 bg-white/[0.03] transition-colors"
             >
               Log in
             </Link>
             <Link
               href="/signup"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex-1 text-center py-2.5 text-sm font-extrabold text-black bg-white hover:bg-zinc-200 rounded-xl shadow-sm transition-colors"
+              className="flex-1 text-center py-3.5 text-base font-extrabold text-black bg-white hover:bg-zinc-200 rounded-xl shadow-sm transition-colors"
             >
               Sign up
             </Link>

@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CITIES_CONFIG } from '../data/citiesConfig';
-import { ArrowRight, Activity, TrendingUp } from 'lucide-react';
+import { ArrowRight, Activity } from 'lucide-react';
 import { motionSprings } from '../../lib/motion';
 
 interface TomTomIntelCardProps {
@@ -14,6 +14,7 @@ interface TomTomIntelCardProps {
 
 export function TomTomIntelCard({ activeCityKey }: TomTomIntelCardProps) {
   const city = CITIES_CONFIG[activeCityKey] || CITIES_CONFIG.bengaluru;
+  const hasRepositorySample = city.id === 'bengaluru';
 
   return (
     <div className="fixed bottom-8 left-8 z-30 max-w-[460px] w-full pointer-events-auto select-none">
@@ -36,7 +37,7 @@ export function TomTomIntelCard({ activeCityKey }: TomTomIntelCardProps) {
               </span>
             </div>
             <span className="text-[11px] font-mono font-semibold text-slate-700 px-2.5 py-0.5 rounded-full bg-slate-100">
-              TomTom Index 2025/26
+              {hasRepositorySample ? 'Repository Sample' : 'Map Context Only'}
             </span>
           </div>
 
@@ -53,19 +54,25 @@ export function TomTomIntelCard({ activeCityKey }: TomTomIntelCardProps) {
           {/* TELEMETRY ROW (HIGH CONTRAST ON LIGHT GRAY PILL) */}
           <div className="grid grid-cols-3 gap-2 p-3 rounded-2xl bg-slate-50 border border-slate-200 mb-6">
             <div className="flex flex-col">
-              <span className="text-[10px] uppercase font-mono font-semibold text-slate-700">Peak Road</span>
+              <span className="text-[10px] uppercase font-mono font-semibold text-slate-700">
+                {hasRepositorySample ? 'Metro Model' : 'Analysis'}
+              </span>
               <span className="font-mono text-base font-extrabold text-[#E52020] tabular-nums">
                 {city.metrics.peakSpeed}
               </span>
             </div>
             <div className="flex flex-col border-x border-slate-200 px-2">
-              <span className="text-[10px] uppercase font-mono font-semibold text-slate-700">Annual Loss</span>
+              <span className="text-[10px] uppercase font-mono font-semibold text-slate-700">
+                {hasRepositorySample ? 'Road Scenario' : 'Dataset'}
+              </span>
               <span className="font-mono text-base font-extrabold text-slate-900 tabular-nums">
                 {city.metrics.annualLoss}
               </span>
             </div>
             <div className="flex flex-col pl-1">
-              <span className="text-[10px] uppercase font-mono font-semibold text-slate-700">Corridor Load</span>
+              <span className="text-[10px] uppercase font-mono font-semibold text-slate-700">
+                {hasRepositorySample ? '1.5 km Census' : 'Result'}
+              </span>
               <span className="font-mono text-base font-extrabold text-[#0ab1ba] tabular-nums">
                 {city.metrics.pphpd}
               </span>

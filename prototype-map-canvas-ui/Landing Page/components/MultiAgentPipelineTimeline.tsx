@@ -1,10 +1,9 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { 
-  TrendingUp, MapPin, GitBranch, IndianRupee, 
-  ShieldCheck, Layers, ArrowUpRight, Sparkles
+  Globe2, UsersRound, Timer, MapPinned, Leaf,
+  Layers, ArrowUpRight
 } from 'lucide-react';
 import { BotLogo } from '../../components/BotLogo';
 
@@ -28,117 +27,103 @@ interface PipelineAgent {
 
 const PIPELINE_AGENTS: PipelineAgent[] = [
   {
-    id: 'mob-01',
-    code: 'AGT-MOB-01',
-    name: 'Mobility & Congestion Engine',
-    shortName: 'Mobility Engine',
-    role: 'Lead Traffic & Passenger Demand Analyst',
-    domain: 'Traffic & Flow Reconnaissance',
-    badgeBg: 'bg-gradient-to-br from-[#0c1e28] to-[#04080c]',
-    badgeBorder: 'border-[#0ab1ba]/60',
-    accentColor: '#0ab1ba',
-    icon: TrendingUp,
-    whatItDoes: 'Scans 1.24M commuter trip records and live road telemetry to locate congestion bottlenecks and demand hotspots.',
-    briefContribution: 'Computes peak passenger ridership (18,450 PPHPD) proving the corridor saves commuters 44 minutes daily.',
-    regulatoryStandard: 'MoHUA 2024 Heavy Rail Viability Threshold',
-    keyMetric: '18,450 PPHPD Peak Viability',
-    latency: '< 120 ms'
+    id: 'browser-01',
+    code: 'AGT-DATA-01',
+    name: 'Browser Dataset Agent',
+    shortName: 'Browser Dataset Agent',
+    role: 'Source Discovery & Acquisition',
+    domain: 'Public Data Collection',
+    badgeBg: 'bg-gradient-to-br from-[#082338] to-[#03090d]',
+    badgeBorder: 'border-[#00bbf9]/60',
+    accentColor: '#00bbf9',
+    icon: Globe2,
+    whatItDoes: 'Navigates configured public-data sources, downloads candidate municipal and spatial datasets, and records source and licensing metadata.',
+    briefContribution: 'Routes each candidate dataset into a validation step before it can become an analysis input.',
+    regulatoryStandard: 'Source, licence and retrieval metadata preserved',
+    keyMetric: 'Traceable acquisition record',
+    latency: 'DATA ACQUISITION'
   },
   {
-    id: 'geo-02',
-    code: 'AGT-GEO-02',
-    name: 'Geospatial Catchment Agent',
-    shortName: 'Catchment Watchdog',
-    role: 'Spatial Walkshed & Demographic Auditor',
-    domain: 'Walksheds & Urban Land Use',
+    id: 'demographic-02',
+    code: 'AGT-DEM-02',
+    name: 'Demographic Agent',
+    shortName: 'Demographic Agent',
+    role: 'Catchment & Equity Baselines',
+    domain: 'Ward Census & Spatial Equity',
     badgeBg: 'bg-gradient-to-br from-[#0a2320] to-[#030a08]',
     badgeBorder: 'border-[#00f5d4]/60',
     accentColor: '#00f5d4',
-    icon: MapPin,
-    whatItDoes: 'Draws 2.0 km geodesic walking buffers around candidate station stops and audits municipal census blocks for density.',
-    briefContribution: 'Maps 342,800 residents and 84 tech parks within direct walk-in distance, eliminating reliance on feeder bus links.',
-    regulatoryStandard: 'TOD High-Density Walkshed Guidelines',
-    keyMetric: '342,800 Walk-In Population',
-    latency: '< 85 ms'
+    icon: UsersRound,
+    whatItDoes: 'Intersects corridor catchments with historical ward-level Census data to estimate population reached, population density, and available equity indicators.',
+    briefContribution: 'Makes neighbourhood coverage visible while keeping the reference year and spatial assumptions attached to every estimate.',
+    regulatoryStandard: 'Historical baseline • Uniform-within-ward assumption',
+    keyMetric: 'Area-weighted population & equity signals',
+    latency: 'CENSUS 2011 BASELINE'
   },
   {
-    id: 'eng-03',
-    code: 'AGT-ENG-03',
-    name: 'Civil Engineering Watchdog',
-    shortName: 'Civil Watchdog',
-    role: 'Geometric Alignment & Utility Arbiter',
-    domain: '3D LiDAR Terrain & Right-of-Way',
-    badgeBg: 'bg-gradient-to-br from-[#1b152d] to-[#07050d]',
-    badgeBorder: 'border-[#9d4edd]/60',
-    accentColor: '#9d4edd',
-    icon: GitBranch,
-    whatItDoes: 'Audits 3D LiDAR terrain elevations, viaduct turning radii (145m min), ruling gradients, and subterranean utilities.',
-    briefContribution: 'Certifies structural feasibility (2.85% ruling slope) and flags subsurface electrical conflicts for pre-tender budgeting.',
-    regulatoryStandard: 'BMRCL Structural Code v4.2 Compliance',
-    keyMetric: '2.85% Ruling Gradient (145m Rad)',
-    latency: '< 140 ms'
+    id: 'mobility-03',
+    code: 'AGT-MOB-03',
+    name: 'Mobility Agent',
+    shortName: 'Mobility Agent',
+    role: 'Travel-Time Scenario Modelling',
+    domain: 'GTFS, Roads & Historical Mobility',
+    badgeBg: 'bg-gradient-to-br from-[#0c1e28] to-[#04080c]',
+    badgeBorder: 'border-[#0ab1ba]/60',
+    accentColor: '#0ab1ba',
+    icon: Timer,
+    whatItDoes: 'Estimates scheduled metro travel time from GTFS data and compares it with configurable road-congestion scenarios, mapped road widths, and historical mobility indicators.',
+    briefContribution: 'Produces a transparent scenario comparison without presenting modelled road conditions as observed live traffic.',
+    regulatoryStandard: 'Unofficial GTFS • Assumed road V/C • Not live traffic',
+    keyMetric: 'Schedule vs road-scenario comparison',
+    latency: 'MODELLED • NOT LIVE'
   },
   {
-    id: 'fin-04',
-    code: 'AGT-FIN-04',
-    name: 'CapEx & Fiscal Arbiter',
-    shortName: 'Fiscal Arbiter',
-    role: 'Capital Expenditure & Cash Flow Modeler',
-    domain: 'Lifecycle Economics & Funding',
+    id: 'poi-04',
+    code: 'AGT-POI-04',
+    name: 'POI Agent',
+    shortName: 'POI Agent',
+    role: 'Accessibility & Activity Clustering',
+    domain: 'Planning-Relevant POI Analysis',
     badgeBg: 'bg-gradient-to-br from-[#2a1d08] to-[#0d0903]',
     badgeBorder: 'border-[#ffd166]/60',
     accentColor: '#ffd166',
-    icon: IndianRupee,
-    whatItDoes: 'Simulates 30-year lifecycle discounted cash flows and benchmarks elevated viaduct construction at ₹254 Cr/km.',
-    briefContribution: 'Delivers the formal Economic Internal Rate of Return (14.62% EIRR vs 14% benchmark) to unlock central capital grants.',
-    regulatoryStandard: 'DEA PPP Capital Grant Framework',
-    keyMetric: '14.62% EIRR (Surpasses Benchmark)',
-    latency: '< 190 ms'
+    icon: MapPinned,
+    whatItDoes: 'Identifies, categorizes, and clusters nearby hospitals, educational institutions, corporate locations, commercial centres, civic facilities, and public-transport POIs.',
+    briefContribution: 'Returns category counts and spatial clusters inside a configurable corridor catchment for accessibility analysis.',
+    regulatoryStandard: 'OpenStreetMap snapshot • Contributor coverage varies',
+    keyMetric: 'Categorised counts + spatial clusters',
+    latency: 'OSM SNAPSHOT'
   },
   {
     id: 'eco-05',
     code: 'AGT-ECO-05',
-    name: 'Ecological Compliance Watchdog',
-    shortName: 'Ecological Watchdog',
-    role: 'Environmental & NGT Setback Auditor',
-    domain: 'Environmental & Water Body Protection',
+    name: 'Ecological Risk Agent',
+    shortName: 'Ecological Risk Agent',
+    role: 'Environmental & Restricted-Area Screening',
+    domain: 'Verified Environmental Constraint Layers',
     badgeBg: 'bg-gradient-to-br from-[#0c2a1a] to-[#030c07]',
     badgeBorder: 'border-[#06d6a0]/60',
     accentColor: '#06d6a0',
-    icon: ShieldCheck,
-    whatItDoes: 'Checks alignment vectors against National Green Tribunal (NGT) 75m lake buffers, flood lines, and protected forest bounds.',
-    briefContribution: 'Guarantees 100% environmental compliance (112m lake setback) and budgets tree translocations to prevent legal injunctions.',
-    regulatoryStandard: 'NGT Principal Bench Rule (0 Stay Risk)',
-    keyMetric: '100% NGT Compliant Setback',
-    latency: '< 95 ms'
-  },
-  {
-    id: 'syn-06',
-    code: 'AGT-SYN-06',
-    name: 'DPR Synthesis Arbiter',
-    shortName: 'DPR Arbiter',
-    role: 'Chief Swarm Consensus & Brief Compiler',
-    domain: 'Autonomous Dossier Compilation',
-    badgeBg: 'bg-gradient-to-br from-[#22222c] to-[#08080a]',
-    badgeBorder: 'border-white/50',
-    accentColor: '#ffffff',
-    icon: Layers,
-    whatItDoes: 'Resolves technical debates between mobility, civil engineering, fiscal, and ecological agents into a reconciled route.',
-    briefContribution: 'Compiles all agent calculations, GIS vector shapefiles, and financial schedules into an executive DPR brief in under 4 seconds.',
-    regulatoryStandard: 'Ministry-Ready DPR Dossier Standard',
-    keyMetric: '< 4.0s Autonomous Synthesis',
-    latency: '< 4.0s'
+    icon: Leaf,
+    whatItDoes: 'Checks corridor proximity and intersection against every verified environmental or restricted-area layer supplied to the analysis.',
+    briefContribution: 'Water layers are active; forest, protected-area, flood-risk and other restricted-zone checks activate only when their verified datasets are available.',
+    regulatoryStandard: 'Available-layer screen • Not statutory or legal clearance',
+    keyMetric: 'Coverage gaps remain visible',
+    latency: 'RISK SCREEN'
   }
 ];
 
 export function MultiAgentPipelineTimeline() {
   const timelineRef = useRef<HTMLDivElement>(null);
   const nodeRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const orchestratorRef = useRef<HTMLDivElement>(null);
 
   // Track the advancing vertical white line height (in pixels from timeline container top)
   const [lineHeight, setLineHeight] = useState<number>(0);
   // Map of which agents have been reached by the guiding line
   const [reachedMap, setReachedMap] = useState<boolean[]>(new Array(PIPELINE_AGENTS.length).fill(false));
+  // The orchestrator is the final destination of the same guiding line.
+  const [orchestratorReached, setOrchestratorReached] = useState(false);
 
   useEffect(() => {
     const updateScroll = () => {
@@ -171,6 +156,13 @@ export function MultiAgentPipelineTimeline() {
         const hasChanged = nextReached.some((val, i) => val !== prev[i]);
         return hasChanged ? nextReached : prev;
       });
+
+      const orchestratorEl = orchestratorRef.current;
+      if (orchestratorEl) {
+        const orchestratorTopInsideTimeline = orchestratorEl.getBoundingClientRect().top - timelineRect.top;
+        const nextOrchestratorReached = lineTipInsideTimeline >= orchestratorTopInsideTimeline - 2;
+        setOrchestratorReached(prev => prev === nextOrchestratorReached ? prev : nextOrchestratorReached);
+      }
     };
 
     // Run immediately on mount
@@ -227,12 +219,12 @@ export function MultiAgentPipelineTimeline() {
       <div className="mb-24">
         <div className="flex items-baseline gap-2.5 sm:gap-3.5 mb-4">
           <h2 className="font-sans text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight">
-            Multi-Agent Pipeline
+            The Engine — Five Specialized Agents
           </h2>
           <span className="size-3 sm:size-4 lg:size-5 rounded-xs bg-[#0ab1ba] inline-block shadow-[0_0_16px_#0ab1ba]" />
         </div>
         <p className="text-zinc-400 text-base sm:text-lg lg:text-xl max-w-3xl leading-relaxed font-normal">
-          Autonomous transit reconnaissance pipeline. A synchronized intelligence signal passes sequentially through all six agents, resolving constraints and compiling the ministry-ready pre-feasibility DPR brief.
+          Five focused agents support dataset acquisition and corridor analysis. Every result preserves its source, assumptions, reference period, and limitations.
         </p>
       </div>
 
@@ -262,14 +254,14 @@ export function MultiAgentPipelineTimeline() {
         <div className="flex items-center justify-start md:justify-center mb-16 pl-14 md:pl-0">
           <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#09090c] border border-white/10 text-[10px] font-mono text-zinc-400 shadow-md">
             <span className="size-1.5 rounded-full bg-white animate-pulse" />
-            <span className="tracking-wider uppercase">Pipeline Ingestion Start</span>
+            <span className="tracking-wider uppercase">Dataset Acquisition Start</span>
           </div>
         </div>
 
         {/* 4. PIPELINE NODES (GUIDED PASSING ANIMATION) */}
         <div className="space-y-24 sm:space-y-32 relative z-20">
           {PIPELINE_AGENTS.map((agent, index) => {
-            const isEven = index % 2 === 1; // index 0, 2, 4 = card on right; index 1, 3, 5 = card on left
+            const isEven = index % 2 === 1; // Alternate detail cards around the central spine.
             const AgentIcon = agent.icon;
             const isReached = reachedMap[index];
 
@@ -396,17 +388,14 @@ export function MultiAgentPipelineTimeline() {
                       style={{ backgroundColor: agent.accentColor }}
                     />
 
-                    {/* BOT LOGO / GLYPH */}
+                    {/* AGENT GLYPH */}
                     <div className="relative z-10 flex items-center justify-center">
-                      {agent.id === 'syn-06' ? (
-                        <BotLogo className={`size-6.5 transition-colors duration-300 ease-out ${
+                      <AgentIcon
+                        aria-hidden="true"
+                        className={`size-6 transition-colors duration-300 ease-out ${
                           isReached ? 'text-white' : 'text-zinc-600'
-                        }`} isActive={isReached} />
-                      ) : (
-                        <AgentIcon className={`size-6 transition-colors duration-300 ease-out ${
-                          isReached ? 'text-white' : 'text-zinc-600'
-                        }`} />
-                      )}
+                        }`}
+                      />
                     </div>
 
                     {/* STEP INDEX NUMBER CHIP */}
@@ -517,6 +506,89 @@ export function MultiAgentPipelineTimeline() {
               </div>
             );
           })}
+        </div>
+
+        {/* FINAL HANDOFF NODE + ORCHESTRATOR OUTPUT */}
+        <div className="relative z-20 mt-24 sm:mt-32">
+          <div className="relative mb-8 h-14">
+            <div
+              ref={orchestratorRef}
+              className="absolute left-6 md:left-1/2 -translate-x-1/2 top-0 z-30"
+            >
+              <div className={`relative flex size-12 sm:size-13 items-center justify-center rounded-2xl border bg-gradient-to-br from-[#22222c] to-[#08080a] transition-[opacity,transform,border-color,box-shadow] duration-[250ms] ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:scale-100 ${
+                orchestratorReached
+                  ? 'scale-100 opacity-100 border-[#0ab1ba]/70 shadow-[0_0_32px_rgba(10,177,186,0.5),0_10px_25px_rgba(0,0,0,0.95)]'
+                  : 'scale-90 opacity-25 border-white/10 shadow-none grayscale'
+              }`}>
+                <div className={`absolute inset-0 rounded-2xl bg-[#0ab1ba] blur-md transition-opacity duration-[250ms] ${
+                  orchestratorReached ? 'opacity-35' : 'opacity-0'
+                }`} />
+                <BotLogo
+                  className={`relative z-10 size-6.5 transition-colors duration-[250ms] ${
+                    orchestratorReached ? 'text-white' : 'text-zinc-600'
+                  }`}
+                  isActive={orchestratorReached}
+                />
+                <div className={`absolute -bottom-2.5 rounded-full border px-1.5 py-0.2 font-mono text-[8.5px] transition-[color,background-color,border-color] duration-[250ms] ${
+                  orchestratorReached
+                    ? 'border-[#0ab1ba]/60 bg-black text-white font-bold'
+                    : 'border-white/5 bg-black/60 text-zinc-700'
+                }`}>
+                  06
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+          className={`ml-14 md:ml-0 rounded-2xl border bg-[#060608] p-5 sm:p-6 transition-[opacity,transform,border-color,box-shadow] delay-[60ms] duration-[250ms] ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:translate-y-0 motion-reduce:transition-[opacity,border-color,box-shadow] ${
+            orchestratorReached
+              ? 'translate-y-0 opacity-100 border-white/[0.16] shadow-[0_28px_70px_rgba(0,0,0,0.9),0_0_30px_rgba(10,177,186,0.08)]'
+              : 'translate-y-4 opacity-10 border-white/[0.05] shadow-none'
+          }`}
+        >
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
+            <div className={`flex size-12 shrink-0 items-center justify-center rounded-2xl border bg-gradient-to-br from-[#22222c] to-[#08080a] transition-[transform,border-color,box-shadow] duration-[250ms] ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:scale-100 ${
+              orchestratorReached
+                ? 'scale-100 border-white/30 shadow-[0_8px_24px_rgba(0,0,0,0.65),0_0_22px_rgba(10,177,186,0.22)]'
+                : 'scale-95 border-white/10 shadow-none'
+            }`}>
+              <BotLogo
+                className={`size-6.5 transition-colors duration-[250ms] ${
+                  orchestratorReached ? 'text-white' : 'text-zinc-600'
+                }`}
+                isActive={orchestratorReached}
+              />
+            </div>
+            <div className="min-w-0 flex-1">
+              <div className="mb-2 flex flex-wrap items-center gap-2.5">
+                <h3 className={`text-lg font-extrabold tracking-tight transition-colors duration-[250ms] ${
+                  orchestratorReached ? 'text-white' : 'text-zinc-600'
+                }`}>Master Orchestrator</h3>
+                <span className={`rounded border px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest transition-colors duration-[250ms] ${
+                  orchestratorReached
+                    ? 'border-white/15 bg-white/[0.06] text-zinc-300'
+                    : 'border-white/5 bg-white/[0.02] text-zinc-700'
+                }`}>
+                  {orchestratorReached ? 'Structured output' : 'Awaiting agents'}
+                </span>
+              </div>
+              <p className={`max-w-3xl text-sm leading-relaxed transition-colors duration-[250ms] ${
+                orchestratorReached ? 'text-zinc-400' : 'text-zinc-700'
+              }`}>
+                Combines the five agent outputs into structured JSON and GeoJSON containing metrics, map features, data provenance, limitations, risk warnings, and recommended follow-up work.
+              </p>
+            </div>
+            <div className={`flex items-center gap-2 font-mono text-xs transition-colors duration-[250ms] ${
+              orchestratorReached ? 'text-zinc-300' : 'text-zinc-700'
+            }`}>
+              <Layers aria-hidden="true" className={`size-4 transition-colors duration-[250ms] ${
+                orchestratorReached ? 'text-[#0ab1ba]' : 'text-zinc-700'
+              }`} />
+              JSON + GeoJSON
+            </div>
+          </div>
+        </div>
         </div>
 
       </div>

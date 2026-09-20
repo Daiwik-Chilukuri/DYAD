@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
@@ -100,30 +99,6 @@ export function LandingPage() {
 
       {/* 6. FOOTER */}
       <LandingFooter />
-
-      {/* 5. FLOATING COMMAND DOCK (ICONIC TURQUOISE ACCENT) */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 select-none">
-        <Link href="/">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            transition={motionSprings.snappy}
-            className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-[#0a0a0c]/90 hover:bg-[#121216] backdrop-blur-2xl border border-white/[0.12] hover:border-white/30 shadow-[0_25px_60px_rgba(0,0,0,0.98)] cursor-pointer group transition-colors"
-          >
-            <div className="flex items-center gap-2">
-              <span className="size-1.5 rounded-full bg-zinc-400" />
-              <span className="text-xs font-mono font-medium text-zinc-300 group-hover:text-white transition-colors">
-                Launch Dyad War Room
-              </span>
-            </div>
-            <div className="flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-white/10 border border-white/10 text-[10px] font-mono text-zinc-400 group-hover:text-zinc-200 transition-colors">
-              <span>⌘K</span>
-            </div>
-          </motion.div>
-        </Link>
-      </div>
 
     </div>
   );
